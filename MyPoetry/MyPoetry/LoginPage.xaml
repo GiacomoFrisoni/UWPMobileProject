@@ -10,31 +10,36 @@
 
     <Grid>
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
-        <StackPanel VerticalAlignment="Center" Margin="0, -50, 0, 0" Padding="50" MaxWidth="400">
-            <StackPanel.ChildrenTransitions>
-                <TransitionCollection>
-                    <ContentThemeTransition></ContentThemeTransition>
-                </TransitionCollection>
-            </StackPanel.ChildrenTransitions>
+        <Grid VerticalAlignment="Center" Margin="0, -50, 0, 0">
+            <Grid.Background>
+                <SolidColorBrush Color="White" Opacity="0.4"/>
+            </Grid.Background>
+            <StackPanel Padding="50" MaxWidth="400">
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <ContentThemeTransition></ContentThemeTransition>
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
 
-            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="Login" Text="Login" Margin="5"></TextBlock>
+                <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="LoginText" Text="Login" Margin="5"></TextBlock>
 
-            <TextBox Margin="5" x:Uid="Email" PlaceholderText="Email"></TextBox>
-            <PasswordBox Margin="5" x:Uid="Password" PlaceholderText="Password"></PasswordBox>
+                <TextBox Margin="5" x:Uid="EmailPH" PlaceholderText="Email"></TextBox>
+                <PasswordBox Margin="5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
 
                 <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                <CheckBox Margin="5" x:Uid="StayLogged" Content="Stay logged"></CheckBox>
-                <Button Grid.Column="1" Style="{StaticResource ButtonBlue}" Content="Login" Margin="5" HorizontalAlignment="Stretch"></Button>
-            </Grid>
+                    <CheckBox Margin="5" x:Uid="StayLogged" Content="Stay logged"></CheckBox>
+                    <Button x:Uid="Login" Grid.Column="1" Style="{StaticResource ButtonBlue}" Content="Login" Margin="5" HorizontalAlignment="Stretch"></Button>
+                </Grid>
 
-            <HyperlinkButton x:Uid="ForgetPassword" Content="Forget password?" HorizontalAlignment="Center" Margin="10"></HyperlinkButton>
+                <HyperlinkButton x:Uid="ForgetPassword" Content="Forget password?" HorizontalAlignment="Center" Margin="10"></HyperlinkButton>
 
-            <Button x:Uid="Register" Margin="0, 80, 0, 0" Style="{StaticResource ButtonWhite}" Content="Register now" HorizontalAlignment="Center" Width="250"></Button>
-        </StackPanel>
+                <Button x:Uid="Register" Margin="0, 80, 0, 0" Style="{StaticResource ButtonWhite}" Content="Register now" HorizontalAlignment="Center" Width="250"></Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

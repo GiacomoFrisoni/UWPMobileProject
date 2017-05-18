@@ -138,7 +138,10 @@
   <data name="ForgetPasswordText.Text" xml:space="preserve">
     <value>Recupero password</value>
   </data>
-  <data name="Login.Text" xml:space="preserve">
+  <data name="Login.Content" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginText.Text" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="Name.Text" xml:space="preserve">
