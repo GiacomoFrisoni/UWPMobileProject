@@ -6,11 +6,11 @@
     xmlns:custom="using:MyPoetry.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Height="430">
 
     <Grid Name="grdParent">
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
-        <Grid VerticalAlignment="Center">
+        <Grid VerticalAlignment="Center" Margin="0, -10, 0, 0">
             <Grid.Background>
                 <SolidColorBrush Color="White" Opacity="0.4"/>
             </Grid.Background>
