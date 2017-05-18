@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="MyPoetry.RegisterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyPoetry"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid>
+        <Image Stretch="UniformToFill" Source="Assets/background.png"/>
+        <StackPanel VerticalAlignment="Center" Margin="0, -50, 0, 0" Padding="50" MaxWidth="400">
+            <StackPanel.ChildrenTransitions>
+                <TransitionCollection>
+                    <ContentThemeTransition></ContentThemeTransition>
+                </TransitionCollection>
+            </StackPanel.ChildrenTransitions>
+
+            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="RegisterText" Text="Register" Margin="5"></TextBlock>
+            
+            <StackPanel Margin="0, 10">
+
+                <TextBlock x:Uid="Name" Text="Name"></TextBlock>
+                <TextBox x:Uid="NamePH" Margin="5" PlaceholderText="Name"></TextBox>
+
+                <TextBlock x:Uid="Surname" Text="Surname"></TextBlock>
+                <TextBox x:Uid="SurnamePH" Margin="5"  PlaceholderText="Surname"></TextBox>
+            </StackPanel>
+
+            <StackPanel Margin="0, 10">
+                <TextBlock x:Uid="Email" Text="Your mail adress"></TextBlock>
+                <TextBox Margin="5" x:Uid="EmailPH" PlaceholderText="Email"></TextBox>
+
+                <TextBlock x:Uid="Password" Text="Enter password"></TextBlock>
+                <PasswordBox Margin="5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
+
+                <TextBlock x:Uid="RetypePassword" Text="Retype password"></TextBlock>
+                <PasswordBox Margin="5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
+            </StackPanel>
+
+
+            <Button x:Uid="RegistreNow" Style="{StaticResource ButtonBlue}" Content="Register me now" Margin="10" HorizontalAlignment="Stretch"></Button>
+
+
+            <Button x:Uid="AlreadyHaveAccount" Margin="0, 60, 0, 0" Style="{StaticResource ButtonWhite}" Content="I have alreay an account" HorizontalAlignment="Center" Width="250"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

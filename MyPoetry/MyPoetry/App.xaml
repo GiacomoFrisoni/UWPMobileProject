@@ -21,12 +21,17 @@
             <!--Colors-->
             <!--Azure-->
             <SolidColorBrush x:Key="AppColor1" x:Name="AppColor1" Color="#FF20B2AA"></SolidColorBrush>
+            <SolidColorBrush x:Key="AppColor1Hover" x:Name="AppColor1Hover" Color="#FF1da49c"></SolidColorBrush>
+            <SolidColorBrush x:Key="AppColor1Click" x:Name="AppColor1Click" Color="#FF1b958f"></SolidColorBrush>
             <!--Orange-->
             <SolidColorBrush x:Key="AppColor2" x:Name="AppColor2" Color="#FFDE8D1B"></SolidColorBrush>
             <!--Black-->
             <SolidColorBrush x:Key="AppColor3" x:Name="AppColor3" Color="#FF111111"></SolidColorBrush>
             <!--White-->
             <SolidColorBrush x:Key="AppColor4" x:Name="AppColor4" Color="#FFF3F3F3"></SolidColorBrush>
+            <SolidColorBrush x:Key="AppColor4Hover" x:Name="AppColor4Hover" Color="#FFE6E6E6"></SolidColorBrush>
+            <SolidColorBrush x:Key="AppColor4Click" x:Name="AppColor4Click" Color="#FFDEDEDE"></SolidColorBrush>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

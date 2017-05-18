@@ -117,22 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Email.PlaceholderText" xml:space="preserve">
+  <data name="AlreadyHaveAccount.Content" xml:space="preserve">
+    <value>Masz już konto?</value>
+  </data>
+  <data name="Back.Content" xml:space="preserve">
+    <value>Wróć</value>
+  </data>
+  <data name="Email.Text" xml:space="preserve">
+    <value>Twój mail</value>
+  </data>
+  <data name="EmailOfAccount.Text" xml:space="preserve">
+    <value>Email twojego konta</value>
+  </data>
+  <data name="EmailPH.PlaceholderText" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="ForgetPassword.Content" xml:space="preserve">
     <value>Zapomniałeś hasła?</value>
   </data>
+  <data name="ForgetPasswordText.Text" xml:space="preserve">
+    <value>Odzyskaj hasło</value>
+  </data>
   <data name="Login.Text" xml:space="preserve">
     <value>Login</value>
   </data>
-  <data name="Password.PlaceholderText" xml:space="preserve">
+  <data name="Name.Text" xml:space="preserve">
+    <value>Imię</value>
+  </data>
+  <data name="NamePH.PlaceholderText" xml:space="preserve">
+    <value>Imię</value>
+  </data>
+  <data name="Password.Text" xml:space="preserve">
+    <value>Wpisz hasło</value>
+  </data>
+  <data name="PasswordPH.PlaceholderText" xml:space="preserve">
     <value>Hasło</value>
+  </data>
+  <data name="RecoverPassword.Content" xml:space="preserve">
+    <value>Odzyskaj hasło</value>
   </data>
   <data name="Register.Content" xml:space="preserve">
     <value>Zarejestruj się</value>
   </data>
+  <data name="RegisterText.Text" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
+  <data name="RegistreNow.Content" xml:space="preserve">
+    <value>Zarejestruj się</value>
+  </data>
+  <data name="RetypePassword.Text" xml:space="preserve">
+    <value>Wpisz ponownie hasło</value>
+  </data>
   <data name="StayLogged.Content" xml:space="preserve">
     <value>Auto-login</value>
+  </data>
+  <data name="Surname.Text" xml:space="preserve">
+    <value>Nazwisko</value>
+  </data>
+  <data name="SurnamePH.PlaceholderText" xml:space="preserve">
+    <value>Nazwisko</value>
   </data>
 </root>
