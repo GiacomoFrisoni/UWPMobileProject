@@ -10,7 +10,7 @@
 
     <Grid Name="grdParent">
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
-        <Grid VerticalAlignment="Center" Margin="0, -50, 0, 0">
+        <Grid VerticalAlignment="Center">
             <Grid.Background>
                 <SolidColorBrush Color="White" Opacity="0.4"/>
             </Grid.Background>
