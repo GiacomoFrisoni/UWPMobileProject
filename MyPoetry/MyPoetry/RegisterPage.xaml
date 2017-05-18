@@ -10,8 +10,11 @@
     <Grid>
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
 
-        <ScrollViewer HorizontalContentAlignment="Center" Padding="20" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <StackPanel>
+        <ScrollViewer HorizontalContentAlignment="Center" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <StackPanel Padding="20" VerticalAlignment="Center">
+                <StackPanel.Background>
+                    <SolidColorBrush Color="White" Opacity="0.4"/>
+                </StackPanel.Background>
                 <StackPanel.ChildrenTransitions>
                     <TransitionCollection>
                         <ContentThemeTransition></ContentThemeTransition>
@@ -79,7 +82,7 @@
                     <TextBox Margin="5" x:Uid="EmailPH" PlaceholderText="Email"></TextBox>
 
                     <TextBlock x:Uid="Password" Text="Enter password"></TextBlock>
-                    <PasswordBox Margin="5" x:Uid="PasswordPH" PlaceholderText="Password" IsPasswordRevealButtonEnabled="True" Loaded="PasswordBox_Loaded"></PasswordBox>
+                    <PasswordBox Margin="5" x:Uid="PasswordPH" PlaceholderText="Password" IsPasswordRevealButtonEnabled="True"></PasswordBox>
                 </StackPanel>
 
 

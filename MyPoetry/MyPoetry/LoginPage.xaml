@@ -32,13 +32,14 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <CheckBox x:Name="cbStayLogged" Margin="5" x:Uid="StayLogged" Content="Stay logged" Checked="cbStayLogged_Checked" Unchecked="cbStayLogged_Unchecked"></CheckBox>
-                    <Button x:Name="btnLogin" x:Uid="Login" Grid.Column="1" Style="{StaticResource ButtonBlue}" Content="Login" Margin="5" HorizontalAlignment="Stretch" Click="btnLogin_Click"></Button>
+                    <CheckBox Margin="5" x:Uid="StayLogged" Content="Stay logged"></CheckBox>
+                    <Button x:Uid="Login" Grid.Column="1" Style="{StaticResource ButtonBlue}" Content="Login" Margin="5" HorizontalAlignment="Stretch"></Button>
                 </Grid>
 
                 <HyperlinkButton x:Uid="ForgetPassword" Content="Forget password?" HorizontalAlignment="Center" Margin="10"></HyperlinkButton>
 
-                <Button x:Uid="Register" Margin="0, 80, 0, 0" Style="{StaticResource ButtonWhite}" Content="Register now" HorizontalAlignment="Center" Width="250"></Button>
+                
+                <Button x:Uid="Register" Margin="0, 80, 0, 0" Style="{StaticResource ButtonWhite}" Content="Register now" HorizontalAlignment="Stretch"></Button>
             </StackPanel>
         </Grid>
     </Grid>
