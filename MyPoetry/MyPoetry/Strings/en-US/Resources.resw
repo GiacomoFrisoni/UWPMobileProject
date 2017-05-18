@@ -180,11 +180,11 @@
   <data name="Register.Content" xml:space="preserve">
     <value>Register now</value>
   </data>
+  <data name="RegisterNow.Content" xml:space="preserve">
+    <value>Register now</value>
+  </data>
   <data name="RegisterText.Text" xml:space="preserve">
     <value>Register</value>
-  </data>
-  <data name="RegistreNow.Content" xml:space="preserve">
-    <value>Register now</value>
   </data>
   <data name="StayLogged.Content" xml:space="preserve">
     <value>Auto-login</value>

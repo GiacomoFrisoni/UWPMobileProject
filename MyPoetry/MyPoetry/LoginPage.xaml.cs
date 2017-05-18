@@ -20,6 +20,9 @@ namespace MyPoetry
         {
             this.InitializeComponent();
             settings = new AppLocalSettings();
+
+            // Cache the page
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
 
         private async void btnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -69,6 +72,11 @@ namespace MyPoetry
                 });
 
             return user;
+        }
+
+        private void btnRegister_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(RegisterPage));
         }
     }
 }

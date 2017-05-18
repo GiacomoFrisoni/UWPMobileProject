@@ -114,6 +114,7 @@
     </Compile>
     <Compile Include="Model\LoginRequest.cs" />
     <Compile Include="Model\Poetry.cs" />
+    <Compile Include="Model\RegistrationRequest.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterPage.xaml.cs">

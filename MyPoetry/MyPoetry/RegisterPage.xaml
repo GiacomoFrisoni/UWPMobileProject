@@ -65,13 +65,13 @@
                     </Grid>
 
                     <TextBlock x:Uid="Name" Text="Name"></TextBlock>
-                    <TextBox x:Uid="NamePH" Margin="5" PlaceholderText="Name"></TextBox>
+                    <TextBox x:Name="txbName" x:Uid="NamePH" Margin="5" PlaceholderText="Name"></TextBox>
 
                     <TextBlock x:Uid="Surname" Text="Surname"></TextBlock>
-                    <TextBox x:Uid="SurnamePH" Margin="5"  PlaceholderText="Surname"></TextBox>
+                    <TextBox x:Name="txbSurname" x:Uid="SurnamePH" Margin="5"  PlaceholderText="Surname"></TextBox>
 
                     <TextBlock x:Uid="Gender" Text="Gender"></TextBlock>
-                    <ComboBox x:Uid="GenderPH" PlaceholderText="Select your gender" Margin="5" HorizontalAlignment="Stretch">
+                    <ComboBox x:Name="cmbGender" x:Uid="GenderPH" PlaceholderText="Select your gender" Margin="5" HorizontalAlignment="Stretch">
                         <ComboBoxItem x:Uid="Male">Male</ComboBoxItem>
                         <ComboBoxItem x:Uid="Female">Female</ComboBoxItem>
                     </ComboBox>
@@ -79,17 +79,15 @@
 
                 <StackPanel Margin="0, 10" MaxWidth="400">
                     <TextBlock x:Uid="Email" Text="Your mail adress"></TextBlock>
-                    <TextBox Margin="5" x:Uid="EmailPH" PlaceholderText="Email"></TextBox>
+                    <TextBox x:Name="txbEmail" Margin="5" x:Uid="EmailPH" PlaceholderText="Email"></TextBox>
 
                     <TextBlock x:Uid="Password" Text="Enter password"></TextBlock>
-                    <PasswordBox Margin="5" x:Uid="PasswordPH" PlaceholderText="Password" IsPasswordRevealButtonEnabled="True"></PasswordBox>
+                    <PasswordBox x:Name="pbPassword" Margin="5" x:Uid="PasswordPH" PlaceholderText="Password" PasswordRevealMode="Hidden"></PasswordBox>
                 </StackPanel>
 
+                <Button x:Name="btnRegister" x:Uid="RegisterNow" Style="{StaticResource ButtonBlue}" Content="Register me now" Margin="10" HorizontalAlignment="Center"  Width="300" Click="btnRegister_Click"></Button>
 
-                <Button x:Uid="RegistreNow" Style="{StaticResource ButtonBlue}" Content="Register me now" Margin="10" HorizontalAlignment="Center"  Width="300"></Button>
-
-
-                <Button x:Uid="AlreadyHaveAccount" Margin="0, 40, 0, 0" Style="{StaticResource ButtonWhite}" Content="I have alreay an account" HorizontalAlignment="Center" Width="250"></Button>
+                <Button x:Name="btnBackToLogin" x:Uid="AlreadyHaveAccount" Margin="0, 40, 0, 0" Style="{StaticResource ButtonWhite}" Content="I have alreay an account" HorizontalAlignment="Center" Width="250" Click="btnBackToLogin_Click"></Button>
             </StackPanel>
         </ScrollViewer>
     </Grid>

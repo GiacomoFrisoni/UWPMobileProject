@@ -76,7 +76,7 @@ namespace MyPoetry
             var rootFrame = new Frame();
 
             // Navigate to mainpage
-            rootFrame.Navigate(typeof(RegisterPage));
+            rootFrame.Navigate(typeof(LoginPage));
 
             // Place the frame in the current Window
             Window.Current.Content = rootFrame;
