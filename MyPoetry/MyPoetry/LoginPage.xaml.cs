@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -19,10 +20,11 @@ namespace MyPoetry
         public LoginPage()
         {
             this.InitializeComponent();
+
             settings = new AppLocalSettings();
 
             // Cache the page
-            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
         private async void btnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
