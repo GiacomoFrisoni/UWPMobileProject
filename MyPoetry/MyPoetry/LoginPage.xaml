@@ -6,7 +6,7 @@
     xmlns:custom="using:MyPoetry.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Height="430">
+    mc:Ignorable="d" d:DesignHeight="500">
 
     <Grid Name="grdParent">
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
