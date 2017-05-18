@@ -9,11 +9,12 @@ namespace MyPoetry
     /// </summary>
     public sealed partial class LoginPage : Page
     {
-        AppLocalSettings settings;
+        private AppLocalSettings settings;
 
         public LoginPage()
         {
             this.InitializeComponent();
+            settings = new AppLocalSettings();
         }
 
         private void btnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -23,12 +24,12 @@ namespace MyPoetry
 
         private void cbStayLogged_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            settings.setSalt(null);
+            settings.SetSalt(null);
         }
 
         private void cbStayLogged_Unchecked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            settings.setSalt(null);
+            settings.SetSalt(null);
         }
     }
 }

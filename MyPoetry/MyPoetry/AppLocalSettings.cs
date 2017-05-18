@@ -21,7 +21,7 @@
         /// Return the salt associated to the user login.
         /// </summary>
         /// <returns>User's salt</returns>
-        public byte[] getSalt()
+        public byte[] GetSalt()
         {
             return localSettings.Values[SALT_KEY] != null ? (byte[])localSettings.Values[SALT_KEY] : null;
         }
@@ -30,7 +30,7 @@
         /// Sets the salt for the login keeping.
         /// </summary>
         /// <param name="salt">Salt</param>
-        public void setSalt(byte[] salt)
+        public void SetSalt(byte[] salt)
         {
             localSettings.Values[SALT_KEY] = salt;
         }
