@@ -1,0 +1,33 @@
+﻿<Application
+    x:Class="MyPoetry.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--
+            Styles that define the controls' appearance in the application.
+            Their priority is determined by their position within the list.
+            -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/StandardStyles.xaml"/>
+                <ResourceDictionary Source="Styles/CustomStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--Text resources-->
+            <x:String x:Key="AppName">MyPoetry</x:String>
+
+            <!--Colors-->
+            <!--Azure-->
+            <SolidColorBrush x:Key="AppColor1" x:Name="AppColor1" Color="#FF00CED1"></SolidColorBrush>
+            <!--Orange-->
+            <SolidColorBrush x:Key="AppColor2" x:Name="AppColor2" Color="#FFDE8D1B"></SolidColorBrush>
+            <!--Black-->
+            <SolidColorBrush x:Key="AppColor3" x:Name="AppColor3" Color="#FF111111"></SolidColorBrush>
+            <!--White-->
+            <SolidColorBrush x:Key="AppColor4" x:Name="AppColor4" Color="#FFF3F3F3"></SolidColorBrush>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
+
