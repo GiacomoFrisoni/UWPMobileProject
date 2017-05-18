@@ -1,4 +1,5 @@
-﻿using MyPoetryMobileService.DataObjects;
+﻿using Microsoft.Azure.Mobile.Server.Config;
+using MyPoetryMobileService.DataObjects;
 using MyPoetryMobileService.Models;
 using System;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Http;
 
 namespace MyPoetryMobileService.Controllers
 {
+    [MobileAppController]
     public class CustomRegistrationController : ApiController
     {
         private const string connectionStringName = "Name=MyPoetryMobileContext";

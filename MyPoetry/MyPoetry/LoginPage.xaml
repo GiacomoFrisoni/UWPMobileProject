@@ -23,8 +23,8 @@
 
                 <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="LoginText" Text="Login" Margin="5"></TextBlock>
 
-                <TextBox Margin="5" x:Uid="EmailPH" PlaceholderText="Email"></TextBox>
-                <PasswordBox Margin="5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
+                <TextBox x:Name="txbEmail" Margin="5" x:Uid="EmailPH" PlaceholderText="Email"></TextBox>
+                <PasswordBox x:Name="pbPassword" Margin="5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
 
                 <Grid>
                     <Grid.ColumnDefinitions>

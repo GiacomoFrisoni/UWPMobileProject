@@ -14,7 +14,7 @@ namespace MyPoetry
     sealed partial class App : Application
     {
         public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://mypoetrymobile.azurewebsites.net"
+            "http://mypoetrymobileservice.azurewebsites.net"
         );
 
         public static SplashScreen splashScreen;
