@@ -10,11 +10,11 @@
 
     <Grid Name="grdParent">
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
-        <Grid VerticalAlignment="Center" Margin="0, -10, 0, 0">
+        <Grid VerticalAlignment="Center" Margin="0, -20, 0, 0">
             <Grid.Background>
                 <SolidColorBrush Color="White" Opacity="0.4"/>
             </Grid.Background>
-            <StackPanel Padding="50" MaxWidth="400">
+            <StackPanel Padding="30" MaxWidth="400">
                 <StackPanel.ChildrenTransitions>
                     <TransitionCollection>
                         <ContentThemeTransition></ContentThemeTransition>
