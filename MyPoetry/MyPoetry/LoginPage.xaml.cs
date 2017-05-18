@@ -9,9 +9,24 @@ namespace MyPoetry
     /// </summary>
     public sealed partial class LoginPage : Page
     {
+        AppLocalSettings settings;
+
         public LoginPage()
         {
             this.InitializeComponent();
+        }
+
+        private void btnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
+
+        {
+            settings.setSalt(null);
+        }
+
+        {
+            settings.setSalt(null);
         }
     }
 }
