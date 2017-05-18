@@ -21,10 +21,12 @@ namespace MyPoetry
 
         }
 
+        private void cbStayLogged_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             settings.setSalt(null);
         }
 
+        private void cbStayLogged_Unchecked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             settings.setSalt(null);
         }
