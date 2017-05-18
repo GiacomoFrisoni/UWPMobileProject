@@ -26,5 +26,6 @@ namespace MyPoetry
         {
             this.InitializeComponent();
         }
+
     }
 }

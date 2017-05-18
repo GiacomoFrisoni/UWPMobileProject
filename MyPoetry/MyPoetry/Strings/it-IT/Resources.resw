@@ -132,17 +132,32 @@
   <data name="EmailPH.PlaceholderText" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="Female.Content" xml:space="preserve">
+    <value>Femmina</value>
+  </data>
+  <data name="File.Text" xml:space="preserve">
+    <value>Scegli file...</value>
+  </data>
   <data name="ForgetPassword.Content" xml:space="preserve">
     <value>Hai dimenticato la password?</value>
   </data>
   <data name="ForgetPasswordText.Text" xml:space="preserve">
     <value>Recupero password</value>
   </data>
+  <data name="Gender.Text" xml:space="preserve">
+    <value>Sesso</value>
+  </data>
+  <data name="GenderPH.PlaceholderText" xml:space="preserve">
+    <value>Seleziona il tuo sesso</value>
+  </data>
   <data name="Login.Content" xml:space="preserve">
     <value>Login</value>
   </data>
   <data name="LoginText.Text" xml:space="preserve">
     <value>Login</value>
+  </data>
+  <data name="Male.Content" xml:space="preserve">
+    <value>Maschio</value>
   </data>
   <data name="Name.Text" xml:space="preserve">
     <value>Nome</value>
@@ -156,6 +171,9 @@
   <data name="PasswordPH.PlaceholderText" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Photo.Text" xml:space="preserve">
+    <value>Fotocamera</value>
+  </data>
   <data name="RecoverPassword.Content" xml:space="preserve">
     <value>Recupera password</value>
   </data>
@@ -167,9 +185,6 @@
   </data>
   <data name="RegistreNow.Content" xml:space="preserve">
     <value>Registrati ora</value>
-  </data>
-  <data name="RetypePassword.Text" xml:space="preserve">
-    <value>Reinserisci password</value>
   </data>
   <data name="StayLogged.Content" xml:space="preserve">
     <value>Auto-login</value>

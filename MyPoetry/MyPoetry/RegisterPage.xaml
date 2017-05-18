@@ -9,40 +9,86 @@
 
     <Grid>
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
-        <StackPanel VerticalAlignment="Center" Margin="0, -50, 0, 0" Padding="50" MaxWidth="400">
-            <StackPanel.ChildrenTransitions>
-                <TransitionCollection>
-                    <ContentThemeTransition></ContentThemeTransition>
-                </TransitionCollection>
-            </StackPanel.ChildrenTransitions>
 
-            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="RegisterText" Text="Register" Margin="5"></TextBlock>
-            
-            <StackPanel Margin="0, 10">
+        <ScrollViewer HorizontalContentAlignment="Center" Padding="20" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <ContentThemeTransition></ContentThemeTransition>
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
 
-                <TextBlock x:Uid="Name" Text="Name"></TextBlock>
-                <TextBox x:Uid="NamePH" Margin="5" PlaceholderText="Name"></TextBox>
+                <StackPanel Margin="0, 10" MaxWidth="400">
+                    <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="RegisterText" Text="Register" Margin="5"></TextBlock>
 
-                <TextBlock x:Uid="Surname" Text="Surname"></TextBlock>
-                <TextBox x:Uid="SurnamePH" Margin="5"  PlaceholderText="Surname"></TextBox>
+                    <Grid Margin="0, 10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Border Width="150" Height="150" BorderBrush="{StaticResource AppColor3}" Background="White" BorderThickness="1">
+                            <Image></Image>
+                        </Border>
+                        
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            
+                            <Button Style="{StaticResource ButtonBlue}" Grid.Row="0" Padding="10, 5" Margin="10, 5, 0, 5" HorizontalAlignment="Stretch">
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="Camera"></SymbolIcon>
+                                    <TextBlock x:Uid="Photo" Margin="10, 0, 0, 0">Scatta foto</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource ButtonBlue}" Grid.Row="1" Padding="10, 5" Margin="10, 5, 0, 5" HorizontalAlignment="Stretch">
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="OpenFile"></SymbolIcon>
+                                    <TextBlock x:Uid="File" Margin="10, 0, 0, 0">Scegli file</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Style="{StaticResource ButtonRed}" Grid.Row="3" Padding="10, 5" Margin="10, 5">
+                                <StackPanel Orientation="Horizontal">
+                                    <SymbolIcon Symbol="Delete"></SymbolIcon>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+                    <TextBlock x:Uid="Name" Text="Name"></TextBlock>
+                    <TextBox x:Uid="NamePH" Margin="5" PlaceholderText="Name"></TextBox>
+
+                    <TextBlock x:Uid="Surname" Text="Surname"></TextBlock>
+                    <TextBox x:Uid="SurnamePH" Margin="5"  PlaceholderText="Surname"></TextBox>
+
+                    <TextBlock x:Uid="Gender" Text="Gender"></TextBlock>
+                    <ComboBox x:Uid="GenderPH" PlaceholderText="Select your gender" Margin="5" HorizontalAlignment="Stretch">
+                        <ComboBoxItem x:Uid="Male">Male</ComboBoxItem>
+                        <ComboBoxItem x:Uid="Female">Female</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Margin="0, 10" MaxWidth="400">
+                    <TextBlock x:Uid="Email" Text="Your mail adress"></TextBlock>
+                    <TextBox Margin="5" x:Uid="EmailPH" PlaceholderText="Email"></TextBox>
+
+                    <TextBlock x:Uid="Password" Text="Enter password"></TextBlock>
+                    <PasswordBox Margin="5" x:Uid="PasswordPH" PlaceholderText="Password" IsPasswordRevealButtonEnabled="True" Loaded="PasswordBox_Loaded"></PasswordBox>
+                </StackPanel>
+
+
+                <Button x:Uid="RegistreNow" Style="{StaticResource ButtonBlue}" Content="Register me now" Margin="10" HorizontalAlignment="Center"  Width="300"></Button>
+
+
+                <Button x:Uid="AlreadyHaveAccount" Margin="0, 40, 0, 0" Style="{StaticResource ButtonWhite}" Content="I have alreay an account" HorizontalAlignment="Center" Width="250"></Button>
             </StackPanel>
-
-            <StackPanel Margin="0, 10">
-                <TextBlock x:Uid="Email" Text="Your mail adress"></TextBlock>
-                <TextBox Margin="5" x:Uid="EmailPH" PlaceholderText="Email"></TextBox>
-
-                <TextBlock x:Uid="Password" Text="Enter password"></TextBlock>
-                <PasswordBox Margin="5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
-
-                <TextBlock x:Uid="RetypePassword" Text="Retype password"></TextBlock>
-                <PasswordBox Margin="5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
-            </StackPanel>
-
-
-            <Button x:Uid="RegistreNow" Style="{StaticResource ButtonBlue}" Content="Register me now" Margin="10" HorizontalAlignment="Stretch"></Button>
-
-
-            <Button x:Uid="AlreadyHaveAccount" Margin="0, 60, 0, 0" Style="{StaticResource ButtonWhite}" Content="I have alreay an account" HorizontalAlignment="Center" Width="250"></Button>
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
+
 </Page>
