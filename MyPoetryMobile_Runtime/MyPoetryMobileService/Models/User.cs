@@ -19,8 +19,12 @@ namespace MyPoetryMobileService.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(20)]
-        public string Password { get; set; }
+        [MaxLength(1024)]
+        public byte[] Salt { get; set; }
+
+        [Required]
+        [MaxLength(1024)]
+        public byte[] SaltedAndHashedPassword { get; set; }
 
         [Required]
         [StringLength(15)]
