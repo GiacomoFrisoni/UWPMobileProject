@@ -123,6 +123,9 @@
   <data name="Back.Content" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="Delete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="Email.Text" xml:space="preserve">
     <value>Your mail adress</value>
   </data>
@@ -136,7 +139,7 @@
     <value>Female</value>
   </data>
   <data name="File.Text" xml:space="preserve">
-    <value>Choose file...</value>
+    <value>Choose file</value>
   </data>
   <data name="ForgetPassword.Content" xml:space="preserve">
     <value>Forget password?</value>
@@ -185,6 +188,9 @@
   </data>
   <data name="RegisterText.Text" xml:space="preserve">
     <value>Register</value>
+  </data>
+  <data name="RepeatPassword.Text" xml:space="preserve">
+    <value>Repeat Password</value>
   </data>
   <data name="StayLogged.Content" xml:space="preserve">
     <value>Auto-login</value>

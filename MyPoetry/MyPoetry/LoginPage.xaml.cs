@@ -1,5 +1,6 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
 using MyPoetry.Model;
+using MyPoetry.UserControls;
 using System;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
@@ -29,6 +30,7 @@ namespace MyPoetry
 
         private async void btnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            /*
             Exception exception = null;
             try
             {
@@ -48,7 +50,11 @@ namespace MyPoetry
                     await msg.ShowAsync();
                 }
                 //this.LoginProgress.IsActive = false;
-            }
+            }*/
+
+            HalfPageMessage hpm = new HalfPageMessage();
+            hpm.ShowMessage(grdParent, "Login in corso", "Sto effettuando la connessione verso il server... Attendi mentre carico i tuoi dati", true, null);
+            
         }
 
         private void cbStayLogged_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)

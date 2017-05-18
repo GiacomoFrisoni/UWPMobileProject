@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid Name="grdParent">
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
         <Grid VerticalAlignment="Center" Margin="0, -50, 0, 0">
             <Grid.Background>
@@ -21,10 +21,10 @@
                     </TransitionCollection>
                 </StackPanel.ChildrenTransitions>
 
-                <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="LoginText" Text="Login" Margin="5"></TextBlock>
+                <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="LoginText" Text="Login" Margin="0, 5"></TextBlock>
 
-                <TextBox x:Name="txbEmail" Margin="5" x:Uid="EmailPH" PlaceholderText="Email"></TextBox>
-                <PasswordBox x:Name="pbPassword" Margin="5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
+                <TextBox x:Name="txbEmail" Margin="0, 5" x:Uid="EmailPH" PlaceholderText="Email"></TextBox>
+                <PasswordBox x:Name="pbPassword" Margin="0, 5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -33,12 +33,12 @@
                     </Grid.ColumnDefinitions>
 
                     <CheckBox x:Name="cbStayLogged" Margin="5" x:Uid="StayLogged" Content="Stay logged"></CheckBox>
-                    <Button x:Name="btnLogin" x:Uid="Login" Grid.Column="1" Style="{StaticResource ButtonBlue}" Content="Login" Margin="5" HorizontalAlignment="Stretch"></Button>
+                    <Button x:Name="btnLogin" x:Uid="Login" Grid.Column="1" Style="{StaticResource ButtonBlue}" Content="Login" Margin="5" HorizontalAlignment="Stretch" Click="btnLogin_Click"></Button>
                 </Grid>
 
                 <HyperlinkButton x:Uid="ForgetPassword" Content="Forget password?" HorizontalAlignment="Center" Margin="10"></HyperlinkButton>
 
-                <Button x:Name="btnRegister" x:Uid="Register" Margin="0, 80, 0, 0" Style="{StaticResource ButtonWhite}" Content="Register now" HorizontalAlignment="Stretch" Click="btnRegister_Click"></Button>
+                <Button x:Name="btnRegister" x:Uid="Register" Margin="10, 50, 10, 0" Style="{StaticResource ButtonWhite}" Content="Register now" HorizontalAlignment="Stretch" Click="btnRegister_Click"></Button>
             </StackPanel>
         </Grid>
     </Grid>

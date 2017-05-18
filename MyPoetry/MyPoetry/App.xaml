@@ -35,6 +35,11 @@
             <SolidColorBrush x:Key="AppColor4" x:Name="AppColor4" Color="#FFF3F3F3"></SolidColorBrush>
             <SolidColorBrush x:Key="AppColor4Hover" x:Name="AppColor4Hover" Color="#FFE6E6E6"></SolidColorBrush>
             <SolidColorBrush x:Key="AppColor4Click" x:Name="AppColor4Click" Color="#FFDEDEDE"></SolidColorBrush>
+            
+            <!-- Red -->
+            <SolidColorBrush x:Key="AppRedColor" x:Name="AppRedColor" Color="#FFFD2E33"></SolidColorBrush>
+            <SolidColorBrush x:Key="AppRedColorHover" x:Name="AppRedColorHover" Color="#FFFB1E24"></SolidColorBrush>
+            <SolidColorBrush x:Key="AppRedColorClick" x:Name="AppRedColorClick" Color="#FFF1191E"></SolidColorBrush>
 
 
             <!-- BLUE BUTTON -->
@@ -173,11 +178,10 @@
 
             </Style>
 
-            <!-- WHITE BUTTON -->
+            <!-- RED BUTTON -->
             <Style x:Key="ButtonRed" x:Name="ButtonRed" TargetType="Button">
-                <Setter Property="Background" Value="{StaticResource AppColor4}"></Setter>
-                <Setter Property="BorderBrush" Value="Red"></Setter>
-                <Setter Property="Foreground" Value="Black"></Setter>
+                <Setter Property="Background" Value="{StaticResource AppRedColor}"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
 
                 <Setter Property="Template">
                     <Setter.Value>
@@ -194,7 +198,7 @@
                                         <VisualState x:Name="PointerOver">
                                             <Storyboard>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4Hover}" />
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppRedColorHover}" />
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
                                             </Storyboard>
@@ -203,7 +207,7 @@
                                         <VisualState x:Name="Pressed">
                                             <Storyboard>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4Click}" />
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppRedColorClick}" />
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <PointerDownThemeAnimation Storyboard.TargetName="RootGrid" />
                                             </Storyboard>
@@ -239,7 +243,6 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-
             </Style>
 
 
