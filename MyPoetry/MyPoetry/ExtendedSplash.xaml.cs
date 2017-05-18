@@ -42,7 +42,6 @@ namespace MyPoetry
 
                 // Retrieve the window coordinates of the splash screen image.
                 splashImageRect = splash.ImageLocation;
-                AdjustImage();
             }
 
             // Create a Frame to act as the navigation context
@@ -57,18 +56,6 @@ namespace MyPoetry
         private async Task SimulateLoadingData()
         {
             await Task.Delay(2000);
-        }
-
-        /// <summary>
-        /// This method adjustes Splash Screen image according to dimension factors.
-        /// </summary>
-        void AdjustImage()
-        {/*
-            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
-            {
-                extendedSplashImage.Height = splashImageRect.Height / scaleFactor;
-                extendedSplashImage.Width = splashImageRect.Width / scaleFactor;
-            }*/
         }
 
         /// <summary>
@@ -103,7 +90,6 @@ namespace MyPoetry
             {
                 // Update the coordinates of the splash screen image.
                 splashImageRect = splash.ImageLocation;
-                AdjustImage();
             }
         }
     }

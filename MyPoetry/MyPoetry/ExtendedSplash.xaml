@@ -61,6 +61,6 @@
 
         <Ellipse x:Name="circle"
                     Stroke="{StaticResource AppColor1}" StrokeThickness="3" Width="10" Height="10"/>
-        <Image x:Name="extendedSplashImage" Source="Assets/SplashScreen.png" Width="120" Height="120"/>
+        <Image x:Name="extendedSplashImage" Source="Assets/SplashScreenLogo.png" Width="120" Height="120"/>
     </Grid>
 </Page>
