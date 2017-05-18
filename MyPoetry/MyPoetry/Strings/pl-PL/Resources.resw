@@ -117,14 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Email.PlaceholderText" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="ForgetPassword.Content" xml:space="preserve">
     <value>Zapomniałeś hasła?</value>
   </data>
   <data name="Login.Text" xml:space="preserve">
     <value>Login</value>
-  </data>
-  <data name="Mail.PlaceholderText" xml:space="preserve">
-    <value>Mail</value>
   </data>
   <data name="Password.PlaceholderText" xml:space="preserve">
     <value>Hasło</value>

@@ -55,7 +55,7 @@ namespace MyPoetry
         /// <returns></returns>
         private async Task SimulateLoadingData()
         {
-            await Task.Delay(2000);
+            await Task.Delay(2500);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace MyPoetry
             var rootFrame = new Frame();
 
             // Navigate to mainpage
-            rootFrame.Navigate(typeof(MainPage));
+            rootFrame.Navigate(typeof(LoginPage));
 
             // Place the frame in the current Window
             Window.Current.Content = rootFrame;

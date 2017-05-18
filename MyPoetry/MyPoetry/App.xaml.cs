@@ -52,7 +52,7 @@ namespace MyPoetry
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 var statusBar = Windows.UI.ViewManagement.StatusBar.GetForCurrentView();
-                statusBar.BackgroundColor = Windows.UI.Colors.DarkTurquoise;
+                statusBar.BackgroundColor = Windows.UI.Colors.LightSeaGreen;
                 statusBar.ForegroundColor = Windows.UI.Colors.White;
                 statusBar.BackgroundOpacity = 1;
             }

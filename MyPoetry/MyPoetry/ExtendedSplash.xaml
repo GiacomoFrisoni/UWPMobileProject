@@ -5,57 +5,47 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    
     <Grid x:Name="LayoutRoot" Background="{StaticResource AppColor3}">
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <!--ANIMAZIONE SPLASH SCREEN-->
                 <VisualState x:Name="Extended">
-                    <Storyboard>
-                        <!--Circle zoom-->
-                        <DoubleAnimation From="0" To="150" Duration="00:00:1"
-                                         EnableDependentAnimation="True"
-                                         d:IsOptimized="True"
-                                         Storyboard.TargetName="circle"
-                                         Storyboard.TargetProperty="(FrameworkElement.Width)">
-                            <DoubleAnimation.EasingFunction>
-                                <CircleEase EasingMode="EaseInOut"/>
-                            </DoubleAnimation.EasingFunction>
-                        </DoubleAnimation>
-                        <DoubleAnimation From="0" To="150" Duration="00:00:1"
-                                         EnableDependentAnimation="True"
-                                         d:IsOptimized="True"
-                                         Storyboard.TargetName="circle"
-                                         Storyboard.TargetProperty="(FrameworkElement.Height)">
-                            <DoubleAnimation.EasingFunction>
-                                <CircleEase EasingMode="EaseInOut"/>
-                            </DoubleAnimation.EasingFunction>
-                        </DoubleAnimation>
-
-                        <!--Circle opacity-->
-                        <DoubleAnimation From="0" To="1" Duration="00:00:2"
-                                         EnableDependentAnimation="True"
-                                         d:IsOptimized="True"
-                                         Storyboard.TargetName="circle"
-                                         Storyboard.TargetProperty="Opacity">
-                            <DoubleAnimation.EasingFunction>
-                                <CircleEase EasingMode="EaseInOut"/>
-                            </DoubleAnimation.EasingFunction>
-                        </DoubleAnimation>
-
-                        <!--Image opacity-->
-                        <DoubleAnimation From="0" To="1" Duration="00:00:2"
-                                         EnableDependentAnimation="True"
-                                         d:IsOptimized="True"
-                                         Storyboard.TargetName="extendedSplashImage"
-                                         Storyboard.TargetProperty="Opacity">
-                            <DoubleAnimation.EasingFunction>
-                                <CircleEase EasingMode="EaseInOut"/>
-                            </DoubleAnimation.EasingFunction>
-                        </DoubleAnimation>
+                    <Storyboard x:Name="Storyboard">
+                        <!--Logo Fade-In-->
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="extendedSplashImage">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="1">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <PowerEase EasingMode="EaseIn"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                        </DoubleAnimationUsingKeyFrames>
+                        <!--Circle Fade-In-->
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="circle">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <!--Circle Zoom-In-->
+                        <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="circle">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="10"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="150">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CircleEase EasingMode="EaseInOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="circle">
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="10"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="150">
+                                <EasingDoubleKeyFrame.EasingFunction>
+                                    <CircleEase EasingMode="EaseInOut"/>
+                                </EasingDoubleKeyFrame.EasingFunction>
+                            </EasingDoubleKeyFrame>
+                        </DoubleAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
-
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
