@@ -27,9 +27,9 @@ namespace MyPoetry
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
         }
 
-        private async void btnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void BtnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            /*Exception exception = null;
+            Exception exception = null;
             HalfPageMessage hpm = new HalfPageMessage(grdParent);
             try
             {
@@ -39,7 +39,7 @@ namespace MyPoetry
 
                 // Sign-in and set the returned user on the context,
                 // then load data from the mobile service.
-                App.MobileService.CurrentUser = await AuthenticateAsync(txbEmail.Text, pbPassword.Password);
+                App.MobileService.CurrentUser = await AuthenticateAsync(TxbEmail.Text, PbPassword.Password);
             }
             catch (MobileServiceInvalidOperationException ex)
             {
@@ -53,17 +53,16 @@ namespace MyPoetry
                     var msg = new MessageDialog(exception.Message);
                     await msg.ShowAsync();
                 }
-            }*/
-
-            this.Frame.Navigate(typeof(MainPage));
+            }
+            
         }
 
-        private void cbStayLogged_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void CbStayLogged_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             settings.SetSalt(null);
         }
 
-        private void cbStayLogged_Unchecked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void CbStayLogged_Unchecked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             settings.SetSalt(null);
         }
@@ -82,10 +81,8 @@ namespace MyPoetry
 
             return user;
         }
-
-
-
-        private void btnRegister_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        
+        private void BtnRegister_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(RegisterPage));
         }

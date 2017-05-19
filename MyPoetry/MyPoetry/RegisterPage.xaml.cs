@@ -7,9 +7,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.Media.Capture;
 using Windows.Storage;
-using Windows.Foundation;
-using Windows.Storage.Streams;
-using Windows.Graphics.Imaging;
 using Windows.UI.Xaml.Media.Imaging;
 using MyPoetry.UserControls;
 using Windows.Storage.Pickers;
@@ -33,15 +30,15 @@ namespace MyPoetry
             this.InitializeComponent();
         }
 
-        private async void btnRegister_Click(object sender, RoutedEventArgs e)
+        private async void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
             await RegisterUser(
-                txbEmail.Text,
-                pbPassword.Password,
-                pbPasswordConfirm.Password,
-                txbName.Text,
-                txbSurname.Text,
-                cmbGender.SelectedIndex >= 0 ? (cmbGender.SelectedIndex == 0 ? MALE : FEMALE) : String.Empty,
+                TxbEmail.Text,
+                PbPassword.Password,
+                PbPasswordConfirm.Password,
+                TxbName.Text,
+                TxbSurname.Text,
+                CmbGender.SelectedIndex >= 0 ? (CmbGender.SelectedIndex == 0 ? MALE : FEMALE) : String.Empty,
                 bytesPhoto,
                 DateTime.Now
             );
@@ -50,8 +47,7 @@ namespace MyPoetry
         private async Task RegisterUser(string email, string password, string passwordConfirm, string name,
             string surname, string gender, byte[] photo, DateTime registrationDate)
         {
-
-            HalfPageMessage hpm = new HalfPageMessage(grdParent);
+            HalfPageMessage hpm = new HalfPageMessage(GrdParent);
 
             Exception exception = null;
             try
@@ -102,12 +98,12 @@ namespace MyPoetry
             return false;
         }
 
-        private void btnBackToLogin_Click(object sender, RoutedEventArgs e)
+        private void BtnBackToLogin_Click(object sender, RoutedEventArgs e)
         {
             GoBack();
         }
         
-        private async void btnPhoto_Click(object sender, RoutedEventArgs e)
+        private async void BtnPhoto_Click(object sender, RoutedEventArgs e)
         {
             CameraCaptureUI captureUI = new CameraCaptureUI();
             captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
@@ -120,19 +116,19 @@ namespace MyPoetry
                 return;
             }
            
-            imgProfile.Source = await GetImageSoruceFromFile(photo);
+            ImgProfile.Source = await GetImageSoruceFromFile(photo);
 
             await photo.DeleteAsync();
         }
 
-        private void btnDeletePhoto_Click(object sender, RoutedEventArgs e)
+        private void BtnDeletePhoto_Click(object sender, RoutedEventArgs e)
         {
             bytesPhoto = null;
-            imgProfile.Source = null;
-            sblDefault.Visibility = Visibility.Visible;
+            ImgProfile.Source = null;
+            SblDefault.Visibility = Visibility.Visible;
         }
 
-        private async void btnFile_Click(object sender, RoutedEventArgs e)
+        private async void BtnFile_Click(object sender, RoutedEventArgs e)
         {
             var picker = new FileOpenPicker();
             picker.ViewMode = PickerViewMode.Thumbnail;
@@ -144,7 +140,7 @@ namespace MyPoetry
             StorageFile file = await picker.PickSingleFileAsync();
             if (file != null)
             {
-                imgProfile.Source = await GetImageSoruceFromFile(file);               
+                ImgProfile.Source = await GetImageSoruceFromFile(file);               
             }
         }
 
@@ -154,7 +150,7 @@ namespace MyPoetry
             var stream = await file.OpenAsync(FileAccessMode.Read);
             var image = new BitmapImage();
             image.SetSource(stream);
-            sblDefault.Visibility = Visibility.Collapsed;
+            SblDefault.Visibility = Visibility.Collapsed;
             return image;
         }
     }

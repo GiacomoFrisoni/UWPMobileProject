@@ -23,8 +23,8 @@
 
                 <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="LoginText" Text="Login" Margin="0, 0, 0, 5"></TextBlock>
 
-                <TextBox x:Name="txbEmail" Margin="0, 5" x:Uid="EmailPH" PlaceholderText="Email" InputScope="EmailNameOrAddress"></TextBox>
-                <PasswordBox x:Name="pbPassword" Margin="0, 5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
+                <TextBox x:Name="TxbEmail" Margin="0, 5" x:Uid="EmailPH" PlaceholderText="Email" InputScope="EmailNameOrAddress"></TextBox>
+                <PasswordBox x:Name="PbPassword" Margin="0, 5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -32,13 +32,13 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <CheckBox x:Name="cbStayLogged" Margin="5" x:Uid="StayLogged" Content="Stay logged"></CheckBox>
-                    <Button x:Name="btnLogin" x:Uid="Login" Grid.Column="1" Style="{StaticResource ButtonBlue}" Content="Login" Margin="5" HorizontalAlignment="Stretch" Click="btnLogin_Click"></Button>
+                    <CheckBox x:Name="CbStayLogged" Margin="5" x:Uid="StayLogged" Content="Stay logged" Checked="CbStayLogged_Checked" Unchecked="CbStayLogged_Unchecked"></CheckBox>
+                    <Button x:Name="BtnLogin" x:Uid="Login" Grid.Column="1" Style="{StaticResource ButtonBlue}" Content="Login" Margin="5" HorizontalAlignment="Stretch" Click="BtnLogin_Click"></Button>
                 </Grid>
 
                 <HyperlinkButton x:Uid="ForgetPassword" Content="Forget password?" HorizontalAlignment="Center" Margin="10"></HyperlinkButton>
 
-                <Button x:Name="btnRegister" x:Uid="Register" Margin="10, 50, 10, 0" Style="{StaticResource ButtonWhite}" Content="Register now" HorizontalAlignment="Stretch" Click="btnRegister_Click"></Button>
+                <Button x:Name="BtnRegister" x:Uid="Register" Margin="10, 50, 10, 0" Style="{StaticResource ButtonWhite}" Content="Register now" HorizontalAlignment="Stretch" Click="BtnRegister_Click"></Button>
             </StackPanel>
         </Grid>
     </Grid>
