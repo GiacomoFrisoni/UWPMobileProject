@@ -35,7 +35,7 @@ namespace MyPoetry
             {
                 // Shows loading message
                 var loader = new ResourceLoader();
-                hpm.ShowMessage(grdParent,loader.GetString("LoginInProgress"), loader.GetString("ServerConnection"), true, null);
+                hpm.ShowMessage(grdParent,loader.GetString("LoginInProgress"), loader.GetString("ServerConnection"), true, false, false, null, null);
 
                 // Sign-in and set the returned user on the context,
                 // then load data from the mobile service.
@@ -81,9 +81,19 @@ namespace MyPoetry
             return user;
         }
 
+
+
         private void btnRegister_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            HalfPageMessage hpm = new HalfPageMessage();
+            hpm.ShowMessage(grdParent, "Prova", "Premi ok per andare sulla schermata di registrazione", true, true, true, null, OkAction);
+        }
+
+
+        private bool OkAction()
+        {
             this.Frame.Navigate(typeof(RegisterPage));
+            return true;
         }
     }
 }

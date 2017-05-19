@@ -11,7 +11,7 @@ using Windows.Foundation;
 using Windows.Storage.Streams;
 using Windows.Graphics.Imaging;
 using Windows.UI.Xaml.Media.Imaging;
-
+using MyPoetry.UserControls;
 
 namespace MyPoetry
 {
@@ -48,9 +48,14 @@ namespace MyPoetry
         private async Task RegisterUser(string email, string password, string passwordConfirm, string name,
             string surname, string gender, byte[] photo, DateTime registrationDate)
         {
+
+            HalfPageMessage hpm = new HalfPageMessage();
+
             Exception exception = null;
             try
             {
+                hpm.ShowMessage(grdParent, "Registrazione in corso", "Stiamo provvedendo alla registrazione del tuo account", true, false, false, null, null);
+
                 var response = await App.MobileService
                     .InvokeApiAsync<RegistrationRequest, string>(
                         "CustomRegistration", new RegistrationRequest()
@@ -75,13 +80,28 @@ namespace MyPoetry
                 {
                     var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
                     await msg.ShowAsync();
+                    hpm.Dismiss();
+                }
+                else
+                {
+                    hpm.IsProgressRingEnabled = false;
+                    hpm.Title = "Registrazione effettuata!";
+                    hpm.Message = "Grandioso! Ora puoi effetuare il login coi tuoi dati di accesso";
+                    hpm.SetOkAction(GoBack);
+                    hpm.IsOkButtonEnabled = true;                            
                 }
             }
         }
 
-        private void btnBackToLogin_Click(object sender, RoutedEventArgs e)
+        private bool GoBack()
         {
             this.Frame.Navigate(typeof(LoginPage));
+            return false;
+        }
+
+        private void btnBackToLogin_Click(object sender, RoutedEventArgs e)
+        {
+            GoBack();
         }
         
         private async void btnPhoto_Click(object sender, RoutedEventArgs e)

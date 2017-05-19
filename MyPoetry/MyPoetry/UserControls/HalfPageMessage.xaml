@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    x:Name="dialog"
     d:DesignHeight="500"
     d:DesignWidth="500">
 
@@ -14,24 +15,25 @@
             <SolidColorBrush Color="Black" Opacity="0.3"/>
         </Grid.Background>
         <Grid Background="{StaticResource AppColor1}" MaxHeight="300">
-            <Grid HorizontalAlignment="Center" Padding="10" MaxWidth="400">
+            <Grid HorizontalAlignment="Center" Padding="5, 10" MaxWidth="400">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="5" Orientation="Horizontal">
                     <ProgressRing Name="prgRing" Margin="0, 0, 10, 0" Width="30" Height="30" Foreground="White" IsActive="True"></ProgressRing>
                     <TextBlock Name="txbTitle" Style="{StaticResource SubheaderTextBlockStyle}" Foreground="White" Text="Sample text"></TextBlock>
                 </StackPanel>
 
-                <TextBlock Name="txbMessage" Margin="0, 10" TextWrapping="Wrap" Foreground="White" Grid.Row="1">
+                <TextBlock Name="txbMessage" Margin="5, 10" TextWrapping="Wrap" Foreground="White" Grid.Row="1">
                 This is some sample text to show when the window just start. It will be wrap the text and adapt it to the max width
                 </TextBlock>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" Name="stpButtons">
-                    <Button Style="{StaticResource ButtonWhite}" Content="Ok" Width="100" Click="Button_Click"></Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
+                    <Button Name="btnCancel" Style="{StaticResource ButtonWhite}" Content="Cancel" Width="100" Click="btn_Click"></Button>
+                    <Button Name="btnOk" Style="{StaticResource ButtonWhite}" Content="Ok" Width="100" Margin="10, 0, 0, 0" Click="btn_Click"></Button>
                 </StackPanel>
             </Grid>
         </Grid>
