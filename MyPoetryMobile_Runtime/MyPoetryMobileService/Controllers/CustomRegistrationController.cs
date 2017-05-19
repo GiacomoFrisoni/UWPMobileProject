@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web.Http;
 
 namespace MyPoetryMobileService.Controllers
@@ -79,6 +80,53 @@ namespace MyPoetryMobileService.Controllers
 
                 context.User.Add(newUser);
                 context.SaveChanges();
+
+                // Sends welcome email
+                try
+                {
+                    // Smtp client with authentication
+                    var gmailClient = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential("mypoetry.app@gmail.com", ".UWPpoetry2017.")
+                    };
+
+                    // Adds from-to mailaddresses
+                    MailAddress from = new MailAddress("mypoetry.app@gmail.com", "MyPoetry");
+                    MailAddress to = new MailAddress(newUser.Email, newUser.Name + " " + newUser.Surname);
+                    MailMessage myMail = new MailMessage(from, to);
+
+                    // Sets subject and encoding
+                    myMail.Subject = "Welcome to MyPoetry";
+                    myMail.SubjectEncoding = System.Text.Encoding.UTF8;
+
+                    // Sets body-message and encoding
+                    myMail.Body = "<p><span style=\"font - size:14px; \">Hi " + newUser.Name + " " + newUser.Surname + ",</span></p>" + 
+                        "<h1><strong>Welcome to <span style = \"color:#008080;\">MyPoetry</span>!</strong></h1>" +
+                        "<h2>The first app dedicated to poetry.</h2>" +
+                        "<p>&nbsp;</p>" +
+                        "<hr/>" +
+                        "<p>Start now to...</p>" +
+                        "<ul>" +
+                        "<li>Write poetry</li>" +
+                        "<li>Use specific writing tools</li>" +
+                        "<li>Share your texts</li>" +
+                        "<li>Track your progress</li>" +
+                        "<li>...And so much more </li>" +
+                        "</ul>" +
+                        "<p><strong>What are you waiting for?</strong></p>";
+                    myMail.BodyEncoding = System.Text.Encoding.UTF8;
+                    myMail.IsBodyHtml = true;
+
+                    // Sends email
+                    gmailClient.Send(myMail);
+                }
+                catch (Exception)
+                {
+                }
 
                 // Return the success response.
                 return this.Request.CreateResponse(HttpStatusCode.Created);
