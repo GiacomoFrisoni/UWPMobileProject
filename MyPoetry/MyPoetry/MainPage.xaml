@@ -5,9 +5,43 @@
     xmlns:local="using:MyPoetry"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Image Stretch="UniformToFill" Source="Assets/background.png"/>
-    </Grid>
+    <SplitView x:Name="NavigationSplitView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DisplayMode="CompactOverlay">
+        <SplitView.Pane>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Background="{StaticResource AppColor1}">
+                    <Button x:Name="NavButton" Content="&#xE700;" FontFamily="Segoe MDL2 Assets" Width="48" Height="36" Background="Transparent" HorizontalAlignment="Left" Foreground="White" />
+                    <TextBlock Text="Menu" Margin="16,8,0,0" Foreground="White"/>
+                </StackPanel>
+                <ListBox x:Name="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding MenuItems}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="Glyph" Text="{Binding Icon}" FontFamily="Segoe MDL2 Assets" Width="48" Margin="5,0,0,0" />
+                                <TextBlock Text="{Binding Title}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" 
+                    Background="#FFF2F2F2" Height="36">
+                    <Button x:Name="ContentMenuButton" Content="&#xE700;" FontFamily="Segoe MDL2 Assets" Width="48" Height="36" Background="Transparent" HorizontalAlignment="Left" Visibility="Collapsed" />
+                    <TextBlock Text="SplitView UWP" Margin="16,8,0,0" />
+                </StackPanel>
+                <Frame x:Name="ContentFrame">
+                    <StackPanel>
+                        <TextBlock>Ciao!</TextBlock>
+                        <Button>Fuck</Button>
+                    </StackPanel>
+                </Frame>
+            </StackPanel>
+        </SplitView.Content>
+    </SplitView>
+
+
 </Page>

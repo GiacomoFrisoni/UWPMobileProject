@@ -33,7 +33,7 @@
                         <Border Width="130" Height="130" BorderBrush="{StaticResource AppColor3}" Background="LightGray" BorderThickness="1">
                             <Grid>
                                 <Viewbox MaxHeight="70" MaxWidth="70">
-                                    <SymbolIcon Symbol="Contact" Foreground="White"></SymbolIcon>
+                                    <SymbolIcon Name="sblDefault" Symbol="Contact" Foreground="White"></SymbolIcon>
                                 </Viewbox>
                                 <Image Name="imgProfile"></Image>
                             </Grid>
@@ -54,7 +54,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource ButtonBlue}" Grid.Row="1" Padding="10, 5" Margin="10, 0, 0, 0" HorizontalAlignment="Stretch">
+                            <Button Name="btnFile" Style="{StaticResource ButtonBlue}" Grid.Row="1" Padding="10, 5" Margin="10, 0, 0, 0" HorizontalAlignment="Stretch" Click="btnFile_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <SymbolIcon Symbol="OpenFile"></SymbolIcon>
                                     <TextBlock x:Uid="File" Margin="10, 0, 0, 0">Scegli file</TextBlock>

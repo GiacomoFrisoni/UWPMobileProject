@@ -29,7 +29,7 @@ namespace MyPoetry
 
         private async void btnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Exception exception = null;
+            /*Exception exception = null;
             HalfPageMessage hpm = new HalfPageMessage(grdParent);
             try
             {
@@ -53,7 +53,9 @@ namespace MyPoetry
                     var msg = new MessageDialog(exception.Message);
                     await msg.ShowAsync();
                 }
-            }
+            }*/
+
+            this.Frame.Navigate(typeof(MainPage));
         }
 
         private void cbStayLogged_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -85,15 +87,7 @@ namespace MyPoetry
 
         private void btnRegister_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            HalfPageMessage hpm = new HalfPageMessage(grdParent);
-            hpm.ShowMessage("Prova", "Premi ok per andare sulla schermata di registrazione", true, true, true, null, OkAction);
-        }
-
-
-        private bool OkAction()
-        {
             this.Frame.Navigate(typeof(RegisterPage));
-            return true;
         }
     }
 }

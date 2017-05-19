@@ -40,7 +40,10 @@
             <SolidColorBrush x:Key="AppRedColor" x:Name="AppRedColor" Color="#FFFD2E33"></SolidColorBrush>
             <SolidColorBrush x:Key="AppRedColorHover" x:Name="AppRedColorHover" Color="#FFFB1E24"></SolidColorBrush>
             <SolidColorBrush x:Key="AppRedColorClick" x:Name="AppRedColorClick" Color="#FFF1191E"></SolidColorBrush>
-
+            
+            <!-- TextBox Color Override 
+            <SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="{StaticResource AppColor1}"></SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="{StaticResource AppColor1}"></SolidColorBrush>-->
 
             <!-- BLUE BUTTON -->
             <Style x:Key="ButtonBlue" x:Name="ButtonBlue" TargetType="Button">

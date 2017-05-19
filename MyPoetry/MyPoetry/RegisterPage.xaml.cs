@@ -12,6 +12,8 @@ using Windows.Storage.Streams;
 using Windows.Graphics.Imaging;
 using Windows.UI.Xaml.Media.Imaging;
 using MyPoetry.UserControls;
+using Windows.Storage.Pickers;
+using Windows.UI.Xaml.Media;
 
 namespace MyPoetry
 {
@@ -109,7 +111,6 @@ namespace MyPoetry
         {
             CameraCaptureUI captureUI = new CameraCaptureUI();
             captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
-            captureUI.PhotoSettings.CroppedSizeInPixels = new Size(300, 300);
 
             StorageFile photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
 
@@ -119,18 +120,7 @@ namespace MyPoetry
                 return;
             }
            
-            IRandomAccessStream stream = await photo.OpenAsync(FileAccessMode.Read);
-            BitmapDecoder decoder = await BitmapDecoder.CreateAsync(stream);
-            var pixels = await decoder.GetPixelDataAsync();
-            bytesPhoto = pixels.DetachPixelData();
-            SoftwareBitmap softwareBitmap = await decoder.GetSoftwareBitmapAsync();
-
-            SoftwareBitmap softwareBitmapBGR8 = SoftwareBitmap.Convert(softwareBitmap,BitmapPixelFormat.Bgra8,BitmapAlphaMode.Premultiplied);
-
-            SoftwareBitmapSource bitmapSource = new SoftwareBitmapSource();
-            await bitmapSource.SetBitmapAsync(softwareBitmapBGR8);
-
-            imgProfile.Source = bitmapSource;
+            imgProfile.Source = await GetImageSoruceFromFile(photo);
 
             await photo.DeleteAsync();
         }
@@ -139,6 +129,33 @@ namespace MyPoetry
         {
             bytesPhoto = null;
             imgProfile.Source = null;
+            sblDefault.Visibility = Visibility.Visible;
+        }
+
+        private async void btnFile_Click(object sender, RoutedEventArgs e)
+        {
+            var picker = new FileOpenPicker();
+            picker.ViewMode = PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".png");
+
+            StorageFile file = await picker.PickSingleFileAsync();
+            if (file != null)
+            {
+                imgProfile.Source = await GetImageSoruceFromFile(file);               
+            }
+        }
+
+
+        private async Task<ImageSource> GetImageSoruceFromFile(StorageFile file)
+        {
+            var stream = await file.OpenAsync(FileAccessMode.Read);
+            var image = new BitmapImage();
+            image.SetSource(stream);
+            sblDefault.Visibility = Visibility.Collapsed;
+            return image;
         }
     }
 }

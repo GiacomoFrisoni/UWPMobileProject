@@ -11,6 +11,10 @@ namespace MyPoetry.UserControls
         /// Save the reference for the main grid where the dialog is open
         /// </summary>
         private Grid gridParent = null;
+
+        /// <summary>
+        /// Save the reference for the action after pressing button
+        /// </summary>
         private Func<bool> cancelAction, okAction;
 
         /// <summary>
@@ -18,6 +22,10 @@ namespace MyPoetry.UserControls
         /// </summary>
         public bool Result = false;
 
+        /// <summary>
+        /// Initialize the logic for halfpagemessage
+        /// </summary>
+        /// <param name="parent">Parent grid where message will pop</param>
         public HalfPageMessage(Grid parent)
         {
             this.InitializeComponent();
@@ -48,19 +56,10 @@ namespace MyPoetry.UserControls
         public bool IsProgressRingEnabled
         {
             get { return prgRing.Visibility == Visibility.Visible; }
-            set {
-                if (value)
-                {
-                    prgRing.Visibility = Visibility.Visible;
-                    prgRing.IsActive = true;
-                }
-                else
-                {
-                    prgRing.Visibility = Visibility.Collapsed;
-                    prgRing.IsActive = false;
-                }
-                // Non va
-                // (value) ? prgRing.Visibility = Visibility.Visible : prgRing.Visibility = Visibility.Collapsed;
+            set
+            {
+                prgRing.Visibility = (value) ? Visibility.Visible : Visibility.Collapsed;
+                prgRing.IsActive = value;
             }
         }
 
@@ -72,15 +71,8 @@ namespace MyPoetry.UserControls
             get { return btnCancel.IsEnabled; }
             set
             {
+                btnCancel.Visibility = (value) ? Visibility.Visible : Visibility.Collapsed;
                 btnCancel.IsEnabled = value;
-                if (value)
-                {
-                    btnCancel.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    btnCancel.Visibility = Visibility.Collapsed;
-                }
             }
         }
 
@@ -92,16 +84,8 @@ namespace MyPoetry.UserControls
             get { return btnOk.IsEnabled; }
             set
             {
+                btnOk.Visibility = (value) ? Visibility.Visible : Visibility.Collapsed;
                 btnOk.IsEnabled = value;
-                if (value)
-                {
-                    btnOk.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    btnOk.Visibility = Visibility.Collapsed;
-                }
-                
             }
         }
 
@@ -144,7 +128,6 @@ namespace MyPoetry.UserControls
             this.okAction = okAction;
 
             this.gridParent.Children.Add(this);
-
         }
 
         /// <summary>
