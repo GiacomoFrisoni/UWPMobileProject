@@ -49,12 +49,12 @@ namespace MyPoetry
             string surname, string gender, byte[] photo, DateTime registrationDate)
         {
 
-            HalfPageMessage hpm = new HalfPageMessage();
+            HalfPageMessage hpm = new HalfPageMessage(grdParent);
 
             Exception exception = null;
             try
             {
-                hpm.ShowMessage(grdParent, "Registrazione in corso", "Stiamo provvedendo alla registrazione del tuo account", true, false, false, null, null);
+                hpm.ShowMessage("Registrazione in corso", "Stiamo provvedendo alla registrazione del tuo account", true, false, false, null, null);
 
                 var response = await App.MobileService
                     .InvokeApiAsync<RegistrationRequest, string>(
@@ -79,8 +79,9 @@ namespace MyPoetry
                 if (exception != null)
                 {
                     var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
-                    await msg.ShowAsync();
                     hpm.Dismiss();
+                    await msg.ShowAsync();
+                    
                 }
                 else
                 {

@@ -30,12 +30,12 @@ namespace MyPoetry
         private async void btnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             Exception exception = null;
-            HalfPageMessage hpm = new HalfPageMessage();
+            HalfPageMessage hpm = new HalfPageMessage(grdParent);
             try
             {
                 // Shows loading message
                 var loader = new ResourceLoader();
-                hpm.ShowMessage(grdParent,loader.GetString("LoginInProgress"), loader.GetString("ServerConnection"), true, false, false, null, null);
+                hpm.ShowMessage(loader.GetString("LoginInProgress"), loader.GetString("ServerConnection"), true, false, false, null, null);
 
                 // Sign-in and set the returned user on the context,
                 // then load data from the mobile service.
@@ -85,8 +85,8 @@ namespace MyPoetry
 
         private void btnRegister_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            HalfPageMessage hpm = new HalfPageMessage();
-            hpm.ShowMessage(grdParent, "Prova", "Premi ok per andare sulla schermata di registrazione", true, true, true, null, OkAction);
+            HalfPageMessage hpm = new HalfPageMessage(grdParent);
+            hpm.ShowMessage("Prova", "Premi ok per andare sulla schermata di registrazione", true, true, true, null, OkAction);
         }
 
 
