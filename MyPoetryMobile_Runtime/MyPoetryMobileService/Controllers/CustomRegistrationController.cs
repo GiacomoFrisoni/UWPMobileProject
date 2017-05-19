@@ -22,15 +22,31 @@ namespace MyPoetryMobileService.Controllers
         // POST api/CustomRegistration
         public HttpResponseMessage Post(RegistrationRequest registrationRequest)
         {
-            if (registrationRequest.Password.Length < 8)
+            if (string.IsNullOrWhiteSpace(registrationRequest.Email) ||
+                string.IsNullOrWhiteSpace(registrationRequest.Password) ||
+                string.IsNullOrWhiteSpace(registrationRequest.PasswordConfirm) ||
+                string.IsNullOrWhiteSpace(registrationRequest.Name) ||
+                string.IsNullOrWhiteSpace(registrationRequest.Surname) ||
+                string.IsNullOrWhiteSpace(registrationRequest.Gender) ||
+                registrationRequest.RegistrationDate == null)
             {
-                return this.Request.CreateResponse(HttpStatusCode.BadRequest,
-                    "Invalid password (at least 8 chars required)");
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "ERR_R_1");
+            }
+            else if (registrationRequest.Password.Length < 8)
+            {
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "ERR_R_2");
+            }
+            else if (!registrationRequest.Password.Equals(registrationRequest.PasswordConfirm))
+            {
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "ERR_R_3");
             }
             else if (!registrationRequest.Email.Contains("@"))
             {
-                return this.Request.CreateResponse(HttpStatusCode.BadRequest,
-                    "Please supply a valid email address");
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "ERR_R_4");
+            }
+            else if (registrationRequest.Gender.Length != 1)
+            {
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "ERR_R_5");
             }
             
             // SQL Database version using Entity Framework for data access.
@@ -40,8 +56,7 @@ namespace MyPoetryMobileService.Controllers
             // If there's already a confirmed account, return an error response.
             if (account != null)
             {
-                return this.Request.CreateResponse(HttpStatusCode.BadRequest,
-                    "That username already exists.");
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, "ERR_R_6");
             }
             else
             {

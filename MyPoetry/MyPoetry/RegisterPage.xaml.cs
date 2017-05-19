@@ -12,17 +12,19 @@ using Windows.Storage.Streams;
 using Windows.Graphics.Imaging;
 using Windows.UI.Xaml.Media.Imaging;
 
-// Il modello di elemento Pagina vuota è documentato all'indirizzo http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace MyPoetry
 {
     /// <summary>
-    /// Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame.
+    /// Registration page.
     /// </summary>
     public sealed partial class RegisterPage : Page
     {
         public const string MALE = "M";
         public const string FEMALE = "F";
+
+        private byte[] bytesPhoto = null;
+        
 
         public RegisterPage()
         {
@@ -31,37 +33,31 @@ namespace MyPoetry
 
         private async void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txbEmail.Text) &&
-                !string.IsNullOrWhiteSpace(pbPassword.Password) &&
-                !string.IsNullOrWhiteSpace(txbName.Text) &&
-                !string.IsNullOrWhiteSpace(txbSurname.Text) &&
-                cmbGender.SelectedIndex > 0)
-            {
-                await RegisterUser(
-                    txbEmail.Text,
-                    pbPassword.Password,
-                    txbName.Text,
-                    txbSurname.Text,
-                    cmbGender.SelectedIndex == 0 ? MALE : FEMALE,
-                    null,
-                    DateTime.Now
-                );
-            }
+            await RegisterUser(
+                txbEmail.Text,
+                pbPassword.Password,
+                pbPasswordConfirm.Password,
+                txbName.Text,
+                txbSurname.Text,
+                cmbGender.SelectedIndex >= 0 ? (cmbGender.SelectedIndex == 0 ? MALE : FEMALE) : String.Empty,
+                bytesPhoto,
+                DateTime.Now
+            );
         }
 
-        private async Task RegisterUser(string email, string password, string name, string surname, string gender, byte[] photo, DateTime registrationDate)
+        private async Task RegisterUser(string email, string password, string passwordConfirm, string name,
+            string surname, string gender, byte[] photo, DateTime registrationDate)
         {
             Exception exception = null;
             try
             {
-                // Make sure that the user is registered, using the hard-coded
-                // dummy registration credentials. In a real app, you must get these at runtime.
                 var response = await App.MobileService
                     .InvokeApiAsync<RegistrationRequest, string>(
                         "CustomRegistration", new RegistrationRequest()
                         {
                             Email = email,
                             Password = password,
+                            PasswordConfirm = passwordConfirm,
                             Name = name,
                             Surname = surname,
                             Gender = gender,
@@ -77,7 +73,7 @@ namespace MyPoetry
             {
                 if (exception != null)
                 {
-                    var msg = new MessageDialog(exception.Message);
+                    var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
                     await msg.ShowAsync();
                 }
             }
@@ -87,9 +83,7 @@ namespace MyPoetry
         {
             this.Frame.Navigate(typeof(LoginPage));
         }
-
-
-
+        
         private async void btnPhoto_Click(object sender, RoutedEventArgs e)
         {
             CameraCaptureUI captureUI = new CameraCaptureUI();
@@ -103,13 +97,11 @@ namespace MyPoetry
                 // User cancelled photo capture
                 return;
             }
-
-            StorageFolder destinationFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("ProfilePhotoFolder", CreationCollisionOption.OpenIfExists);
-
-            await photo.CopyAsync(destinationFolder, "ProfilePhoto.jpg", NameCollisionOption.ReplaceExisting);
            
             IRandomAccessStream stream = await photo.OpenAsync(FileAccessMode.Read);
             BitmapDecoder decoder = await BitmapDecoder.CreateAsync(stream);
+            var pixels = await decoder.GetPixelDataAsync();
+            bytesPhoto = pixels.DetachPixelData();
             SoftwareBitmap softwareBitmap = await decoder.GetSoftwareBitmapAsync();
 
             SoftwareBitmap softwareBitmapBGR8 = SoftwareBitmap.Convert(softwareBitmap,BitmapPixelFormat.Bgra8,BitmapAlphaMode.Premultiplied);
@@ -120,6 +112,12 @@ namespace MyPoetry
             imgProfile.Source = bitmapSource;
 
             await photo.DeleteAsync();
+        }
+
+        private void btnDeletePhoto_Click(object sender, RoutedEventArgs e)
+        {
+            bytesPhoto = null;
+            imgProfile.Source = null;
         }
     }
 }

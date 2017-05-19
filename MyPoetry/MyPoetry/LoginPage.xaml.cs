@@ -3,11 +3,10 @@ using MyPoetry.Model;
 using MyPoetry.UserControls;
 using System;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
-// Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace MyPoetry
 {
@@ -30,10 +29,14 @@ namespace MyPoetry
 
         private async void btnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            /*
             Exception exception = null;
+            HalfPageMessage hpm = new HalfPageMessage();
             try
             {
+                // Shows loading message
+                var loader = new ResourceLoader();
+                hpm.ShowMessage(grdParent,loader.GetString("LoginInProgress"), loader.GetString("ServerConnection"), true, null);
+
                 // Sign-in and set the returned user on the context,
                 // then load data from the mobile service.
                 App.MobileService.CurrentUser = await AuthenticateAsync(txbEmail.Text, pbPassword.Password);
@@ -44,17 +47,13 @@ namespace MyPoetry
             }
             finally
             {
+                hpm.Dismiss();
                 if (exception != null)
                 {
                     var msg = new MessageDialog(exception.Message);
                     await msg.ShowAsync();
                 }
-                //this.LoginProgress.IsActive = false;
-            }*/
-
-            HalfPageMessage hpm = new HalfPageMessage();
-            hpm.ShowMessage(grdParent, "Login in corso", "Sto effettuando la connessione verso il server... Attendi mentre carico i tuoi dati", true, null);
-            
+            }
         }
 
         private void cbStayLogged_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)

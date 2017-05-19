@@ -99,7 +99,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppLocalSettings.cs" />
+    <Compile Include="Utilities\AppLocalSettings.cs" />
     <Compile Include="ExtendedSplash.xaml.cs">
       <DependentUpon>ExtendedSplash.xaml</DependentUpon>
     </Compile>
@@ -120,6 +120,7 @@
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\ServerErrorInfo.cs" />
     <Compile Include="UserControls\HalfPageMessage.xaml.cs">
       <DependentUpon>HalfPageMessage.xaml</DependentUpon>
     </Compile>

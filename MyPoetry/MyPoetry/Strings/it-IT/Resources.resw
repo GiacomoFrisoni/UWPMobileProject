@@ -135,6 +135,24 @@
   <data name="EmailPH.PlaceholderText" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="Err_InvalidEmail" xml:space="preserve">
+    <value>Inserisci un indirizzo email valido</value>
+  </data>
+  <data name="Err_InvalidGender" xml:space="preserve">
+    <value>Sesso non valido (un solo carattere richiesto)</value>
+  </data>
+  <data name="Err_InvalidPw" xml:space="preserve">
+    <value>Password non valida (sono richiesti almeni 8 caratteri)</value>
+  </data>
+  <data name="Err_InvalidPws" xml:space="preserve">
+    <value>La password di conferma non corrisponde alla prima digitata</value>
+  </data>
+  <data name="Err_InvalidUsername" xml:space="preserve">
+    <value>Questo username esiste già</value>
+  </data>
+  <data name="Err_MissingData" xml:space="preserve">
+    <value>Dati mancanti</value>
+  </data>
   <data name="Female.Content" xml:space="preserve">
     <value>Femmina</value>
   </data>
@@ -155,6 +173,9 @@
   </data>
   <data name="Login.Content" xml:space="preserve">
     <value>Login</value>
+  </data>
+  <data name="LoginInProgress" xml:space="preserve">
+    <value>Login in corso</value>
   </data>
   <data name="LoginText.Text" xml:space="preserve">
     <value>Login</value>
@@ -191,6 +212,9 @@
   </data>
   <data name="RepeatPassword.Text" xml:space="preserve">
     <value>Ripeti Password</value>
+  </data>
+  <data name="ServerConnection" xml:space="preserve">
+    <value>Mi sto collegando al server... Attendi mentre carico i tuoi dati</value>
   </data>
   <data name="StayLogged.Content" xml:space="preserve">
     <value>Auto-login</value>
