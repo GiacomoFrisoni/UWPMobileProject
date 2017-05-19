@@ -94,7 +94,8 @@ namespace MyPoetry
 
         private bool GoBack()
         {
-            this.Frame.Navigate(typeof(LoginPage));
+            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame.GoBack();
             return false;
         }
 
@@ -116,7 +117,7 @@ namespace MyPoetry
                 return;
             }
            
-            ImgProfile.Source = await GetImageSoruceFromFile(photo);
+            ImgProfile.Source = await GetImageSourceFromFile(photo);
 
             await photo.DeleteAsync();
         }
@@ -140,12 +141,11 @@ namespace MyPoetry
             StorageFile file = await picker.PickSingleFileAsync();
             if (file != null)
             {
-                ImgProfile.Source = await GetImageSoruceFromFile(file);               
+                ImgProfile.Source = await GetImageSourceFromFile(file);               
             }
         }
 
-
-        private async Task<ImageSource> GetImageSoruceFromFile(StorageFile file)
+        private async Task<ImageSource> GetImageSourceFromFile(StorageFile file)
         {
             var stream = await file.OpenAsync(FileAccessMode.Read);
             var image = new BitmapImage();
