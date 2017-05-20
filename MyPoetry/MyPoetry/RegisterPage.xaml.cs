@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using MyPoetry.UserControls;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Media;
+using Windows.Storage.Streams;
 
 namespace MyPoetry
 {
@@ -116,7 +117,8 @@ namespace MyPoetry
                 // User cancelled photo capture
                 return;
             }
-           
+            
+            bytesPhoto = await AsByteArray(photo);
             ImgProfile.Source = await GetImageSourceFromFile(photo);
 
             await photo.DeleteAsync();
@@ -141,7 +143,8 @@ namespace MyPoetry
             StorageFile file = await picker.PickSingleFileAsync();
             if (file != null)
             {
-                ImgProfile.Source = await GetImageSourceFromFile(file);               
+                bytesPhoto = await AsByteArray(file);
+                ImgProfile.Source = await GetImageSourceFromFile(file);
             }
         }
 
@@ -152,6 +155,21 @@ namespace MyPoetry
             image.SetSource(stream);
             SblDefault.Visibility = Visibility.Collapsed;
             return image;
+        }
+
+        /// <summary>
+        /// Converts StorageFile to ByteArray
+        /// </summary>
+        /// <param name="file">Storage file</param>
+        /// <returns>Byte array</returns>
+        public static async Task<byte[]> AsByteArray(StorageFile file)
+        {
+            IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read);
+            var reader = new DataReader(fileStream.GetInputStreamAt(0));
+            await reader.LoadAsync((uint)fileStream.Size);
+            byte[] pixels = new byte[fileStream.Size];
+            reader.ReadBytes(pixels);
+            return pixels;
         }
     }
 }
