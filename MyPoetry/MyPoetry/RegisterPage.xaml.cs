@@ -76,10 +76,9 @@ namespace MyPoetry
             {
                 if (exception != null)
                 {
-                    var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
                     hpm.Dismiss();
+                    var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
                     await msg.ShowAsync();
-                    
                 }
                 else
                 {
