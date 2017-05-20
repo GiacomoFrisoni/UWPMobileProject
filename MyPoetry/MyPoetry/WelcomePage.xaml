@@ -10,6 +10,11 @@
     <Grid>
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
         <FlipView x:Name="FlipView" SelectionChanged="FlipView_SelectionChanged">
+            <FlipView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel AreScrollSnapPointsRegular="True" Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </FlipView.ItemsPanel>
             <FlipView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center">

@@ -34,6 +34,7 @@ namespace MyPoetry
             flipViewData.Add(new WelcomeFlipViewItem() { Control = readPoetries, Description = loader.GetString("Read") });
             flipViewData.Add(new WelcomeFlipViewItem() { Control = sharePoetries, Description = loader.GetString("Share") });
             flipViewData.Add(new WelcomeFlipViewItem() { Control = startApp, Description =  (String)App.Current.Resources["AppName"]});
+            FlipView.ItemsSource = null;
             FlipView.ItemsSource = flipViewData;
         }
 
@@ -61,6 +62,9 @@ namespace MyPoetry
                     break;
                 case 3:
                     startApp.StartAnimation();
+                    writePoetry.Reset();
+                    readPoetries.Reset();
+                    sharePoetries.Reset();
                     break;
                 default:
                     break;

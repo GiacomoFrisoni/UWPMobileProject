@@ -15,7 +15,7 @@ namespace MyPoetry.UserControls
         {
             ((Storyboard)this.Resources["Storyboard"]).Begin();
         }
-
+        
         private void BtnStart_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             ((Frame)Window.Current.Content).Navigate(typeof(MainPage));
