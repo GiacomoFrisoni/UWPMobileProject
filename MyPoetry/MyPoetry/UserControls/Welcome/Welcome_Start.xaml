@@ -1,0 +1,33 @@
+﻿<UserControl
+    x:Class="MyPoetry.UserControls.Welcome_Start"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyPoetry.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <UserControl.Resources>
+        <Storyboard x:Name="Storyboard">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ImgLogo">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="BtnStart">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.Background).(SolidColorBrush.Color)" Storyboard.TargetName="BtnStart">
+                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="#FFA0BFBE"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.6" Value="LightSeaGreen"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <Image x:Name="ImgLogo" Source="ms-appx:///Assets/SplashScreenLogo.png" Height="120" Width="120" Opacity="0"/>
+            <Button x:Name="BtnStart" x:Uid="StartNow" Style="{StaticResource ButtonBlue}" Content="Start now" Margin="20" HorizontalAlignment="Stretch" Click="BtnStart_Click" Opacity="0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

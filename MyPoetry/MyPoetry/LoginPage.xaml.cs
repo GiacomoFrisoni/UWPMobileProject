@@ -1,7 +1,10 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
 using MyPoetry.Model;
 using MyPoetry.UserControls;
+using MyPoetry.Utilities;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Popups;
@@ -39,7 +42,7 @@ namespace MyPoetry
 
                 // Sign-in and set the returned user on the context,
                 // then load data from the mobile service.
-                App.MobileService.CurrentUser = await AuthenticateAsync(TxbEmail.Text, PbPassword.Password);
+                await AuthenticateAsync(TxbEmail.Text, PbPassword.Password);
             }
             catch (MobileServiceInvalidOperationException ex)
             {
@@ -47,11 +50,27 @@ namespace MyPoetry
             }
             finally
             {
-                hpm.Dismiss();
                 if (exception != null)
                 {
+                    hpm.Dismiss();
                     var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
                     await msg.ShowAsync();
+                }
+                else
+                {
+                    // Gets and saves the logged user 
+                    List<User> res = await App.MobileService.GetTable<User>().Where(user => user.Email == TxbEmail.Text).ToListAsync();
+                    UserHandler.Instance.SetUser(res.First());
+
+                    // Updates number of accesses
+                    UserHandler.Instance.GetUser().AccessesNumber++;
+                    //await App.MobileService.GetTable<User>().UpdateAsync(UserHandler.Instance.GetUser());
+                    hpm.Dismiss();
+
+                    if (UserHandler.Instance.GetUser().AccessesNumber == 1)
+                        this.Frame.Navigate(typeof(WelcomePage));
+                    else
+                        this.Frame.Navigate(typeof(MainPage));
                 }
             }
         }

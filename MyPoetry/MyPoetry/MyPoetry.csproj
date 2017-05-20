@@ -99,7 +99,20 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\WelcomeFlipViewItem.cs" />
     <Compile Include="Model\RecoveryPasswordRequest.cs" />
+    <Compile Include="UserControls\Welcome\Welcome_WritePoetry.xaml.cs">
+      <DependentUpon>Welcome_WritePoetry.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Welcome\Welcome_ReadPoetries.xaml.cs">
+      <DependentUpon>Welcome_ReadPoetries.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Welcome\Welcome_SharePoetries.xaml.cs">
+      <DependentUpon>Welcome_SharePoetries.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Welcome\Welcome_Start.xaml.cs">
+      <DependentUpon>Welcome_Start.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\AppLocalSettings.cs" />
     <Compile Include="ExtendedSplash.xaml.cs">
       <DependentUpon>ExtendedSplash.xaml</DependentUpon>
@@ -127,6 +140,10 @@
     </Compile>
     <Compile Include="UserControls\IconicTextBox.xaml.cs">
       <DependentUpon>IconicTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\UserHandler.cs" />
+    <Compile Include="WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +185,10 @@
     <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Welcome\book.png" />
+    <Content Include="Assets\Welcome\cloud.png" />
+    <Content Include="Assets\Welcome\paper.png" />
+    <Content Include="Assets\Welcome\pencil.png" />
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-125.png" />
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
@@ -213,6 +234,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\IconicTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Welcome\Welcome_WritePoetry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Welcome\Welcome_ReadPoetries.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Welcome\Welcome_SharePoetries.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Welcome\Welcome_Start.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WelcomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
