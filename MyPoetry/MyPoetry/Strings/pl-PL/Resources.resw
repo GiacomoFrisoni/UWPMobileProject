@@ -123,6 +123,9 @@
   <data name="Back.Content" xml:space="preserve">
     <value>Wróć</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
   <data name="Delete.Text" xml:space="preserve">
     <value>Usuń</value>
   </data>
@@ -198,6 +201,9 @@
   <data name="NamePH.PlaceholderText" xml:space="preserve">
     <value>Imię</value>
   </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
   <data name="Password.Text" xml:space="preserve">
     <value>Wpisz hasło</value>
   </data>
@@ -205,25 +211,37 @@
     <value>Hasło</value>
   </data>
   <data name="PasswordRecoveryMessage" xml:space="preserve">
-    <value>Abbiamo inviato una email al tuo indirizzo. Segui le istruzioni indicati per completare il recupero della password.</value>
+    <value>Wysłaliśmy maila na twój adres. Postępuj zgodnie z instrukcjami by odzyskać hasło.</value>
   </data>
   <data name="Photo.Text" xml:space="preserve">
     <value>Aparat</value>
   </data>
   <data name="Read" xml:space="preserve">
-    <value>Read</value>
+    <value>Czytaj</value>
   </data>
   <data name="RecoverPassword.Content" xml:space="preserve">
     <value>Odzyskaj hasło</value>
   </data>
   <data name="RecoveryInProgress" xml:space="preserve">
-    <value>Password Recovery</value>
+    <value>Odzyskiwanie hasła</value>
   </data>
   <data name="Register.Content" xml:space="preserve">
     <value>Zarejestruj się</value>
   </data>
+  <data name="RegisterMessage" xml:space="preserve">
+    <value>Rejestrujemy twoje konto. Proszę czekać.</value>
+  </data>
   <data name="RegisterNow.Content" xml:space="preserve">
     <value>Zarejestruj się</value>
+  </data>
+  <data name="RegisterPlainText" xml:space="preserve">
+    <value>Rejestracja</value>
+  </data>
+  <data name="RegisterSuccessful" xml:space="preserve">
+    <value>Zrobione!</value>
+  </data>
+  <data name="RegisterSuccessfulMessage" xml:space="preserve">
+    <value>Wspaniale! Twoje konto zostało utworzone. Teraz mozesz się zalogować.</value>
   </data>
   <data name="RegisterText.Text" xml:space="preserve">
     <value>Rejestracja</value>
@@ -232,13 +250,13 @@
     <value>Powtórz hasło</value>
   </data>
   <data name="ServerConnection" xml:space="preserve">
-    <value>Mi sto collegando al server... Attendi mentre carico i tuoi dati</value>
+    <value>Łączenie z serwerem... Ładowanie twoich danych</value>
   </data>
   <data name="Share" xml:space="preserve">
-    <value>Share</value>
+    <value>Udostępniaj</value>
   </data>
   <data name="StartNow.Content" xml:space="preserve">
-    <value>Start now</value>
+    <value>Zaczynamy</value>
   </data>
   <data name="StayLogged.Content" xml:space="preserve">
     <value>Auto-login</value>
@@ -250,6 +268,6 @@
     <value>Nazwisko</value>
   </data>
   <data name="Write" xml:space="preserve">
-    <value>Write</value>
+    <value>Twórz</value>
   </data>
 </root>

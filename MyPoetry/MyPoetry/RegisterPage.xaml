@@ -5,7 +5,7 @@
     xmlns:local="using:MyPoetry"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" d:DesignHeight="1000">
 
     <Grid Name="GrdParent">
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
@@ -50,21 +50,21 @@
                             <Button Name="BtnPhoto" Style="{StaticResource ButtonBlue}" Grid.Row="0" Padding="10, 5" Margin="10, 1, 0, 5" HorizontalAlignment="Stretch" Click="BtnPhoto_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <SymbolIcon Symbol="Camera"></SymbolIcon>
-                                    <TextBlock x:Uid="Photo" Margin="10, 0, 0, 0">Scatta foto</TextBlock>
+                                    <TextBlock x:Uid="Photo" Margin="10, 0, 0, 0">Camera</TextBlock>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="BtnFile" Style="{StaticResource ButtonBlue}" Grid.Row="1" Padding="10, 5" Margin="10, 0, 0, 0" HorizontalAlignment="Stretch" Click="BtnFile_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <SymbolIcon Symbol="OpenFile"></SymbolIcon>
-                                    <TextBlock x:Uid="File" Margin="10, 0, 0, 0">Scegli file</TextBlock>
+                                    <TextBlock x:Uid="File" Margin="10, 0, 0, 0">Choose file</TextBlock>
                                 </StackPanel>
                             </Button>
 
                             <Button x:Name="BtnDeletePhoto" Style="{StaticResource ButtonRed}" Grid.Row="3" HorizontalAlignment="Stretch" Padding="10, 5" Margin="10, 5, 0, 1" Click="BtnDeletePhoto_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <SymbolIcon Symbol="Delete"></SymbolIcon>
-                                    <TextBlock x:Uid="Delete" Margin="10, 0, 0, 0">Elimina</TextBlock>
+                                    <TextBlock x:Uid="Delete" Margin="10, 0, 0, 0">Delete</TextBlock>
                                 </StackPanel>
                             </Button>
                         </Grid>

@@ -17,7 +17,10 @@
             </FlipView.ItemsPanel>
             <FlipView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Padding="20">
+                        <StackPanel.Background>
+                            <SolidColorBrush Color="White" Opacity="0.4"/>
+                        </StackPanel.Background>
                         <UserControl Content="{Binding Control}" Margin="10,10,10,20"/>
                         <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" TextAlignment="Center" Text="{Binding Description}"/>
                     </StackPanel>

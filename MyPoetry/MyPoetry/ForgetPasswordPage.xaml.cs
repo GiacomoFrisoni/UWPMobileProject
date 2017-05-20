@@ -38,7 +38,7 @@ namespace MyPoetry
                 hpm.IsProgressRingEnabled = false;
                 hpm.Title = loader.GetString("EmailSent");
                 hpm.Message = loader.GetString("PasswordRecoveryMessage");
-                hpm.SetOkAction(GoBack);
+                hpm.SetOkAction(GoBack, loader.GetString("Ok"));
                 hpm.IsOkButtonEnabled = true;
             }
             catch (MobileServiceInvalidOperationException ex)
@@ -67,12 +67,11 @@ namespace MyPoetry
                         });
         }
 
-        private bool GoBack()
+        private void GoBack()
         {
             Frame rootFrame = Window.Current.Content as Frame;
             if (rootFrame != null && rootFrame.CanGoBack)
                 rootFrame.GoBack();
-            return false;
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

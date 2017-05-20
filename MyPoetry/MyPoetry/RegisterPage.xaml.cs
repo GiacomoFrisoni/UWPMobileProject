@@ -49,11 +49,12 @@ namespace MyPoetry
             string surname, string gender, byte[] photo, DateTime registrationDate)
         {
             HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
 
             Exception exception = null;
             try
             {
-                hpm.ShowMessage("Registrazione in corso", "Stiamo provvedendo alla registrazione del tuo account", true, false, false, null, null);
+                hpm.ShowMessage(loader.GetString("RegisterPlainText"), loader.GetString("RegisterMessage"), true, false, false, null, null);
 
                 var response = await App.MobileService
                     .InvokeApiAsync<RegistrationRequest, string>(
@@ -84,20 +85,19 @@ namespace MyPoetry
                 else
                 {
                     hpm.IsProgressRingEnabled = false;
-                    hpm.Title = "Registrazione effettuata!";
-                    hpm.Message = "Grandioso! Ora puoi effetuare il login coi tuoi dati di accesso";
-                    hpm.SetOkAction(GoBack);
+                    hpm.Title = loader.GetString("RegisterSuccessful");
+                    hpm.Message = loader.GetString("RegisterSuccessfulMessage");
+                    hpm.SetOkAction(GoBack, loader.GetString("Ok"));
                     hpm.IsOkButtonEnabled = true;                            
                 }
             }
         }
 
-        private bool GoBack()
+        private void GoBack()
         {
             Frame rootFrame = Window.Current.Content as Frame;
             if (rootFrame != null && rootFrame.CanGoBack)
                 rootFrame.GoBack();
-            return false;
         }
 
         private void BtnBackToLogin_Click(object sender, RoutedEventArgs e)

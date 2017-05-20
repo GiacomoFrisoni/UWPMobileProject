@@ -25,7 +25,7 @@
     </UserControl.Resources>
 
     <Grid>
-        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" MaxWidth="400">
             <Image x:Name="ImgLogo" Source="ms-appx:///Assets/SplashScreenLogo.png" Height="120" Width="120" Opacity="0"/>
             <Button x:Name="BtnStart" x:Uid="StartNow" Style="{StaticResource ButtonBlue}" Content="Start now" Margin="20" HorizontalAlignment="Stretch" Click="BtnStart_Click" Opacity="0"/>
         </StackPanel>

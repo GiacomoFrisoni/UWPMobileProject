@@ -20,7 +20,7 @@
     </UserControl.Resources>
 
     <Grid>
-        <Image x:Name="ImgBook" Source="ms-appx:///Assets/Welcome/book.png" Height="120" Width="120" RenderTransformOrigin="0.5,0.5" Opacity="0">
+        <Image x:Name="ImgBook" Source="ms-appx:///Assets/Welcome/book.png" Height="150" Width="150" RenderTransformOrigin="0.5,0.5" Opacity="0">
             <Image.RenderTransform>
                 <CompositeTransform/>
             </Image.RenderTransform>

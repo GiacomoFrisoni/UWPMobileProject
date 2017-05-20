@@ -32,7 +32,7 @@ namespace MyPoetry
 
         private async void BtnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Exception exception = null;
+            /*Exception exception = null;
             HalfPageMessage hpm = new HalfPageMessage(GrdParent);
             try
             {
@@ -72,7 +72,9 @@ namespace MyPoetry
                     else
                         this.Frame.Navigate(typeof(MainPage));
                 }
-            }
+            }*/
+
+            this.Frame.Navigate(typeof(WelcomePage));
         }
 
         private void CbStayLogged_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)

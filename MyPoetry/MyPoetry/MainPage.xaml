@@ -7,40 +7,33 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080">
 
-    <SplitView x:Name="NavigationSplitView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DisplayMode="CompactOverlay">
+    <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="150">
         <SplitView.Pane>
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" Background="{StaticResource AppColor1}">
-                    <Button x:Name="NavButton" Content="&#xE700;" FontFamily="Segoe MDL2 Assets" Width="48" Height="36" Background="Transparent" HorizontalAlignment="Left" Foreground="White" />
-                    <TextBlock Text="Menu" Margin="16,8,0,0" Foreground="White"/>
+            <StackPanel Background="Gray">
+                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="MenuButton1" FontFamily="Segoe MDL2 Assets" Content="&#xE825;" Width="50" Height="50" Background="Transparent"/>
+                    <TextBlock Text="Button 1" FontSize="18" VerticalAlignment="Center" />
                 </StackPanel>
-                <ListBox x:Name="Menu" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding MenuItems}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="Glyph" Text="{Binding Icon}" FontFamily="Segoe MDL2 Assets" Width="48" Margin="5,0,0,0" />
-                                <TextBlock Text="{Binding Title}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="MenuButton2" FontFamily="Segoe MDL2 Assets" Content="&#xE10F;" Width="50" Height="50" Background="Transparent"/>
+                    <TextBlock Text="Button 2" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="MenuButton3" FontFamily="Segoe MDL2 Assets" Content="&#xE1D6;" Width="50" Height="50" Background="Transparent"/>
+                    <TextBlock Text="Button 3" FontSize="18" VerticalAlignment="Center" />
+                </StackPanel>
             </StackPanel>
         </SplitView.Pane>
+
         <SplitView.Content>
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" 
-                    Background="#FFF2F2F2" Height="36">
-                    <Button x:Name="ContentMenuButton" Content="&#xE700;" FontFamily="Segoe MDL2 Assets" Width="48" Height="36" Background="Transparent" HorizontalAlignment="Left" Visibility="Collapsed" />
-                    <TextBlock Text="SplitView UWP" Margin="16,8,0,0" />
-                </StackPanel>
-                <Frame x:Name="ContentFrame">
-                    <StackPanel>
-                        <TextBlock>Ciao!</TextBlock>
-                        <Button>Fuck</Button>
-                    </StackPanel>
-                </Frame>
-            </StackPanel>
+            <Grid>
+                <TextBlock Text="SplitView Basic" FontSize="54" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
         </SplitView.Content>
+
     </SplitView>
 
 

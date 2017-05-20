@@ -123,6 +123,9 @@
   <data name="Back.Content" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="Delete.Text" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -198,6 +201,9 @@
   <data name="NamePH.PlaceholderText" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
   <data name="Password.Text" xml:space="preserve">
     <value>Insert password</value>
   </data>
@@ -222,8 +228,20 @@
   <data name="Register.Content" xml:space="preserve">
     <value>Register now</value>
   </data>
+  <data name="RegisterMessage" xml:space="preserve">
+    <value>We're currently registering your account. Please wait.</value>
+  </data>
   <data name="RegisterNow.Content" xml:space="preserve">
     <value>Register now</value>
+  </data>
+  <data name="RegisterPlainText" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="RegisterSuccessful" xml:space="preserve">
+    <value>Successfull!</value>
+  </data>
+  <data name="RegisterSuccessfulMessage" xml:space="preserve">
+    <value>Horray! Your account has been registered. Now you can login with your credentials.</value>
   </data>
   <data name="RegisterText.Text" xml:space="preserve">
     <value>Register</value>

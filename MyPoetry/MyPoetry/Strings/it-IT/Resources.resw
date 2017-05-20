@@ -123,6 +123,9 @@
   <data name="Back.Content" xml:space="preserve">
     <value>Indietro</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
   <data name="Delete.Text" xml:space="preserve">
     <value>Elimina</value>
   </data>
@@ -198,6 +201,9 @@
   <data name="NamePH.PlaceholderText" xml:space="preserve">
     <value>Nome</value>
   </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
   <data name="Password.Text" xml:space="preserve">
     <value>Inserisci password</value>
   </data>
@@ -205,7 +211,7 @@
     <value>Password</value>
   </data>
   <data name="PasswordRecoveryMessage" xml:space="preserve">
-    <value>Abbiamo inviato una email al tuo indirizzo. Segui le istruzioni indicati per completare il recupero della password.</value>
+    <value>Abbiamo inviato una email al tuo indirizzo. Segui le istruzioni indicate per completare il recupero della password.</value>
   </data>
   <data name="Photo.Text" xml:space="preserve">
     <value>Fotocamera</value>
@@ -222,8 +228,20 @@
   <data name="Register.Content" xml:space="preserve">
     <value>Registrati</value>
   </data>
+  <data name="RegisterMessage" xml:space="preserve">
+    <value>Stiamo provvedendo alla registrazione del tuo account. Attendi...</value>
+  </data>
   <data name="RegisterNow.Content" xml:space="preserve">
     <value>Registrati ora</value>
+  </data>
+  <data name="RegisterPlainText" xml:space="preserve">
+    <value>Registrazione</value>
+  </data>
+  <data name="RegisterSuccessful" xml:space="preserve">
+    <value>Completato!</value>
+  </data>
+  <data name="RegisterSuccessfulMessage" xml:space="preserve">
+    <value>Grandioso! Il tuo account è registrato. Puoi effettuare ora l'accesso tramite le tue credenziali.</value>
   </data>
   <data name="RegisterText.Text" xml:space="preserve">
     <value>Registrazione</value>

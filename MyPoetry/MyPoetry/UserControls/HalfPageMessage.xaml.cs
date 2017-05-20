@@ -15,7 +15,7 @@ namespace MyPoetry.UserControls
         /// <summary>
         /// Save the reference for the action after pressing button
         /// </summary>
-        private Func<bool> CancelAction, OkAction;
+        private Action CancelAction, OkAction;
 
         /// <summary>
         /// Result of the dialog | TRUE: pressed ok | FALSE: pressed cancel
@@ -93,18 +93,22 @@ namespace MyPoetry.UserControls
         /// Set the action for the cancel button
         /// </summary>
         /// <param name="action">Action for the button</param>
-        public void SetCancelAction(Func<bool> action)
+        /// <param name="text">Text shown on the button</param>
+        public void SetCancelAction(Action action, string text)
         {
             this.CancelAction = action;
+            BtnCancel.Content = text;
         }
 
         /// <summary>
         /// Set the action for the ok button
         /// </summary>
         /// <param name="action">Action for the button</param>
-        public void SetOkAction(Func<bool> action)
+        /// <param name="text">Text shown on the button</param>
+        public void SetOkAction(Action action, string text)
         {
             this.OkAction = action;
+            BtnOk.Content = text;
         }
 
         /// <summary>
@@ -116,7 +120,7 @@ namespace MyPoetry.UserControls
         /// <param name="isProgressRingEnabled">TRUE = progress ring spinning and visible | FALSE = no ring</param>
         /// <param name="isCancelButtonEnabled">TRUE = cancel button visible | FALSE = invisible</param>
         /// <param name="isOkButtonEnabled">TRUE = ok button visible | FALSE = invisible</param>
-        public void ShowMessage(string title, string message, bool isProgressRingEnabled, bool isCancelButtonEnabled, bool isOkButtonEnabled, Func<bool> cancelAction, Func<bool> okAction)
+        public void ShowMessage(string title, string message, bool isProgressRingEnabled, bool isCancelButtonEnabled, bool isOkButtonEnabled, Action cancelAction, Action okAction)
         {
             this.Title = title;
             this.Message = message;
