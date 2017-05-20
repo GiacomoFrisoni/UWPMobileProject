@@ -95,7 +95,8 @@ namespace MyPoetry
         private bool GoBack()
         {
             Frame rootFrame = Window.Current.Content as Frame;
-            rootFrame.GoBack();
+            if (rootFrame != null && rootFrame.CanGoBack)
+                rootFrame.GoBack();
             return false;
         }
 

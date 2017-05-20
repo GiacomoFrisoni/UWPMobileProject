@@ -130,10 +130,13 @@
     <value>Your mail adress</value>
   </data>
   <data name="EmailOfAccount.Text" xml:space="preserve">
-    <value>Mail of your account</value>
+    <value>Email of your account</value>
   </data>
   <data name="EmailPH.PlaceholderText" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="EmailSent" xml:space="preserve">
+    <value>Email sent</value>
   </data>
   <data name="Err_InvalidEmail" xml:space="preserve">
     <value>Please supply a valid email address</value>
@@ -150,8 +153,14 @@
   <data name="Err_InvalidUsername" xml:space="preserve">
     <value>That username already exists</value>
   </data>
+  <data name="Err_InvalidUsernamePw" xml:space="preserve">
+    <value>Invalid username or password</value>
+  </data>
   <data name="Err_MissingData" xml:space="preserve">
     <value>Missing Data</value>
+  </data>
+  <data name="Err_NotAssociatedEmail" xml:space="preserve">
+    <value>The email address provided is not associated to any account</value>
   </data>
   <data name="Female.Content" xml:space="preserve">
     <value>Female</value>
@@ -195,11 +204,17 @@
   <data name="PasswordPH.PlaceholderText" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="PasswordRecoveryMessage" xml:space="preserve">
+    <value>We've sent an email to your address. Follow the instructions provided to complete the password recovery.</value>
+  </data>
   <data name="Photo.Text" xml:space="preserve">
     <value>Camera</value>
   </data>
   <data name="RecoverPassword.Content" xml:space="preserve">
     <value>Recover password</value>
+  </data>
+  <data name="RecoveryInProgress" xml:space="preserve">
+    <value>Password Recovery</value>
   </data>
   <data name="Register.Content" xml:space="preserve">
     <value>Register now</value>

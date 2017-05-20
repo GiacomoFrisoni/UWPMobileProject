@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignHeight="500">
 
-    <Grid Name="grdParent">
+    <Grid Name="GrdParent">
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
         <Grid VerticalAlignment="Center" Margin="0, -20, 0, 0">
             <Grid.Background>
@@ -36,7 +36,7 @@
                     <Button x:Name="BtnLogin" x:Uid="Login" Grid.Column="1" Style="{StaticResource ButtonBlue}" Content="Login" Margin="5" HorizontalAlignment="Stretch" Click="BtnLogin_Click"></Button>
                 </Grid>
 
-                <HyperlinkButton x:Uid="ForgetPassword" Content="Forget password?" HorizontalAlignment="Center" Margin="10"></HyperlinkButton>
+                <HyperlinkButton x:Name="BtnForgetPassword" x:Uid="ForgetPassword" Content="Forget password?" HorizontalAlignment="Center" Margin="10" Click="BtnForgetPassword_Click"></HyperlinkButton>
 
                 <Button x:Name="BtnRegister" x:Uid="Register" Margin="10, 50, 10, 0" Style="{StaticResource ButtonWhite}" Content="Register now" HorizontalAlignment="Stretch" Click="BtnRegister_Click"></Button>
             </StackPanel>

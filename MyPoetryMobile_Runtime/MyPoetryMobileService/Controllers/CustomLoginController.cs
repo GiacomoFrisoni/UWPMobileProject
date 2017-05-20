@@ -35,8 +35,7 @@ namespace MyPoetryMobileService.Controllers
                     return this.Request.CreateResponse(HttpStatusCode.OK);
                 }
             }
-            return this.Request.CreateResponse(HttpStatusCode.Unauthorized,
-                "Invalid username or password");
+            return this.Request.CreateResponse(HttpStatusCode.Unauthorized, "ERR_L_1");
         }
     }
 }

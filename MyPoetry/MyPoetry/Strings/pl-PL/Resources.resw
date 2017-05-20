@@ -135,6 +135,9 @@
   <data name="EmailPH.PlaceholderText" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="EmailSent" xml:space="preserve">
+    <value>Email inviata</value>
+  </data>
   <data name="Err_InvalidEmail" xml:space="preserve">
     <value>Please supply a valid email address</value>
   </data>
@@ -150,8 +153,14 @@
   <data name="Err_InvalidUsername" xml:space="preserve">
     <value>That username already exists</value>
   </data>
+  <data name="Err_InvalidUsernamePw" xml:space="preserve">
+    <value>Invalid username or password</value>
+  </data>
   <data name="Err_MissingData" xml:space="preserve">
     <value>Missing Data</value>
+  </data>
+  <data name="Err_NotAssociatedEmail" xml:space="preserve">
+    <value>The email address provided is not associated to any account</value>
   </data>
   <data name="Female.Content" xml:space="preserve">
     <value>Kobieta</value>
@@ -195,11 +204,17 @@
   <data name="PasswordPH.PlaceholderText" xml:space="preserve">
     <value>Hasło</value>
   </data>
+  <data name="PasswordRecoveryMessage" xml:space="preserve">
+    <value>Abbiamo inviato una email al tuo indirizzo. Segui le istruzioni indicati per completare il recupero della password.</value>
+  </data>
   <data name="Photo.Text" xml:space="preserve">
     <value>Aparat</value>
   </data>
   <data name="RecoverPassword.Content" xml:space="preserve">
     <value>Odzyskaj hasło</value>
+  </data>
+  <data name="RecoveryInProgress" xml:space="preserve">
+    <value>Password Recovery</value>
   </data>
   <data name="Register.Content" xml:space="preserve">
     <value>Zarejestruj się</value>

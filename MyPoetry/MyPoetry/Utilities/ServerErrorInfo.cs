@@ -57,6 +57,12 @@ namespace MyPoetry
                     return loader.GetString("Err_InvalidGender");
                 case "ERR_R_6":
                     return loader.GetString("Err_InvalidUsername");
+                case "ERR_L_1":
+                    return loader.GetString("Err_InvalidUsernamePw");
+                case "ERR_P_1":
+                    return loader.GetString("Err_InvalidEmail");
+                case "ERR_P_2":
+                    return loader.GetString("Err_NotAssociatedEmail");
                 default:
                     return String.Empty;
             }
