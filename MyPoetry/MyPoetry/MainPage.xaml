@@ -3,38 +3,79 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MyPoetry"
+    xmlns:menu="using:MyPoetry.UserControls.Menu"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080">
+    mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="700">
+    <Page.Resources>
+        <CollectionViewSource x:Name="itemsViewSource" IsSourceGrouped="true" />
+    </Page.Resources>
 
-    <SplitView x:Name="MySplitView" DisplayMode="CompactOverlay"  IsPaneOpen="False" CompactPaneLength="50" OpenPaneLength="150">
-        <SplitView.Pane>
-            <StackPanel Background="Gray">
-                <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="50" Height="50" Background="Transparent" Click="HamburgerButton_Click"/>
-                <StackPanel Orientation="Horizontal">
-                    <Button x:Name="MenuButton1" FontFamily="Segoe MDL2 Assets" Content="&#xE825;" Width="50" Height="50" Background="Transparent"/>
-                    <TextBlock Text="Button 1" FontSize="18" VerticalAlignment="Center" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Background="{StaticResource AppColor1}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Width="48" Height="48" Click="Button_Click" Style="{StaticResource ButtonBlue}">
+                <TextBlock Text="&#xE700;" FontFamily="Segoe MDL2 Assets"/>
+            </Button>
+
+            <TextBlock Name="TxblTitle" Grid.Column="1" Margin="5, 0" Style="{StaticResource SubtitleTextBlockStyle}" Foreground="White" VerticalAlignment="Center" Text="Some Page Title Text"></TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid x:Name="GrdMenu" HorizontalAlignment="Left" Background="{StaticResource AppColor3}" MaxWidth="300">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <ListView Grid.Row="0" SelectionMode="Single" ItemsSource="{Binding Source={StaticResource itemsViewSource}}">
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <menu:MenuSeparator></menu:MenuSeparator>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <menu:MenuItem/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                    <!--<menu:MenuItem ItemIcon="Home" ItemText="Home" ></menu:MenuItem>
+                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie poesie" ></menu:MenuItem>
+                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie plaquette" ></menu:MenuItem>
+
+                    <menu:MenuSeparator ItemText="Crea"></menu:MenuSeparator>
+                    <menu:MenuItem ItemIcon="Home" ItemText="Home" ></menu:MenuItem>
+                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie poesie" ></menu:MenuItem>
+                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie plaquette" ></menu:MenuItem>
+
+                    <menu:MenuSeparator ItemText="Crea"></menu:MenuSeparator>
+                    <menu:MenuItem ItemIcon="Home" ItemText="Home" ></menu:MenuItem>
+                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie poesie" ></menu:MenuItem>
+                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie plaquette" ></menu:MenuItem>-->
+                </ListView>
+
+                <StackPanel Grid.Row="2">
+                    <menu:MenuItem ItemIcon="Setting" ItemText="Impostazioni" ></menu:MenuItem>
+                    <menu:MenuItem ItemIcon="Admin" ItemText="Logout" ItemBackground="Red"></menu:MenuItem>
                 </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <Button x:Name="MenuButton2" FontFamily="Segoe MDL2 Assets" Content="&#xE10F;" Width="50" Height="50" Background="Transparent"/>
-                    <TextBlock Text="Button 2" FontSize="18" VerticalAlignment="Center" />
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <Button x:Name="MenuButton3" FontFamily="Segoe MDL2 Assets" Content="&#xE1D6;" Width="50" Height="50" Background="Transparent"/>
-                    <TextBlock Text="Button 3" FontSize="18" VerticalAlignment="Center" />
-                </StackPanel>
-            </StackPanel>
-        </SplitView.Pane>
-
-        <SplitView.Content>
-            <Grid>
-                <TextBlock Text="SplitView Basic" FontSize="54" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
-        </SplitView.Content>
-
-    </SplitView>
+        </Grid>
 
 
+    </Grid>
 </Page>

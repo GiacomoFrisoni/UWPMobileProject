@@ -101,6 +101,13 @@
     </Compile>
     <Compile Include="Model\WelcomeFlipViewItem.cs" />
     <Compile Include="Model\RecoveryPasswordRequest.cs" />
+    <Compile Include="UserControls\Menu\GroupCollector.cs" />
+    <Compile Include="UserControls\Menu\MenuItem.xaml.cs">
+      <DependentUpon>MenuItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Menu\MenuSeparator.xaml.cs">
+      <DependentUpon>MenuSeparator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Welcome\Welcome_WritePoetry.xaml.cs">
       <DependentUpon>Welcome_WritePoetry.xaml</DependentUpon>
     </Compile>
@@ -137,9 +144,6 @@
     <Compile Include="Utilities\ServerErrorInfo.cs" />
     <Compile Include="UserControls\HalfPageMessage.xaml.cs">
       <DependentUpon>HalfPageMessage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\IconicTextBox.xaml.cs">
-      <DependentUpon>IconicTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\UserHandler.cs" />
     <Compile Include="WelcomePage.xaml.cs">
@@ -233,7 +237,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\IconicTextBox.xaml">
+    <Page Include="UserControls\Menu\MenuItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Menu\MenuSeparator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
