@@ -23,7 +23,7 @@ namespace MyPoetryMobileService.Controllers
         {
             MyPoetryMobileContext context = new MyPoetryMobileContext(connectionStringName);
             User account = context.User
-                .Where(a => a.Email == loginRequest.Email).SingleOrDefault();
+                .Where(a => a.Email == loginRequest.Email.Trim().ToLower()).SingleOrDefault();
 
             if (account != null)
             {

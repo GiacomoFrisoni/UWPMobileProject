@@ -5,6 +5,7 @@ namespace MyPoetryMobileService.DataObjects
 {
     public class UserDto : EntityData
     {
+        public string Id { get; set; }
         public string Email { get; set; }
         public byte[] Salt { get; set; }
         public byte[] SaltedAndHashedPassword { get; set; }
@@ -15,5 +16,7 @@ namespace MyPoetryMobileService.DataObjects
         public DateTime RegistrationDate { get; set; }
         public int AccessesNumber { get; set; }
         public int UseTime { get; set; }
+        public bool IsActivated { get; set; }
+        public string ActivationCode { get; set; }
     }
 }

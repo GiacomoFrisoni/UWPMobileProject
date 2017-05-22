@@ -9,8 +9,8 @@ namespace MyPoetryMobileService.Models
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(40)]
-        public string UserEmail { get; set; }
+        [StringLength(255)]
+        public string UserId { get; set; }
 
         [Key]
         [Column(Order = 1)]

@@ -29,7 +29,7 @@ namespace MyPoetryMobileService.Controllers
 
             // SQL Database version using Entity Framework for data access.
             MyPoetryMobileContext context = new MyPoetryMobileContext(connectionStringName);
-            User account = context.User.Where(a => a.Email == pwRecoverRequest.Email).SingleOrDefault();
+            User account = context.User.Where(a => a.Email == pwRecoverRequest.Email.Trim().ToLower()).SingleOrDefault();
 
             if (account != null)
             {

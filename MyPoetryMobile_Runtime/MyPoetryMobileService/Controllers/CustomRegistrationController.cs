@@ -51,7 +51,7 @@ namespace MyPoetryMobileService.Controllers
             
             // SQL Database version using Entity Framework for data access.
             MyPoetryMobileContext context = new MyPoetryMobileContext(connectionStringName);
-            User account = context.User.Where(a => a.Email == registrationRequest.Email).SingleOrDefault();
+            User account = context.User.Where(a => a.Email == registrationRequest.Email.Trim().ToLower()).SingleOrDefault();
             
             // If there's already a confirmed account, return an error response.
             if (account != null)
@@ -62,10 +62,14 @@ namespace MyPoetryMobileService.Controllers
             {
                 byte[] salt = CustomLoginProviderUtils.GenerateSalt();
 
+                // Generates random 6 digit number
+                Random generator = new Random();
+                String activationCode = generator.Next(0, 1000000).ToString("D6");
+
                 User newUser = new Models.User
                 {
                     Id = Guid.NewGuid().ToString(),
-                    Email = registrationRequest.Email,
+                    Email = registrationRequest.Email.Trim().ToLower(),
                     Salt = salt,
                     SaltedAndHashedPassword = CustomLoginProviderUtils.Hash(registrationRequest.Password, salt),
                     Name = registrationRequest.Name,
@@ -74,7 +78,9 @@ namespace MyPoetryMobileService.Controllers
                     Photo = registrationRequest.Photo,
                     RegistrationDate = registrationRequest.RegistrationDate,
                     AccessesNumber = 0,
-                    UseTime = 0
+                    UseTime = 0,
+                    IsActivated = false,
+                    ActivationCode = activationCode
                 };
 
                 context.User.Add(newUser);
@@ -89,6 +95,7 @@ namespace MyPoetryMobileService.Controllers
                     "<h1><strong>Welcome to <span style = \"color:#20B2AA;\">MyPoetry</span>!</strong></h1>" +
                     "<h2>The first app dedicated to poetry.</h2>" +
                     "<hr/>" +
+                    "<p>Enter this activation&nbsp;code in&nbsp;the application to start using it immediately: <strong>" + newUser.ActivationCode + "</strong>.</p>" +
                     "<p>Start now to...</p>" +
                     "<ul>" +
                     "<li>Write poetry</li>" +

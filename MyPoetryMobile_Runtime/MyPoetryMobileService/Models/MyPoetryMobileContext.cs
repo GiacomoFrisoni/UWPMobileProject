@@ -26,9 +26,14 @@
                 .IsFixedLength();
 
             modelBuilder.Entity<User>()
+                .Property(e => e.ActivationCode)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
                 .HasMany(e => e.Poetry)
                 .WithRequired(e => e.User)
-                .HasForeignKey(e => e.UserEmail)
+                .HasForeignKey(e => e.UserId)
                 .WillCascadeOnDelete(false);
         }
     }

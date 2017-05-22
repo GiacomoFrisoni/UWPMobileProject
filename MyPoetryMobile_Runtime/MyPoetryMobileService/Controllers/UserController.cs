@@ -18,7 +18,7 @@ namespace MyPoetryMobileService.Controllers
             base.Initialize(controllerContext);
             MyPoetryMobileContext context = new MyPoetryMobileContext(connectionStringName);
             DomainManager = new SimpleMappedEntityDomainManager<UserDto, User>(
-                context, Request, user => user.Email);
+                context, Request, user => user.Id);
         }
 
         // GET tables/User
