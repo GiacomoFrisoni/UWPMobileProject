@@ -13,9 +13,6 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MyPoetry
 {
-    /// <summary>
-    /// Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame.
-    /// </summary>
     public sealed partial class LoginPage : Page
     {
         private AppLocalSettings settings;

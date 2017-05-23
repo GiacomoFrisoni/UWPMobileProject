@@ -3,13 +3,23 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MyPoetry"
+    xmlns:ViewModels="using:MyPoetry.ViewModel"
+    xmlns:Converters="using:MyPoetry.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
+    <Page.Resources>
+        <Converters:VisibleWhenTrue x:Key="VisibleWhenTrue"/>
+    </Page.Resources>
+
+    <Page.DataContext>
+        <ViewModels:Locator/>
+    </Page.DataContext>
+    
+    <Grid x:Name="grid" DataContext="{Binding WelcomePageViewModel, Mode=OneWay}">
         <Image Stretch="UniformToFill" Source="Assets/background.png"/>
-        <FlipView x:Name="FlipView" SelectionChanged="FlipView_SelectionChanged">
+        <FlipView x:Name="FlipView" ItemsSource="{Binding WelcomePages}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <FlipView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel AreScrollSnapPointsRegular="True" Orientation="Horizontal" />
@@ -27,5 +37,26 @@
                 </DataTemplate>
             </FlipView.ItemTemplate>
         </FlipView>
+        
+        <!-- Indicator -->
+        <ItemsControl ItemsSource="{Binding WelcomePages}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 50">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Style="{StaticResource TextBlockButtonStyle}"
+                            CommandParameter="{Binding}"
+                            Command="{Binding DataContext.SelectCommand, ElementName=grid, Mode=OneWay}">
+                        <Grid Height="15" Width="15">
+                            <Ellipse Fill="Gainsboro"/>
+                            <Ellipse Fill="{StaticResource AppColor1}" Visibility="{Binding Selected, Converter={StaticResource VisibleWhenTrue}}"/>
+                        </Grid>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Page>
