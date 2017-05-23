@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace MyPoetry.UserControls
 {
-    public sealed partial class Welcome_Start : UserControl
+    public sealed partial class Welcome_Start : UserControl, IWelcomeControl
     {
         public Welcome_Start()
         {

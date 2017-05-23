@@ -96,10 +96,17 @@
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivationPage.xaml.cs">
+      <DependentUpon>ActivationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\WelcomeFlipViewItem.cs" />
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Converters\VisibleWhenTrue.cs" />
+    <Compile Include="UserControls\Welcome\IWelcomeControl.cs" />
+    <Compile Include="Model\WelcomeItem.cs" />
     <Compile Include="Model\RecoveryPasswordRequest.cs" />
     <Compile Include="UserControls\Menu\MenuItem.cs" />
     <Compile Include="UserControls\Menu\MenuItemViewer.xaml.cs">
@@ -143,6 +150,8 @@
       <DependentUpon>HalfPageMessage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\UserHandler.cs" />
+    <Compile Include="ViewModel\Locator.cs" />
+    <Compile Include="ViewModel\WelcomePageViewModel.cs" />
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
@@ -202,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ActivationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExtendedSplash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
