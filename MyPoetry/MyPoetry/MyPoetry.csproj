@@ -101,12 +101,9 @@
     </Compile>
     <Compile Include="Model\WelcomeFlipViewItem.cs" />
     <Compile Include="Model\RecoveryPasswordRequest.cs" />
-    <Compile Include="UserControls\Menu\GroupCollector.cs" />
-    <Compile Include="UserControls\Menu\MenuItem.xaml.cs">
-      <DependentUpon>MenuItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Menu\MenuSeparator.xaml.cs">
-      <DependentUpon>MenuSeparator.xaml</DependentUpon>
+    <Compile Include="UserControls\Menu\MenuItem.cs" />
+    <Compile Include="UserControls\Menu\MenuItemViewer.xaml.cs">
+      <DependentUpon>MenuItemViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Welcome\Welcome_WritePoetry.xaml.cs">
       <DependentUpon>Welcome_WritePoetry.xaml</DependentUpon>
@@ -237,11 +234,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\Menu\MenuItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\Menu\MenuSeparator.xaml">
+    <Page Include="UserControls\Menu\MenuItemViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

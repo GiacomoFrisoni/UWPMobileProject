@@ -8,8 +8,39 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="700">
     <Page.Resources>
-        <CollectionViewSource x:Name="itemsViewSource" IsSourceGrouped="true" />
+        <CollectionViewSource x:Key="cvs" x:Name="cvs" IsSourceGrouped="true" />
     </Page.Resources>
+<!--
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup>
+            <VisualState>
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="650" />
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="NavigationPane.DisplayMode" Value="CompactOverlay" />
+                    <Setter Target="NavigationPane.IsPaneOpen" Value="True" />
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState>
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="400" />
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="NavigationPane.DisplayMode" Value="CompactOverlay" />
+                    <Setter Target="NavigationPane.IsPaneOpen" Value="False" />
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState>
+                <VisualState.StateTriggers>
+                    <AdaptiveTrigger MinWindowWidth="0" />
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="NavigationPane.DisplayMode" Value="Overlay" />
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>-->
 
     <Grid>
         <Grid.RowDefinitions>
@@ -23,58 +54,124 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Width="48" Height="48" Click="Button_Click" Style="{StaticResource ButtonBlue}">
+            <Button x:Name="HamburgerButton" Grid.Column="0" Width="48" Height="48" Click="HamburgerButton_Click" Style="{StaticResource ButtonBlue}">
                 <TextBlock Text="&#xE700;" FontFamily="Segoe MDL2 Assets"/>
             </Button>
 
-            <TextBlock Name="TxblTitle" Grid.Column="1" Margin="5, 0" Style="{StaticResource SubtitleTextBlockStyle}" Foreground="White" VerticalAlignment="Center" Text="Some Page Title Text"></TextBlock>
+            <TextBlock Name="TxblTitle" Grid.Column="1" Margin="10, 0" Style="{StaticResource SubtitleTextBlockStyle}" Foreground="White" VerticalAlignment="Center" Text="Some Page Title Text"></TextBlock>
         </Grid>
 
-        <Grid Grid.Row="1">
-            <Grid x:Name="GrdMenu" HorizontalAlignment="Left" Background="{StaticResource AppColor3}" MaxWidth="300">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
+        <SplitView Grid.Row="1" x:Name="NavigationPane">
+            <SplitView.Pane>
+                <RelativePanel x:Name="MenuContainer" Background="{StaticResource AppColor3}">
+                    <ListView Grid.Row="0" 
+                          SelectionChanged="MenuList_SelectionChanged"
+                          x:Name="MenuList"
+                          RelativePanel.AlignLeftWithPanel="True"
+                          RelativePanel.AlignRightWithPanel="True"
+                          RelativePanel.Above="BottomMenu"
+                          RelativePanel.AlignTopWithPanel="True"
+                          SelectionMode="Single" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                          ScrollViewer.VerticalScrollMode="Enabled" 
+                          ItemsSource="{Binding Source={StaticResource cvs}}" 
+                          HorizontalContentAlignment="Stretch" 
+                          HorizontalAlignment="Stretch">
+                        <ListView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.HeaderContainerStyle>
+                                    <Style TargetType="ListViewHeaderItem">
+                                        <Setter Property="MinHeight" Value="10"></Setter>
+                                        <Setter Property="MaxHeight" Value="10"></Setter>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListViewHeaderItem">
+                                                    <Rectangle Stroke="{StaticResource AppColor5}"
+                                                               StrokeThickness="0.5"
+                                                               Height="1"
+                                                               VerticalAlignment="Bottom"
+                                                               HorizontalAlignment="Stretch"
+                                                               Margin="5,8,5,0"/>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
 
-                <ListView Grid.Row="0" SelectionMode="Single" ItemsSource="{Binding Source={StaticResource itemsViewSource}}">
-                    <ListView.GroupStyle>
-                        <GroupStyle>
-                            <GroupStyle.HeaderTemplate>
-                                <DataTemplate>
-                                    <menu:MenuSeparator></menu:MenuSeparator>
-                                </DataTemplate>
-                            </GroupStyle.HeaderTemplate>
-                        </GroupStyle>
-                    </ListView.GroupStyle>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <menu:MenuItem/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    
-                    <!--<menu:MenuItem ItemIcon="Home" ItemText="Home" ></menu:MenuItem>
-                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie poesie" ></menu:MenuItem>
-                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie plaquette" ></menu:MenuItem>
+                                    </Style>
+                                </GroupStyle.HeaderContainerStyle>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
 
-                    <menu:MenuSeparator ItemText="Crea"></menu:MenuSeparator>
-                    <menu:MenuItem ItemIcon="Home" ItemText="Home" ></menu:MenuItem>
-                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie poesie" ></menu:MenuItem>
-                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie plaquette" ></menu:MenuItem>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="Container">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
 
-                    <menu:MenuSeparator ItemText="Crea"></menu:MenuSeparator>
-                    <menu:MenuItem ItemIcon="Home" ItemText="Home" ></menu:MenuItem>
-                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie poesie" ></menu:MenuItem>
-                    <menu:MenuItem ItemIcon="Home" ItemText="Le mie plaquette" ></menu:MenuItem>-->
-                </ListView>
+                                    <SymbolIcon Grid.Column="0" x:Name="Icon" Foreground="White" Width="48" Height="48" Symbol="{Binding Path=ItemIcon}"></SymbolIcon>
+                                    <TextBlock Grid.Column="1" x:Name="Text" Foreground="White" Margin="4, 0, 16, 0" Text="{Binding Path=ItemText}" VerticalAlignment="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
 
-                <StackPanel Grid.Row="2">
-                    <menu:MenuItem ItemIcon="Setting" ItemText="Impostazioni" ></menu:MenuItem>
-                    <menu:MenuItem ItemIcon="Admin" ItemText="Logout" ItemBackground="Red"></menu:MenuItem>
-                </StackPanel>
-            </Grid>
-        </Grid>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="Margin" Value="0"/>
+                                <Setter Property="Padding" Value="0"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+
+                    <StackPanel BorderBrush="{StaticResource AppColor3}" BorderThickness="0, 2, 0, 0" x:Name="BottomMenu" Grid.Row="2" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+                        <menu:MenuItemViewer ItemIcon="Setting" ItemText="Impostazioni" ItemStyle="{StaticResource ButtonBlue}"></menu:MenuItemViewer>
+                        <menu:MenuItemViewer ItemIcon="Admin" ItemText="Logout" ItemStyle="{StaticResource ButtonRed}"></menu:MenuItemViewer>
+                    </StackPanel>
+                </RelativePanel>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Grid Name="GrdParent">
+                    <Image Stretch="UniformToFill" Source="Assets/background.png"/>
+                    <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Sample content"></TextBlock>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <!-- VisualState to be triggered when window width is >=640 and <=1007 effective pixels -->
+                <VisualState x:Name="Large">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="650" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="NavigationPane.DisplayMode"
+                                Value="CompactOverlay" />
+                        <Setter Target="NavigationPane.IsPaneOpen"
+                                Value="False" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <!-- VisualState to be triggered when window width is >=0 and <641 effective pixels -->
+                <VisualState x:Name="Small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- Collapse the SplitView pane into overlay mode -->
+                        <Setter Target="NavigationPane.DisplayMode"
+                                Value="Overlay" />
+                        <Setter Target="NavigationPane.IsPaneOpen"
+                                Value="False" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
 
 
     </Grid>

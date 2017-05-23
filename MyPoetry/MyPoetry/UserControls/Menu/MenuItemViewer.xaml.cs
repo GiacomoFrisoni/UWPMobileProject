@@ -17,15 +17,14 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MyPoetry.UserControls.Menu
 {
-    public sealed partial class MenuSeparator : UserControl
+    public sealed partial class MenuItemViewer : UserControl
     {
-        public MenuSeparator()
+        public MenuItemViewer()
         {
             this.InitializeComponent();
         }
 
-
-        public string Key
+        public string ItemText
         {
             get
             {
@@ -34,6 +33,30 @@ namespace MyPoetry.UserControls.Menu
             set
             {
                 Text.Text = value;
+            }
+        }
+
+        public Symbol ItemIcon
+        {
+            get
+            {
+                return Icon.Symbol;
+            }
+            set
+            {
+                Icon.Symbol = value;
+            }
+        }
+
+        public Style ItemStyle
+        {
+            get
+            {
+                return Container.Style;
+            }
+            set
+            {
+                Container.Style = value;
             }
         }
     }

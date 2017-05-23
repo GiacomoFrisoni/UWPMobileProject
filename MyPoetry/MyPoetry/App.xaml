@@ -30,16 +30,24 @@
             
             <!--Black-->
             <SolidColorBrush x:Key="AppColor3" x:Name="AppColor3" Color="#FF111111"></SolidColorBrush>
-            
+
             <!--White-->
             <SolidColorBrush x:Key="AppColor4" x:Name="AppColor4" Color="#FFF3F3F3"></SolidColorBrush>
             <SolidColorBrush x:Key="AppColor4Hover" x:Name="AppColor4Hover" Color="#FFE6E6E6"></SolidColorBrush>
             <SolidColorBrush x:Key="AppColor4Click" x:Name="AppColor4Click" Color="#FFDEDEDE"></SolidColorBrush>
-            
+
+            <!-- Gray -->
+            <SolidColorBrush x:Key="AppColor5" x:Name="AppColor5" Color="#FF333333"></SolidColorBrush>
+
             <!-- Red -->
             <SolidColorBrush x:Key="AppRedColor" x:Name="AppRedColor" Color="#FFFD2E33"></SolidColorBrush>
             <SolidColorBrush x:Key="AppRedColorHover" x:Name="AppRedColorHover" Color="#FFFB1E24"></SolidColorBrush>
             <SolidColorBrush x:Key="AppRedColorClick" x:Name="AppRedColorClick" Color="#FFF1191E"></SolidColorBrush>
+            
+            <!-- ListView Color Override -->
+            <SolidColorBrush x:Key="SystemControlHighlightListLowBrush" x:Name="SystemControlHighlightListLowBrush" Color="#FF333333"></SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush" x:Name="SystemControlHighlightListAccentLowBrush" Color="#FF20B2AA"></SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListAccentMediumBrush" x:Name="SystemControlHighlightListAccentMediumBrush" Color="#FF1da49c"></SolidColorBrush>
             
             <!-- TextBox Color Override 
             <SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="{StaticResource AppColor1}"></SolidColorBrush>

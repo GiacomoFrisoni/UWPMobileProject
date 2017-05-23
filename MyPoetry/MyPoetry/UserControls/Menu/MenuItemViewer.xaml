@@ -1,0 +1,24 @@
+﻿<UserControl
+    x:Class="MyPoetry.UserControls.Menu.MenuItemViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyPoetry.UserControls.Menu"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+
+    <Button x:Name="Container" Style="{Binding Path=ItemStyle}" Padding="-1" Margin="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <SymbolIcon Grid.Column="0" x:Name="Icon" Foreground="White" Width="48" Height="48" Symbol="{Binding Path=ItemIcon}"></SymbolIcon>
+            <TextBlock Grid.Column="1" x:Name="Text" Foreground="White" Margin="4, 0, 16, 0" Text="{Binding Path=ItemText}" VerticalAlignment="Center"/>
+        </Grid>
+    </Button>
+</UserControl>

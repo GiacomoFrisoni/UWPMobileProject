@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,77 +27,43 @@ namespace MyPoetry
     /// </summary>
     public sealed partial class MainPage : Page
     {
+
         public MainPage()
         {
             this.InitializeComponent();
             GenerateMenu();
         }
 
-
         private void GenerateMenu()
         {
-            List<GroupCollector<object>> menu = new List<GroupCollector<object>>();
+            List<MenuItem> menu = new List<MenuItem>();
 
-            GroupCollector<object> main = new GroupCollector<object>();
-            main.Key = "Principale";
-            main.Add(new MenuItem("Home", Symbol.Home));
-            main.Add(new MenuItem("Le mie creazioni", Symbol.Highlight));
-            main.Add(new MenuItem("Le mie plaquette", Symbol.Import));
-            menu.Add(main);
+            menu.Add(new MenuItem() { ItemText = "Home", ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home });
+            menu.Add(new MenuItem() { ItemText = "Mie poesie", ItemIcon = Symbol.FontSize, Group = MenuItem.Groups.Home });
+            menu.Add(new MenuItem() { ItemText = "Mie plaquette", ItemIcon = Symbol.Folder, Group = MenuItem.Groups.Home });
 
-            GroupCollector<object> create = new GroupCollector<object>();
-            create.Key = "Crea";
-            create.Add(new MenuItem("Nuova poesia", Symbol.Add));
-            create.Add(new MenuItem("Nuova plaquette", Symbol.Add));
-            menu.Add(create);
+            menu.Add(new MenuItem() { ItemText = "Nuova poesia", ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create });
+            menu.Add(new MenuItem() { ItemText = "Nuova plaquette", ItemIcon = Symbol.Crop, Group = MenuItem.Groups.Create });
 
-            GroupCollector<object> explore = new GroupCollector<object>();
-            explore.Key = "Esplora";
-            explore.Add(new MenuItem("Dizionari", Symbol.Directions));
-            explore.Add(new MenuItem("Cerca rime", Symbol.DockRight));
-            menu.Add(explore);
+            menu.Add(new MenuItem() { ItemText = "Dizionari", ItemIcon = Symbol.Font, Group = MenuItem.Groups.Explore });
+            menu.Add(new MenuItem() { ItemText = "Cerca rime", ItemIcon = Symbol.AllApps, Group = MenuItem.Groups.Explore });
 
-            var cvs = (CollectionViewSource)Resources["itemsViewSource"];
-            cvs.Source = menu;
+            var groups = from c in menu group c by c.Group;
+
+            this.cvs.Source = groups;
         }
 
-        /*
-        public List<GroupInfoList<object>> GetFriendsGrouped()
+
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_friends == null)
-            {
-                _friends = await NetworkManager.GetFriends();
-            }
-
-            List<GroupInfoList<object>> friendsGrouped = new List<GroupInfoList<object>>();
-
-            var query = from friend in _friends
-                        orderby ((Friend)friend).first_name
-                        group friend by ((Friend)friend).first_name[0] into g
-                        select new { GroupName = g.Key, Items = g };
-            foreach (var g in query)
-            {
-                GroupInfoList<object> info = new GroupInfoList<object>();
-                info.Key = g.GroupName;
-                foreach (var friend in g.Items)
-                {
-                    info.Add(friend);
-                }
-                friendsGrouped.Add(info);
-            }
-            return friendsGrouped;
-        }*/
-
-        private void HamburgerMenuControl_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            /*var menuItem = e.ClickedItem as MenuItem;
-            ContentFrame.Navigate(menuItem.Page);
-            TxblTitle.Text = menuItem.Text;*/
+            NavigationPane.IsPaneOpen = !NavigationPane.IsPaneOpen;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void MenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           /* HamburgerMenuControl.IsPaneOpen = !HamburgerMenuControl.IsPaneOpen;*/
+            if (MenuList.SelectedItem.GetType().Equals(typeof(MenuItem)))
+                TxblTitle.Text = ((MenuItem)MenuList.SelectedItem).ItemText;
         }
     }
 }
