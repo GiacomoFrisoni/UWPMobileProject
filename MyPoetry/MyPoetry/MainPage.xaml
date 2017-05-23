@@ -10,37 +10,6 @@
     <Page.Resources>
         <CollectionViewSource x:Key="cvs" x:Name="cvs" IsSourceGrouped="true" />
     </Page.Resources>
-<!--
-    <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup>
-            <VisualState>
-                <VisualState.StateTriggers>
-                    <AdaptiveTrigger MinWindowWidth="650" />
-                </VisualState.StateTriggers>
-                <VisualState.Setters>
-                    <Setter Target="NavigationPane.DisplayMode" Value="CompactOverlay" />
-                    <Setter Target="NavigationPane.IsPaneOpen" Value="True" />
-                </VisualState.Setters>
-            </VisualState>
-            <VisualState>
-                <VisualState.StateTriggers>
-                    <AdaptiveTrigger MinWindowWidth="400" />
-                </VisualState.StateTriggers>
-                <VisualState.Setters>
-                    <Setter Target="NavigationPane.DisplayMode" Value="CompactOverlay" />
-                    <Setter Target="NavigationPane.IsPaneOpen" Value="False" />
-                </VisualState.Setters>
-            </VisualState>
-            <VisualState>
-                <VisualState.StateTriggers>
-                    <AdaptiveTrigger MinWindowWidth="0" />
-                </VisualState.StateTriggers>
-                <VisualState.Setters>
-                    <Setter Target="NavigationPane.DisplayMode" Value="Overlay" />
-                </VisualState.Setters>
-            </VisualState>
-        </VisualStateGroup>
-    </VisualStateManager.VisualStateGroups>-->
 
     <Grid>
         <Grid.RowDefinitions>
@@ -61,7 +30,7 @@
             <TextBlock Name="TxblTitle" Grid.Column="1" Margin="10, 0" Style="{StaticResource SubtitleTextBlockStyle}" Foreground="White" VerticalAlignment="Center" Text="Some Page Title Text"></TextBlock>
         </Grid>
 
-        <SplitView Grid.Row="1" x:Name="NavigationPane">
+        <SplitView Grid.Row="1" x:Name="NavigationPane" OpenPaneLength="260">
             <SplitView.Pane>
                 <RelativePanel x:Name="MenuContainer" Background="{StaticResource AppColor3}">
                     <ListView Grid.Row="0" 

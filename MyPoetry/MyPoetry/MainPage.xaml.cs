@@ -63,7 +63,14 @@ namespace MyPoetry
         private void MenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (MenuList.SelectedItem.GetType().Equals(typeof(MenuItem)))
+            {
                 TxblTitle.Text = ((MenuItem)MenuList.SelectedItem).ItemText;
+                NavigationPane.IsPaneOpen = false;
+            }
+
+
         }
+
+        
     }
 }

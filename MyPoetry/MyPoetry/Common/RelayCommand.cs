@@ -10,8 +10,15 @@ namespace MyPoetry.Common
         public RelayCommand(Action execute) : this(execute, null) { }
         public RelayCommand(Action execute, Func<bool> canExecute)
         {
-            _execute = execute ?? throw new ArgumentNullException("execute");
+            if (execute == null)
+                throw new ArgumentNullException("execute");
+
+            _execute = execute;
             _canExecute = canExecute;
+
+            /*
+            _execute = execute ?? throw new ArgumentNullException("execute");
+            _canExecute = canExecute;*/
         }
 
         public bool CanExecute() { return this.CanExecute(null); }
@@ -33,8 +40,13 @@ namespace MyPoetry.Common
         public RelayCommand(Action<TParameter> execute) : this(execute, null) { }
         public RelayCommand(Action<TParameter> execute, Func<TParameter, bool> canExecute)
         {
-            _execute = execute ?? throw new ArgumentNullException("execute");
+            if (execute == null)
+                throw new ArgumentNullException("execute");
+
+            _execute = execute;
             _canExecute = canExecute;
+            /*_execute = execute ?? throw new ArgumentNullException("execute");
+            _canExecute = canExecute;*/
         }
 
         public bool CanExecute(object parameter) { return _canExecute == null ? true : _canExecute((TParameter)parameter); }
