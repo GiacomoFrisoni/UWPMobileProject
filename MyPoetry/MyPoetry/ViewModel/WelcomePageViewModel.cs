@@ -33,6 +33,10 @@ namespace MyPoetry.ViewModel
             }
         }
 
+        /// <summary>
+        /// Loads the data collection to use in the WelcomePage,
+        /// with the first item selected.
+        /// </summary>
         public void LoadDesignTimeData()
         {
             var loader = new ResourceLoader();
@@ -46,6 +50,9 @@ namespace MyPoetry.ViewModel
             ((IWelcomeControl)_WelcomePages.First().Control).StartAnimation();
         }
 
+
+        // Relay Commands to handle click on indicators.
+        #region RelayCommands
         RelayCommand _LoadDataCommand = null;
         public RelayCommand LoadDataCommand
         {
@@ -81,5 +88,6 @@ namespace MyPoetry.ViewModel
                 return _SelectCommand;
             }
         }
+        #endregion
     }
 }

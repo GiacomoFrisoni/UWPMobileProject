@@ -4,6 +4,9 @@ using Windows.UI.Xaml.Data;
 
 namespace MyPoetry.Converters
 {
+    /// <summary>
+    /// This class handles a BooleanToVisibility converter.
+    /// </summary>
     class VisibleWhenTrue : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
