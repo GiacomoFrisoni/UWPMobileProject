@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 namespace MyPoetry.UserControls.Menu
@@ -33,13 +34,9 @@ namespace MyPoetry.UserControls.Menu
                 Icon.Symbol = value;
             }
         }
-<<<<<<< HEAD:MyPoetry/MyPoetry/UserControls/Menu/MenuItemViewer.xaml.cs
 
-        public Style ItemStyle
-=======
-        
-        public Brush ItemBackground
->>>>>>> origin/master:MyPoetry/MyPoetry/UserControls/Menu/MenuItem.xaml.cs
+
+        public Style ItemStyle 
         {
             get
             {
