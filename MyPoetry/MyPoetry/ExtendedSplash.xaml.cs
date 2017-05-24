@@ -1,4 +1,8 @@
-﻿using System;
+﻿using MyPoetry.Model;
+using MyPoetry.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -71,12 +75,26 @@ namespace MyPoetry
             await this.m_oCoreDispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(DismissExtendedSplash));
         }
 
-        private void DismissExtendedSplash()
+        private async void DismissExtendedSplash()
         {
             var rootFrame = new Frame();
 
-            // Navigate to mainpage
-            rootFrame.Navigate(typeof(LoginPage));
+            // Check keeped login
+            AppLocalSettings settings = new AppLocalSettings();
+            if (settings.GetUserLoggedId() != string.Empty)
+            {
+                List<User> users = await App.MobileService.GetTable<User>().Where(user => user.Id == settings.GetUserLoggedId()).ToListAsync();
+                UserHandler.Instance.SetUser(users.First());
+                if (!UserHandler.Instance.GetUser().IsActivated)
+                    rootFrame.Navigate(typeof(ActivationPage));
+                else
+                    rootFrame.Navigate(typeof(MainPage));
+            }
+            else
+            {
+                // Navigate to mainpage
+                rootFrame.Navigate(typeof(LoginPage));
+            }
 
             // Place the frame in the current Window
             Window.Current.Content = rootFrame;

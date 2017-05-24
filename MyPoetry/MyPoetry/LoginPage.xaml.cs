@@ -25,22 +25,6 @@ namespace MyPoetry
 
             // Cache the page
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
-
-            this.Loaded += LoginPage_Loaded;
-        }
-
-        private async void LoginPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            // Check keeped login
-            if (settings.GetUserLoggedId() != string.Empty)
-            {
-                List<User> users = await App.MobileService.GetTable<User>().Where(user => user.Id == settings.GetUserLoggedId()).ToListAsync();
-                UserHandler.Instance.SetUser(users.First());
-                if (!UserHandler.Instance.GetUser().IsActivated)
-                    this.Frame.Navigate(typeof(ActivationPage));
-                else
-                    this.Frame.Navigate(typeof(MainPage));
-            }
         }
 
         private async void BtnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
