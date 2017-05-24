@@ -36,8 +36,11 @@
             <SolidColorBrush x:Key="AppColor4Hover" x:Name="AppColor4Hover" Color="#FFE6E6E6"></SolidColorBrush>
             <SolidColorBrush x:Key="AppColor4Click" x:Name="AppColor4Click" Color="#FFDEDEDE"></SolidColorBrush>
 
-            <!-- Gray -->
+            <!-- Very Dark Gray -->
             <SolidColorBrush x:Key="AppColor5" x:Name="AppColor5" Color="#FF333333"></SolidColorBrush>
+
+            <!-- Separator -->
+            <SolidColorBrush x:Key="AppColor6" x:Name="AppColor6" Color="#FF555555"></SolidColorBrush>
 
             <!-- Red -->
             <SolidColorBrush x:Key="AppRedColor" x:Name="AppRedColor" Color="#FFFD2E33"></SolidColorBrush>
@@ -45,7 +48,7 @@
             <SolidColorBrush x:Key="AppRedColorClick" x:Name="AppRedColorClick" Color="#FFF1191E"></SolidColorBrush>
             
             <!-- ListView Color Override -->
-            <SolidColorBrush x:Key="SystemControlHighlightListLowBrush" x:Name="SystemControlHighlightListLowBrush" Color="#FF333333"></SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListLowBrush" x:Name="SystemControlHighlightListLowBrush" Color="#11FFFFFF"></SolidColorBrush>
             <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush" x:Name="SystemControlHighlightListAccentLowBrush" Color="#FF20B2AA"></SolidColorBrush>
             <SolidColorBrush x:Key="SystemControlHighlightListAccentMediumBrush" x:Name="SystemControlHighlightListAccentMediumBrush" Color="#FF1da49c"></SolidColorBrush>
             

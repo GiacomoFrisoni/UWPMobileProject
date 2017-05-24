@@ -26,7 +26,7 @@ namespace MyPoetry
             await SimulateLoadingData();
 
             //Codice verificato!
-            if (false)
+            if (true)
             {
                 hpm.Dismiss();
                 this.Frame.Navigate(typeof(WelcomePage));

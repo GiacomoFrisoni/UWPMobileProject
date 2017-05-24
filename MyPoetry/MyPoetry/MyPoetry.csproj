@@ -105,6 +105,7 @@
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Converters\VisibleWhenTrue.cs" />
+    <Compile Include="CustomPage.cs" />
     <Compile Include="UserControls\Welcome\IWelcomeControl.cs" />
     <Compile Include="Model\WelcomeItem.cs" />
     <Compile Include="Model\RecoveryPasswordRequest.cs" />

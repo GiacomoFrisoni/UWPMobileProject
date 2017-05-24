@@ -22,5 +22,7 @@ namespace MyPoetry.UserControls.Menu
         public Symbol ItemIcon { get; set; }
 
         public Groups Group { get; set; }
+
+        public CustomPage ItemPage {get; set;}
     }
 }
