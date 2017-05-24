@@ -31,22 +31,27 @@ namespace MyPoetry
         public MainPage()
         {
             this.InitializeComponent();
+
             GenerateMenu();
+
+            MenuList.SelectedIndex = 0;
         }
+
+        CustomPage CurrentPage { get; set; }
 
         private void GenerateMenu()
         {
             List<MenuItem> menu = new List<MenuItem>();
 
-            menu.Add(new MenuItem() { ItemText = "Home", ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home });
-            menu.Add(new MenuItem() { ItemText = "Mie poesie", ItemIcon = Symbol.FontSize, Group = MenuItem.Groups.Home });
-            menu.Add(new MenuItem() { ItemText = "Mie plaquette", ItemIcon = Symbol.Folder, Group = MenuItem.Groups.Home });
+            menu.Add(new MenuItem() { ItemText = "Home", ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home, ItemPage = Create("Home") });
+            menu.Add(new MenuItem() { ItemText = "Mie poesie", ItemIcon = Symbol.FontSize, Group = MenuItem.Groups.Home, ItemPage = Create("Mie poesie") });
+            menu.Add(new MenuItem() { ItemText = "Mie plaquette", ItemIcon = Symbol.Folder, Group = MenuItem.Groups.Home, ItemPage = Create("Mie plaquette") });
 
-            menu.Add(new MenuItem() { ItemText = "Nuova poesia", ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create });
-            menu.Add(new MenuItem() { ItemText = "Nuova plaquette", ItemIcon = Symbol.Crop, Group = MenuItem.Groups.Create });
+            menu.Add(new MenuItem() { ItemText = "Nuova poesia", ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create, ItemPage = Create("Test 4") });
+            menu.Add(new MenuItem() { ItemText = "Nuova plaquette", ItemIcon = Symbol.Crop, Group = MenuItem.Groups.Create, ItemPage = Create("Test 5") });
 
-            menu.Add(new MenuItem() { ItemText = "Dizionari", ItemIcon = Symbol.Font, Group = MenuItem.Groups.Explore });
-            menu.Add(new MenuItem() { ItemText = "Cerca rime", ItemIcon = Symbol.AllApps, Group = MenuItem.Groups.Explore });
+            menu.Add(new MenuItem() { ItemText = "Dizionari", ItemIcon = Symbol.Font, Group = MenuItem.Groups.Explore, ItemPage = Create("Test 6") });
+            menu.Add(new MenuItem() { ItemText = "Cerca rime", ItemIcon = Symbol.AllApps, Group = MenuItem.Groups.Explore, ItemPage = Create("Test 7") });
 
             var groups = from c in menu group c by c.Group;
 
@@ -64,11 +69,20 @@ namespace MyPoetry
         {
             if (MenuList.SelectedItem.GetType().Equals(typeof(MenuItem)))
             {
-                TxblTitle.Text = ((MenuItem)MenuList.SelectedItem).ItemText;
+                CurrentPage = ((MenuItem)MenuList.SelectedItem).ItemPage;
+                this.Bindings.Update();
                 NavigationPane.IsPaneOpen = false;
             }
+        }
 
+        private CustomPage Create(string textone)
+        {
+            Grid grd = new Grid();
+            TextBlock text = new TextBlock();
+            text.Text = textone;
+            grd.Children.Add(text);
 
+            return new CustomPage(textone, grd);
         }
 
         

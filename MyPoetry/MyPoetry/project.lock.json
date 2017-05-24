@@ -22606,6 +22606,7 @@
     ],
     "UAP,Version=v10.0": []
   },
+<<<<<<< HEAD
   "packageFolders": {
     "C:\\Users\\giacomofrisoni\\.nuget\\packages\\": {}
   },
@@ -22645,4 +22646,8 @@
       }
     }
   }
+=======
+  "tools": {},
+  "projectFileToolGroups": {}
+>>>>>>> origin/master
 }

@@ -27,12 +27,22 @@
                 <TextBlock Text="&#xE700;" FontFamily="Segoe MDL2 Assets"/>
             </Button>
 
-            <TextBlock Name="TxblTitle" Grid.Column="1" Margin="10, 0" Style="{StaticResource SubtitleTextBlockStyle}" Foreground="White" VerticalAlignment="Center" Text="Some Page Title Text"></TextBlock>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Name="TxblTitle" Grid.Column="0" Margin="10, 0" Style="{StaticResource SubtitleTextBlockStyle}" Foreground="White" VerticalAlignment="Center" Text="{x:Bind CurrentPage.Title}"></TextBlock>
+
+                <ContentPresenter Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Bind CurrentPage.TopButtons}"></ContentPresenter>
+            </Grid>
+            
         </Grid>
 
         <SplitView Grid.Row="1" x:Name="NavigationPane" OpenPaneLength="260">
             <SplitView.Pane>
-                <RelativePanel x:Name="MenuContainer" Background="{StaticResource AppColor3}">
+                <RelativePanel x:Name="MenuContainer" Background="{StaticResource AppColor5}">
                     <ListView Grid.Row="0" 
                           SelectionChanged="MenuList_SelectionChanged"
                           x:Name="MenuList"
@@ -55,7 +65,7 @@
                                         <Setter Property="Template">
                                             <Setter.Value>
                                                 <ControlTemplate TargetType="ListViewHeaderItem">
-                                                    <Rectangle Stroke="{StaticResource AppColor5}"
+                                                    <Rectangle Stroke="{StaticResource AppColor6}"
                                                                StrokeThickness="0.5"
                                                                Height="1"
                                                                VerticalAlignment="Bottom"
@@ -93,7 +103,7 @@
                         </ListView.ItemContainerStyle>
                     </ListView>
 
-                    <StackPanel BorderBrush="{StaticResource AppColor3}" BorderThickness="0, 2, 0, 0" x:Name="BottomMenu" Grid.Row="2" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+                    <StackPanel BorderBrush="{StaticResource AppColor5}" BorderThickness="0, 2, 0, 0" x:Name="BottomMenu" Grid.Row="2" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
                         <menu:MenuItemViewer ItemIcon="Setting" ItemText="Impostazioni" ItemStyle="{StaticResource ButtonBlue}"></menu:MenuItemViewer>
                         <menu:MenuItemViewer ItemIcon="Admin" ItemText="Logout" ItemStyle="{StaticResource ButtonRed}"></menu:MenuItemViewer>
                     </StackPanel>
@@ -103,7 +113,7 @@
             <SplitView.Content>
                 <Grid Name="GrdParent">
                     <Image Stretch="UniformToFill" Source="Assets/background.png"/>
-                    <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Sample content"></TextBlock>
+                    <ContentPresenter Content="{x:Bind CurrentPage.Content}"></ContentPresenter>
                 </Grid>
             </SplitView.Content>
         </SplitView>
@@ -111,7 +121,7 @@
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-                <!-- VisualState to be triggered when window width is >=640 and <=1007 effective pixels -->
+
                 <VisualState x:Name="Large">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="650" />
@@ -124,13 +134,13 @@
                     </VisualState.Setters>
                 </VisualState>
 
-                <!-- VisualState to be triggered when window width is >=0 and <641 effective pixels -->
+
                 <VisualState x:Name="Small">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="0" />
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <!-- Collapse the SplitView pane into overlay mode -->
+
                         <Setter Target="NavigationPane.DisplayMode"
                                 Value="Overlay" />
                         <Setter Target="NavigationPane.IsPaneOpen"
