@@ -63,6 +63,18 @@ namespace MyPoetry
                     return loader.GetString("Err_InvalidEmail");
                 case "ERR_P_2":
                     return loader.GetString("Err_NotAssociatedEmail");
+                case "ERR_A_1":
+                    return loader.GetString("Err_InvalidEmail");
+                case "ERR_A_2":
+                    return loader.GetString("Err_InvalidCode");
+                case "ERR_A_3":
+                    return loader.GetString("Err_WrongCode");
+                case "ERR_A_4":
+                    return loader.GetString("Err_NotAssociatedEmail");
+                case "ERR_RA_1":
+                    return loader.GetString("Err_InvalidEmail");
+                case "ERR_RA_2":
+                    return loader.GetString("Err_NotAssociatedEmail");
                 default:
                     return String.Empty;
             }

@@ -138,9 +138,6 @@
   <data name="CodeRequestMessage" xml:space="preserve">
     <value>Wysłaliśmy ponownie maila z nowym kodem. Jeśli nadal nie przyjdzie, poczekaj zanim znowu użyjesz tej funkcji.</value>
   </data>
-  <data name="CodeRequestTitle" xml:space="preserve">
-    <value>Informacja</value>
-  </data>
   <data name="ConfirmText.Text" xml:space="preserve">
     <value>Konfermacja</value>
   </data>
@@ -299,5 +296,14 @@
   </data>
   <data name="Write" xml:space="preserve">
     <value>Twórz</value>
+  </data>
+  <data name="Err_WrongCode" xml:space="preserve">
+    <value>The specified activation code is not correct</value>
+  </data>
+  <data name="CodeGenerationInProgress" xml:space="preserve">
+    <value>Code generation</value>
+  </data>
+  <data name="Wait" xml:space="preserve">
+    <value>Wait a few moments</value>
   </data>
 </root>

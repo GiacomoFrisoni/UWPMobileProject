@@ -19,6 +19,8 @@ namespace MyPoetryMobileService.Controllers
             base.Initialize(controllerContext);
         }
 
+
+        // POST api/CustomReSendingActivation
         public HttpResponseMessage Post(ReSendingActivationRequest reSendingActivationRequest)
         {
             if (string.IsNullOrWhiteSpace(reSendingActivationRequest.Email) || !reSendingActivationRequest.Email.Contains("@"))
@@ -48,7 +50,8 @@ namespace MyPoetryMobileService.Controllers
                     "<h1><strong>Account activation&nbsp;<span style=\"color:#20b2aa;\">MyPoetry</span>!</strong></h1>" +
                     "<hr/>" +
                     "<p>Hi, " + account.Name + " " + account.Surname + "!</p>" +
-                    "<p>This is your activation&nbsp;code: <strong>" + activationCode + "</strong>.Enter it in&nbsp;the application to start using MyPoetry immediately.</p>" +
+                    "<p>This is your activation&nbsp;code: <strong>" + activationCode + "</strong>.</p>" +
+                    "<p>Enter it in&nbsp;the application to start using MyPoetry immediately.</p>" +
                     "<p>Start now to...</p>" +
                     "<ul>" +
                     "<li>Write poetry</li>" +

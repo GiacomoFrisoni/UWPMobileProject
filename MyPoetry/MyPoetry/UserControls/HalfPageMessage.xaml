@@ -15,7 +15,7 @@
             <SolidColorBrush Color="Black" Opacity="0.3"/>
         </Grid.Background>
         <Grid Background="{StaticResource AppColor1}" MaxHeight="270">
-            <Grid HorizontalAlignment="Center" Padding="20, 10" MaxWidth="400" Background="Blue">
+            <Grid HorizontalAlignment="Center" Padding="20, 10" MaxWidth="400">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition></RowDefinition>

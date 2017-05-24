@@ -25,11 +25,27 @@ namespace MyPoetry
 
             // Cache the page
             this.NavigationCacheMode = NavigationCacheMode.Enabled;
+
+            this.Loaded += LoginPage_Loaded;
+        }
+
+        private async void LoginPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            // Check keeped login
+            if (settings.GetUserLoggedId() != string.Empty)
+            {
+                List<User> users = await App.MobileService.GetTable<User>().Where(user => user.Id == settings.GetUserLoggedId()).ToListAsync();
+                UserHandler.Instance.SetUser(users.First());
+                if (!UserHandler.Instance.GetUser().IsActivated)
+                    this.Frame.Navigate(typeof(ActivationPage));
+                else
+                    this.Frame.Navigate(typeof(MainPage));
+            }
         }
 
         private async void BtnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            /*Exception exception = null;
+            Exception exception = null;
             HalfPageMessage hpm = new HalfPageMessage(GrdParent);
             try
             {
@@ -59,29 +75,21 @@ namespace MyPoetry
                     List<User> res = await App.MobileService.GetTable<User>().Where(user => user.Email == TxbEmail.Text).ToListAsync();
                     UserHandler.Instance.SetUser(res.First());
 
+                    // Handles keeped login
+                    if (CbStayLogged.IsChecked.HasValue && CbStayLogged.IsChecked.Value)
+                        settings.SetUserLoggedId(UserHandler.Instance.GetUser().Id);
+
                     // Updates number of accesses
                     UserHandler.Instance.GetUser().AccessesNumber++;
-                    //await App.MobileService.GetTable<User>().UpdateAsync(UserHandler.Instance.GetUser());
+                    await App.MobileService.GetTable<User>().UpdateAsync(UserHandler.Instance.GetUser());
                     hpm.Dismiss();
 
-                    if (UserHandler.Instance.GetUser().AccessesNumber == 1)
-                        this.Frame.Navigate(typeof(WelcomePage));
+                    if (!UserHandler.Instance.GetUser().IsActivated)
+                        this.Frame.Navigate(typeof(ActivationPage));
                     else
                         this.Frame.Navigate(typeof(MainPage));
                 }
-            }*/
-
-            this.Frame.Navigate(typeof(ActivationPage));
-        }
-
-        private void CbStayLogged_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            settings.SetSalt(null);
-        }
-
-        private void CbStayLogged_Unchecked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            settings.SetSalt(null);
+            }
         }
 
         private async Task<MobileServiceUser> AuthenticateAsync(string email, string password)

@@ -138,9 +138,6 @@
   <data name="CodeRequestMessage" xml:space="preserve">
     <value>We sent you another verification code at your mail. Please wait for it some more time before you reuse this function.</value>
   </data>
-  <data name="CodeRequestTitle" xml:space="preserve">
-    <value>Information</value>
-  </data>
   <data name="ConfirmText.Text" xml:space="preserve">
     <value>Confirm</value>
   </data>
@@ -299,5 +296,14 @@
   </data>
   <data name="Write" xml:space="preserve">
     <value>Write</value>
+  </data>
+  <data name="Err_WrongCode" xml:space="preserve">
+    <value>The specified activation code is not correct</value>
+  </data>
+  <data name="CodeGenerationInProgress" xml:space="preserve">
+    <value>Code generation</value>
+  </data>
+  <data name="Wait" xml:space="preserve">
+    <value>Wait a few moments</value>
   </data>
 </root>

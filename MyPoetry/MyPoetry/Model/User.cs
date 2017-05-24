@@ -15,5 +15,6 @@ namespace MyPoetry.Model
         public DateTime RegistrationDate { get; set; }
         public int AccessesNumber { get; set; }
         public int UseTime { get; set; }
+        public bool IsActivated { get; set; }
     }
 }

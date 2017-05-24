@@ -138,9 +138,6 @@
   <data name="CodeRequestMessage" xml:space="preserve">
     <value>Abbiamo inviata una nuova mail con un nuovo codice. Se nemmeno questa arriva, per favore, attendi ancora un po' prima di richiedere un nuovo codice.</value>
   </data>
-  <data name="CodeRequestTitle" xml:space="preserve">
-    <value>Informazione</value>
-  </data>
   <data name="ConfirmText.Text" xml:space="preserve">
     <value>Conferma</value>
   </data>
@@ -299,5 +296,14 @@
   </data>
   <data name="Write" xml:space="preserve">
     <value>Scrivi</value>
+  </data>
+  <data name="Err_WrongCode" xml:space="preserve">
+    <value>Il codice di attivazione specificato non è corretto</value>
+  </data>
+  <data name="CodeGenerationInProgress" xml:space="preserve">
+    <value>Generazione del codice</value>
+  </data>
+  <data name="Wait" xml:space="preserve">
+    <value>Attendi qualche istante</value>
   </data>
 </root>

@@ -1,11 +1,13 @@
-﻿namespace MyPoetry
+﻿using MyPoetry.Model;
+
+namespace MyPoetry
 {
     /// <summary>
     /// This class handles the local settings of the application.
     /// </summary>
     class AppLocalSettings
     {
-        public const string SALT_KEY = "salt";
+        public const string USER_KEY = "user";
 
         private Windows.Storage.ApplicationDataContainer localSettings;
 
@@ -18,21 +20,21 @@
         }
 
         /// <summary>
-        /// Return the salt associated to the user login.
+        /// Return the id of the logged user.
         /// </summary>
-        /// <returns>User's salt</returns>
-        public byte[] GetSalt()
+        /// <returns>User logged id</returns>
+        public string GetUserLoggedId()
         {
-            return localSettings.Values[SALT_KEY] != null ? (byte[])localSettings.Values[SALT_KEY] : null;
+            return localSettings.Values.ContainsKey(USER_KEY) ? (string)localSettings.Values[USER_KEY] : string.Empty;
         }
 
         /// <summary>
-        /// Sets the salt for the login keeping.
+        /// Sets the user id for the login keeping.
         /// </summary>
-        /// <param name="salt">Salt</param>
-        public void SetSalt(byte[] salt)
+        /// <param name="id">User logged id</param>
+        public void SetUserLoggedId(string id)
         {
-            localSettings.Values[SALT_KEY] = salt;
+            localSettings.Values[USER_KEY] = id;
         }
     }
 }

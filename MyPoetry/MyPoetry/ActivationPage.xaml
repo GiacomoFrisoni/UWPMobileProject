@@ -23,7 +23,7 @@
                 <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="ConfirmText" Text="Confirm" Margin="0, 0, 0, 5"></TextBlock>
 
                 <TextBlock x:Name="TxblInfo" x:Uid="GeneratedCodeInfo" TextWrapping="Wrap" Text="Ti abbiamo mandato un codice di verifica al tuo indirizzo mail. Attendi l'arrivo della mail, nel caso controlla la cartella SPAM."></TextBlock>
-                <TextBox x:Name="TxbEmail" TextAlignment="Center" FontSize="25" Padding="10" Style="{StaticResource TextBoxCenterPlaceholder}" Margin="0, 5" x:Uid="GeneratedCodePH" PlaceholderText="Enter code here" InputScope="Number" MaxLength="6"></TextBox>
+                <TextBox x:Name="TxbCode" TextAlignment="Center" FontSize="25" Padding="10" Style="{StaticResource TextBoxCenterPlaceholder}" Margin="0, 5" x:Uid="GeneratedCodePH" PlaceholderText="Enter code here" InputScope="Number" MaxLength="6"></TextBox>
 
                 <Button x:Name="BtnConfirm" x:Uid="Confirm" Style="{StaticResource ButtonBlue}" Content="Confirm" Margin="5" HorizontalAlignment="Stretch" Click="BtnConfirm_Click"></Button>
 

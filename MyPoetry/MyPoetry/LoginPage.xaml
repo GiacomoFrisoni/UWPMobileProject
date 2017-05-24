@@ -32,7 +32,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
-                    <CheckBox x:Name="CbStayLogged" Margin="5" x:Uid="StayLogged" Content="Stay logged" Checked="CbStayLogged_Checked" Unchecked="CbStayLogged_Unchecked"></CheckBox>
+                    <CheckBox x:Name="CbStayLogged" Margin="5" x:Uid="StayLogged" Content="Stay logged"></CheckBox>
                     <Button x:Name="BtnLogin" x:Uid="Login" Grid.Column="1" Style="{StaticResource ButtonBlue}" Content="Login" Margin="5" HorizontalAlignment="Stretch" Click="BtnLogin_Click"></Button>
                 </Grid>
 

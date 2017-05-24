@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -126,7 +125,7 @@ namespace MyPoetry.UserControls
             this.Message = message;
             this.IsProgressRingEnabled = isProgressRingEnabled;
             this.IsCancelButtonEnabled = isCancelButtonEnabled;
-            this.IsOkButtonEnabled = isCancelButtonEnabled;
+            this.IsOkButtonEnabled = isOkButtonEnabled;
 
             this.CancelAction = cancelAction;
             this.OkAction = okAction;

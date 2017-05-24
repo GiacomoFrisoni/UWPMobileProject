@@ -2,6 +2,7 @@
 using MyPoetryMobileService.DataObjects;
 using MyPoetryMobileService.Models;
 using System;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -84,7 +85,21 @@ namespace MyPoetryMobileService.Controllers
                 };
 
                 context.User.Add(newUser);
-                context.SaveChanges();
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            return this.Request.CreateResponse(HttpStatusCode.BadRequest, "Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                        }
+                    }
+                }
 
                 // Sends welcome email
                 EmailHandler.SendEmail(
