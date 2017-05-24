@@ -126,6 +126,24 @@
   <data name="Cancel" xml:space="preserve">
     <value>Anuluj</value>
   </data>
+  <data name="Checking" xml:space="preserve">
+    <value>Sprawdzam</value>
+  </data>
+  <data name="CheckingText" xml:space="preserve">
+    <value>Sprawdzam czy wpisałeś poprawny kod. Czekaj...</value>
+  </data>
+  <data name="CodeNotReceived.Content" xml:space="preserve">
+    <value>Nie dostałem jeszcze żadnego kodu</value>
+  </data>
+  <data name="CodeRequestMessage" xml:space="preserve">
+    <value>Wysłaliśmy ponownie maila z nowym kodem. Jeśli nadal nie przyjdzie, poczekaj zanim znowu użyjesz tej funkcji.</value>
+  </data>
+  <data name="CodeRequestTitle" xml:space="preserve">
+    <value>Informacja</value>
+  </data>
+  <data name="ConfirmText.Text" xml:space="preserve">
+    <value>Konfermacja</value>
+  </data>
   <data name="Delete.Text" xml:space="preserve">
     <value>Usuń</value>
   </data>
@@ -140,6 +158,12 @@
   </data>
   <data name="EmailSent" xml:space="preserve">
     <value>Email inviata</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Błąd</value>
+  </data>
+  <data name="Err_InvalidCode" xml:space="preserve">
+    <value>Podany kod nie jest właściwy</value>
   </data>
   <data name="Err_InvalidEmail" xml:space="preserve">
     <value>Please supply a valid email address</value>
@@ -182,6 +206,12 @@
   </data>
   <data name="GenderPH.PlaceholderText" xml:space="preserve">
     <value>Wybierz płeć</value>
+  </data>
+  <data name="GeneratedCodeInfo.Text" xml:space="preserve">
+    <value>Wysłaliśmy na twojego maila kod weryfikujący. Poczekaj chwilę a jeśli nadal nie dostałeś wiadomości spróboj sprawdzić folder SPAM.</value>
+  </data>
+  <data name="GeneratedCodePH.PlaceholderText" xml:space="preserve">
+    <value>Wpisz tutaj kod</value>
   </data>
   <data name="Login.Content" xml:space="preserve">
     <value>Zaloguj</value>

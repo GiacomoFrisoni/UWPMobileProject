@@ -71,7 +71,7 @@ namespace MyPoetry
                 }
             }*/
 
-            this.Frame.Navigate(typeof(WelcomePage));
+            this.Frame.Navigate(typeof(ActivationPage));
         }
 
         private void CbStayLogged_Checked(object sender, Windows.UI.Xaml.RoutedEventArgs e)
