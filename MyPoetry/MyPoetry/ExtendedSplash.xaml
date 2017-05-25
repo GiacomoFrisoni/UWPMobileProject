@@ -11,7 +11,7 @@
             <VisualStateGroup>
                 <!--ANIMAZIONE SPLASH SCREEN-->
                 <VisualState x:Name="Extended">
-                    <Storyboard x:Name="Storyboard">
+                    <Storyboard x:Name="Storyboard1">
                         <!--Logo Fade-In-->
                         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="extendedSplashImage">
                             <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -43,6 +43,20 @@
                                     <CircleEase EasingMode="EaseInOut"/>
                                 </EasingDoubleKeyFrame.EasingFunction>
                             </EasingDoubleKeyFrame>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Loading">
+                    <Storyboard x:Name="Storyboard2" RepeatBehavior="Forever">
+                        <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="circle">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="150"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="170"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="150"/>
+                        </DoubleAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="circle">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="150"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="170"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="150"/>
                         </DoubleAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>

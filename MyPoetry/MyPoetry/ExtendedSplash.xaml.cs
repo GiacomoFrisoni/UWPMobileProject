@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Graphics.Display;
+using Windows.System.Threading;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -25,6 +26,10 @@ namespace MyPoetry
         public delegate void SplashEventHandler();
         private CoreDispatcher m_oCoreDispatcher;
         private Double scaleFactor;
+
+        private ThreadPoolTimer timer;
+        private Task checkLoginTask;
+        private bool autoLogin = false;
 
         public ExtendedSplash(SplashScreen splashScreen, bool loadState)
         {
@@ -52,39 +57,59 @@ namespace MyPoetry
             rootFrame = new Frame();
             VisualStateManager.GoToState(this, "Extended", true);
         }
-
-        /// <summary>
-        /// This method simulates loading data.
-        /// </summary>
-        /// <returns></returns>
-        private async Task SimulateLoadingData()
-        {
-            await Task.Delay(2500);
-        }
-
+        
         /// <summary>
         /// Code executed when the system has completed the default splash screen loading
         /// and is ready for the transition to the extended one.
         /// </summary>
-        internal async void DismissedEventHandler(SplashScreen sender, object e)
+        internal void DismissedEventHandler(SplashScreen sender, object e)
         {
             dismissed = true;
 
             // Thread synchronization
-            await SimulateLoadingData();
+            timer = ThreadPoolTimer.CreateTimer(TimerElapsedHandler, new TimeSpan(0, 0, 0, 2, 500));
+            checkLoginTask = Task.Run(() => CheckAutoLogin());
+        }
+
+        /// <summary>
+        /// This method is called when the timer is elapsed.
+        /// It checks if the auto login task is completed.
+        /// If true, calls the dismiss extended splash; otherwise waits for it.
+        /// </summary>
+        /// <param name="timer">Timer</param>
+        private async void TimerElapsedHandler(ThreadPoolTimer timer)
+        {
+            timer.Cancel();
+            if (!checkLoginTask.IsCompleted)
+            {
+                VisualStateManager.GoToState(this, "Loading", true);
+                checkLoginTask.Wait();
+            }
             await this.m_oCoreDispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(DismissExtendedSplash));
         }
 
-        private async void DismissExtendedSplash()
+        /// <summary>
+        /// Check if auto login is used.
+        /// If yes it gets the user from the server and loads it in memory.
+        /// </summary>
+        private async void CheckAutoLogin()
         {
-            var rootFrame = new Frame();
-
-            // Check keeped login
             AppLocalSettings settings = new AppLocalSettings();
             if (settings.GetUserLoggedId() != string.Empty)
             {
+                autoLogin = true;
                 List<User> users = await App.MobileService.GetTable<User>().Where(user => user.Id == settings.GetUserLoggedId()).ToListAsync();
                 UserHandler.Instance.SetUser(users.First());
+            }
+        }
+
+        private void DismissExtendedSplash()
+        {
+            var rootFrame = new Frame();
+            
+            // Check auto login
+            if (autoLogin)
+            {
                 if (!UserHandler.Instance.GetUser().IsActivated)
                     rootFrame.Navigate(typeof(ActivationPage));
                 else
