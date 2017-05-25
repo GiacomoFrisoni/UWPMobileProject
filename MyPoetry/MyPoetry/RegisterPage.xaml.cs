@@ -12,6 +12,7 @@ using MyPoetry.UserControls;
 using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Media;
 using Windows.Storage.Streams;
+using Windows.UI.Xaml.Input;
 
 namespace MyPoetry
 {
@@ -170,6 +171,15 @@ namespace MyPoetry
             byte[] pixels = new byte[fileStream.Size];
             reader.ReadBytes(pixels);
             return pixels;
+        }
+
+        private void StackPanel_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                FocusManager.TryMoveFocus(FocusNavigationDirection.Next);
+                e.Handled = true;
+            }
         }
     }
 }

@@ -21,7 +21,7 @@
                     </TransitionCollection>
                 </StackPanel.ChildrenTransitions>
 
-                <StackPanel Margin="0, 0, 0, 10" MaxWidth="400">
+                <StackPanel Margin="0, 0, 0, 10" MaxWidth="400" KeyDown="StackPanel_KeyDown">
                     <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="RegisterText" Text="Register" Margin="5, 0"></TextBlock>
 
                     <Grid Margin="0, 10">
@@ -35,7 +35,7 @@
                                 <Viewbox MaxHeight="70" MaxWidth="70">
                                     <SymbolIcon Name="SblDefault" Symbol="Contact" Foreground="White"></SymbolIcon>
                                 </Viewbox>
-                                <Image Name="ImgProfile"></Image>
+                                <Image Name="ImgProfile" Stretch="UniformToFill"></Image>
                             </Grid>
                         </Border>
                         
@@ -83,7 +83,7 @@
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel Margin="0, 10" MaxWidth="400">
+                <StackPanel Margin="0, 10" MaxWidth="400" KeyDown="StackPanel_KeyDown">
                     <TextBlock x:Uid="Email" Text="Your mail adress"></TextBlock>
                     <TextBox x:Name="TxbEmail" Margin="0, 5" x:Uid="EmailPH" InputScope="EmailNameOrAddress" PlaceholderText="Email"></TextBox>
 
