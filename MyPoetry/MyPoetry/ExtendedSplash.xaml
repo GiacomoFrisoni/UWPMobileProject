@@ -46,7 +46,7 @@
                         </DoubleAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
-                <VisualState x:Name="Loading">
+                <VisualState x:Name="LoadingData">
                     <Storyboard x:Name="Storyboard2" RepeatBehavior="Forever">
                         <DoubleAnimationUsingKeyFrames EnableDependentAnimation="True" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="circle">
                             <EasingDoubleKeyFrame KeyTime="0" Value="150"/>

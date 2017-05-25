@@ -27,6 +27,7 @@ namespace MyPoetry
         private CoreDispatcher m_oCoreDispatcher;
         private Double scaleFactor;
 
+        // Variables for thread management
         private ThreadPoolTimer timer;
         private Task checkLoginTask;
         private bool autoLogin = false;
@@ -82,7 +83,11 @@ namespace MyPoetry
             timer.Cancel();
             if (!checkLoginTask.IsCompleted)
             {
-                VisualStateManager.GoToState(this, "Loading", true);
+                // UI Thread
+                await this.m_oCoreDispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    VisualStateManager.GoToState(this, "LoadingData", true);
+                });
                 checkLoginTask.Wait();
             }
             await this.m_oCoreDispatcher.RunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(DismissExtendedSplash));
@@ -92,14 +97,18 @@ namespace MyPoetry
         /// Check if auto login is used.
         /// If yes it gets the user from the server and loads it in memory.
         /// </summary>
-        private async void CheckAutoLogin()
+        private void CheckAutoLogin()
         {
             AppLocalSettings settings = new AppLocalSettings();
             if (settings.GetUserLoggedId() != string.Empty)
             {
                 autoLogin = true;
-                List<User> users = await App.MobileService.GetTable<User>().Where(user => user.Id == settings.GetUserLoggedId()).ToListAsync();
-                UserHandler.Instance.SetUser(users.First());
+                Task task = Task.Run(async () =>
+                {
+                    List<User> users = await App.MobileService.GetTable<User>().Where(user => user.Id == settings.GetUserLoggedId()).ToListAsync();
+                    UserHandler.Instance.SetUser(users.First());
+                });
+                task.Wait();
             }
         }
 

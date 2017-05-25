@@ -25,7 +25,6 @@
             <ContentPresenter Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="CtpTopButtons"></ContentPresenter>
         </Grid>
 
-
         <ContentPresenter Grid.Row="1" x:Name="CtpContent"></ContentPresenter>
     </Grid>
 </UserControl>

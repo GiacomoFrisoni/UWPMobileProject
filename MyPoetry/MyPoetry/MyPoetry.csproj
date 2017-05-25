@@ -159,6 +159,7 @@
       <DependentUpon>HalfPageMessage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\UserHandler.cs" />
+    <Compile Include="ViewModel\EditorViewModel.cs" />
     <Compile Include="ViewModel\Locator.cs" />
     <Compile Include="ViewModel\WelcomePageViewModel.cs" />
     <Compile Include="WelcomePage.xaml.cs">

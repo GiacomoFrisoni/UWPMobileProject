@@ -23,7 +23,7 @@
 
                 <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" x:Uid="LoginText" Text="Login" Margin="0, 0, 0, 5"></TextBlock>
 
-                <TextBox x:Name="TxbEmail" Margin="0, 5" x:Uid="EmailPH" PlaceholderText="Email" InputScope="EmailNameOrAddress"></TextBox>
+                <TextBox x:Name="TxbEmail" Margin="0, 5" x:Uid="EmailPH" PlaceholderText="Email" InputScope="EmailNameOrAddress" KeyDown="TxbEmail_KeyDown"></TextBox>
                 <PasswordBox x:Name="PbPassword" Margin="0, 5" x:Uid="PasswordPH" PlaceholderText="Password"></PasswordBox>
 
                 <Grid>
