@@ -107,7 +107,13 @@
     <Compile Include="Converters\VisibleWhenTrue.cs" />
     <Compile Include="Model\ActivationRequest.cs" />
     <Compile Include="Model\ReSendingActivationRequest.cs" />
-    <Compile Include="CustomPage.cs" />
+    <Compile Include="CustomPage2.cs" />
+    <Compile Include="UserControls\CustomPage.xaml.cs">
+      <DependentUpon>CustomPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Pages\Editor.xaml.cs">
+      <DependentUpon>Editor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Welcome\IWelcomeControl.cs" />
     <Compile Include="Model\WelcomeItem.cs" />
     <Compile Include="Model\RecoveryPasswordRequest.cs" />
@@ -246,11 +252,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UserControls\CustomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\HalfPageMessage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Menu\MenuItemViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Pages\Editor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

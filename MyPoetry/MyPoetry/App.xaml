@@ -52,6 +52,9 @@
             <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush" x:Name="SystemControlHighlightListAccentLowBrush" Color="#FF20B2AA"></SolidColorBrush>
             <SolidColorBrush x:Key="SystemControlHighlightListAccentMediumBrush" x:Name="SystemControlHighlightListAccentMediumBrush" Color="#FF1da49c"></SolidColorBrush>
             
+            <!-- TextBox Focus Override -->
+            <SolidColorBrush x:Key="SystemControlBackgroundChromeWhiteBrush" x:Name="SystemControlBackgroundChromeWhiteBrush" Color="#AAFFFFFF"></SolidColorBrush>
+            
             <!-- TextBox Color Override 
             <SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="{StaticResource AppColor1}"></SolidColorBrush>
             <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="{StaticResource AppColor1}"></SolidColorBrush>-->

@@ -35,7 +35,7 @@
 
                 <TextBlock Name="TxblTitle" Grid.Column="0" Margin="10, 0" Style="{StaticResource SubtitleTextBlockStyle}" Foreground="White" VerticalAlignment="Center" Text="{x:Bind CurrentPage.Title}"></TextBlock>
 
-                <ContentPresenter Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Bind CurrentPage.TopButtons}"></ContentPresenter>
+                <ContentPresenter Grid.Column="1" Margin="20, 0" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Bind CurrentPage.TopButtons}"></ContentPresenter>
             </Grid>
             
         </Grid>
@@ -43,13 +43,31 @@
         <SplitView Grid.Row="1" x:Name="NavigationPane" OpenPaneLength="260">
             <SplitView.Pane>
                 <RelativePanel x:Name="MenuContainer" Background="{StaticResource AppColor5}">
-                    <ListView Grid.Row="0" 
-                          SelectionChanged="MenuList_SelectionChanged"
+                    <Grid Margin="5" x:Name="GrdUser"
+                          RelativePanel.AlignTopWithPanel="True"
+                          RelativePanel.AlignLeftWithPanel="True" 
+                          RelativePanel.AlignRightWithPanel="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Ellipse x:Name="ElpImage" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4, 5, 4, 0">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="YourImage.png"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <TextBlock Grid.Column="1" Margin="8, 1, 0, 0" x:Name="TxblUser" Foreground="White" TextWrapping="WrapWholeWords" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                    
+                    <ListView SelectionChanged="MenuList_SelectionChanged"
                           x:Name="MenuList"
                           RelativePanel.AlignLeftWithPanel="True"
                           RelativePanel.AlignRightWithPanel="True"
                           RelativePanel.Above="BottomMenu"
-                          RelativePanel.AlignTopWithPanel="True"
+                          RelativePanel.Below="GrdUser"
                           SelectionMode="Single" 
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                           ScrollViewer.VerticalScrollMode="Enabled" 
@@ -104,8 +122,8 @@
                     </ListView>
 
                     <StackPanel BorderBrush="{StaticResource AppColor5}" BorderThickness="0, 2, 0, 0" x:Name="BottomMenu" Grid.Row="2" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
-                        <menu:MenuItemViewer ItemIcon="Setting" ItemText="Impostazioni" ItemStyle="{StaticResource ButtonBlue}"></menu:MenuItemViewer>
-                        <menu:MenuItemViewer ItemIcon="Admin" ItemText="Logout" ItemStyle="{StaticResource ButtonRed}"></menu:MenuItemViewer>
+                        <menu:MenuItemViewer Height="48" Foreground="Black" ItemIcon="Setting" ItemText="Impostazioni" ItemStyle="{StaticResource ButtonBlue}"></menu:MenuItemViewer>
+                        <menu:MenuItemViewer Height="48" Foreground="Black" ItemIcon="SwitchApps" ItemText="Impostazioni" ItemStyle="{StaticResource ButtonRed}"></menu:MenuItemViewer>
                     </StackPanel>
                 </RelativePanel>
             </SplitView.Pane>
@@ -113,7 +131,7 @@
             <SplitView.Content>
                 <Grid Name="GrdParent">
                     <Image Stretch="UniformToFill" Source="Assets/background.png"/>
-                    <ContentPresenter Content="{x:Bind CurrentPage.Content}"></ContentPresenter>
+                    <ContentPresenter Content="{x:Bind CurrentPage.MainContent}"></ContentPresenter>
                 </Grid>
             </SplitView.Content>
         </SplitView>
