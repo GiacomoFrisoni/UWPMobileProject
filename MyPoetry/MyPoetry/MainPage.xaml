@@ -59,7 +59,7 @@
                             </Ellipse.Fill>
                         </Ellipse>
 
-                        <TextBlock Grid.Column="1" Margin="8, 1, 0, 0" x:Name="TxblUser" Foreground="White" TextWrapping="WrapWholeWords" VerticalAlignment="Center"></TextBlock>
+                        <TextBlock Grid.Column="1" Margin="8, 2, 0, 0" x:Name="TxblUser" Foreground="White" TextWrapping="WrapWholeWords" VerticalAlignment="Center"></TextBlock>
                     </Grid>
                     
                     <ListView SelectionChanged="MenuList_SelectionChanged"
@@ -123,7 +123,7 @@
 
                     <StackPanel BorderBrush="{StaticResource AppColor5}" BorderThickness="0, 2, 0, 0" x:Name="BottomMenu" Grid.Row="2" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
                         <menu:MenuItemViewer Height="48" Foreground="Black" ItemIcon="Setting" ItemText="Impostazioni" ItemStyle="{StaticResource ButtonBlue}"></menu:MenuItemViewer>
-                        <menu:MenuItemViewer Height="48" Foreground="Black" ItemIcon="SwitchApps" ItemText="Impostazioni" ItemStyle="{StaticResource ButtonRed}"></menu:MenuItemViewer>
+                        <menu:MenuItemViewer Height="48" Foreground="Black" ItemIcon="SwitchApps" ItemText="Logout" ItemStyle="{StaticResource ButtonRed}"></menu:MenuItemViewer>
                     </StackPanel>
                 </RelativePanel>
             </SplitView.Pane>
