@@ -306,4 +306,31 @@
   <data name="Wait" xml:space="preserve">
     <value>Wait a few moments</value>
   </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="NewPoetryConfirm" xml:space="preserve">
+    <value>Sei sicuro di voler aggiungere la poesia al taccuino?</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="PoetryAdded" xml:space="preserve">
+    <value>The poetry has been added to your notebook.</value>
+  </data>
+  <data name="PoetryUpdated" xml:space="preserve">
+    <value>The poetry has been updated. Check your notebook.</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Aggiorna</value>
+  </data>
+  <data name="UpdatePoetryConfirm" xml:space="preserve">
+    <value>Esiste già una poesia con questo nome. Desideri salvare le modifiche apportate?</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
 </root>

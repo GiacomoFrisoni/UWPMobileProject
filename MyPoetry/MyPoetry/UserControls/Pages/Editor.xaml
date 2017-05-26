@@ -25,7 +25,7 @@
         </custom:CustomPage.TopButtons>
         
         <custom:CustomPage.MainContent>
-            <Grid>
+            <Grid x:Name="GrdParent">
                 <SplitView x:Name="SpvContent" DisplayMode="Overlay" PanePlacement="Right">
                     <SplitView.Content>
                         <Grid>

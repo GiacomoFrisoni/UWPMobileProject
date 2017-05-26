@@ -7,13 +7,11 @@ namespace MyPoetryMobileService.Models
     [Table("Poetry")]
     public partial class Poetry
     {
-        [Key]
-        [Column(Order = 0)]
+        [Required]
         [StringLength(255)]
         public string UserId { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
+        [Required]
         [StringLength(40)]
         public string Title { get; set; }
 
@@ -33,9 +31,11 @@ namespace MyPoetryMobileService.Models
 
         public int VersesNumber { get; set; }
 
+        public int Rating { get; set; }
+
         public bool BookmarkYN { get; set; }
 
-        [Required]
+        [Key]
         [StringLength(255)]
         public string Id { get; set; }
 

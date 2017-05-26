@@ -2,6 +2,7 @@
 using MyPoetry.Utilities;
 using System;
 using System.Collections.Generic;
+using Windows.ApplicationModel.Resources;
 using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Text;
@@ -83,6 +84,8 @@ namespace MyPoetry.UserControls.Pages
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            var loader = new ResourceLoader();
+
             // Checks input
             if (TxbTitle.Text != string.Empty &&
                 RebText.Document.GetRange(0, TextConstants.MaxUnitCount).Text != "\n")
@@ -92,20 +95,23 @@ namespace MyPoetry.UserControls.Pages
 
                 // Checks if a poetry with the same title already exists for the current user
                 List<Poetry> poetries = await App.MobileService.GetTable<Poetry>()
-                    .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && p.Title == TxbTitle.Text)
+                    .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && p.Title.Trim() == TxbTitle.Text.Trim())
                     .ToListAsync();
 
                 // Sets content and title for the message dialog
                 if (poetries.Count == 0)
-                    messageDialog = new MessageDialog("", "");
+                    messageDialog = new MessageDialog(loader.GetString("NewPoetryConfirm"), loader.GetString("Save") + " \"" + TxbTitle.Text + "\"");
                 else
-                    messageDialog = new MessageDialog("", "");
+                    messageDialog = new MessageDialog(loader.GetString("UpdatePoetryConfirm"), loader.GetString("Update") + " \"" + TxbTitle.Text + "\"");
 
                 // YES command
-                messageDialog.Commands.Add(new UICommand("", async (command) =>
+                messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), async (command) =>
                 {
                     // Creates a new poetry
                     Poetry poetry = new Poetry();
+
+                    // Sets id
+                    poetry.Id = Guid.NewGuid().ToString();
 
                     // Sets user id
                     poetry.UserId = UserHandler.Instance.GetUser().Id;
@@ -125,30 +131,48 @@ namespace MyPoetry.UserControls.Pages
                     poetry.RevisionDate = DateTime.Now;
 
                     // Sets characters number
-                    poetry.CharactersNumber = rtfText.Replace("\r", "").Length;
+                    poetry.CharactersNumber = text.Text.Replace("\r", "").Length;
 
                     // Sets words number
                     int wordsNumber = 0;
-                    string[] tmp = rtfText.Replace("\r", " ").Split(' ');
+                    string[] tmp = text.Text.Replace("\r", " ").Split(' ');
                     foreach (string s in tmp)
                         if (s != string.Empty)
                             wordsNumber++;
                     poetry.WordsNumber = wordsNumber;
 
                     // Sets verses number
-                    poetry.VersesNumber = rtfText.Split('\r', '\n').Length - 1;
+                    poetry.VersesNumber = text.Text.Split('\r', '\n').Length - 1;
+
+                    // Sets poetry rating
+                    poetry.Rating = 0;
 
                     // Sets bookmark
                     poetry.BookmarkYN = false;
+                    
+                    // Shows loading message
+                    HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+                    hpm.ShowMessage(loader.GetString("SavingPoetry"), loader.GetString("SavingPoetryMessage"), true, false, false, null, null);
 
+                    // Updates cloud db
                     if (poetries.Count == 0)
                         await App.MobileService.GetTable<Poetry>().InsertAsync(poetry);
                     else
                         await App.MobileService.GetTable<Poetry>().UpdateAsync(poetry);
+                    
+                    // Shows confirm message
+                    hpm.IsProgressRingEnabled = false;
+                    hpm.Title = loader.GetString("Confirm");
+                    if (poetries.Count == 0)
+                        hpm.Message = loader.GetString("PoetryAdded");
+                    else
+                        hpm.Message = loader.GetString("PoetryUpdated");
+                    hpm.SetOkAction(null, loader.GetString("Ok"));
+                    hpm.IsOkButtonEnabled = true;
                 }));
 
                 // NO command
-                messageDialog.Commands.Add(new UICommand("", (command) =>
+                messageDialog.Commands.Add(new UICommand(loader.GetString("No"), (command) =>
                 {
                 }));
 

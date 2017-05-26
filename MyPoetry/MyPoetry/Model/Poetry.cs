@@ -13,6 +13,7 @@ namespace MyPoetry.Model
         public int CharactersNumber { get; set; }
         public int WordsNumber { get; set; }
         public int VersesNumber { get; set; }
+        public int Rating { get; set; }
         public bool BookmarkYN { get; set; }
     }
 }

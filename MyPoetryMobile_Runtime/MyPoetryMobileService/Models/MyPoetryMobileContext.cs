@@ -33,7 +33,6 @@
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Poetry)
                 .WithRequired(e => e.User)
-                .HasForeignKey(e => e.UserId)
                 .WillCascadeOnDelete(false);
         }
     }
