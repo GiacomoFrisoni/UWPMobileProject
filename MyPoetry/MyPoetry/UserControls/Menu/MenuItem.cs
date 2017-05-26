@@ -12,6 +12,7 @@ namespace MyPoetry.UserControls.Menu
     {
         public enum Groups
         {
+            User,
             Home,
             Create,
             Explore
@@ -20,6 +21,8 @@ namespace MyPoetry.UserControls.Menu
         public string ItemText { get; set; }
 
         public Symbol ItemIcon { get; set; }
+
+        public ImageSource ItemImage { get; set; }
 
         public Groups Group { get; set; }
 

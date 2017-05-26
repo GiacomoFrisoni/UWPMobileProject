@@ -36,36 +36,41 @@ namespace MyPoetry
         {
             this.InitializeComponent();
 
-            GenerateMenu();
-
-            MenuList.SelectedIndex = 0;
+            GenerateMenu();       
         }
 
         CustomPage CurrentPage { get; set; }
 
+
         private async void GenerateMenu()
         {
+            //Temp list for binding
             List<MenuItem> menu = new List<MenuItem>();
 
-            menu.Add(new MenuItem() { ItemText = "Home", ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home, ItemPage = Create("Home") });
-            menu.Add(new MenuItem() { ItemText = "Mie poesie", ItemIcon = Symbol.FontSize, Group = MenuItem.Groups.Home, ItemPage = Create("Mie poesie") });
-            menu.Add(new MenuItem() { ItemText = "Mie plaquette", ItemIcon = Symbol.Folder, Group = MenuItem.Groups.Home, ItemPage = Create("Mie plaquette") });
-
-            menu.Add(new MenuItem() { ItemText = "Nuova poesia", ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create, ItemPage = Create("Nuova poesia") });
-            menu.Add(new MenuItem() { ItemText = "Nuova plaquette", ItemIcon = Symbol.Crop, Group = MenuItem.Groups.Create, ItemPage = Create("Test 5") });
-
-            menu.Add(new MenuItem() { ItemText = "Dizionari", ItemIcon = Symbol.Font, Group = MenuItem.Groups.Explore, ItemPage = Create("Test 6") });
-            menu.Add(new MenuItem() { ItemText = "Cerca rime", ItemIcon = Symbol.AllApps, Group = MenuItem.Groups.Explore, ItemPage = Create("Test 7") });
-
-            var groups = from c in menu group c by c.Group;
-
-            this.cvs.Source = groups;
-
-
+            //Retriving user data
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = await ImageFromBytes(UserHandler.Instance.GetUser().Photo);
-            ElpImage.Fill = ib;
-            TxblUser.Text = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
+            string user = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
+
+            //Creating menu groups
+            menu.Add(new MenuItem() { ItemText = user, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Home().GetPage });
+
+            menu.Add(new MenuItem() { ItemText = "Home", ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home, ItemPage = new Home().GetPage  });
+            menu.Add(new MenuItem() { ItemText = "Mie poesie", ItemIcon = Symbol.FontSize, Group = MenuItem.Groups.Home, ItemPage = new Home().GetPage });
+            menu.Add(new MenuItem() { ItemText = "Mie plaquette", ItemIcon = Symbol.Folder, Group = MenuItem.Groups.Home, ItemPage = new Home().GetPage });
+
+            menu.Add(new MenuItem() { ItemText = "Nuova poesia", ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create, ItemPage = new Editor().GetPage });
+            menu.Add(new MenuItem() { ItemText = "Nuova plaquette", ItemIcon = Symbol.Crop, Group = MenuItem.Groups.Create, ItemPage = new Home().GetPage });
+
+            menu.Add(new MenuItem() { ItemText = "Dizionari", ItemIcon = Symbol.Font, Group = MenuItem.Groups.Explore, ItemPage = new Home().GetPage });
+            menu.Add(new MenuItem() { ItemText = "Cerca rime", ItemIcon = Symbol.AllApps, Group = MenuItem.Groups.Explore, ItemPage = new Home().GetPage });
+
+            //Settings groups
+            var groups = from c in menu group c by c.Group;
+            this.cvs.Source = groups;
+
+            //Selecting HOME
+            MenuList.SelectedIndex = 1;
         }
 
         private async static Task<BitmapImage> ImageFromBytes(Byte[] bytes)
@@ -79,6 +84,8 @@ namespace MyPoetry
             }
             return image;
         }
+
+
 
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -95,16 +102,5 @@ namespace MyPoetry
                 NavigationPane.IsPaneOpen = false;
             }
         }
-
-        private CustomPage Create(string textone)
-        {
-            Editor ed = new Editor();
-            if (ed.GetPage.Title == null || ed.GetPage.Title == "")
-                ed.GetPage.Title = textone;
-
-            return ed.GetPage;
-        }
-
-        
     }
 }

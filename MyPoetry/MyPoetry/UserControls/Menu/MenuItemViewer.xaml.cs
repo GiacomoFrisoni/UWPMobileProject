@@ -32,7 +32,23 @@ namespace MyPoetry.UserControls.Menu
             set
             {
                 Icon.Symbol = value;
+                Image.Visibility = Visibility.Collapsed;
             }
+        }
+
+        public Brush ItemImage
+        {
+            get
+            {
+                return Image.Fill;
+            }
+
+            set
+            {
+                Image.Fill = value;
+                Icon.Visibility = Visibility.Collapsed;
+            }
+                
         }
 
 

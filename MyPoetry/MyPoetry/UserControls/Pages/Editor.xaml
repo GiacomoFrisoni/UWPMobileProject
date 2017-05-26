@@ -18,7 +18,7 @@
     <custom:CustomPage x:Name="MainContent" Title="Editor">
         <custom:CustomPage.TopButtons>
             <StackPanel>
-                <Button x:Name="BtnSave" Height="48" Style="{StaticResource ButtonBlue}" Click="BtnSave_Click">
+                <Button x:Name="BtnSave" Height="48" Width="70" Style="{StaticResource ButtonBlue}" Click="BtnSave_Click">
                     <SymbolIcon Symbol="Save"></SymbolIcon>
                 </Button>
             </StackPanel>
@@ -62,13 +62,13 @@
                                 </StackPanel>
 
                                 <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="10, 0">
-                                    <ToggleButton x:Name="BtnBold" Height="48" IsChecked="{Binding IsBoldEnabled, Mode=TwoWay}" Click="BtnBold_Click">
+                                    <ToggleButton x:Name="BtnBold" Height="48" IsChecked="{Binding IsBoldEnabled, Mode=TwoWay}" Style="{StaticResource CustomToggleButton}" Click="BtnBold_Click">
                                         <SymbolIcon Symbol="Bold"></SymbolIcon>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="BtnItalic" Height="48" IsChecked="{Binding IsItalicEnabled, Mode=TwoWay}" Click="BtnItalic_Click">
+                                    <ToggleButton x:Name="BtnItalic" Height="48" IsChecked="{Binding IsItalicEnabled, Mode=TwoWay}" Style="{StaticResource CustomToggleButton}" Click="BtnItalic_Click">
                                         <SymbolIcon Symbol="Italic"></SymbolIcon>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="BtnUnderline" Height="48" IsChecked="{Binding IsUnderlineEnabled, Mode=TwoWay}" Click="BtnUnderline_Click">
+                                    <ToggleButton x:Name="BtnUnderline" Height="48" IsChecked="{Binding IsUnderlineEnabled, Mode=TwoWay}" Style="{StaticResource CustomToggleButton}" Click="BtnUnderline_Click">
                                         <SymbolIcon Symbol="Underline"></SymbolIcon>
                                     </ToggleButton>
                                 </StackPanel>
