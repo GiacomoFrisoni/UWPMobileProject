@@ -15,7 +15,8 @@ namespace MyPoetry.UserControls.Menu
             User,
             Home,
             Create,
-            Explore
+            Explore,
+            Settings
         }
 
         public string ItemText { get; set; }

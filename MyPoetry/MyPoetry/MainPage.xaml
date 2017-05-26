@@ -35,7 +35,7 @@
 
                 <TextBlock Name="TxblTitle" Grid.Column="0" Margin="10, 0" Style="{StaticResource SubtitleTextBlockStyle}" Foreground="White" VerticalAlignment="Center" Text="{x:Bind CurrentPage.Title}"></TextBlock>
 
-                <ContentPresenter Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Bind CurrentPage.TopButtons}"></ContentPresenter>
+                <ContentPresenter Grid.Column="1" HorizontalAlignment="Right" Margin="5, 0" VerticalAlignment="Center" Content="{x:Bind CurrentPage.TopButtons}"></ContentPresenter>
             </Grid>
             
         </Grid>
@@ -139,7 +139,6 @@
                     </ListView>
 
                     <StackPanel BorderBrush="{StaticResource AppColor5}" BorderThickness="0, 2, 0, 0" x:Name="BottomMenu" Grid.Row="2" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
-                        <menu:MenuItemViewer Height="48" ItemIcon="Setting" ItemText="Impostazioni" ItemStyle="{StaticResource ButtonBlue}"></menu:MenuItemViewer>
                         <menu:MenuItemViewer Height="48" ItemIcon="SwitchApps" ItemText="Logout" ItemStyle="{StaticResource ButtonRed}"></menu:MenuItemViewer>
                     </StackPanel>
                 </RelativePanel>

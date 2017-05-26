@@ -65,6 +65,8 @@ namespace MyPoetry
             menu.Add(new MenuItem() { ItemText = "Dizionari", ItemIcon = Symbol.Font, Group = MenuItem.Groups.Explore, ItemPage = new Home().GetPage });
             menu.Add(new MenuItem() { ItemText = "Cerca rime", ItemIcon = Symbol.AllApps, Group = MenuItem.Groups.Explore, ItemPage = new Home().GetPage });
 
+            menu.Add(new MenuItem() { ItemText = "Impostazini", ItemIcon = Symbol.Setting, Group = MenuItem.Groups.Settings, ItemPage = new Home().GetPage });
+
             //Settings groups
             var groups = from c in menu group c by c.Group;
             this.cvs.Source = groups;
