@@ -1,5 +1,6 @@
 ﻿using MyPoetry.Model;
 using MyPoetry.Utilities;
+using MyPoetry.ViewModel;
 using System;
 using System.Collections.Generic;
 using Windows.ApplicationModel.Resources;
@@ -14,15 +15,15 @@ namespace MyPoetry.UserControls.Pages
 {
     public sealed partial class Editor : UserControl
     {
+        public CustomPage GetPage { get { return MainContent; } }
+
         public Editor()
         {
             this.InitializeComponent();
         }
 
-        public CustomPage GetPage { get { return MainContent; } }
-
         #region CharacterFormat
-        private void BtnBold_Click(object sender, RoutedEventArgs e) //Grassetto
+        private void BtnBold_Click(object sender, RoutedEventArgs e)
         {
             ITextSelection selectedText = RebText.Document.Selection;
             if (selectedText != null)
@@ -34,7 +35,7 @@ namespace MyPoetry.UserControls.Pages
             RebText.Focus(FocusState.Programmatic);
         }
 
-        private void BtnItalic_Click(object sender, RoutedEventArgs e) //Corsivo
+        private void BtnItalic_Click(object sender, RoutedEventArgs e)
         {
             ITextSelection selectedText = RebText.Document.Selection;
             if (selectedText != null)
@@ -46,7 +47,7 @@ namespace MyPoetry.UserControls.Pages
             RebText.Focus(FocusState.Programmatic);
         }
 
-        private void BtnUnderline_Click(object sender, RoutedEventArgs e) //Sottolineato
+        private void BtnUnderline_Click(object sender, RoutedEventArgs e)
         {
             ITextSelection selectedText = RebText.Document.Selection;
             if (selectedText != null)
@@ -59,6 +60,15 @@ namespace MyPoetry.UserControls.Pages
                 selectedText.CharacterFormat = charFormatting;
             }
             RebText.Focus(FocusState.Programmatic);
+        }
+
+        private void RebText_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            ITextSelection selectedText = RebText.Document.Selection;
+            ITextCharacterFormat charFormatting = selectedText.CharacterFormat;
+            BtnBold.IsChecked = charFormatting.Bold.Equals(FormatEffect.On);
+            BtnItalic.IsChecked = charFormatting.Italic.Equals(FormatEffect.On);
+            BtnUnderline.IsChecked = charFormatting.Underline.Equals(FormatEffect.On);
         }
         #endregion
 

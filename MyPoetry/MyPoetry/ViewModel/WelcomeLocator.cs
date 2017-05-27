@@ -5,7 +5,7 @@ namespace MyPoetry.ViewModel
     /// <summary>
     /// This class handles the view model used for WelcomePage.
     /// </summary>
-    partial class Locator : BindableBase
+    partial class WelcomeLocator : BindableBase
     {
         WelcomePageViewModel sWelcomePageViewModel = default(WelcomePageViewModel);
         public WelcomePageViewModel WelcomePageViewModel

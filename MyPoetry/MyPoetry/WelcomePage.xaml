@@ -14,7 +14,7 @@
     </Page.Resources>
 
     <Page.DataContext>
-        <ViewModels:Locator/>
+        <ViewModels:WelcomeLocator/>
     </Page.DataContext>
     
     <Grid x:Name="grid" DataContext="{Binding WelcomePageViewModel, Mode=OneWay}">
