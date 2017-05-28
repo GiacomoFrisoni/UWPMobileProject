@@ -68,7 +68,7 @@ namespace MyPoetry.UserControls.Pages
             ITextCharacterFormat charFormatting = selectedText.CharacterFormat;
             BtnBold.IsChecked = charFormatting.Bold.Equals(FormatEffect.On);
             BtnItalic.IsChecked = charFormatting.Italic.Equals(FormatEffect.On);
-            BtnUnderline.IsChecked = charFormatting.Underline.Equals(FormatEffect.On);
+            BtnUnderline.IsChecked = charFormatting.Underline.Equals(UnderlineType.Single);
         }
         #endregion
 
