@@ -12,10 +12,20 @@
 
     <custom:CustomPage x:Name="MainContent" Title="Editor">
         <custom:CustomPage.TopButtons>
-            <StackPanel>
-                <Button x:Name="BtnSave" Height="48" Width="70" Style="{StaticResource ButtonBlue}" Click="BtnSave_Click">
-                    <SymbolIcon Symbol="Save"></SymbolIcon>
-                </Button>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="BtnUndo" Height="48" Width="55" Style="{StaticResource ButtonBlue}" Click="BtnSave_Click">
+                        <SymbolIcon Symbol="Undo"></SymbolIcon>
+                    </Button>
+                    <Button x:Name="BtnRedo" Height="48" Width="55" Style="{StaticResource ButtonBlue}">
+                        <SymbolIcon Symbol="Redo"></SymbolIcon>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 0">
+                    <Button x:Name="BtnSave" Height="48" Width="55" Style="{StaticResource ButtonBlue}" Background="{StaticResource AppColor2}">
+                        <SymbolIcon Symbol="Save"></SymbolIcon>
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </custom:CustomPage.TopButtons>
         
@@ -45,10 +55,10 @@
                                 </Grid.ColumnDefinitions>
 
                                 <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10, 0">
-                                    <Button Height="48" Style="{StaticResource ButtonBlue}" Click="Button_Click">
+                                    <Button Width="55" Height="48" Style="{StaticResource ButtonBlue}" Click="Button_Click">
                                         <SymbolIcon Symbol="Font"></SymbolIcon>
                                     </Button>
-                                    <Button Height="48" Style="{StaticResource ButtonBlue}">
+                                    <Button Width="55" Height="48" Style="{StaticResource ButtonBlue}">
                                         <SymbolIcon Symbol="Bookmarks"></SymbolIcon>
                                     </Button>
                                 </StackPanel>
