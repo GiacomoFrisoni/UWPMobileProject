@@ -2,6 +2,7 @@
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Foundation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -80,6 +81,7 @@ namespace MyPoetry
                     bool loadState = (e.PreviousExecutionState == ApplicationExecutionState.Terminated);
                     ExtendedSplash extendedSplash = new ExtendedSplash(e.SplashScreen, loadState);
                     rootFrame.Content = extendedSplash;
+                    Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(100, 100));
                     Window.Current.Content = rootFrame;
                 }
             }

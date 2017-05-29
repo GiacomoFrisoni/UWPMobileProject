@@ -13,19 +13,9 @@
     <custom:CustomPage x:Name="MainContent" Title="Editor">
         <custom:CustomPage.TopButtons>
             <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Horizontal">
-                    <Button x:Name="BtnUndo" Height="48" Width="55" Style="{StaticResource ButtonBlue}" Click="BtnSave_Click">
-                        <SymbolIcon Symbol="Undo"></SymbolIcon>
-                    </Button>
-                    <Button x:Name="BtnRedo" Height="48" Width="55" Style="{StaticResource ButtonBlue}">
-                        <SymbolIcon Symbol="Redo"></SymbolIcon>
-                    </Button>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10, 0, 0, 0">
-                    <Button x:Name="BtnSave" Height="48" Width="55" Style="{StaticResource ButtonBlue}" Background="{StaticResource AppColor2}">
-                        <SymbolIcon Symbol="Save"></SymbolIcon>
-                    </Button>
-                </StackPanel>
+                <Button x:Name="BtnSave" Height="48" Width="55" Style="{StaticResource ButtonBlue}">
+                    <SymbolIcon Symbol="Save"></SymbolIcon>
+                </Button>
             </StackPanel>
         </custom:CustomPage.TopButtons>
         
@@ -40,48 +30,64 @@
                                 <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Margin="10">
+                            <Grid Grid.Row="0" Margin="5">
                                 <TextBox x:Name="TxbTitle" FontSize="20" Padding="10" BorderBrush="Transparent" BorderThickness="0" Background="#44FFFFFF" PlaceholderText="Titolo" KeyUp="TxbTitle_KeyUp"></TextBox>
                             </Grid>
 
-                            <Grid Grid.Row="1" Margin="10, 5, 10, 10">
-                                <RichEditBox Padding="10" x:Name="RebText" BorderBrush="Transparent" BorderThickness="0" Background="#44FFFFFF" PlaceholderText="Testo" SelectionChanged="RebText_SelectionChanged"></RichEditBox>
-                            </Grid>
+                            <RichEditBox Grid.Row="1" Margin="5, 0" Padding="10" x:Name="RebText" BorderBrush="Transparent" BorderThickness="0" Background="#44FFFFFF" PlaceholderText="Testo" SelectionChanged="RebText_SelectionChanged"></RichEditBox>
 
-                            <Grid Height="48" Grid.Row="2" Background="{StaticResource AppColor1}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
+                                <CommandBar Grid.Row="2" HorizontalAlignment="Stretch">
+                                    <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Bold" x:Name="BtnBold" Click="BtnBold_Click"></AppBarToggleButton>
+                                    <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Italic" x:Name="BtnItalic" Click="BtnItalic_Click"></AppBarToggleButton>
+                                    <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Underline" x:Name="BtnUnderline" Click="BtnUnderline_Click"></AppBarToggleButton>
+                                    
+                                    <CommandBar.SecondaryCommands>
+                                        <AppBarSeparator></AppBarSeparator>
+                                        <AppBarButton Icon="Undo"></AppBarButton>
+                                        <AppBarButton Icon="Redo"></AppBarButton>
+                                        <AppBarButton Icon="Manage"></AppBarButton>
+                                    </CommandBar.SecondaryCommands>
+                                </CommandBar>
+                                <!--<Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
 
-                                <StackPanel Orientation="Horizontal" Grid.Column="0" Margin="10, 0">
-                                    <Button Width="55" Height="48" Style="{StaticResource ButtonBlue}" Click="Button_Click">
-                                        <SymbolIcon Symbol="Font"></SymbolIcon>
-                                    </Button>
-                                    <Button Width="55" Height="48" Style="{StaticResource ButtonBlue}">
-                                        <SymbolIcon Symbol="Bookmarks"></SymbolIcon>
-                                    </Button>
-                                </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                        <ToggleButton x:Name="BtnBold" Height="48" Style="{StaticResource CustomToggleButton}" Click="BtnBold_Click">
+                                            <SymbolIcon Symbol="Bold"></SymbolIcon>
+                                        </ToggleButton>
+                                        <ToggleButton x:Name="BtnItalic" Height="48" Style="{StaticResource CustomToggleButton}" Click="BtnItalic_Click">
+                                            <SymbolIcon Symbol="Italic"></SymbolIcon>
+                                        </ToggleButton>
+                                        <ToggleButton x:Name="BtnUnderline" Height="48" Style="{StaticResource CustomToggleButton}" Click="BtnUnderline_Click">
+                                            <SymbolIcon Symbol="Underline"></SymbolIcon>
+                                        </ToggleButton>
+                                    </StackPanel>
 
-                                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right" Margin="10, 0">
-                                    <ToggleButton x:Name="BtnBold" Height="48" Style="{StaticResource CustomToggleButton}" Click="BtnBold_Click">
-                                        <SymbolIcon Symbol="Bold"></SymbolIcon>
-                                    </ToggleButton>
-                                    <ToggleButton x:Name="BtnItalic" Height="48" Style="{StaticResource CustomToggleButton}" Click="BtnItalic_Click">
-                                        <SymbolIcon Symbol="Italic"></SymbolIcon>
-                                    </ToggleButton>
-                                    <ToggleButton x:Name="BtnUnderline" Height="48" Style="{StaticResource CustomToggleButton}" Click="BtnUnderline_Click">
-                                        <SymbolIcon Symbol="Underline"></SymbolIcon>
-                                    </ToggleButton>
-                                </StackPanel>
-                            </Grid>
+                                    <StackPanel Orientation="Horizontal" Grid.Column="2">
+                                        <Button x:Name="BtnUndo" Height="48" Width="55" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
+                                            <SymbolIcon Symbol="Undo"></SymbolIcon>
+                                        </Button>
+                                        <Button x:Name="BtnRedo" Height="48" Width="55" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
+                                            <SymbolIcon Symbol="Redo"></SymbolIcon>
+                                        </Button>
+                                        <Button x:Name="BtnMenu" Height="48" Width="55" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
+                                            <SymbolIcon Symbol="Manage"></SymbolIcon>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>-->
                         </Grid>
                     </SplitView.Content>
 
                     <SplitView.Pane>
-                        <Grid>
-                            <TextBlock>Sample text</TextBlock>
-                        </Grid>
+                        <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 0, 0, 0">
+                            <Grid>
+                                <TextBlock>Sample text</TextBlock>
+                            </Grid>
+                        </Border>
                     </SplitView.Pane>
                 </SplitView>
 

@@ -361,7 +361,7 @@
                                         <VisualState x:Name="PointerOver">
                                             <Storyboard>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}" />
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4Hover}" />
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
                                                     <DiscreteObjectKeyFrame KeyTime="0" Value="Transparent" />
@@ -377,7 +377,7 @@
                                             <Storyboard>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
                                                Storyboard.TargetProperty="Background">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlBackgroundBaseMediumLowBrush}" />
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4Click}" />
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter"
                                                    Storyboard.TargetProperty="BorderBrush">
@@ -411,7 +411,7 @@
                                         <VisualState x:Name="Checked">
                                             <Storyboard>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor1Hover}" />
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumLowBrush}" />
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SelectionViewer" Storyboard.TargetProperty="Background">
                                                     <DiscreteObjectKeyFrame KeyTime="0" Value="#FFB82E" />
@@ -661,7 +661,7 @@
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
                                                                            Storyboard.TargetName="BorderElement">
                                                     <DiscreteObjectKeyFrame KeyTime="0"
-                                                                        Value="{StaticResource AppColor1}" />
+                                                                        Value="{StaticResource AppColor4}" />
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <DoubleAnimation Duration="0"
                                                              To="0"
