@@ -6,6 +6,8 @@
     xmlns:custom="using:MyPoetry.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:MyPoetry.Utilities"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -48,6 +50,9 @@
                                 <AppBarButton Icon="Manage"></AppBarButton>
                             </CommandBar>-->
                             <Border Grid.Row="2" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 1, 0, 0">
+                                <interactivity:Interaction.Behaviors>
+                                    <behaviors:KeepAboveInputPaneBehavior></behaviors:KeepAboveInputPaneBehavior>
+                                </interactivity:Interaction.Behaviors>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"></ColumnDefinition>

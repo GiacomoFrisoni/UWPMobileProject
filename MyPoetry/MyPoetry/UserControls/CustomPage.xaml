@@ -28,9 +28,7 @@
         </Grid>
 
         <ContentPresenter Grid.Row="1" x:Name="CtpContent">
-            <interactivity:Interaction.Behaviors>
-                <behaviors:KeepAboveInputPaneBehavior></behaviors:KeepAboveInputPaneBehavior>
-            </interactivity:Interaction.Behaviors>
+
         </ContentPresenter>
     </Grid>
 </UserControl>
