@@ -157,6 +157,7 @@
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\KeepAboveInputPaneBehavior.cs" />
     <Compile Include="Utilities\ServerErrorInfo.cs" />
     <Compile Include="UserControls\HalfPageMessage.xaml.cs">
       <DependentUpon>HalfPageMessage.xaml</DependentUpon>
@@ -300,6 +301,11 @@
     <SDKReference Include="WindowsMobile, Version=10.0.14393.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xaml.Interactivity">
+      <HintPath>C:\Users\marti\.nuget\packages\Microsoft.Xaml.Behaviors.Uwp.Managed\1.0.3\lib\uap10.0\Microsoft.Xaml.Interactivity.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

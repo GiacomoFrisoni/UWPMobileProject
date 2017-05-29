@@ -36,19 +36,19 @@
 
                             <RichEditBox Grid.Row="1" Margin="5, 0" Padding="10" x:Name="RebText" BorderBrush="Transparent" BorderThickness="0" Background="#44FFFFFF" PlaceholderText="Testo" SelectionChanged="RebText_SelectionChanged"></RichEditBox>
 
-                                <CommandBar Grid.Row="2" HorizontalAlignment="Stretch">
-                                    <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Bold" x:Name="BtnBold" Click="BtnBold_Click"></AppBarToggleButton>
-                                    <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Italic" x:Name="BtnItalic" Click="BtnItalic_Click"></AppBarToggleButton>
-                                    <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Underline" x:Name="BtnUnderline" Click="BtnUnderline_Click"></AppBarToggleButton>
-                                    
-                                    <CommandBar.SecondaryCommands>
-                                        <AppBarSeparator></AppBarSeparator>
-                                        <AppBarButton Icon="Undo"></AppBarButton>
-                                        <AppBarButton Icon="Redo"></AppBarButton>
-                                        <AppBarButton Icon="Manage"></AppBarButton>
-                                    </CommandBar.SecondaryCommands>
-                                </CommandBar>
-                                <!--<Grid>
+                            <!--<CommandBar Grid.Row="2" HorizontalAlignment="Stretch">
+                                <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Bold" x:Name="BtnBold" Click="BtnBold_Click"></AppBarToggleButton>
+                                <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Italic" x:Name="BtnItalic" Click="BtnItalic_Click"></AppBarToggleButton>
+                                <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Underline" x:Name="BtnUnderline" Click="BtnUnderline_Click"></AppBarToggleButton>
+                                
+                                <AppBarSeparator></AppBarSeparator>
+                                
+                                <AppBarButton Icon="Undo"></AppBarButton>
+                                <AppBarButton Icon="Redo"></AppBarButton>
+                                <AppBarButton Icon="Manage"></AppBarButton>
+                            </CommandBar>-->
+                            <Border Grid.Row="2" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 1, 0, 0">
+                                <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
@@ -75,18 +75,25 @@
                                             <SymbolIcon Symbol="Redo"></SymbolIcon>
                                         </Button>
                                         <Button x:Name="BtnMenu" Height="48" Width="55" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
-                                            <SymbolIcon Symbol="Manage"></SymbolIcon>
+                                            <SymbolIcon Symbol="OpenPane"></SymbolIcon>
                                         </Button>
                                     </StackPanel>
-                                </Grid>-->
+                                </Grid>
+                            </Border>
                         </Grid>
                     </SplitView.Content>
 
                     <SplitView.Pane>
                         <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 0, 0, 0">
-                            <Grid>
-                                <TextBlock>Sample text</TextBlock>
-                            </Grid>
+                            <Pivot>
+                                <PivotItem Header="Cerca Rime">
+                                    <TextBlock>Sample content here</TextBlock>
+                                </PivotItem>
+                                
+                                <PivotItem Header="Statistiche">
+                                    <TextBlock>Another sample content</TextBlock>
+                                </PivotItem>
+                            </Pivot>
                         </Border>
                     </SplitView.Pane>
                 </SplitView>

@@ -5,6 +5,8 @@
     xmlns:local="using:MyPoetry.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:behaviors="using:MyPoetry.Utilities"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -25,6 +27,10 @@
             <ContentPresenter Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="CtpTopButtons"></ContentPresenter>
         </Grid>
 
-        <ContentPresenter Grid.Row="1" x:Name="CtpContent"></ContentPresenter>
+        <ContentPresenter Grid.Row="1" x:Name="CtpContent">
+            <interactivity:Interaction.Behaviors>
+                <behaviors:KeepAboveInputPaneBehavior></behaviors:KeepAboveInputPaneBehavior>
+            </interactivity:Interaction.Behaviors>
+        </ContentPresenter>
     </Grid>
 </UserControl>
