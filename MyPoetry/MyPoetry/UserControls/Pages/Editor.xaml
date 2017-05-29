@@ -6,8 +6,6 @@
     xmlns:custom="using:MyPoetry.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:behaviors="using:MyPoetry.Utilities"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -49,7 +47,7 @@
                                 <AppBarButton Icon="Redo"></AppBarButton>
                                 <AppBarButton Icon="Manage"></AppBarButton>
                             </CommandBar>-->
-                            <Border Grid.Row="2" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 1, 0, 0">
+                            <Border Grid.Row="2" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 1, 0, 0" Background="{StaticResource AppColor4}">
                                 <interactivity:Interaction.Behaviors>
                                     <behaviors:KeepAboveInputPaneBehavior></behaviors:KeepAboveInputPaneBehavior>
                                 </interactivity:Interaction.Behaviors>
@@ -73,13 +71,13 @@
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal" Grid.Column="2">
-                                        <Button x:Name="BtnUndo" Height="48" Width="55" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
+                                        <Button x:Name="BtnUndo" Height="48" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
                                             <SymbolIcon Symbol="Undo"></SymbolIcon>
                                         </Button>
-                                        <Button x:Name="BtnRedo" Height="48" Width="55" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
+                                        <Button x:Name="BtnRedo" Height="48" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
                                             <SymbolIcon Symbol="Redo"></SymbolIcon>
                                         </Button>
-                                        <Button x:Name="BtnMenu" Height="48" Width="55" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
+                                        <Button x:Name="BtnMenu" Height="48" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
                                             <SymbolIcon Symbol="OpenPane"></SymbolIcon>
                                         </Button>
                                     </StackPanel>

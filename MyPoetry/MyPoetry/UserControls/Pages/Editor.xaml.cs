@@ -7,6 +7,7 @@ using Windows.ApplicationModel.Resources;
 using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Text;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -20,6 +21,16 @@ namespace MyPoetry.UserControls.Pages
         public Editor()
         {
             this.InitializeComponent();
+        }
+
+        private void Editor_Hiding(InputPane sender, InputPaneVisibilityEventArgs args)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Editor_Showing(InputPane sender, InputPaneVisibilityEventArgs args)
+        {
+            InputPane.GetForCurrentView().
         }
 
         #region CharacterFormat
