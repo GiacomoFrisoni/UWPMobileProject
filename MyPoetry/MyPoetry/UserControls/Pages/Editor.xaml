@@ -51,7 +51,7 @@
                             </CommandBar>-->
                             <Border Grid.Row="2" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 1, 0, 0" Background="{StaticResource AppColor4}">
                                 <interactivity:Interaction.Behaviors>
-                                    <behaviors:ResizeContentOnKeyboardShowingBehavior />
+                                    <behaviors:ResizeContentOnKeyboardShowingBehavior/>
                                 </interactivity:Interaction.Behaviors>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -124,7 +124,6 @@
                                 <AdaptiveTrigger MinWindowWidth="0" />
                             </VisualState.StateTriggers>
                             <VisualState.Setters>
-
                                 <Setter Target="SpvContent.DisplayMode"
                                 Value="Overlay" />
                                 <Setter Target="SpvContent.IsPaneOpen"

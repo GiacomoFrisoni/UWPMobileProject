@@ -33,10 +33,9 @@ namespace MyPoetry.Utilities
 
         private void OnKeyboardShowing(InputPane sender, InputPaneVisibilityEventArgs args)
         {
-            //double keyboardHeight = sender.OccludedRect.Height;
+            args.EnsuredFocusedElementInView = true;
             AssociatedObject.Margin = new Thickness(originalMargin.Left, originalMargin.Top,
-                originalMargin.Right, originalMargin.Bottom + 256);
-            Debug.WriteLine(sender.OccludedRect.Height);
+                originalMargin.Right, originalMargin.Bottom + args.OccludedRect.Height);
         }
 
         private void OnKeyboardHiding(InputPane sender, InputPaneVisibilityEventArgs args)
