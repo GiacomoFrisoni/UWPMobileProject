@@ -23,16 +23,6 @@ namespace MyPoetry.UserControls.Pages
             this.InitializeComponent();
         }
 
-        private void Editor_Hiding(InputPane sender, InputPaneVisibilityEventArgs args)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Editor_Showing(InputPane sender, InputPaneVisibilityEventArgs args)
-        {
-            InputPane.GetForCurrentView().
-        }
-
         #region CharacterFormat
         private void BtnBold_Click(object sender, RoutedEventArgs e)
         {
