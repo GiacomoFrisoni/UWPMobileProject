@@ -88,10 +88,33 @@ namespace MyPoetry.UserControls.Pages
         #region Tools
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            SpvContent.IsPaneOpen = !SpvContent.IsPaneOpen;
+
+            BtnMenu.Content = SpvContent.IsPaneOpen ?
+                new SymbolIcon() { Symbol = Symbol.ClosePane }:
+                new SymbolIcon() { Symbol = Symbol.OpenPane }; 
+            
+            /*
+             * QUESTA COSA NON HA ALCUN SENSO; DEVO FARE UN VISUAL STATE!
+             * 
+            //Minore di 700, bottone c'è e funziona
             if (Window.Current.Bounds.Width <= 700)
+            {
                 SpvContent.IsPaneOpen = !SpvContent.IsPaneOpen;
+                BtnMenu.Visibility = Visibility.Visible;
+            }
+
+            //Maggiore di 700, barra fissa bottone disabilitato
             else
+            {
                 SpvContent.IsPaneOpen = true;
+                BtnMenu.Visibility = Visibility.Collapsed;
+            }
+
+            //Imposta il content dinamicamente
+            BtnMenu.Content = SpvContent.IsPaneOpen ? 
+                new SymbolIcon() { Symbol = Symbol.ClosePane } : 
+                new SymbolIcon() { Symbol = Symbol.OpenPane };*/
         }
         #endregion
 

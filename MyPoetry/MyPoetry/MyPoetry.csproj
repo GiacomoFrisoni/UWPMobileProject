@@ -107,7 +107,6 @@
     <Compile Include="Converters\VisibleWhenTrue.cs" />
     <Compile Include="Model\ActivationRequest.cs" />
     <Compile Include="Model\ReSendingActivationRequest.cs" />
-    <Compile Include="CustomPage2.cs" />
     <Compile Include="UserControls\CustomPage.xaml.cs">
       <DependentUpon>CustomPage.xaml</DependentUpon>
     </Compile>
