@@ -1,13 +1,11 @@
 ﻿using MyPoetry.Model;
 using MyPoetry.Utilities;
-using MyPoetry.ViewModel;
 using System;
 using System.Collections.Generic;
 using Windows.ApplicationModel.Resources;
 using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Text;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -73,6 +71,20 @@ namespace MyPoetry.UserControls.Pages
         }
         #endregion
 
+        #region Undo & Redo
+        private void BtnUndo_Click(object sender, RoutedEventArgs e)
+        {
+            if (RebText.Document.CanUndo())
+                RebText.Document.Undo();
+        }
+
+        private void BtnRedo_Click(object sender, RoutedEventArgs e)
+        {
+            if (RebText.Document.CanRedo())
+                RebText.Document.Redo();
+        }
+        #endregion
+
         #region Tools
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -92,18 +104,18 @@ namespace MyPoetry.UserControls.Pages
             }
         }
         #endregion
-
+        
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             var loader = new ResourceLoader();
+            
+            // Create the message dialog
+            MessageDialog messageDialog;
 
             // Checks input
             if (TxbTitle.Text != string.Empty &&
                 RebText.Document.GetRange(0, TextConstants.MaxUnitCount).Text != "\n")
             {
-                // Create the message dialog
-                MessageDialog messageDialog;
-
                 // Checks if a poetry with the same title already exists for the current user
                 List<Poetry> poetries = await App.MobileService.GetTable<Poetry>()
                     .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && p.Title.Trim() == TxbTitle.Text.Trim())
@@ -192,6 +204,10 @@ namespace MyPoetry.UserControls.Pages
 
                 // Show the message dialog
                 await messageDialog.ShowAsync();
+            }
+            else
+            {
+                messageDialog = new MessageDialog(loader.GetString("Err_MissingData"), loader.GetString("Warning"));
             }
         }
     }

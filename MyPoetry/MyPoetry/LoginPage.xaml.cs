@@ -53,6 +53,7 @@ namespace MyPoetry
                     hpm.Dismiss();
                     var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
                     await msg.ShowAsync();
+                    PbPassword.Password = String.Empty;
                 }
                 else
                 {

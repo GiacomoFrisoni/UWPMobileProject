@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -15,12 +16,8 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace MyPoetry
 {
-    /// <summary>
-    /// Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
-
         public MainPage()
         {
             this.InitializeComponent();
@@ -29,8 +26,7 @@ namespace MyPoetry
         }
 
         CustomPage CurrentPage { get; set; }
-
-
+        
         private async void GenerateMenu()
         {
             //Temp list for binding
@@ -42,14 +38,15 @@ namespace MyPoetry
             string user = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
 
             //Creating menu groups
+            var loader = new ResourceLoader();
             menu.Add(new MenuItem() { ItemText = user, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Home().GetPage });
 
-            menu.Add(new MenuItem() { ItemText = "Home", ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home, ItemPage = new Home().GetPage  });
-            menu.Add(new MenuItem() { ItemText = "Mie poesie", ItemIcon = Symbol.FontSize, Group = MenuItem.Groups.Home, ItemPage = new Home().GetPage });
+            menu.Add(new MenuItem() { ItemText = loader.GetString("Home"), ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home, ItemPage = new Home().GetPage  });
+            menu.Add(new MenuItem() { ItemText = loader.GetString("MyPoetries"), ItemIcon = Symbol.FontSize, Group = MenuItem.Groups.Home, ItemPage = new Home().GetPage });
 
-            menu.Add(new MenuItem() { ItemText = "Nuova poesia", ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create, ItemPage = new Editor().GetPage });
+            menu.Add(new MenuItem() { ItemText = loader.GetString("NewPoetry"), ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create, ItemPage = new Editor().GetPage });
 
-            menu.Add(new MenuItem() { ItemText = "Impostazioni", ItemIcon = Symbol.Setting, Group = MenuItem.Groups.Settings, ItemPage = new Home().GetPage });
+            menu.Add(new MenuItem() { ItemText = loader.GetString("Settings"), ItemIcon = Symbol.Setting, Group = MenuItem.Groups.Settings, ItemPage = new Home().GetPage });
 
             //Settings groups
             var groups = from c in menu group c by c.Group;

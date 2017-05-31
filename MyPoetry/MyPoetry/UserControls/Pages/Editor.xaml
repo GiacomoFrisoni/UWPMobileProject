@@ -6,8 +6,6 @@
     xmlns:custom="using:MyPoetry.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:behaviors="using:MyPoetry.Utilities"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -20,7 +18,7 @@
                 </Button>
             </StackPanel>
         </custom:CustomPage.TopButtons>
-        
+
         <custom:CustomPage.MainContent>
             <Grid x:Name="GrdParent">
                 <SplitView x:Name="SpvContent" DisplayMode="Overlay" PanePlacement="Right">
@@ -38,28 +36,13 @@
 
                             <RichEditBox Grid.Row="1" Margin="5, 0" Padding="10" x:Name="RebText" BorderBrush="Transparent" BorderThickness="0" Background="#44FFFFFF" PlaceholderText="Testo" SelectionChanged="RebText_SelectionChanged"></RichEditBox>
 
-                            <!--<CommandBar Grid.Row="2" HorizontalAlignment="Stretch">
-                                <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Bold" x:Name="BtnBold" Click="BtnBold_Click"></AppBarToggleButton>
-                                <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Italic" x:Name="BtnItalic" Click="BtnItalic_Click"></AppBarToggleButton>
-                                <AppBarToggleButton Foreground="{StaticResource AppColor5}" Icon="Underline" x:Name="BtnUnderline" Click="BtnUnderline_Click"></AppBarToggleButton>
-                                
-                                <AppBarSeparator></AppBarSeparator>
-                                
-                                <AppBarButton Icon="Undo"></AppBarButton>
-                                <AppBarButton Icon="Redo"></AppBarButton>
-                                <AppBarButton Icon="Manage"></AppBarButton>
-                            </CommandBar>-->
                             <Border Grid.Row="2" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 1, 0, 0" Background="{StaticResource AppColor4}">
-                                <interactivity:Interaction.Behaviors>
-                                    <behaviors:ResizeContentOnKeyboardShowingBehavior/>
-                                </interactivity:Interaction.Behaviors>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                                         <ToggleButton x:Name="BtnBold" Height="48" Style="{StaticResource CustomToggleButton}" Click="BtnBold_Click">
                                             <SymbolIcon Symbol="Bold"></SymbolIcon>
@@ -73,10 +56,10 @@
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal" Grid.Column="2">
-                                        <Button x:Name="BtnUndo" Height="48" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
+                                        <Button x:Name="BtnUndo" Height="48" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="BtnUndo_Click">
                                             <SymbolIcon Symbol="Undo"></SymbolIcon>
                                         </Button>
-                                        <Button x:Name="BtnRedo" Height="48" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
+                                        <Button x:Name="BtnRedo" Height="48" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="BtnRedo_Click">
                                             <SymbolIcon Symbol="Redo"></SymbolIcon>
                                         </Button>
                                         <Button x:Name="BtnMenu" Height="48" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="Button_Click">
@@ -94,7 +77,6 @@
                                 <PivotItem Header="Cerca Rime">
                                     <TextBlock>Sample content here</TextBlock>
                                 </PivotItem>
-                                
                                 <PivotItem Header="Statistiche">
                                     <TextBlock>Another sample content</TextBlock>
                                 </PivotItem>
@@ -105,7 +87,6 @@
 
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup>
-
                         <VisualState x:Name="Large">
                             <VisualState.StateTriggers>
                                 <AdaptiveTrigger MinWindowWidth="700" />
@@ -117,7 +98,6 @@
                                 Value="True" />
                             </VisualState.Setters>
                         </VisualState>
-
 
                         <VisualState x:Name="Small">
                             <VisualState.StateTriggers>
@@ -134,6 +114,5 @@
                 </VisualStateManager.VisualStateGroups>
             </Grid>
         </custom:CustomPage.MainContent>
-
     </custom:CustomPage>
 </UserControl>
