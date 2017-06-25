@@ -9,7 +9,6 @@ namespace MyPoetry.UserControls
             this.InitializeComponent();
         }
 
-
         public string Title
         {
             get { return TxblTitle.Text; }

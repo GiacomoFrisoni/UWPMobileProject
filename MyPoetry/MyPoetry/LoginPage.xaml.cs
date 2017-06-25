@@ -57,7 +57,7 @@ namespace MyPoetry
                 }
                 else
                 {
-                    // Gets and saves the logged user 
+                    // Gets and saves the logged user
                     List<User> res = await App.MobileService.GetTable<User>().Where(user => user.Email == TxbEmail.Text).ToListAsync();
                     UserHandler.Instance.SetUser(res.First());
 

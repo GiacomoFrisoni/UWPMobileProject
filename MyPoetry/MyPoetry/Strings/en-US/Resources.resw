@@ -354,4 +354,10 @@
   <data name="Warning" xml:space="preserve">
     <value>Warning</value>
   </data>
+  <data name="RhymesToolEmptyQuery" xml:space="preserve">
+    <value>Type a word you want to locate rhymes.</value>
+  </data>
+  <data name="RhymesToolInvalidQuery" xml:space="preserve">
+    <value>The searched word must be longer than the selected rhyme length.</value>
+  </data>
 </root>

@@ -348,4 +348,10 @@
   <data name="Warning" xml:space="preserve">
     <value>Attenzione</value>
   </data>
+  <data name="RhymesToolEmptyQuery" xml:space="preserve">
+    <value>Digita una parola di cui intendi individuare delle rime.</value>
+  </data>
+  <data name="RhymesToolInvalidQuery" xml:space="preserve">
+    <value>La parola ricercata deve avere una lunghezza maggiore rispetto a quella della rima selezionata.</value>
+  </data>
 </root>

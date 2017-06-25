@@ -18,12 +18,28 @@ namespace MyPoetry.UserControls.Pages
         public CustomPage GetPage { get { return MainContent; } }
 
         // Tools variable
-        private const string words_db_path = @"Assets\words.txt";
+        private const string words_db_path = @"Assets\data\words.txt";
+        private Dictionary<String, int> rhymesOptions = new Dictionary<string, int>
+        {
+            { "Rima per due lettere", 2 },
+            { "Rima per tre lettere", 3 },
+            { "Rima per quattro lettere", 4 }
+        };
         private List<String> foundedRhymes = new List<string>();
 
         public Editor()
         {
             this.InitializeComponent();
+
+            LoadRhymesOptions();
+        }
+
+        private void LoadRhymesOptions()
+        {
+            CmbRhymesLength.Items.Clear();
+            foreach (KeyValuePair<String, int> option in rhymesOptions)
+                CmbRhymesLength.Items.Add(option.Key);
+            CmbRhymesLength.SelectedIndex = 0;
         }
 
         #region CharacterFormat
@@ -102,6 +118,8 @@ namespace MyPoetry.UserControls.Pages
 
         private async void SearchRhymes(string query, int rhymeLength)
         {
+            ProgressBarVisible(true);
+
             try
             {
                 var folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
@@ -111,14 +129,50 @@ namespace MyPoetry.UserControls.Pages
                 foundedRhymes.Clear();
                 foreach (String line in lines)
                 {
-                    if (line.Substring(line.Length - rhymeLength - 1, rhymeLength).Equals(
-                        query.Substring(query.Length - rhymeLength - 1, rhymeLength)))
+                    if (line.Length >= rhymeLength)
                     {
-                        foundedRhymes.Add(line);
+                        if (line.Substring(line.Length - rhymeLength, rhymeLength).Equals(
+                            query.Substring(query.Length - rhymeLength, rhymeLength)))
+                        {
+                            foundedRhymes.Add(line);
+                        }
                     }
                 }
+                LsvResults.ItemsSource = null;
+                LsvResults.ItemsSource = foundedRhymes;
             }
             catch { }
+            
+            ProgressBarVisible(false);
+        }
+
+        private async void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            var loader = new ResourceLoader();
+            int rhymeLength = rhymesOptions[CmbRhymesLength.SelectedItem.ToString()];
+            if (!TxbQuery.Text.Equals(String.Empty))
+            {
+                if (TxbQuery.Text.Length >= rhymeLength)
+                {
+                    SearchRhymes(TxbQuery.Text, rhymeLength);
+                }
+                else
+                {
+                    var msg = new MessageDialog(loader.GetString("RhymesToolInvalidQuery"));
+                    await msg.ShowAsync();
+                }
+            }
+            else
+            {
+                var msg = new MessageDialog(loader.GetString("RhymesToolEmptyQuery"));
+                await msg.ShowAsync();
+            }
+        }
+
+        private void ProgressBarVisible(bool visible)
+        {
+            ProgressRingRhymes.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
+            ProgressRingRhymes.IsActive = visible;
         }
         #endregion
 
@@ -131,7 +185,34 @@ namespace MyPoetry.UserControls.Pages
             }
         }
         #endregion
-        
+
+        private void RebText_TextChanged(object sender, RoutedEventArgs e)
+        {
+            // Update statistics
+            ITextRange text = RebText.Document.GetRange(0, TextConstants.MaxUnitCount);
+            string s = text.Text;
+
+            int n_words = 0, n_lines = 0, n_chars = 0;
+            string[] tmp = s.Replace("\r", " ").Split(' ');
+            foreach (string st in tmp)
+                if (!st.Equals(String.Empty))
+                    n_words++;
+            if (s != "\r")
+            {
+                tmp = s.Replace("\r", "§").Split('§');
+                foreach (string st in tmp)
+                    if (st != "")
+                        n_lines++;
+            }
+            else
+                n_lines = 0;
+            n_chars = s.Replace("\r", "").Length;
+
+            TxbCharsNumber.Text = n_chars.ToString();
+            TxbWordsNumber.Text = n_words.ToString();
+            TxbLinesNumber.Text = n_lines.ToString();
+        }
+
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             var loader = new ResourceLoader();
@@ -236,11 +317,6 @@ namespace MyPoetry.UserControls.Pages
             {
                 messageDialog = new MessageDialog(loader.GetString("Err_MissingData"), loader.GetString("Warning"));
             }
-        }
-
-        private void TxbWord_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            (sender as TextBox).Focus(FocusState.Pointer);
         }
     }
 }

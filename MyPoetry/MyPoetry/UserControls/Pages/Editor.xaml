@@ -73,7 +73,7 @@
                                     </Grid>
                                 </Border>
 
-                                <RichEditBox Grid.Row="1" Style="{StaticResource RichEditBoxStyle}" Padding="10" x:Name="RebText" Background="#AAFFFFFF" BorderBrush="{StaticResource AppColor4}" BorderThickness="1" PlaceholderText="Testo" SelectionChanged="RebText_SelectionChanged"></RichEditBox>
+                                <RichEditBox Grid.Row="1" Style="{StaticResource RichEditBoxStyle}" Padding="10" x:Name="RebText" Background="#AAFFFFFF" BorderBrush="{StaticResource AppColor4}" BorderThickness="1" PlaceholderText="Testo" SelectionChanged="RebText_SelectionChanged" TextChanged="RebText_TextChanged"></RichEditBox>
                             </Grid>
                         </Grid>
                     </SplitView.Content>
@@ -89,35 +89,17 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        
-                                        <TextBox Margin="5"></TextBox>
 
-                                        <ComboBox x:Name="CmbLetterNumber" Grid.Row="1" Margin="5" HorizontalAlignment="Stretch">
-                                            <ComboBoxItem>Rima per due lettere</ComboBoxItem>
-                                            <ComboBoxItem IsSelected="True">Rima per tre lettere</ComboBoxItem>
-                                            <ComboBoxItem>Rima per quattro lettere</ComboBoxItem>
-                                        </ComboBox>
+                                        <TextBox x:Name="TxbQuery" Margin="5"></TextBox>
 
-                                        <Button x:Name="BtnSearch" Grid.Row="2" Content="Trova rime" Margin="5" HorizontalAlignment="Right" Padding="20, 5" Style="{StaticResource ButtonBlue}"/>
+                                        <ComboBox x:Name="CmbRhymesLength" Grid.Row="1" Margin="5" HorizontalAlignment="Stretch"/>
 
-                                        <ListView Name="LsvResults" Grid.Row="3" Margin="5"></ListView>
+                                        <Button x:Name="BtnSearch" Grid.Row="2" Content="Trova rime" Margin="5" HorizontalAlignment="Right" Padding="20, 5" Style="{StaticResource ButtonBlue}" Click="BtnSearch_Click"/>
+
+                                        <ListView Name="LsvResults" Grid.Row="3" Margin="5"/>
+
+                                        <ProgressRing x:Name="ProgressRingRhymes" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Grid.Row="3" Visibility="Collapsed"/>
                                     </Grid>
-                                    <!--
-                                    <Grid x:Name="grdInput">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-
-                                        
-
-
-                                        <Button x:Name="BtnSearch" Grid.Row="2" Content="Trova rime" Margin="5" HorizontalAlignment="Right" Padding="20, 5" Style="{StaticResource ButtonBlue}"/>
-
-                                        <ListView Name="LsvResults" Margin="5"></ListView>
-                                    </Grid>-->
                                 </PivotItem>
                                 <PivotItem Header="Statistiche">
                                     <StackPanel>
@@ -128,13 +110,13 @@
                                         </StackPanel.ChildrenTransitions>
                                         
                                         <TextBlock Style="{StaticResource TitleTextBlockStyle}">lunghezza testo</TextBlock>
-                                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">55777869</TextBlock>
+                                        <TextBlock x:Name="TxbCharsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
 
                                         <TextBlock Margin="0, 15, 0, 0" Style="{StaticResource TitleTextBlockStyle}">parole utilizzate</TextBlock>
-                                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">58768</TextBlock>
+                                        <TextBlock x:Name="TxbWordsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
 
                                         <TextBlock Margin="0, 15, 0, 0" Style="{StaticResource TitleTextBlockStyle}">numero versi</TextBlock>
-                                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">23</TextBlock>
+                                        <TextBlock x:Name="TxbLinesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
                                     </StackPanel>
                                 </PivotItem>
                             </Pivot>
