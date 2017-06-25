@@ -37,7 +37,7 @@
                                 <TextBox x:Name="TxbTitle" FontSize="20" Padding="10" BorderBrush="Transparent" BorderThickness="0" Background="#DDFFFFFF" PlaceholderText="Titolo" KeyUp="TxbTitle_KeyUp"></TextBox>
                             </Grid>
 
-                            <Grid Grid.Row="1" Margin="10, 5">
+                            <Grid Grid.Row="1" Margin="5">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition></RowDefinition>
@@ -82,10 +82,60 @@
                         <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 0, 0, 0">
                             <Pivot>
                                 <PivotItem Header="Cerca Rime">
-                                    <TextBlock>Sample content here</TextBlock>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        
+                                        <TextBox Margin="5"></TextBox>
+
+                                        <ComboBox x:Name="CmbLetterNumber" Grid.Row="1" Margin="5" HorizontalAlignment="Stretch">
+                                            <ComboBoxItem>Rima per due lettere</ComboBoxItem>
+                                            <ComboBoxItem IsSelected="True">Rima per tre lettere</ComboBoxItem>
+                                            <ComboBoxItem>Rima per quattro lettere</ComboBoxItem>
+                                        </ComboBox>
+
+                                        <Button x:Name="BtnSearch" Grid.Row="2" Content="Trova rime" Margin="5" HorizontalAlignment="Right" Padding="20, 5" Style="{StaticResource ButtonBlue}"/>
+
+                                        <ListView Name="LsvResults" Grid.Row="3" Margin="5"></ListView>
+                                    </Grid>
+                                    <!--
+                                    <Grid x:Name="grdInput">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        
+
+
+                                        <Button x:Name="BtnSearch" Grid.Row="2" Content="Trova rime" Margin="5" HorizontalAlignment="Right" Padding="20, 5" Style="{StaticResource ButtonBlue}"/>
+
+                                        <ListView Name="LsvResults" Margin="5"></ListView>
+                                    </Grid>-->
                                 </PivotItem>
                                 <PivotItem Header="Statistiche">
-                                    <TextBlock>Another sample content</TextBlock>
+                                    <StackPanel>
+                                        <StackPanel.ChildrenTransitions>
+                                            <TransitionCollection>
+                                                <ContentThemeTransition></ContentThemeTransition>
+                                            </TransitionCollection>
+                                        </StackPanel.ChildrenTransitions>
+                                        
+                                        <TextBlock Style="{StaticResource TitleTextBlockStyle}">lunghezza testo</TextBlock>
+                                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">55777869</TextBlock>
+
+                                        <TextBlock Margin="0, 15, 0, 0" Style="{StaticResource TitleTextBlockStyle}">parole utilizzate</TextBlock>
+                                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">58768</TextBlock>
+
+                                        <TextBlock Margin="0, 15, 0, 0" Style="{StaticResource TitleTextBlockStyle}">numero versi</TextBlock>
+                                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}">23</TextBlock>
+                                    </StackPanel>
                                 </PivotItem>
                             </Pivot>
                         </Border>

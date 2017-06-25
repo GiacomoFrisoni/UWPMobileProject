@@ -237,5 +237,10 @@ namespace MyPoetry.UserControls.Pages
                 messageDialog = new MessageDialog(loader.GetString("Err_MissingData"), loader.GetString("Warning"));
             }
         }
+
+        private void TxbWord_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            (sender as TextBox).Focus(FocusState.Pointer);
+        }
     }
 }

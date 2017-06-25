@@ -35,6 +35,9 @@
             <SolidColorBrush x:Key="AppColor4" x:Name="AppColor4" Color="#FFF3F3F3"></SolidColorBrush>
             <SolidColorBrush x:Key="AppColor4Hover" x:Name="AppColor4Hover" Color="#FFE6E6E6"></SolidColorBrush>
             <SolidColorBrush x:Key="AppColor4Click" x:Name="AppColor4Click" Color="#FFDEDEDE"></SolidColorBrush>
+            <SolidColorBrush x:Key="AppColor4Selected" x:Name="AppColor4Selected" Color="#FF787878"></SolidColorBrush>
+            <SolidColorBrush x:Key="AppColor4SelectedHover" x:Name="AppColor4SelectedHover" Color="#FF8D8D8D"></SolidColorBrush>
+            <SolidColorBrush x:Key="AppColor4SelectedClick" x:Name="AppColor4SelectedClick" Color="#FF9E9E9E"></SolidColorBrush>
 
             <!-- Very Dark Gray -->
             <SolidColorBrush x:Key="AppColor5" x:Name="AppColor5" Color="#FF333333"></SolidColorBrush>
@@ -411,7 +414,7 @@
                                         <VisualState x:Name="Checked">
                                             <Storyboard>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4Click}" />
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4Selected}" />
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SelectionViewer" Storyboard.TargetProperty="Background">
                                                     <DiscreteObjectKeyFrame KeyTime="0" Value="#FFB82E" />
@@ -430,7 +433,7 @@
                                             <Storyboard>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
                                                Storyboard.TargetProperty="Background">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4Hover}" />
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4SelectedHover}" />
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SelectionViewer" Storyboard.TargetProperty="Background">
                                                     <DiscreteObjectKeyFrame KeyTime="0" Value="#FFB82E" />
@@ -445,9 +448,8 @@
                                         
                                         <VisualState x:Name="CheckedPressed">
                                             <Storyboard>
-                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid"
-                                               Storyboard.TargetProperty="Background">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumLowBrush}" />
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4SelectedClick}" />
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SelectionViewer" Storyboard.TargetProperty="Background">
                                                     <DiscreteObjectKeyFrame KeyTime="0" Value="#FFB82E" />
@@ -830,6 +832,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
 
 
         </ResourceDictionary>
