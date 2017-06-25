@@ -104,6 +104,7 @@
     </Compile>
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Converters\RatingConverter.cs" />
     <Compile Include="Converters\VisibleWhenTrue.cs" />
     <Compile Include="Model\ActivationRequest.cs" />
     <Compile Include="Model\ReSendingActivationRequest.cs" />

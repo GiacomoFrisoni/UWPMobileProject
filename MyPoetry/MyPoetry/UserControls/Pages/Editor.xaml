@@ -89,7 +89,7 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        
+
                                         <TextBox Margin="5"></TextBox>
 
                                         <ComboBox x:Name="CmbLetterNumber" Grid.Row="1" Margin="5" HorizontalAlignment="Stretch">
@@ -102,22 +102,6 @@
 
                                         <ListView Name="LsvResults" Grid.Row="3" Margin="5"></ListView>
                                     </Grid>
-                                    <!--
-                                    <Grid x:Name="grdInput">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-
-                                        
-
-
-                                        <Button x:Name="BtnSearch" Grid.Row="2" Content="Trova rime" Margin="5" HorizontalAlignment="Right" Padding="20, 5" Style="{StaticResource ButtonBlue}"/>
-
-                                        <ListView Name="LsvResults" Margin="5"></ListView>
-                                    </Grid>-->
                                 </PivotItem>
                                 <PivotItem Header="Statistiche">
                                     <StackPanel>
