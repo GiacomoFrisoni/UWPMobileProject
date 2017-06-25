@@ -3,6 +3,7 @@ using MyPoetry.Utilities;
 using System;
 using System.Collections.Generic;
 using Windows.ApplicationModel.Resources;
+using Windows.Storage;
 using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Text;
@@ -15,6 +16,10 @@ namespace MyPoetry.UserControls.Pages
     public sealed partial class Editor : UserControl
     {
         public CustomPage GetPage { get { return MainContent; } }
+
+        // Tools variable
+        private const string words_db_path = @"Assets\words.txt";
+        private List<String> foundedRhymes = new List<string>();
 
         public Editor()
         {
@@ -92,29 +97,28 @@ namespace MyPoetry.UserControls.Pages
 
             BtnMenu.Content = SpvContent.IsPaneOpen ?
                 new SymbolIcon() { Symbol = Symbol.ClosePane }:
-                new SymbolIcon() { Symbol = Symbol.OpenPane }; 
-            
-            /*
-             * QUESTA COSA NON HA ALCUN SENSO; DEVO FARE UN VISUAL STATE!
-             * 
-            //Minore di 700, bottone c'è e funziona
-            if (Window.Current.Bounds.Width <= 700)
-            {
-                SpvContent.IsPaneOpen = !SpvContent.IsPaneOpen;
-                BtnMenu.Visibility = Visibility.Visible;
-            }
+                new SymbolIcon() { Symbol = Symbol.OpenPane };
+        }
 
-            //Maggiore di 700, barra fissa bottone disabilitato
-            else
+        private async void SearchRhymes(string query, int rhymeLength)
+        {
+            try
             {
-                SpvContent.IsPaneOpen = true;
-                BtnMenu.Visibility = Visibility.Collapsed;
-            }
+                var folder = Windows.ApplicationModel.Package.Current.InstalledLocation;
+                var file = await folder.GetFileAsync(words_db_path);
+                var lines = await FileIO.ReadLinesAsync(file);
 
-            //Imposta il content dinamicamente
-            BtnMenu.Content = SpvContent.IsPaneOpen ? 
-                new SymbolIcon() { Symbol = Symbol.ClosePane } : 
-                new SymbolIcon() { Symbol = Symbol.OpenPane };*/
+                foundedRhymes.Clear();
+                foreach (String line in lines)
+                {
+                    if (line.Substring(line.Length - rhymeLength - 1, rhymeLength).Equals(
+                        query.Substring(query.Length - rhymeLength - 1, rhymeLength)))
+                    {
+                        foundedRhymes.Add(line);
+                    }
+                }
+            }
+            catch { }
         }
         #endregion
 
