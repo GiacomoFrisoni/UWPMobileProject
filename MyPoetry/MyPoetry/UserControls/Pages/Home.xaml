@@ -12,8 +12,6 @@
     d:DesignWidth="400">
 
     <UserControl.Resources>
-        <converters:RatingConverter x:Key="RatingFormatConverter"/>
-
         <DataTemplate x:Key="ListView_SmallTemplate">
             <Grid Margin="0, 10, 0, 0" Background="{StaticResource AppColor4}">
                 <Grid.RowDefinitions>
@@ -63,7 +61,13 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <!-- ItemsSource="{Binding Source={StaticResource poetriesViewSource}}" -->
+    <!-- 
+    
+    Ho tolto questa riga di codice dalal listview; se serve mettila!
+    
+    ItemsSource="{Binding Source={StaticResource poetriesViewSource}}" 
+    
+    -->
     <custom:CustomPage x:Name="MainContent" Title="Home">
         <custom:CustomPage.MainContent>
             <Grid>
