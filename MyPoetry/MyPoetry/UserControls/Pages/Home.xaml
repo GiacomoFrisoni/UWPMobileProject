@@ -21,18 +21,7 @@
                 </Grid.RowDefinitions>
 
                 <Border Margin="10,5" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <TextBlock Margin="5" FontSize="18" Text="{Binding Title}"/>
-
-                        <Button Grid.Column="1" Style="{StaticResource TextButtonStyle}">
-                            <SymbolIcon Symbol="Edit"></SymbolIcon>
-                        </Button>
-                    </Grid>
+                    <TextBlock Margin="5" FontSize="18" Text="{Binding Title}"/>
                 </Border>
 
                 <TextBlock Margin="10, 5" Grid.Row="1" FontSize="12" Text="{Binding ShortText}"></TextBlock>
@@ -44,15 +33,15 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <SymbolIcon Margin="5, 0" Symbol="Calendar" VerticalAlignment="Center"></SymbolIcon>
-                            <TextBlock Grid.Column="0" Text="12/05/2017" VerticalAlignment="Center"></TextBlock>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
+                            <SymbolIcon Margin="5, 0" Symbol="Calendar" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center"></SymbolIcon>
+                            <TextBlock Grid.Column="0" Text="12/05/2017" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center"></TextBlock>
                         </StackPanel>
 
 
                         <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                            <TextBlock Grid.Column="0" FontSize="14" Text="5" VerticalAlignment="Center"></TextBlock>
-                            <SymbolIcon Margin="5, 0" Symbol="Favorite"></SymbolIcon>
+                            <TextBlock Grid.Column="0" FontSize="14" Text="5" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center"></TextBlock>
+                            <SymbolIcon Margin="5, 0" Foreground="{StaticResource AppColor6}" Symbol="Favorite"></SymbolIcon>
                         </StackPanel>
 
                     </Grid>

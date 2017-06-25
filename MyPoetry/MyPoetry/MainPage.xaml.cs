@@ -42,7 +42,7 @@ namespace MyPoetry
             menu.Add(new MenuItem() { ItemText = user, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Home().GetPage });
 
             menu.Add(new MenuItem() { ItemText = loader.GetString("Home"), ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home, ItemPage = new Home().GetPage  });
-            menu.Add(new MenuItem() { ItemText = loader.GetString("MyPoetries"), ItemIcon = Symbol.FontSize, Group = MenuItem.Groups.Home, ItemPage = new Home().GetPage });
+            menu.Add(new MenuItem() { ItemText = loader.GetString("MyPoetries"), ItemIcon = Symbol.FontSize, Group = MenuItem.Groups.Home, ItemPage = new PoetryDetail().GetPage });
 
             menu.Add(new MenuItem() { ItemText = loader.GetString("NewPoetry"), ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create, ItemPage = new Editor().GetPage });
 
