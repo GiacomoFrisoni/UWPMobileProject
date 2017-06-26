@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace MyPoetry.Model
 {
-    class Poetry
+    public class Poetry
     {
+        [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
         public string UserId { get; set; }
         public string Title { get; set; }

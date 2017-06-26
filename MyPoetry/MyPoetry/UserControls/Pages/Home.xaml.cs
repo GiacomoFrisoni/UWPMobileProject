@@ -1,20 +1,8 @@
-﻿using MyPoetry.Utilities;
-using System;
+﻿using MyPoetry.Model;
+using MyPoetry.Utilities;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace MyPoetry.UserControls.Pages
 {
@@ -26,28 +14,32 @@ namespace MyPoetry.UserControls.Pages
         }
 
         public CustomPage GetPage { get { return MainContent; } }
-
-
-        public class Poetry
-        {
-            public string Title { get; set; }
-            public string ShortText { get; set; }
-        }
         
-
-        private void itemListView_Loaded(object sender, RoutedEventArgs e)
+        private async void PoetriesListView_Loaded(object sender, RoutedEventArgs e)
         {
-            itemListView.ItemsSource = null;
+            ProgressBarVisible(true);
 
-            List<Poetry> poetries = new List<Poetry>();
-            poetries.Add(new Poetry() { Title = "Ciao", ShortText = "Minacciata da cose strane\nStavo a nascondere i cadaveri delle persone\nche mi stavano\nsul cazzo" });
-            poetries.Add(new Poetry() { Title = "Buonaseeeeeeeraaaaaaa", ShortText = "Minacciata da Alice Gori\nStavo scrivendo righe immensamente lunghe\nche mi stavano sul cazzo in una maniera impressionante\nmi ammazzo\ntantissimo poi, che non riesco\npiù a sopportare\nnessuno" });
-            poetries.Add(new Poetry() { Title = "Magari fossi in ritardo estremo!", ShortText = "Minacciata da cose strane\nStavo a nascondere i cadaveri delle persone\nche mi stavano\nsul cazzo" });
-            poetries.Add(new Poetry() { Title = "Titolo completamente lungo a casissimo", ShortText = "Minacciata da cose strane\nStavo a nascondere i cadaveri delle persone\nche mi stavano\nsul cazzo\nmi ammazzo\ntantissimo poi, che non riesco\npiù a sopportare\nnessuno\nma proprio nesusno" });
-            poetries.Add(new Poetry() { Title = "Ancora un altro titolo completamente lungo completamente a caso", ShortText = "Minacciata da cose strane\nStavo a nascondere i cadaveri delle persone\nche mi stavano\nsul cazzo" });
+            if (UserHandler.Instance.GetPoetries() == null)
+            {
+                List<Poetry> poetries = await App.MobileService.GetTable<Poetry>()
+                    .Where(p => p.UserId == UserHandler.Instance.GetUser().Id)
+                    .ToListAsync();
+                UserHandler.Instance.SetPoetries(poetries);
+                PoetriesListView.ItemsSource = poetries;
+            }
+            else
+            {
+                PoetriesListView.ItemsSource = null;
+                PoetriesListView.ItemsSource = UserHandler.Instance.GetPoetries();
+            }
 
-            itemListView.ItemsSource = poetries;
+            ProgressBarVisible(false);
+        }
 
+        private void ProgressBarVisible(bool visible)
+        {
+            ProgressRingPoetries.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
+            ProgressRingPoetries.IsActive = visible;
         }
     }
 }

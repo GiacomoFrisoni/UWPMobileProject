@@ -290,7 +290,13 @@ namespace MyPoetry.UserControls.Pages
                         await App.MobileService.GetTable<Poetry>().InsertAsync(poetry);
                     else
                         await App.MobileService.GetTable<Poetry>().UpdateAsync(poetry);
-                    
+
+                    // Updates local poetries
+                    List<Poetry> new_poetries = await App.MobileService.GetTable<Poetry>()
+                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id)
+                        .ToListAsync();
+                    UserHandler.Instance.SetPoetries(new_poetries);
+
                     // Shows confirm message
                     hpm.IsProgressRingEnabled = false;
                     hpm.Title = loader.GetString("Confirm");

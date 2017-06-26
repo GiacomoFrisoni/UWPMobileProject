@@ -1,5 +1,6 @@
 ﻿using MyPoetry.Model;
 using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// Multithreaded Singleton to store date of the logged User.
@@ -11,6 +12,7 @@ namespace MyPoetry.Utilities
         private static volatile UserHandler instance;
         private static object syncRoot = new Object();
         private User user;
+        private List<Poetry> poetries = null;
 
         private UserHandler() { }
 
@@ -43,6 +45,16 @@ namespace MyPoetry.Utilities
         public User GetUser()
         {
             return this.user;
+        }
+
+        public void SetPoetries(List<Poetry> poetries)
+        {
+            this.poetries = poetries;
+        }
+
+        public List<Poetry> GetPoetries()
+        {
+            return this.poetries;
         }
     }
 }

@@ -13,7 +13,7 @@
     <custom:CustomPage x:Name="MainContent" Title="Editor">
         <custom:CustomPage.TopButtons>
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="BtnSave" Height="48" Width="55" Style="{StaticResource ButtonBlue}">
+                <Button x:Name="BtnSave" Height="48" Width="55" Style="{StaticResource ButtonBlue}" Click="BtnSave_Click">
                     <SymbolIcon Symbol="Save"></SymbolIcon>
                 </Button>
                 <Button x:Name="BtnMenu" Height="48" Width="50" Style="{StaticResource ButtonBlue}" Click="Button_Click">
