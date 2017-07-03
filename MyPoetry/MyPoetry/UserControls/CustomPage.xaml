@@ -21,10 +21,10 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" x:Name="TxblTitle" Text="Sample Title" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Grid.Column="0" x:Name="TxblTitle" VerticalAlignment="Center"></TextBlock>
             <ContentPresenter Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="CtpTopButtons"></ContentPresenter>
         </Grid>
 
-        <ContentPresenter Grid.Row="1" x:Name="CtpContent"/>
+        <ContentPresenter Grid.Row="1" x:Name="CtpContent"></ContentPresenter>
     </Grid>
 </UserControl>
