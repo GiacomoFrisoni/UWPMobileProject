@@ -13,8 +13,9 @@
     d:DesignWidth="400">
 
     <UserControl.Resources>
+        <converters:DateFormatConverter x:Name="DateToStringFormatConverter"/>
         <DataTemplate x:Key="ListView_SmallTemplate">
-            <Grid Margin="0, 5, 0, 0" Background="{StaticResource AppColor4}">
+            <Grid x:Name="PoetryWidget" Margin="0, 5, 0, 0" Background="{StaticResource AppColor4}" Tapped="PoetryWidget_Tapped">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="90"></RowDefinition>
@@ -35,11 +36,11 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
                         <TextBlock Text="&#xE163;" Foreground="{StaticResource AppColor6}" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" FontSize="11"></TextBlock>
-                        <TextBlock Text="12/05/2017" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
+                        <TextBlock Text="{Binding CreationDate, Converter={StaticResource DateToStringFormatConverter}}" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <TextBlock Grid.Column="0" Text="5" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
+                        <TextBlock Grid.Column="0" Text="{Binding Rating}" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
                         <TextBlock Text="&#xE113;" Foreground="{StaticResource AppColor6}" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" FontSize="11"></TextBlock>
                     </StackPanel>
                 </Grid>

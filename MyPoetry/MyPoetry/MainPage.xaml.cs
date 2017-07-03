@@ -58,6 +58,8 @@ namespace MyPoetry
 
             // Selecting Home
             MenuList.SelectedIndex = 1;
+
+            MenuHandler.Instance.SetMenu(MenuList);
         }
 
         private async static Task<BitmapImage> ImageFromBytes(Byte[] bytes)

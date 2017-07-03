@@ -104,6 +104,7 @@
     </Compile>
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="Converters\VisibleWhenTrue.cs" />
     <Compile Include="Model\ActivationRequest.cs" />
     <Compile Include="Model\ReSendingActivationRequest.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\MenuHandler.cs" />
     <Compile Include="Utilities\RtfText.cs" />
     <Compile Include="Utilities\ServerErrorInfo.cs" />
     <Compile Include="UserControls\HalfPageMessage.xaml.cs">

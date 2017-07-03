@@ -36,14 +36,13 @@
                                 <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
 
-                            <FlipView x:Name="FlpPoetries" Loaded="FlpPoetries_Loaded"></FlipView>
+                            <FlipView x:Name="FlpPoetries" Loaded="FlpPoetries_Loaded" SelectionChanged="FlpPoetries_SelectionChanged"></FlipView>
 
                             <Grid Grid.Row="1" Background="{StaticResource AppColor4}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                                           
 
                                 <Border Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <rating:Rating Name="RatingControl" Margin="10" Maximum="5" ItemHeight="24" IsInteractive="True" StepFrequency="1" Value="0"></rating:Rating>

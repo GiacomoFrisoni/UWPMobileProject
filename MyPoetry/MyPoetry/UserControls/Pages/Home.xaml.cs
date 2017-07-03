@@ -41,5 +41,10 @@ namespace MyPoetry.UserControls.Pages
             ProgressRingPoetries.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
             ProgressRingPoetries.IsActive = visible;
         }
+
+        private void PoetryWidget_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            MenuHandler.Instance.SetMenuIndex(2);
+        }
     }
 }
