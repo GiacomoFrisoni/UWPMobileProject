@@ -25,7 +25,7 @@
                     <TextBlock Margin="5" FontSize="18" Text="{Binding Title}"/>
                 </Border>
 
-                <RichEditBox Margin="5, 0" Style="{StaticResource RichEditBoxStyle}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" FontSize="12" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
+                <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="5, 0"  Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" Background="Transparent"/>
 
                 <Grid Grid.Row="2" Margin="15, 5">
                     <Grid.ColumnDefinitions>
@@ -47,15 +47,6 @@
         </DataTemplate>
     </UserControl.Resources>
 
-
-
-    <!-- 
-    
-    Ho tolto questa riga di codice dalal listview; se serve mettila!
-    
-    ItemsSource="{Binding Source={StaticResource poetriesViewSource}}" 
-    
-  -->
     <custom:CustomPage x:Name="MainContent" Title="Home">
         <custom:CustomPage.MainContent>
 
@@ -73,6 +64,18 @@
                     IsSynchronizedWithCurrentItem="False"
                     IsItemClickEnabled="True"
                     IsSwipeEnabled="false">
+
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel>
+                                <VirtualizingStackPanel.ChildrenTransitions>
+                                    <TransitionCollection>
+                                        <EntranceThemeTransition FromHorizontalOffset="400" />
+                                    </TransitionCollection>
+                                </VirtualizingStackPanel.ChildrenTransitions>
+                            </VirtualizingStackPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
