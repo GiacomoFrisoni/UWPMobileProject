@@ -22892,6 +22892,7 @@
     "UAP,Version=v10.0": []
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\giacomofrisoni\\.nuget\\packages\\": {}
   },
   "project": {
@@ -22900,6 +22901,16 @@
       "projectName": "MyPoetry",
       "projectPath": "C:\\Users\\giacomofrisoni\\Documents\\GitHub\\UWPMobileProject\\MyPoetry\\MyPoetry\\MyPoetry.csproj",
       "projectJsonPath": "C:\\Users\\giacomofrisoni\\Documents\\GitHub\\UWPMobileProject\\MyPoetry\\MyPoetry\\project.json",
+=======
+    "C:\\Users\\marti\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "restore": {
+      "projectUniqueName": "C:\\Users\\marti\\Documents\\GitHub\\UWPMobileProject\\MyPoetry\\MyPoetry\\MyPoetry.csproj",
+      "projectName": "MyPoetry",
+      "projectPath": "C:\\Users\\marti\\Documents\\GitHub\\UWPMobileProject\\MyPoetry\\MyPoetry\\MyPoetry.csproj",
+      "projectJsonPath": "C:\\Users\\marti\\Documents\\GitHub\\UWPMobileProject\\MyPoetry\\MyPoetry\\project.json",
+>>>>>>> origin/master
       "projectStyle": "ProjectJson"
     },
     "dependencies": {

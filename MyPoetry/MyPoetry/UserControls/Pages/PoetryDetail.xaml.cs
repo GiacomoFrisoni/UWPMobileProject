@@ -22,6 +22,9 @@ namespace MyPoetry.UserControls.Pages
         public PoetryDetail()
         {
             this.InitializeComponent();
+
+            RatingControl.FilledImage = new Uri("ms-appx:///Assets/Rating/staron.png");
+            RatingControl.EmptyImage = new Uri("ms-appx:///Assets/Rating/staroff.png");
         }
 
         public CustomPage GetPage { get { return MainContent; } }
