@@ -2,6 +2,7 @@
 using MyPoetry.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Windows.ApplicationModel.Resources;
 using Windows.Storage;
 using Windows.System;
@@ -229,6 +230,8 @@ namespace MyPoetry.UserControls.Pages
                     .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && p.Title.Trim() == TxbTitle.Text.Trim())
                     .ToListAsync();
 
+                Poetry poetry = null;
+
                 // Sets content and title for the message dialog
                 if (poetries.Count == 0)
                     messageDialog = new MessageDialog(loader.GetString("NewPoetryConfirm"), loader.GetString("Save") + " \"" + TxbTitle.Text + "\"");
@@ -238,14 +241,29 @@ namespace MyPoetry.UserControls.Pages
                 // YES command
                 messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), async (command) =>
                 {
-                    // Creates a new poetry
-                    Poetry poetry = new Poetry();
+                    if (poetries.Count == 0)
+                    {
+                        // Creates a new poetry
+                        poetry = new Poetry();
+                        // Sets id
+                        poetry.Id = Guid.NewGuid().ToString();
+                        // Sets user id
+                        poetry.UserId = UserHandler.Instance.GetUser().Id;
+                        // Set creation date
+                        poetry.CreationDate = DateTime.Now;
+                        // Sets poetry rating
+                        poetry.Rating = 0;
+                        // Sets bookmark
+                        poetry.BookmarkYN = false;
+                    }
+                    else
+                    {
+                        // Update existing poetry
+                        poetry = poetries.First();
+                    }
 
-                    // Sets id
-                    poetry.Id = Guid.NewGuid().ToString();
-
-                    // Sets user id
-                    poetry.UserId = UserHandler.Instance.GetUser().Id;
+                    // Set revision date
+                    poetry.RevisionDate = DateTime.Now;
 
                     // Sets title
                     poetry.Title = TxbTitle.Text;
@@ -255,11 +273,6 @@ namespace MyPoetry.UserControls.Pages
                     string rtfText = text.Text;
                     text.GetText(TextGetOptions.FormatRtf, out rtfText);
                     poetry.Body = rtfText;
-
-                    // Sets dates
-                    if (poetries.Count == 0)
-                        poetry.CreationDate = DateTime.Now;
-                    poetry.RevisionDate = DateTime.Now;
 
                     // Sets characters number
                     poetry.CharactersNumber = text.Text.Replace("\r", "").Length;
@@ -274,12 +287,6 @@ namespace MyPoetry.UserControls.Pages
 
                     // Sets verses number
                     poetry.VersesNumber = text.Text.Split('\r', '\n').Length - 1;
-
-                    // Sets poetry rating
-                    poetry.Rating = 0;
-
-                    // Sets bookmark
-                    poetry.BookmarkYN = false;
                     
                     // Shows loading message
                     HalfPageMessage hpm = new HalfPageMessage(GrdParent);
