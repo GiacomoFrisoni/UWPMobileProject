@@ -168,6 +168,7 @@
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\ImageHelper.cs" />
     <Compile Include="Utilities\RtfText.cs" />
     <Compile Include="Utilities\ServerErrorInfo.cs" />
     <Compile Include="UserControls\HalfPageMessage.xaml.cs">

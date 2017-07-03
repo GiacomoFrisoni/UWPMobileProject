@@ -61,53 +61,55 @@
                         <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 0, 0, 0">
                             <Pivot>
                                 <PivotItem Header="Statistiche">
-                                    <StackPanel Margin="0, 15, 0, 0">
-                                        <StackPanel.ChildrenTransitions>
-                                            <TransitionCollection>
-                                                <ContentThemeTransition></ContentThemeTransition>
-                                            </TransitionCollection>
-                                        </StackPanel.ChildrenTransitions>
+                                    <ScrollViewer HorizontalContentAlignment="Center" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                        <StackPanel Margin="0, 15, 0, 0">
+                                            <StackPanel.ChildrenTransitions>
+                                                <TransitionCollection>
+                                                    <ContentThemeTransition></ContentThemeTransition>
+                                                </TransitionCollection>
+                                            </StackPanel.ChildrenTransitions>
 
-                                        <StackPanel Orientation="Vertical">
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                                <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                                <TextBlock x:Name="TxbStartDate" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                            <StackPanel Orientation="Vertical">
+                                                <TextBlock>Data creazione</TextBlock>
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                    <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                    <TextBlock x:Name="TxbStartDate" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                                </StackPanel>
                                             </StackPanel>
-                                            <TextBlock>Data creazione</TextBlock>
-                                        </StackPanel>
 
-                                        <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                                <SymbolIcon Symbol="CalendarWeek" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                                <TextBlock x:Name="TxbLastRevision" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                                <TextBlock>Ultima revisione</TextBlock>
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                    <SymbolIcon Symbol="CalendarWeek" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                    <TextBlock x:Name="TxbLastRevision" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                                </StackPanel>
                                             </StackPanel>
-                                            <TextBlock>Ultima revisione</TextBlock>
-                                        </StackPanel>
 
-                                        <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                                <SymbolIcon Symbol="AlignLeft" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                                <TextBlock x:Name="TxbCharsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                                <TextBlock>Lunghezza testo</TextBlock>
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                    <SymbolIcon Symbol="AlignLeft" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                    <TextBlock x:Name="TxbCharsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                                </StackPanel>
                                             </StackPanel>
-                                            <TextBlock>Lunghezza testo</TextBlock>
-                                        </StackPanel>
 
-                                        <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                                <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                                <TextBlock x:Name="TxbWordsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                                <TextBlock>Parole utilizzate</TextBlock>
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                    <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                    <TextBlock x:Name="TxbWordsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                                </StackPanel>
                                             </StackPanel>
-                                            <TextBlock>Parole utilizzate</TextBlock>
-                                        </StackPanel>
 
-                                        <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                                <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                                <TextBlock x:Name="TxbLinesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                                <TextBlock>Numero versi</TextBlock>
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                    <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                    <TextBlock x:Name="TxbLinesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                                </StackPanel>
                                             </StackPanel>
-                                            <TextBlock>Numero versi</TextBlock>
                                         </StackPanel>
-                                    </StackPanel>
+                                    </ScrollViewer>
                                 </PivotItem>
                             </Pivot>
                         </Border>
