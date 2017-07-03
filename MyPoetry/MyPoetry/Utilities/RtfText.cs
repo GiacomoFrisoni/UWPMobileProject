@@ -23,6 +23,7 @@ namespace MyPoetry.Utilities
         private static void callback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var reb = (RichEditBox)d;
+            reb.IsReadOnly = false;
             reb.Document.SetText(TextSetOptions.FormatRtf, (string)e.NewValue);
             reb.IsReadOnly = true;
         }

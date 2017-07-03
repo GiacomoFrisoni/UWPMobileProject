@@ -110,8 +110,9 @@
                         </ListView.ItemContainerStyle>
                     </ListView>
 
-                    <StackPanel BorderBrush="{StaticResource AppColor5}" BorderThickness="0, 2, 0, 0" x:Name="BottomMenu" Grid.Row="2" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
-                        <menu:MenuItemViewer Height="48" ItemIcon="SwitchApps" ItemText="Logout" ItemStyle="{StaticResource ButtonRed}"></menu:MenuItemViewer>
+                    <StackPanel BorderBrush="{StaticResource AppColor5}" BorderThickness="0, 2, 0, 0" x:Name="BottomMenu" Grid.Row="2" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"
+                                Tapped="BtnLogout_Tapped">
+                        <menu:MenuItemViewer x:Name="BtnLogout" Height="48" ItemIcon="SwitchApps" ItemText="Logout" ItemStyle="{StaticResource ButtonRed}"></menu:MenuItemViewer>
                     </StackPanel>
                 </RelativePanel>
             </SplitView.Pane>

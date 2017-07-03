@@ -103,7 +103,7 @@ namespace MyPoetry
             this.Frame.Navigate(typeof(ForgetPasswordPage));
         }
 
-        private void TxbEmail_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        private void TxbEmail_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {

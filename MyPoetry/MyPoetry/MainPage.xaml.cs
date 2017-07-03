@@ -18,9 +18,13 @@ namespace MyPoetry
 {
     public sealed partial class MainPage : Page
     {
+        private AppLocalSettings settings;
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            settings = new AppLocalSettings();
 
             GenerateMenu();       
         }
@@ -29,15 +33,15 @@ namespace MyPoetry
         
         private async void GenerateMenu()
         {
-            //Temp list for binding
+            // Temp list for binding
             List<MenuItem> menu = new List<MenuItem>();
 
-            //Retriving user data
+            // Retriving user data
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = await ImageFromBytes(UserHandler.Instance.GetUser().Photo);
             string user = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
 
-            //Creating menu groups
+            // Creating menu groups
             var loader = new ResourceLoader();
             menu.Add(new MenuItem() { ItemText = user, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Profile().GetPage });
 
@@ -48,11 +52,11 @@ namespace MyPoetry
 
             menu.Add(new MenuItem() { ItemText = loader.GetString("Settings"), ItemIcon = Symbol.Setting, Group = MenuItem.Groups.Settings, ItemPage = new Settings().GetPage });
 
-            //Settings groups
+            // Settings groups
             var groups = from c in menu group c by c.Group;
             this.cvs.Source = groups;
 
-            //Selecting HOME
+            // Selecting Home
             MenuList.SelectedIndex = 1;
         }
 
@@ -81,6 +85,16 @@ namespace MyPoetry
                 this.Bindings.Update();
                 NavigationPane.IsPaneOpen = false;
             }
+        }
+
+        private void BtnLogout_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            // Reset user data
+            UserHandler.Instance.SetUser(null);
+            // Reset keep login
+            settings.SetUserLoggedId(String.Empty);
+            // Go to login page
+            this.Frame.Navigate(typeof(LoginPage));
         }
     }
 }

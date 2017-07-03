@@ -1,6 +1,4 @@
-﻿using MyPoetry.Model;
-
-namespace MyPoetry
+﻿namespace MyPoetry
 {
     /// <summary>
     /// This class handles the local settings of the application.
