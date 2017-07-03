@@ -38,7 +38,7 @@ namespace MyPoetry
 
             // Retriving user data
             ImageBrush ib = new ImageBrush();
-            ib.ImageSource = await ImageFromBytes(UserHandler.Instance.GetUser().Photo);
+            ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
             string user = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
 
             // Creating menu groups
@@ -62,17 +62,7 @@ namespace MyPoetry
             MenuHandler.Instance.SetMenu(MenuList);
         }
 
-        private async static Task<BitmapImage> ImageFromBytes(Byte[] bytes)
-        {
-            BitmapImage image = new BitmapImage();
-            using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
-            {
-                await stream.WriteAsync(bytes.AsBuffer());
-                stream.Seek(0);
-                await image.SetSourceAsync(stream);
-            }
-            return image;
-        }
+
         
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {

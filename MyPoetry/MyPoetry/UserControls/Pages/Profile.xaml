@@ -10,7 +10,166 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <custom:CustomPage x:Name="MainContent">
-        
+    <custom:CustomPage x:Name="MainContent" Title="Profilo">
+        <custom:CustomPage.MainContent>
+            <Grid>
+                <Pivot Loaded="Pivot_Loaded">
+                    <PivotItem Header="Dati">
+                        <StackPanel Margin="0, 15, 0, 0">
+                            
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <Image Margin="5, 5, 10, 5" VerticalAlignment="Top" x:Name="ImgImage" Width="20" Height="20"></Image>
+                                    <TextBlock x:Name="TxbUser" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                <TextBlock>Indirizzo mail</TextBlock>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <SymbolIcon Symbol="Mail" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                    <TextBlock x:Name="TxbMail" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                <TextBlock>Data iscrizione</TextBlock>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                    <TextBlock x:Name="TxbRegisterDate" Text="03/01/2017" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </PivotItem>
+
+                    <PivotItem Header="Carriera">
+                        <StackPanel Margin="0, 15, 0, 0">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock>Poesie scritte</TextBlock>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <SymbolIcon Symbol="PreviewLink" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                    <TextBlock x:Name="TxbPoetriesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                <TextBlock>Lunghezza complessiva</TextBlock>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                    <TextBlock x:Name="TxbCharsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                <TextBlock>Parole utilizzate</TextBlock>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                    <TextBlock x:Name="TxbWordsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                <TextBlock>Numero versi</TextBlock>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                    <TextBlock x:Name="TxbVersesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                <TextBlock>Poesia più lunga</TextBlock>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <SymbolIcon Symbol="List" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                    <TextBlock x:Name="TxbLongest" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                <TextBlock>Poesia più corta</TextBlock>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <SymbolIcon Symbol="Remove" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                    <TextBlock x:Name="TxbShortest" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                <TextBlock>Giorno d'ispirazione</TextBlock>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <SymbolIcon Symbol="GoToToday" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                    <TextBlock x:Name="TxbInspiration" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+
+
+                    </PivotItem>
+
+                    <PivotItem Header="Modifica">
+                        <StackPanel MaxWidth="400" >
+                            <Grid Margin="0, 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Width="130" Height="130" BorderBrush="{StaticResource AppColor3}" Background="LightGray" BorderThickness="1">
+                                    <Grid>
+                                        <Viewbox MaxHeight="70" MaxWidth="70">
+                                            <SymbolIcon Name="SblDefault" Symbol="Contact" Foreground="White"></SymbolIcon>
+                                        </Viewbox>
+                                        <Image Name="ImgProfile" Stretch="UniformToFill"></Image>
+                                    </Grid>
+                                </Border>
+
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+                                    <Button Name="BtnPhoto" Style="{StaticResource ButtonBlue}" Grid.Row="0" Padding="10, 5" Margin="10, 1, 0, 5" HorizontalAlignment="Stretch" Click="BtnPhoto_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <SymbolIcon Symbol="Camera"></SymbolIcon>
+                                            <TextBlock x:Uid="Photo" Margin="10, 0, 0, 0">Camera</TextBlock>
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Name="BtnFile" Style="{StaticResource ButtonBlue}" Grid.Row="1" Padding="10, 5" Margin="10, 0, 0, 0" HorizontalAlignment="Stretch" Click="BtnFile_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <SymbolIcon Symbol="OpenFile"></SymbolIcon>
+                                            <TextBlock x:Uid="File" Margin="10, 0, 0, 0">Choose file</TextBlock>
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button x:Name="BtnDeletePhoto" Style="{StaticResource ButtonRed}" Grid.Row="3" HorizontalAlignment="Stretch" Padding="10, 5" Margin="10, 5, 0, 1" Click="BtnDeletePhoto_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <SymbolIcon Symbol="Delete"></SymbolIcon>
+                                            <TextBlock x:Uid="Delete" Margin="10, 0, 0, 0">Delete</TextBlock>
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                            
+                            <TextBlock x:Uid="Name" Text="Name"></TextBlock>
+                            <TextBox x:Name="TxbName" x:Uid="NamePH" Margin="0, 5" PlaceholderText="Name"></TextBox>
+
+                            <TextBlock x:Uid="Surname" Text="Surname"></TextBlock>
+                            <TextBox x:Name="TxbSurname" x:Uid="SurnamePH" Margin="0, 5"  PlaceholderText="Surname"></TextBox>
+
+                            <TextBlock x:Uid="Gender" Text="Gender"></TextBlock>
+                            <ComboBox x:Name="CmbGender" x:Uid="GenderPH" PlaceholderText="Select your gender" Margin="0, 5" HorizontalAlignment="Stretch">
+                                <ComboBoxItem x:Uid="Male">Male</ComboBoxItem>
+                                <ComboBoxItem x:Uid="Female">Female</ComboBoxItem>
+                            </ComboBox>
+
+                            <Button x:Name="BtnSave" Style="{StaticResource ButtonBlue}" Content="Salva" Margin="5, 25, 5, 5" HorizontalAlignment="Stretch"></Button>
+                        </StackPanel>
+                    </PivotItem>
+                </Pivot>
+                <ProgressRing x:Name="ProgressRingProfile" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Grid.Row="3" Visibility="Collapsed"/>
+            </Grid>
+        </custom:CustomPage.MainContent>
     </custom:CustomPage>
 </UserControl>

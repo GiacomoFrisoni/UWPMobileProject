@@ -34,7 +34,7 @@
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0" Margin="5">
-                                <TextBox x:Name="TxbTitle" FontSize="20" Padding="10" BorderBrush="Transparent" BorderThickness="0" Background="#DDFFFFFF" PlaceholderText="Titolo" KeyUp="TxbTitle_KeyUp"></TextBox>
+                                <TextBox x:Name="TxbTitle" FontSize="20" Padding="10" MaxLength="40" BorderBrush="Transparent" BorderThickness="0" Background="#DDFFFFFF" PlaceholderText="Titolo" KeyUp="TxbTitle_KeyUp"></TextBox>
                             </Grid>
 
                             <Grid Grid.Row="1" Margin="5">
@@ -110,27 +110,27 @@
                                         </StackPanel.ChildrenTransitions>
 
                                         <StackPanel Orientation="Vertical">
+                                            <TextBlock>Lunghezza testo</TextBlock>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                 <SymbolIcon Symbol="AlignLeft" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                 <TextBlock x:Name="TxbCharsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
                                             </StackPanel>
-                                            <TextBlock>Lunghezza testo</TextBlock>
                                         </StackPanel>
 
                                         <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                            <TextBlock>Parole utilizzate</TextBlock>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                 <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                 <TextBlock x:Name="TxbWordsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
                                             </StackPanel>
-                                            <TextBlock>Parole utilizzate</TextBlock>
                                         </StackPanel>
 
                                         <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                            <TextBlock>Numero versi</TextBlock>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                 <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                 <TextBlock x:Name="TxbLinesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
                                             </StackPanel>
-                                            <TextBlock>Numero versi</TextBlock>
                                         </StackPanel>
                                     </StackPanel>
                                 </PivotItem>
