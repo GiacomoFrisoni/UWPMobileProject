@@ -15,20 +15,18 @@
     <UserControl.Resources>
         <converters:DateFormatConverter x:Name="DateToStringFormatConverter"/>
         <DataTemplate x:Key="ListView_SmallTemplate">
-            <Grid x:Name="PoetryWidget" Margin="0, 5, 0, 0" Background="{StaticResource AppColor4}" Tapped="PoetryWidget_Tapped">
+            <Grid x:Name="PoetryWidget" Margin="0, 10, 0, 0" Background="#FFF9F9F9" Tapped="PoetryWidget_Tapped">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="90"></RowDefinition>
+                    <RowDefinition Height="95"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Border Margin="10,0" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">
-                    <TextBlock Margin="5" FontSize="18" Text="{Binding Title}"/>
-                </Border>
+                <TextBlock Margin="15, 10, 15, 0" FontSize="18" Text="{Binding Title}" FontWeight="Medium" Typography.Capitals="SmallCaps"/>
 
-                <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="5, 0"  Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="Transparent" Background="Transparent"/>
+                <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="10, 5, 10, 0"  Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0, 1" BorderBrush="#EAEAEA" Background="Transparent"/>
 
-                <Grid Grid.Row="2" Margin="15, 5">
+                <Grid Grid.Row="2" Margin="20, 5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -36,11 +34,11 @@
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
                         <TextBlock Text="&#xE163;" Foreground="{StaticResource AppColor6}" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" FontSize="11"></TextBlock>
-                        <TextBlock Text="{Binding CreationDate, Converter={StaticResource DateToStringFormatConverter}}" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
+                        <TextBlock Text="{Binding CreationDate, Converter={StaticResource DateToStringFormatConverter}}" Margin="2, 0" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <TextBlock Grid.Column="0" Text="{Binding Rating}" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
+                        <TextBlock Grid.Column="0" Text="{Binding Rating}" Margin="2, 0" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
                         <TextBlock Text="&#xE113;" Foreground="{StaticResource AppColor6}" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" FontSize="11"></TextBlock>
                     </StackPanel>
                 </Grid>
@@ -48,16 +46,16 @@
         </DataTemplate>
     </UserControl.Resources>
 
+
     <custom:CustomPage x:Name="MainContent" Title="Home">
         <custom:CustomPage.MainContent>
 
             <Grid>
                 <ListView
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
-                    Padding="0, 0, 10, 0"
-                    Margin="0, 0, 0, 10"
                     Loaded="PoetriesListView_Loaded"
                     x:Name="PoetriesListView"
+                    Margin="0, 0, 0, 10"
                     AutomationProperties.AutomationId="ItemsListView"
                     AutomationProperties.Name="Items"
                     ItemTemplate="{Binding Source={StaticResource ListView_SmallTemplate}}"
@@ -83,13 +81,13 @@
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                         </Style>
                     </ListView.ItemContainerStyle>
-
+                    <!--
                     <ListView.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
                                 <DataTemplate>
                                     <Grid Background="{StaticResource AppColor1}" Margin="5">
-                                        <TextBlock Foreground="White" Margin="5" Text="bla" Style="{StaticResource GroupHeaderTextStyle}"/>
+                                        <TextBlock Foreground="White" Margin="5" Text="{Binding CreationDate.Month}"/>
                                     </Grid>
                                 </DataTemplate>
                             </GroupStyle.HeaderTemplate>
@@ -99,10 +97,16 @@
                                 </ItemsPanelTemplate>
                             </GroupStyle.Panel>
                         </GroupStyle>
-                    </ListView.GroupStyle>
+                    </ListView.GroupStyle>-->
                 </ListView>
                 <ProgressRing x:Name="ProgressRingPoetries" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Grid.Row="3" Visibility="Collapsed"/>
             </Grid>
         </custom:CustomPage.MainContent>
+
+        <custom:CustomPage.TopButtons>
+            <StackPanel HorizontalAlignment="Stretch">
+                <AutoSuggestBox HorizontalAlignment="Stretch" MinWidth="150" MaxWidth="300" Margin="10" x:Name="SearchBox" PlaceholderText="Ricerca" TextChanged="SearchBox_TextChanged"></AutoSuggestBox>
+            </StackPanel>
+        </custom:CustomPage.TopButtons>
     </custom:CustomPage>
 </UserControl>

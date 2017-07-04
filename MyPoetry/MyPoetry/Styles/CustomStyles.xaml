@@ -353,8 +353,7 @@
     <SolidColorBrush x:Key="SearchBoxSeparatorSuggestionForegroundThemeBrush" Color="#FF2E9EB8"/>
     <SolidColorBrush x:Key="SearchBoxHitHighlightSelectedForegroundThemeBrush" Color="White"/>
 
-    <SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="#FF20B2AA"></SolidColorBrush>
-    <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="#FF20B2AA"></SolidColorBrush>
+    
 
 
 

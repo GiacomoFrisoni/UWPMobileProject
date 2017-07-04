@@ -2,8 +2,7 @@
     x:Class="MyPoetry.UserControls.Pages.Profile"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MyPoetry.UserControls.Pages"
-        xmlns:custom="using:MyPoetry.UserControls"
+    xmlns:custom="using:MyPoetry.UserControls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -15,97 +14,97 @@
             <Grid>
                 <Pivot Loaded="Pivot_Loaded">
                     <PivotItem Header="Dati">
-                        <StackPanel Margin="0, 15, 0, 0">
-                            
-                            <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                    <Image Margin="5, 5, 10, 5" VerticalAlignment="Top" x:Name="ImgImage" Width="20" Height="20"></Image>
-                                    <TextBlock x:Name="TxbUser" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                </StackPanel>
-                            </StackPanel>
+                        <ScrollViewer>
+                            <StackPanel Margin="0, 15, 0, 0">
 
-                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                <TextBlock>Indirizzo mail</TextBlock>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                    <SymbolIcon Symbol="Mail" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                    <TextBlock x:Name="TxbMail" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                </StackPanel>
-                            </StackPanel>
+                                <Image HorizontalAlignment="Left" x:Name="ImgImage" Width="200" Height="200"></Image>
+                                <TextBlock FontSize="20" Typography.Capitals="SmallCaps" FontWeight="Medium" x:Name="TxbUser" Style="{StaticResource SubtitleTextBlockStyle}"/>
 
-                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                <TextBlock>Data iscrizione</TextBlock>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                    <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                    <TextBlock x:Name="TxbRegisterDate" Text="03/01/2017" Style="{StaticResource SubtitleTextBlockStyle}"/>
+
+                                <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                    <TextBlock>Indirizzo mail</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="Mail" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbMail" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                    <TextBlock>Data iscrizione</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbRegisterDate" Text="03/01/2017" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
-                        </StackPanel>
+                        </ScrollViewer>
                     </PivotItem>
 
                     <PivotItem Header="Carriera">
-                        <StackPanel Margin="0, 15, 0, 0">
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock>Poesie scritte</TextBlock>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                    <SymbolIcon Symbol="PreviewLink" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                    <TextBlock x:Name="TxbPoetriesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                        <ScrollViewer>
+                            <StackPanel Margin="0, 15, 0, 0">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock>Poesie scritte</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="PreviewLink" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbPoetriesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                    <TextBlock>Lunghezza complessiva</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbCharsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                    <TextBlock>Parole utilizzate</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbWordsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                    <TextBlock>Numero versi</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbVersesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                    <TextBlock>Poesia più lunga</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="List" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbLongest" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                    <TextBlock>Poesia più corta</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="Remove" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbShortest" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                    <TextBlock>Giorno d'ispirazione</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="GoToToday" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbInspiration" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
                                 </StackPanel>
                             </StackPanel>
-
-                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                <TextBlock>Lunghezza complessiva</TextBlock>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                    <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                    <TextBlock x:Name="TxbCharsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                </StackPanel>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                <TextBlock>Parole utilizzate</TextBlock>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                    <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                    <TextBlock x:Name="TxbWordsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                </StackPanel>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                <TextBlock>Numero versi</TextBlock>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                    <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                    <TextBlock x:Name="TxbVersesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                </StackPanel>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                <TextBlock>Poesia più lunga</TextBlock>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                    <SymbolIcon Symbol="List" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                    <TextBlock x:Name="TxbLongest" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                </StackPanel>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                <TextBlock>Poesia più corta</TextBlock>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                    <SymbolIcon Symbol="Remove" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                    <TextBlock x:Name="TxbShortest" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                </StackPanel>
-                            </StackPanel>
-
-                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                <TextBlock>Giorno d'ispirazione</TextBlock>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                    <SymbolIcon Symbol="GoToToday" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                    <TextBlock x:Name="TxbInspiration" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </StackPanel>
-
+                        </ScrollViewer>
 
                     </PivotItem>
 
                     <PivotItem Header="Modifica">
-                        <StackPanel MaxWidth="400" >
+                        <StackPanel>
                             <Grid Margin="0, 10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -151,7 +150,7 @@
                                     </Button>
                                 </Grid>
                             </Grid>
-                            
+
                             <TextBlock x:Uid="Name" Text="Name"></TextBlock>
                             <TextBox x:Name="TxbName" x:Uid="NamePH" Margin="0, 5" PlaceholderText="Name"></TextBox>
 
