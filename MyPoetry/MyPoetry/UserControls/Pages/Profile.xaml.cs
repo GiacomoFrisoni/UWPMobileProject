@@ -1,4 +1,5 @@
-﻿using MyPoetry.Model;
+﻿using Microsoft.Toolkit.Uwp.UI.Controls;
+using MyPoetry.Model;
 using MyPoetry.Utilities;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -14,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Shapes;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -24,10 +27,25 @@ namespace MyPoetry.UserControls.Pages
         public Profile()
         {
             this.InitializeComponent();
+            AdaptiveGridAdvanced.IsEnabled = false;
         }
 
         public CustomPage GetPage { get { return MainContent; } }
 
+
+        public class InfoViewer
+        {
+            public string Title { get; set; }
+            public Symbol Icon { get; set; }
+            public string Value { get; set; }
+
+            public InfoViewer(string title, Symbol icon, string value)
+            {
+                Title = title;
+                Icon = icon;
+                Value = value;
+            }
+        }
 
         private async void LoadData()
         {
@@ -41,12 +59,11 @@ namespace MyPoetry.UserControls.Pages
                 UserHandler.Instance.SetPoetries(poetries);
             }
 
-
             //Immagine
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
-            ImgImage.Source = ib.ImageSource;
             ImgProfile.Source = ib.ImageSource;
+
 
             //Nome e cognome
             TxbUser.Text = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
@@ -56,6 +73,20 @@ namespace MyPoetry.UserControls.Pages
             //Gender
             CmbGender.SelectedIndex = UserHandler.Instance.GetUser().Gender == "M" ? 0 : 1;
 
+
+
+            //OrbitView       
+            OrbitProfile.CenterContent = GenerateOrbitContent(ib);
+            OrbitProfile.ItemsSource = GenerateOrbitCollection();
+
+
+            //AdaptiveGrid
+            AdaptiveGridAdvanced.IsEnabled = false;
+            AdaptiveGridAdvanced.ItemsSource = null;
+            AdaptiveGridAdvanced.ItemsSource = GenerateAdvancedInfo();
+
+
+
             //Mail
             TxbMail.Text = UserHandler.Instance.GetUser().Email;
 
@@ -64,7 +95,7 @@ namespace MyPoetry.UserControls.Pages
 
 
 
-
+            /*
             //Poesie scritte
             TxbPoetriesNumber.Text = UserHandler.Instance.GetPoetries().Count.ToString();
 
@@ -84,9 +115,53 @@ namespace MyPoetry.UserControls.Pages
             TxbShortest.Text = UserHandler.Instance.GetPoetries().OrderBy(poetry => poetry.CharactersNumber).First().Title;
 
             //Giorno di ispirazione
-            TxbInspiration.Text = "Smetti di scrivere...";
+            TxbInspiration.Text = "Smetti di scrivere...";*/
 
             ProgressBarVisible(false);
+        }
+
+        private Grid GenerateOrbitContent(ImageBrush ib)
+        {
+            Grid g = new Grid();
+
+            Ellipse e = new Ellipse();
+            e.Height = 150;
+            e.Width = 150;
+            e.VerticalAlignment = VerticalAlignment.Center;
+            e.HorizontalAlignment = HorizontalAlignment.Center;
+            e.Fill = ib;
+
+            g.Children.Add(e);
+
+            return g;
+        }
+
+        private OrbitViewDataItemCollection GenerateOrbitCollection()
+        {
+            List<Poetry> poems = UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CreationDate).ToList();
+            OrbitViewDataItemCollection ovdic = new OrbitViewDataItemCollection();
+
+            for (int i = 0; i < poems.Count && i < 10; i++)
+            {
+                if (i % 2 == 0)
+                    ovdic.Add(new OrbitViewDataItem() { Label = poems[i].Title, Distance = 0.1 });
+                else
+                    ovdic.Add(new OrbitViewDataItem() { Label = poems[i].Title, Distance = 0.5 });
+            }
+
+            return ovdic;
+        }
+
+
+        private List<InfoViewer> GenerateAdvancedInfo()
+        {
+            List<InfoViewer> info = new List<InfoViewer>();
+            info.Add(new InfoViewer("Poesie scritte", Symbol.PreviewLink, UserHandler.Instance.GetPoetries().Count.ToString()));
+            info.Add(new InfoViewer("Lunghezza complessiva", Symbol.Font, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.CharactersNumber).ToString()));
+            info.Add(new InfoViewer("Parole utilizzate", Symbol.Font, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.WordsNumber).ToString()));
+            info.Add(new InfoViewer("Numero versi", Symbol.ShowResults, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.VersesNumber).ToString()));
+
+            return info;
         }
 
 

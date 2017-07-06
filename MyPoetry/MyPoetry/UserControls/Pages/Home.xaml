@@ -105,7 +105,7 @@
 
         <custom:CustomPage.TopButtons>
             <StackPanel HorizontalAlignment="Stretch">
-                <AutoSuggestBox HorizontalAlignment="Stretch" MinWidth="150" MaxWidth="300" Margin="10" x:Name="SearchBox" PlaceholderText="Ricerca" TextChanged="SearchBox_TextChanged"></AutoSuggestBox>
+                <AutoSuggestBox HorizontalAlignment="Stretch" MinWidth="150" MaxWidth="300" Margin="10, 0" x:Name="SearchBox" PlaceholderText="Ricerca" TextChanged="SearchBox_TextChanged"></AutoSuggestBox>
             </StackPanel>
         </custom:CustomPage.TopButtons>
     </custom:CustomPage>
