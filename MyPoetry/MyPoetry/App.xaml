@@ -850,7 +850,7 @@
                 <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
                 <Setter Property="BorderBrush" Value="{StaticResource AppColor4Click}"></Setter>
-                <Setter Property="BorderThickness" Value="0, 0, 0, 1"></Setter>
+                <Setter Property="BorderThickness" Value="0, 1, 0, 0"></Setter>
                 <Setter Property="Margin" Value="0"></Setter>
                 <Setter Property="Padding" Value="0"></Setter>
             </Style>

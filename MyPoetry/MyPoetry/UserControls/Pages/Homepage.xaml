@@ -26,19 +26,54 @@
                 <controls:MasterDetailsView x:Name="MasterDetailView" HorizontalContentAlignment="Stretch" Loaded="MasterDetailView_Loaded" Background="#FFF9F9F9">
                     <controls:MasterDetailsView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Margin="3" Padding="5, 0" Background="#FFF9F9F9">
-                                <StackPanel Margin="0,8">
-                                    <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding Title}" />
-                                    <RichEditBox Padding="0" Margin="2" Foreground="Gray" Style="{StaticResource RichEditBoxStyle}" Height="85" utilities:RtfText.RichText="{Binding Body}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent"/>
+                            <!--<Grid Height="120">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Margin="10">
+                                    <Image Width="10" Height="10" Source="Assets/Rating/staron.png"></Image>
+                                    <Image Width="10" Height="10" Source="Assets/Rating/staron.png"></Image>
+                                    <Image Width="10" Height="10" Source="Assets/Rating/staron.png"></Image>
+                                    <Image Width="10" Height="10" Source="Assets/Rating/staroff.png"></Image>
+                                    <Image Width="10" Height="10" Source="Assets/Rating/staroff.png"></Image>
+                                </StackPanel>
+
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+
+
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding Title}" />
+                                        <TextBlock Margin="5, 0, 10, 0" Text="{Binding CreationDate, Converter={StaticResource DateToStringFormatConverter}}" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="{StaticResource AppColor6}" FontSize="11"></TextBlock>
+                                    </Grid>
+
+                                    <RichEditBox Grid.Row="1" Padding="0" Margin="0, 2" Foreground="Gray" Style="{StaticResource RichEditBoxStyle}" Height="85" utilities:RtfText.RichText="{Binding Body}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent"/>
+                                </Grid>
+                            </Grid>-->
+
+                            <Grid Margin="5" Background="#FFF9F9F9">
+                                <StackPanel Margin="10, 5">
+                                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding Title}" />
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="&#xE163;" Foreground="{StaticResource AppColor6}" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" FontSize="11"></TextBlock>
+                                        <TextBlock Margin="-2, 0, 0, 0" Text="&#xE163;" Foreground="{StaticResource AppColor6}" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" FontSize="11"></TextBlock>
                                         <TextBlock Text="{Binding CreationDate, Converter={StaticResource DateToStringFormatConverter}}" Margin="2, 0" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
 
                                         <TextBlock Margin="10, 0, 0, 0" Text="&#xE113;" Foreground="{StaticResource AppColor6}" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" FontSize="11"></TextBlock>
                                         <TextBlock Text="{Binding Rating}" Margin="2, 0" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
                                     </StackPanel>
+                                    <RichEditBox Padding="0" Margin="-1, 5" Foreground="Gray" Style="{StaticResource RichEditBoxStyle}" MaxHeight="80" utilities:RtfText.RichText="{Binding Body}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent"/>
                                 </StackPanel>
-                                
+
                                 <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Transparent"></Rectangle>
                             </Grid>
                         </DataTemplate>
