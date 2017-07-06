@@ -138,16 +138,29 @@ namespace MyPoetry.UserControls.Pages
 
         private OrbitViewDataItemCollection GenerateOrbitCollection()
         {
-            List<Poetry> poems = UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CreationDate).ToList();
+            List<Poetry> poems = UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CharactersNumber).ToList();
             OrbitViewDataItemCollection ovdic = new OrbitViewDataItemCollection();
 
+            double maxChar = poems.First().CharactersNumber;
+            double minChar = poems.Last().CharactersNumber;
+
+            //100 : maxChar = x : (actualChar - minChar)
+            // x = 100 * actual / max
+
+            foreach (Poetry po in UserHandler.Instance.GetPoetries())
+            {
+                double chars = po.CharactersNumber;
+                ovdic.Add(new OrbitViewDataItem() { Label = po.Title, Distance = (chars - minChar) / maxChar });
+            }
+
+            /*
             for (int i = 0; i < poems.Count && i < 10; i++)
             {
                 if (i % 2 == 0)
                     ovdic.Add(new OrbitViewDataItem() { Label = poems[i].Title, Distance = 0.1 });
                 else
                     ovdic.Add(new OrbitViewDataItem() { Label = poems[i].Title, Distance = 0.5 });
-            }
+            }*/
 
             return ovdic;
         }

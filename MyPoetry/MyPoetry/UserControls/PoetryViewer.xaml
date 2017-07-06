@@ -10,12 +10,6 @@
     d:DesignHeight="500"
     d:DesignWidth="400">
 
-    <UserControl.Transitions>
-        <TransitionCollection>
-            <EntranceThemeTransition/>
-        </TransitionCollection>
-    </UserControl.Transitions>
-    
     <Grid Margin="10" Background="{StaticResource AppColor4}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -23,9 +17,9 @@
         </Grid.RowDefinitions>
 
         <Border Margin="10,5" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">
-            <TextBlock Margin="5" FontSize="18" Text="{Binding Title}"/>
+            <TextBlock Margin="5" FontSize="18" Text="{Binding Path=Title}"/>
         </Border>
 
-        <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="10, 5"  Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
+        <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="10, 5"  Grid.Row="1" utilities:RtfText.RichText="{Binding Path=Body}" BorderBrush="Transparent" Background="Transparent"/>
     </Grid>
 </UserControl>

@@ -62,6 +62,8 @@
             <!-- Text Selection Override -->
             <SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="#FF30C2BA"></SolidColorBrush>
             <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="#FF30C2BA"></SolidColorBrush>
+            
+            
 
             <!-- TextBox Color Override 
             <SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="{StaticResource AppColor1}"></SolidColorBrush>
@@ -838,7 +840,20 @@
             </Style>
 
 
-
+            <Style TargetType="ListViewItemPresenter">
+                <Setter Property="SelectedBackground" Value="Black"></Setter>
+                <Setter Property="SelectedPointerOverBackground" Value="Black"></Setter>
+                <Setter Property="SelectedPressedBackground" Value="Black"></Setter> 
+            </Style>            
+            
+            <Style TargetType="ListViewItem">
+                <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                <Setter Property="BorderBrush" Value="{StaticResource AppColor4Click}"></Setter>
+                <Setter Property="BorderThickness" Value="0, 0, 0, 1"></Setter>
+                <Setter Property="Margin" Value="0"></Setter>
+                <Setter Property="Padding" Value="0"></Setter>
+            </Style>
 
             <Style TargetType="ScrollBar">
                 <Setter Property="MinWidth" Value="12" />
@@ -1035,21 +1050,21 @@
                                                     <VisualState x:Name="Normal">
                                                         <Storyboard>
                                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ThumbVisual" Storyboard.TargetProperty="Fill">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor1}" />
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4Selected}" />
                                                             </ObjectAnimationUsingKeyFrames>
                                                         </Storyboard>
                                                     </VisualState>
                                                     <VisualState x:Name="PointerOver">
                                                         <Storyboard>
                                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ThumbVisual" Storyboard.TargetProperty="Fill">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor1Hover}" />
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4SelectedHover}" />
                                                             </ObjectAnimationUsingKeyFrames>
                                                         </Storyboard>
                                                     </VisualState>
                                                     <VisualState x:Name="Pressed">
                                                         <Storyboard>
                                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ThumbVisual" Storyboard.TargetProperty="Fill">
-                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor1Click}" />
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4SelectedClick}" />
                                                             </ObjectAnimationUsingKeyFrames>
                                                         </Storyboard>
                                                     </VisualState>
@@ -1312,6 +1327,7 @@
                                                 Background="{StaticResource AppColor1}"                                                
                                                 Template="{StaticResource VerticalThumbTemplate}"
                                                 Width="5"
+                                           HorizontalAlignment="Right"
                                                 MinHeight="12"                                         
                                                 AutomationProperties.AccessibilityView="Raw"/>
 

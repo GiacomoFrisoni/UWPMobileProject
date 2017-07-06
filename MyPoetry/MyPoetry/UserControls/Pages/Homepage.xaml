@@ -1,0 +1,182 @@
+﻿<Page
+    x:Class="MyPoetry.UserControls.Pages.Homepage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyPoetry.UserControls.Pages"
+    xmlns:custom="using:MyPoetry.UserControls"
+    xmlns:rating="using:XamlBrewer.Uwp.Controls"
+    xmlns:utilities="using:MyPoetry.Utilities"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:converters="using:MyPoetry.Converters"
+    xmlns:models="using:Microsoft.Toolkit.Uwp.SampleApp.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:text1="using:Windows.UI.Xaml"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:DateFormatConverter x:Name="DateToStringFormatConverter"/>
+    </UserControl.Resources>
+
+
+    <custom:CustomPage x:Name="MainContent" Title="Home">
+        <custom:CustomPage.MainContent>
+
+            <Grid>
+                <controls:MasterDetailsView x:Name="MasterDetailView" HorizontalContentAlignment="Stretch" Loaded="MasterDetailView_Loaded" Background="#FFF9F9F9">
+                    <controls:MasterDetailsView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="3" Padding="5, 0" Background="#FFF9F9F9">
+                                <StackPanel Margin="0,8">
+                                    <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding Title}" />
+                                    <RichEditBox Padding="0" Margin="2" Foreground="Gray" Style="{StaticResource RichEditBoxStyle}" Height="85" utilities:RtfText.RichText="{Binding Body}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xE163;" Foreground="{StaticResource AppColor6}" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" FontSize="11"></TextBlock>
+                                        <TextBlock Text="{Binding CreationDate, Converter={StaticResource DateToStringFormatConverter}}" Margin="2, 0" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
+
+                                        <TextBlock Margin="10, 0, 0, 0" Text="&#xE113;" Foreground="{StaticResource AppColor6}" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" FontSize="11"></TextBlock>
+                                        <TextBlock Text="{Binding Rating}" Margin="2, 0" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                                
+                                <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Transparent"></Rectangle>
+                            </Grid>
+                        </DataTemplate>
+                    </controls:MasterDetailsView.ItemTemplate>
+
+                    <controls:MasterDetailsView.DetailsTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <SplitView x:Name="SplitView" PanePlacement="Right">
+                                    <SplitView.Content>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition></RowDefinition>
+                                                <RowDefinition Height="Auto"></RowDefinition>
+                                            </Grid.RowDefinitions>
+
+                                            <Grid Margin="10" Background="{StaticResource AppColor4}">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"></RowDefinition>
+                                                    <RowDefinition></RowDefinition>
+                                                </Grid.RowDefinitions>
+
+                                                <Border Margin="10,5" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">
+                                                    <TextBlock Margin="5" FontSize="18" Text="{Binding Title}"/>
+                                                </Border>
+
+                                                <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="10, 5"  Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
+                                            </Grid>
+
+                                            <Grid Grid.Row="1" Background="{StaticResource AppColor4}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <Border Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                    <rating:Rating Name="RatingControl" Margin="10" Maximum="5" ItemHeight="24" IsInteractive="True" StepFrequency="1" Value="0"></rating:Rating>
+                                                </Border>
+
+                                                <Button Grid.Column="1" Style="{StaticResource ButtonRed}" Height="48" Width="48">
+                                                    <SymbolIcon Symbol="Delete"></SymbolIcon>
+                                                </Button>
+
+                                            </Grid>
+                                        </Grid>
+                                    </SplitView.Content>
+
+                                    <SplitView.Pane>
+                                        <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 0, 0, 0">
+                                            <Pivot>
+                                                <PivotItem Header="Statistiche">
+                                                    <ScrollViewer HorizontalContentAlignment="Center" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                                        <StackPanel Margin="0, 15, 0, 0">
+                                                            <StackPanel.ChildrenTransitions>
+                                                                <TransitionCollection>
+                                                                    <ContentThemeTransition></ContentThemeTransition>
+                                                                </TransitionCollection>
+                                                            </StackPanel.ChildrenTransitions>
+
+                                                            <StackPanel Orientation="Vertical">
+                                                                <TextBlock>Data creazione</TextBlock>
+                                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                                    <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                                    <TextBlock x:Name="TxbStartDate" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                                                </StackPanel>
+                                                            </StackPanel>
+
+                                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                                                <TextBlock>Ultima revisione</TextBlock>
+                                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                                    <SymbolIcon Symbol="CalendarWeek" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                                    <TextBlock x:Name="TxbLastRevision" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                                                </StackPanel>
+                                                            </StackPanel>
+
+                                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                                                <TextBlock>Lunghezza testo</TextBlock>
+                                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                                    <SymbolIcon Symbol="AlignLeft" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                                    <TextBlock x:Name="TxbCharsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                                                </StackPanel>
+                                                            </StackPanel>
+
+                                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                                                <TextBlock>Parole utilizzate</TextBlock>
+                                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                                    <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                                    <TextBlock x:Name="TxbWordsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                                                </StackPanel>
+                                                            </StackPanel>
+
+                                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                                                <TextBlock>Numero versi</TextBlock>
+                                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                                    <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                                    <TextBlock x:Name="TxbLinesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                                                </StackPanel>
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </ScrollViewer>
+                                                </PivotItem>
+                                            </Pivot>
+                                        </Border>
+                                    </SplitView.Pane>
+                                </SplitView>
+                            </Grid>
+                        </DataTemplate>
+                    </controls:MasterDetailsView.DetailsTemplate>
+
+                    <controls:MasterDetailsView.NoSelectionContentTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Image Stretch="UniformToFill" Source="Assets/background.png"/>
+                                
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="50">
+                                    <StackPanel.Background>
+                                        <SolidColorBrush Color="White" Opacity="0.4"/>
+                                    </StackPanel.Background>
+
+                                    <Viewbox Width="50" Height="50">
+                                        <SymbolIcon Symbol="Comment" HorizontalAlignment="Center" VerticalAlignment="Center"></SymbolIcon>
+                                    </Viewbox>
+                                    <TextBlock Text="Nessuna poesia selezionata" Style="{StaticResource SubtitleTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </controls:MasterDetailsView.NoSelectionContentTemplate>
+                </controls:MasterDetailsView>
+                
+                <ProgressRing x:Name="ProgressRingPoetries" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Grid.Row="3" Visibility="Collapsed"/>
+            </Grid>
+        </custom:CustomPage.MainContent>
+
+        <custom:CustomPage.TopButtons>
+            <StackPanel HorizontalAlignment="Stretch">
+                <AutoSuggestBox HorizontalAlignment="Stretch" MinWidth="150" MaxWidth="300" Margin="10, 0" x:Name="SearchBox" PlaceholderText="Ricerca"></AutoSuggestBox>
+            </StackPanel>
+        </custom:CustomPage.TopButtons>
+    </custom:CustomPage>
+</Page>
