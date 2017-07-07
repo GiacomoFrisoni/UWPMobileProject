@@ -8,10 +8,8 @@
     xmlns:utilities="using:MyPoetry.Utilities"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:converters="using:MyPoetry.Converters"
-    xmlns:models="using:Microsoft.Toolkit.Uwp.SampleApp.Models"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:text1="using:Windows.UI.Xaml"
     mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -23,7 +21,10 @@
         <custom:CustomPage.MainContent>
 
             <Grid>
-                <controls:MasterDetailsView x:Name="MasterDetailView" HorizontalContentAlignment="Stretch" Loaded="MasterDetailView_Loaded" Background="#FFF9F9F9">
+                <controls:MasterDetailsView x:Name="MasterDetailView" HorizontalContentAlignment="Stretch" Loaded="MasterDetailView_Loaded" Background="#FFF9F9F9" BorderThickness="0">
+                    <controls:MasterDetailsView.MasterHeader>
+                        <AutoSuggestBox BorderThickness="0" x:Name="SearchBox" PlaceholderText="Ricerca" QueryIcon="Find"></AutoSuggestBox>
+                    </controls:MasterDetailsView.MasterHeader>
                     <controls:MasterDetailsView.ItemTemplate>
                         <DataTemplate>
                             <!--<Grid Height="120">
@@ -81,44 +82,89 @@
 
                     <controls:MasterDetailsView.DetailsTemplate>
                         <DataTemplate>
-                            <Grid>
-                                <SplitView x:Name="SplitView" PanePlacement="Right">
+                            <Grid  Background="{StaticResource AppColor4}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="48"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0"  Background="{StaticResource AppColor4}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <ComboBox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 5" Width="145">
+                                        <ComboBoxItem>
+                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                            </StackPanel>
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                            </StackPanel>
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                            </StackPanel>
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                            </StackPanel>
+                                        </ComboBoxItem>
+                                        <ComboBoxItem>
+                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
+                                            </StackPanel>
+                                        </ComboBoxItem>
+                                    </ComboBox>
+
+                                    <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                        <Button x:Name="BtnShare" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnShare_Click">
+                                            <SymbolIcon Symbol="ReShare" Foreground="Black"></SymbolIcon>
+                                        </Button>
+                                        <Button x:Name="BtnEdit" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnEdit_Click">
+                                            <SymbolIcon Symbol="Edit" Foreground="Black"></SymbolIcon>
+                                        </Button>
+                                        <Button x:Name="BtnDetails" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnDetails_Click">
+                                            <SymbolIcon Symbol="OpenPane" Foreground="Black"></SymbolIcon>
+                                        </Button>
+
+                                        <Button Style="{StaticResource ButtonRed}" Height="48" Width="50">
+                                            <SymbolIcon Symbol="Delete"></SymbolIcon>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                                
+                                <SplitView Grid.Row="1" x:Name="SplitView" PanePlacement="Right">
                                     <SplitView.Content>
-                                        <Grid>
+
+                                        <Grid Padding="10" Background="#FDFDFD">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition></RowDefinition>
                                                 <RowDefinition Height="Auto"></RowDefinition>
+                                                <RowDefinition></RowDefinition>
                                             </Grid.RowDefinitions>
 
-                                            <Grid Margin="10" Background="{StaticResource AppColor4}">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto"></RowDefinition>
-                                                    <RowDefinition></RowDefinition>
-                                                </Grid.RowDefinitions>
+                                            <Border Margin="10,5" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">
+                                                <TextBlock Margin="5" FontSize="20" Text="{Binding Title}"/>
+                                            </Border>
 
-                                                <Border Margin="10,5" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">
-                                                    <TextBlock Margin="5" FontSize="18" Text="{Binding Title}"/>
-                                                </Border>
-
-                                                <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="10, 5"  Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
-                                            </Grid>
-
-                                            <Grid Grid.Row="1" Background="{StaticResource AppColor4}">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition></ColumnDefinition>
-                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-
-
-                                                <Border Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                                    <rating:Rating Name="RatingControl" Margin="10" Maximum="5" ItemHeight="24" IsInteractive="True" StepFrequency="1" Value="0"></rating:Rating>
-                                                </Border>
-
-                                                <Button Grid.Column="1" Style="{StaticResource ButtonRed}" Height="48" Width="48">
-                                                    <SymbolIcon Symbol="Delete"></SymbolIcon>
-                                                </Button>
-
-                                            </Grid>
+                                            <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="10, 5"  Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
                                         </Grid>
                                     </SplitView.Content>
 
@@ -209,8 +255,37 @@
         </custom:CustomPage.MainContent>
 
         <custom:CustomPage.TopButtons>
-            <StackPanel HorizontalAlignment="Stretch">
-                <AutoSuggestBox HorizontalAlignment="Stretch" MinWidth="150" MaxWidth="300" Margin="10, 0" x:Name="SearchBox" PlaceholderText="Ricerca"></AutoSuggestBox>
+            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+                <Button Style="{StaticResource ButtonMenu}" Width="50" Height="48">
+                    <SymbolIcon Symbol="ShowBcc"></SymbolIcon>
+                    
+                    <Button.Flyout>
+                        <Flyout x:Name="FlyOrderby" Placement="Bottom">
+                            <Flyout.FlyoutPresenterStyle>
+                                <Style TargetType="FlyoutPresenter">
+                                    <Setter Property="ScrollViewer.HorizontalScrollMode" Value="Disabled"/>
+                                    <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+                                    <Setter Property="IsTabStop" Value="True"/>
+                                    <Setter Property="TabNavigation" Value="Cycle"/>
+                                </Style>
+                            </Flyout.FlyoutPresenterStyle>
+                            <StackPanel>
+                                <TextBlock Text="Ordina per..."></TextBlock>
+                                <ComboBox Name="CmbOrderby" Width="170" SelectionChanged="CmbOrderby_SelectionChanged">
+                                    <ComboBoxItem>Data creazione ↓</ComboBoxItem>
+                                    <ComboBoxItem>Data creazione ↑</ComboBoxItem>
+                                    <ComboBoxItem>Lunghezza ↓</ComboBoxItem>
+                                    <ComboBoxItem>Lunghezza ↑</ComboBoxItem>
+                                    <ComboBoxItem>Valutazione ↓</ComboBoxItem>
+                                    <ComboBoxItem>Valutazione ↑</ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button Style="{StaticResource ButtonMenu}" Width="50" Height="48">
+                    <SymbolIcon Symbol="Add"></SymbolIcon>
+                </Button>
             </StackPanel>
         </custom:CustomPage.TopButtons>
     </custom:CustomPage>
