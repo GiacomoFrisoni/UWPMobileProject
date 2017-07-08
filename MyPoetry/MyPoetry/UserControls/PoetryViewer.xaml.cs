@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using System;
+using Windows.UI.Xaml.Controls;
 
 namespace MyPoetry.UserControls
 {
@@ -7,10 +8,30 @@ namespace MyPoetry.UserControls
         public PoetryViewer()
         {
             this.InitializeComponent();
+
+            RatingControl.FilledImage = new Uri("ms-appx:///Assets/Rating/staron.png");
+            RatingControl.EmptyImage = new Uri("ms-appx:///Assets/Rating/staroff.png");
         }
 
 
-        public string Title { get; set; }
-        public string Body { get; set; }
+        private void BtnShare_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEdit_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDetails_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            SplitView.IsPaneOpen = !SplitView.IsPaneOpen;
+        }
+
+        private void BtnDelete_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
     }
 }

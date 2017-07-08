@@ -31,6 +31,7 @@ namespace MyPoetry.UserControls.Pages
         }
 
         public CustomPage GetPage { get { return MainContent; } }
+        private StackPanel SavedContent = null;
 
 
         #region LoadingMasterDetail
@@ -165,6 +166,39 @@ namespace MyPoetry.UserControls.Pages
 
                 default: return null;
             }
+        }
+
+        private void SearchBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            ProgressBarVisible(true);
+            MasterDetailView.ItemsSource = null;
+            MasterDetailView.ItemsSource = GetPoetriesWithCriteria(GetCriteriaFromOption(CmbOrderby.SelectedIndex), SearchBox.Text);
+            ProgressBarVisible(false);
+        }
+
+        private void MasterDetailView_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (MasterDetailView.ActualWidth < 700 && SavedContent == null)
+            {
+                SavedContent = StpBar;
+
+                StpBar.Children.Clear();
+                StpBar.Children.Add(CreateBackButton());
+            }
+            if (MasterDetailView.ActualWidth >= 700 && SavedContent != null)
+            {
+                StpBar = SavedContent;
+                SavedContent = null;
+            }
+        }
+
+        private Button CreateBackButton()
+        {
+            Button btn = new Button();
+            btn.Content = "<   Indietro";
+            btn.Style = App.Current.Resources["ButtonMenu"] as Style;
+            btn.Height = 48;
+            return btn;
         }
     }
 

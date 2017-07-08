@@ -52,9 +52,9 @@
             
             <!-- ListView Color Override -->
             <SolidColorBrush x:Key="SystemControlHighlightListLowBrush" x:Name="SystemControlHighlightListLowBrush" Color="#11FFFFFF"></SolidColorBrush>
-            <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush" x:Name="SystemControlHighlightListAccentLowBrush" Color="#FF20B2AA"></SolidColorBrush>
-            <SolidColorBrush x:Key="SystemControlHighlightListAccentMediumBrush" x:Name="SystemControlHighlightListAccentMediumBrush" Color="#FF1da49c"></SolidColorBrush>
-            <SolidColorBrush x:Key="SystemControlHighlightListAccentHighBrush" x:Name="SystemControlHighlightListAccentHighBrush" Color="#FF1da49c"></SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush" x:Name="SystemControlHighlightListAccentLowBrush" Color="#FFDEDEDE"></SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListAccentMediumBrush" x:Name="SystemControlHighlightListAccentMediumBrush" Color="#FFDEDEDE"></SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListAccentHighBrush" x:Name="SystemControlHighlightListAccentHighBrush" Color="#FFDEDEDE"></SolidColorBrush>
             
             <!-- TextBox Focus Override -->
             <SolidColorBrush x:Key="SystemControlBackgroundChromeWhiteBrush" x:Name="SystemControlBackgroundChromeWhiteBrush" Color="#AAFFFFFF"></SolidColorBrush>
@@ -839,6 +839,63 @@
                 </Setter>
             </Style>
 
+            <!-- AutoSuggestBox, No border-->
+            <Style TargetType="AutoSuggestBox">
+                <Setter Property="VerticalAlignment" Value="Top" />
+                <Setter Property="IsTabStop" Value="False" />
+                <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="TextBoxStyle" Value="{StaticResource AutoSuggestBoxTextBoxStyle}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="AutoSuggestBox">
+                            <Grid>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="Orientation">
+                                        <VisualState x:Name="Landscape"/>
+                                        <VisualState x:Name="Portrait"/>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <TextBox x:Name="TextBox"
+                                         Style="{TemplateBinding TextBoxStyle}"
+                                         PlaceholderText="{TemplateBinding PlaceholderText}"
+                                         Header="{TemplateBinding Header}"
+                                         Width="{TemplateBinding Width}"
+                                         BorderThickness="0"
+                                         BorderBrush="Transparent"
+                                         ScrollViewer.BringIntoViewOnFocusChange="False"
+                                         Canvas.ZIndex="0"
+                                         Margin="0"
+                                         Padding="15, 10"
+                                         DesiredCandidateWindowAlignment="BottomEdge"/>
+                                
+                                <Popup x:Name="SuggestionsPopup">
+                                    <Border x:Name="SuggestionsContainer" BorderThickness="0" BorderBrush="Transparent">
+                                        <ListView
+                                            x:Name="SuggestionsList"
+                                            Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
+                                            BorderThickness="0"
+                                            BorderBrush="Transparent"
+                                            DisplayMemberPath="{TemplateBinding DisplayMemberPath}"
+                                            IsItemClickEnabled="True"
+                                            ItemTemplate="{TemplateBinding ItemTemplate}"
+                                            ItemTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                            ItemContainerStyle="{TemplateBinding ItemContainerStyle}"
+                                            MaxHeight="{ThemeResource AutoSuggestListMaxHeight}"
+                                            Margin="{ThemeResource AutoSuggestListMargin}"
+                                            Padding="{ThemeResource AutoSuggestListPadding}">
+                                            <ListView.ItemContainerTransitions>
+                                                <TransitionCollection />
+                                            </ListView.ItemContainerTransitions>
+                                        </ListView>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
 
             <Style TargetType="ListViewItemPresenter">
                 <Setter Property="SelectedBackground" Value="Black"></Setter>
@@ -1367,6 +1424,9 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
+            
+
 
         </ResourceDictionary>
     </Application.Resources>

@@ -21,48 +21,14 @@
         <custom:CustomPage.MainContent>
 
             <Grid>
-                <controls:MasterDetailsView x:Name="MasterDetailView" HorizontalContentAlignment="Stretch" Loaded="MasterDetailView_Loaded" Background="#FFF9F9F9" BorderThickness="0">
+                <controls:MasterDetailsView MasterPaneWidth="300" SizeChanged="MasterDetailView_SizeChanged" Margin="0" Padding="0" x:Name="MasterDetailView" HorizontalContentAlignment="Stretch" Loaded="MasterDetailView_Loaded" Background="#FFF9F9F9" BorderThickness="0">
                     <controls:MasterDetailsView.MasterHeader>
-                        <AutoSuggestBox BorderThickness="0" x:Name="SearchBox" PlaceholderText="Ricerca" QueryIcon="Find"></AutoSuggestBox>
+                        <AutoSuggestBox Margin="-15, 0" Height="40" VerticalContentAlignment="Center" x:Name="SearchBox" PlaceholderText="Ricerca" QueryIcon="Find" TextChanged="SearchBox_TextChanged"></AutoSuggestBox>
                     </controls:MasterDetailsView.MasterHeader>
+                    
                     <controls:MasterDetailsView.ItemTemplate>
                         <DataTemplate>
-                            <!--<Grid Height="120">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-
-                                <StackPanel Margin="10">
-                                    <Image Width="10" Height="10" Source="Assets/Rating/staron.png"></Image>
-                                    <Image Width="10" Height="10" Source="Assets/Rating/staron.png"></Image>
-                                    <Image Width="10" Height="10" Source="Assets/Rating/staron.png"></Image>
-                                    <Image Width="10" Height="10" Source="Assets/Rating/staroff.png"></Image>
-                                    <Image Width="10" Height="10" Source="Assets/Rating/staroff.png"></Image>
-                                </StackPanel>
-
-                                <Grid Grid.Column="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-
-
-                                    <Grid Grid.Row="0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition></ColumnDefinition>
-                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-
-                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding Title}" />
-                                        <TextBlock Margin="5, 0, 10, 0" Text="{Binding CreationDate, Converter={StaticResource DateToStringFormatConverter}}" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="{StaticResource AppColor6}" FontSize="11"></TextBlock>
-                                    </Grid>
-
-                                    <RichEditBox Grid.Row="1" Padding="0" Margin="0, 2" Foreground="Gray" Style="{StaticResource RichEditBoxStyle}" Height="85" utilities:RtfText.RichText="{Binding Body}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent"/>
-                                </Grid>
-                            </Grid>-->
-
-                            <Grid Margin="5" Background="#FFF9F9F9">
+                            <Grid>
                                 <StackPanel Margin="10, 5">
                                     <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding Title}" />
                                     <StackPanel Orientation="Horizontal">
@@ -82,151 +48,7 @@
 
                     <controls:MasterDetailsView.DetailsTemplate>
                         <DataTemplate>
-                            <Grid  Background="{StaticResource AppColor4}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="48"></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-
-                                <Grid Grid.Row="0"  Background="{StaticResource AppColor4}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-
-
-                                    <ComboBox VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10, 5" Width="145">
-                                        <ComboBoxItem>
-                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                            </StackPanel>
-                                        </ComboBoxItem>
-                                        <ComboBoxItem>
-                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                            </StackPanel>
-                                        </ComboBoxItem>
-                                        <ComboBoxItem>
-                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                            </StackPanel>
-                                        </ComboBoxItem>
-                                        <ComboBoxItem>
-                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                            </StackPanel>
-                                        </ComboBoxItem>
-                                        <ComboBoxItem>
-                                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                                <SymbolIcon Symbol="Favorite" Foreground="{StaticResource AppColor2}"></SymbolIcon>
-                                            </StackPanel>
-                                        </ComboBoxItem>
-                                    </ComboBox>
-
-                                    <StackPanel Grid.Column="2" Orientation="Horizontal">
-                                        <Button x:Name="BtnShare" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnShare_Click">
-                                            <SymbolIcon Symbol="ReShare" Foreground="Black"></SymbolIcon>
-                                        </Button>
-                                        <Button x:Name="BtnEdit" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnEdit_Click">
-                                            <SymbolIcon Symbol="Edit" Foreground="Black"></SymbolIcon>
-                                        </Button>
-                                        <Button x:Name="BtnDetails" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnDetails_Click">
-                                            <SymbolIcon Symbol="OpenPane" Foreground="Black"></SymbolIcon>
-                                        </Button>
-
-                                        <Button Style="{StaticResource ButtonRed}" Height="48" Width="50">
-                                            <SymbolIcon Symbol="Delete"></SymbolIcon>
-                                        </Button>
-                                    </StackPanel>
-                                </Grid>
-                                
-                                <SplitView Grid.Row="1" x:Name="SplitView" PanePlacement="Right">
-                                    <SplitView.Content>
-
-                                        <Grid Padding="10" Background="#FDFDFD">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto"></RowDefinition>
-                                                <RowDefinition></RowDefinition>
-                                            </Grid.RowDefinitions>
-
-                                            <Border Margin="10,5" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">
-                                                <TextBlock Margin="5" FontSize="20" Text="{Binding Title}"/>
-                                            </Border>
-
-                                            <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="10, 5"  Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
-                                        </Grid>
-                                    </SplitView.Content>
-
-                                    <SplitView.Pane>
-                                        <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 0, 0, 0">
-                                            <Pivot>
-                                                <PivotItem Header="Statistiche">
-                                                    <ScrollViewer HorizontalContentAlignment="Center" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                                        <StackPanel Margin="0, 15, 0, 0">
-                                                            <StackPanel.ChildrenTransitions>
-                                                                <TransitionCollection>
-                                                                    <ContentThemeTransition></ContentThemeTransition>
-                                                                </TransitionCollection>
-                                                            </StackPanel.ChildrenTransitions>
-
-                                                            <StackPanel Orientation="Vertical">
-                                                                <TextBlock>Data creazione</TextBlock>
-                                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                                                    <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                                                    <TextBlock x:Name="TxbStartDate" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                                                </StackPanel>
-                                                            </StackPanel>
-
-                                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                                                <TextBlock>Ultima revisione</TextBlock>
-                                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                                                    <SymbolIcon Symbol="CalendarWeek" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                                                    <TextBlock x:Name="TxbLastRevision" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                                                </StackPanel>
-                                                            </StackPanel>
-
-                                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                                                <TextBlock>Lunghezza testo</TextBlock>
-                                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                                                    <SymbolIcon Symbol="AlignLeft" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                                                    <TextBlock x:Name="TxbCharsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                                                </StackPanel>
-                                                            </StackPanel>
-
-                                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                                                <TextBlock>Parole utilizzate</TextBlock>
-                                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                                                    <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                                                    <TextBlock x:Name="TxbWordsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                                                </StackPanel>
-                                                            </StackPanel>
-
-                                                            <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                                                <TextBlock>Numero versi</TextBlock>
-                                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                                                    <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                                                    <TextBlock x:Name="TxbLinesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                                                </StackPanel>
-                                                            </StackPanel>
-                                                        </StackPanel>
-                                                    </ScrollViewer>
-                                                </PivotItem>
-                                            </Pivot>
-                                        </Border>
-                                    </SplitView.Pane>
-                                </SplitView>
-                            </Grid>
+                            <custom:PoetryViewer></custom:PoetryViewer>
                         </DataTemplate>
                     </controls:MasterDetailsView.DetailsTemplate>
 
@@ -255,7 +77,7 @@
         </custom:CustomPage.MainContent>
 
         <custom:CustomPage.TopButtons>
-            <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
+            <StackPanel x:Name="StpBar" HorizontalAlignment="Stretch" Orientation="Horizontal">
                 <Button Style="{StaticResource ButtonMenu}" Width="50" Height="48">
                     <SymbolIcon Symbol="ShowBcc"></SymbolIcon>
                     

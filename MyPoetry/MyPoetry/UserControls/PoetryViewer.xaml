@@ -4,22 +4,125 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MyPoetry.UserControls"
     xmlns:utilities="using:MyPoetry.Utilities"
+    xmlns:converters="using:MyPoetry.Converters"
+    xmlns:rating="using:XamlBrewer.Uwp.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="500"
     d:DesignWidth="400">
 
-    <Grid Margin="10" Background="{StaticResource AppColor4}">
+    <UserControl.Resources>
+        <converters:DateFormatConverter x:Name="DateToStringFormatConverter"/>
+    </UserControl.Resources>
+
+    <Grid  Background="{StaticResource AppColor4}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="48"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Border Margin="10,5" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">
-            <TextBlock Margin="5" FontSize="18" Text="{Binding Path=Title}"/>
-        </Border>
+        <Grid Grid.Row="0"  Background="{StaticResource AppColor4}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-        <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="10, 5"  Grid.Row="1" utilities:RtfText.RichText="{Binding Path=Body}" BorderBrush="Transparent" Background="Transparent"/>
+
+            <rating:Rating Name="RatingControl" Margin="20, 10" Maximum="5" ItemHeight="20" IsInteractive="True" StepFrequency="1" Value="0"></rating:Rating>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button x:Name="BtnShare" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnShare_Click">
+                    <SymbolIcon Symbol="ReShare" Foreground="Black"></SymbolIcon>
+                </Button>
+                <Button x:Name="BtnEdit" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnEdit_Click">
+                    <SymbolIcon Symbol="Edit" Foreground="Black"></SymbolIcon>
+                </Button>
+                <Button x:Name="BtnDetails" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnDetails_Click">
+                    <SymbolIcon Symbol="OpenPane" Foreground="Black"></SymbolIcon>
+                </Button>
+
+                <Button x:Name="BtnDelete" Style="{StaticResource ButtonRed}" Height="48" Width="50" Click="BtnDelete_Click">
+                    <SymbolIcon Symbol="Delete"></SymbolIcon>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <SplitView Grid.Row="1" x:Name="SplitView" PanePlacement="Right">
+            <SplitView.Content>
+
+                <Grid Padding="10" Background="#FDFDFD">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Border Margin="10,5" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">
+                        <TextBlock Margin="5" FontSize="20" Text="{Binding Title}"/>
+                    </Border>
+
+                    <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="10, 5"  Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
+                </Grid>
+            </SplitView.Content>
+
+            <SplitView.Pane>
+                <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 1, 1, 0">
+                    <Pivot>
+                        <PivotItem Header="Statistiche">
+                            <ScrollViewer HorizontalContentAlignment="Center" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <StackPanel Margin="0, 15, 0, 0">
+                                    <StackPanel.ChildrenTransitions>
+                                        <TransitionCollection>
+                                            <ContentThemeTransition></ContentThemeTransition>
+                                        </TransitionCollection>
+                                    </StackPanel.ChildrenTransitions>
+
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock>Data creazione</TextBlock>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                            <TextBlock Text="{Binding CreationDate, Converter={StaticResource DateToStringFormatConverter}}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                        <TextBlock>Ultima revisione</TextBlock>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <SymbolIcon Symbol="CalendarWeek" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                            <TextBlock Text="{Binding RevisionDate, Converter={StaticResource DateToStringFormatConverter}}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                        <TextBlock>Lunghezza testo</TextBlock>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <SymbolIcon Symbol="AlignLeft" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                            <TextBlock Text="{Binding CharactersNumber}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                        <TextBlock>Parole utilizzate</TextBlock>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                            <TextBlock Text="{Binding WordsNumber}"  Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                        <TextBlock>Numero versi</TextBlock>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                            <TextBlock Text="{Binding VersesNumber}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </PivotItem>
+                    </Pivot>
+                </Border>
+            </SplitView.Pane>
+        </SplitView>
     </Grid>
 </UserControl>
