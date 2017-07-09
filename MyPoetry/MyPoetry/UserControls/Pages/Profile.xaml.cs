@@ -27,7 +27,6 @@ namespace MyPoetry.UserControls.Pages
         public Profile()
         {
             this.InitializeComponent();
-            AdaptiveGridAdvanced.IsEnabled = false;
         }
 
         public CustomPage GetPage { get { return MainContent; } }
@@ -35,13 +34,13 @@ namespace MyPoetry.UserControls.Pages
 
         public class InfoViewer
         {
-            public string Title { get; set; }
+            public string Description { get; set; }
             public Symbol Icon { get; set; }
             public string Value { get; set; }
 
             public InfoViewer(string title, Symbol icon, string value)
             {
-                Title = title;
+                Description = title;
                 Icon = icon;
                 Value = value;
             }
@@ -81,9 +80,8 @@ namespace MyPoetry.UserControls.Pages
 
 
             //AdaptiveGrid
-            AdaptiveGridAdvanced.IsEnabled = false;
-            AdaptiveGridAdvanced.ItemsSource = null;
-            AdaptiveGridAdvanced.ItemsSource = GenerateAdvancedInfo();
+            GridView.ItemsSource = null;
+            GridView.ItemsSource = GenerateAdvancedInfo();
 
 
 
@@ -169,10 +167,12 @@ namespace MyPoetry.UserControls.Pages
         private List<InfoViewer> GenerateAdvancedInfo()
         {
             List<InfoViewer> info = new List<InfoViewer>();
-            info.Add(new InfoViewer("Poesie scritte", Symbol.PreviewLink, UserHandler.Instance.GetPoetries().Count.ToString()));
-            info.Add(new InfoViewer("Lunghezza complessiva", Symbol.Font, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.CharactersNumber).ToString()));
-            info.Add(new InfoViewer("Parole utilizzate", Symbol.Font, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.WordsNumber).ToString()));
-            info.Add(new InfoViewer("Numero versi", Symbol.ShowResults, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.VersesNumber).ToString()));
+            info.Add(new InfoViewer("Poesie fin'ora scritte", Symbol.PreviewLink, UserHandler.Instance.GetPoetries().Count.ToString()));
+            info.Add(new InfoViewer("I caratteri immessi fino ad ora", Symbol.Font, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.CharactersNumber).ToString()));
+            info.Add(new InfoViewer("Le parole nelle tue creazioni", Symbol.Font, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.WordsNumber).ToString()));
+            info.Add(new InfoViewer("Numero versi complessivi", Symbol.ShowResults, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.VersesNumber).ToString()));
+            info.Add(new InfoViewer("La poesia più lunga", Symbol.List, UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CharactersNumber).First().Title));
+            info.Add(new InfoViewer("La poesia più corta", Symbol.Remove, UserHandler.Instance.GetPoetries().OrderBy(poetry => poetry.CharactersNumber).First().Title));
 
             return info;
         }
@@ -202,6 +202,12 @@ namespace MyPoetry.UserControls.Pages
         private void BtnPhoto_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void GridView_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var panel = (ItemsWrapGrid)GridView.ItemsPanelRoot;
+            panel.ItemWidth = e.NewSize.Width / Math.Truncate(e.NewSize.Width / 320);
         }
     }
 }

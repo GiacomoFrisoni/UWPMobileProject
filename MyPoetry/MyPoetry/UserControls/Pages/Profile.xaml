@@ -6,6 +6,7 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -27,6 +28,7 @@
                     </PivotItem>
 
                     <PivotItem Header="Carriera">
+
                         <ScrollViewer>
                             <StackPanel Margin="0, 15, 0, 0">
                                 <TextBlock FontSize="20" Typography.Capitals="SmallCaps" FontWeight="Medium" x:Name="TxbUser" Style="{StaticResource SubtitleTextBlockStyle}"/>
@@ -47,19 +49,22 @@
                                     </StackPanel>
                                 </StackPanel>
 
-                                <controls:AdaptiveGridView Margin="0, 45, 0, 0" x:Name="AdaptiveGridAdvanced" HorizontalAlignment="Left" VerticalAlignment="Top" ItemHeight="80" DesiredWidth="300" IsItemClickEnabled="False" IsEnabled="False">
-                                    <controls:AdaptiveGridView.ItemTemplate>
+
+                                <GridView x:Name="GridView" Margin="0, 45, 0, 0" SelectionMode="None" SizeChanged="GridView_SizeChanged">
+                                    <GridView.ItemTemplate>
                                         <DataTemplate>
-                                            <StackPanel Orientation="Vertical">
-                                                <TextBlock Text="{Binding Path=Title}"></TextBlock>
-                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                                    <SymbolIcon Symbol="{Binding Path=Icon}" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                                    <TextBlock Text="{Binding Path=Value}" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                                </StackPanel>
-                                            </StackPanel>
+                                            <custom:DataViewer></custom:DataViewer>
                                         </DataTemplate>
-                                    </controls:AdaptiveGridView.ItemTemplate>
-                                </controls:AdaptiveGridView>
+                                    </GridView.ItemTemplate>
+                                    <GridView.ItemContainerStyle>
+                                        <Style TargetType="GridViewItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                                            <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                        </Style>
+                                    </GridView.ItemContainerStyle>
+                                </GridView>
                             </StackPanel>
                         </ScrollViewer>
 
