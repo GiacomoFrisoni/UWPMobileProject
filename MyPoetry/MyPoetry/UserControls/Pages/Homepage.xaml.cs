@@ -31,8 +31,6 @@ namespace MyPoetry.UserControls.Pages
         }
 
         public CustomPage GetPage { get { return MainContent; } }
-        private StackPanel SavedContent = null;
-
 
         #region LoadingMasterDetail
         private void ProgressBarVisible(bool visible)
@@ -113,55 +111,56 @@ namespace MyPoetry.UserControls.Pages
             }
         }
 
-        private async Task<List<Poetry>> GetPoetriesWithCriteria (Criteria criteria, string text)
+        private List<Poetry> GetPoetriesWithCriteria (Criteria criteria, string text)
         {
+
             switch(criteria)
             {
                 case Criteria.Date:
                     {
-                        return await App.MobileService.GetTable<Poetry>()
+                        return UserHandler.Instance.GetPoetries()
                         .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
                         .OrderBy(poetry => poetry.CreationDate)
-                        .ToListAsync();
+                        .ToList();
                     }
 
                 case Criteria.DateDesc:
                     {
-                        return await App.MobileService.GetTable<Poetry>()
+                        return UserHandler.Instance.GetPoetries()
                         .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
                         .OrderByDescending(poetry => poetry.CreationDate)
-                        .ToListAsync();
+                        .ToList();
                     }
 
                 case Criteria.Length:
                     {
-                        return await App.MobileService.GetTable<Poetry>()
+                        return UserHandler.Instance.GetPoetries()
                         .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
                         .OrderBy(poetry => poetry.CharactersNumber)
-                        .ToListAsync();
+                        .ToList();
                     }
 
                 case Criteria.LengthDesc:
                     {
-                        return await App.MobileService.GetTable<Poetry>()
+                        return UserHandler.Instance.GetPoetries()
                         .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
                         .OrderByDescending(poetry => poetry.CharactersNumber)
-                        .ToListAsync();
+                        .ToList();
                     }
                 case Criteria.Rating:
                     {
-                        return await App.MobileService.GetTable<Poetry>()
+                        return UserHandler.Instance.GetPoetries()
                         .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
                         .OrderBy(poetry => poetry.Rating)
-                        .ToListAsync();
+                        .ToList();
                     }
 
                 case Criteria.RatingDesc:
                     {
-                        return await App.MobileService.GetTable<Poetry>()
+                        return UserHandler.Instance.GetPoetries()
                         .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
                         .OrderByDescending(poetry => poetry.Rating)
-                        .ToListAsync();
+                        .ToList();
                     }
 
                 default: return null;
@@ -176,29 +175,66 @@ namespace MyPoetry.UserControls.Pages
             ProgressBarVisible(false);
         }
 
-        private void MasterDetailView_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if (MasterDetailView.ActualWidth < 700 && SavedContent == null)
-            {
-                SavedContent = StpBar;
 
-                StpBar.Children.Clear();
-                StpBar.Children.Add(CreateBackButton());
-            }
-            if (MasterDetailView.ActualWidth >= 700 && SavedContent != null)
+        public void GoForward()
+        {
+            if (MasterDetailView.Items.Count > 0)
             {
-                StpBar = SavedContent;
-                SavedContent = null;
+                bool isNextGood = false;
+                Poetry selectedPoetry = MasterDetailView.Items[MasterDetailView.Items.Count - 1] as Poetry;
+
+                foreach (var v in MasterDetailView.Items)
+                {
+                    if (isNextGood)
+                    {
+                        selectedPoetry = v as Poetry;
+                        break;
+                    }
+
+                    if (v == MasterDetailView.SelectedItem)
+                        isNextGood = true;
+                }
+
+                MasterDetailView.SelectedItem = selectedPoetry;
             }
         }
 
-        private Button CreateBackButton()
+        public void GoBack()
         {
-            Button btn = new Button();
-            btn.Content = "<   Indietro";
-            btn.Style = App.Current.Resources["ButtonMenu"] as Style;
-            btn.Height = 48;
-            return btn;
+            if (MasterDetailView.Items.Count > 0)
+            {
+                bool isPrevGood = false;
+                Poetry selectedPoetry = MasterDetailView.Items[0] as Poetry;
+
+                foreach (var v in MasterDetailView.Items)
+                {
+                    if (v == MasterDetailView.SelectedItem)
+                        isPrevGood = true;
+
+                    if (isPrevGood == false)
+                        selectedPoetry = v as Poetry;
+                    else
+                        break;
+                }
+
+                MasterDetailView.SelectedItem = selectedPoetry;
+            }
+        }
+
+
+        private void PoetryViewer_BackEvent(object sender, EventArgs e)
+        {
+            GoBack();
+        }
+
+        private void PoetryViewer_ForwardEvent(object sender, EventArgs e)
+        {
+            GoForward();
+        }
+
+        private void MasterDetailView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 

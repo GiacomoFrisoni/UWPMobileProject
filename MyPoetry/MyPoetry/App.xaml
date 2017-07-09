@@ -866,7 +866,7 @@
                                          ScrollViewer.BringIntoViewOnFocusChange="False"
                                          Canvas.ZIndex="0"
                                          Margin="0"
-                                         Padding="15, 10"
+                                         Padding="8, 10"
                                          DesiredCandidateWindowAlignment="BottomEdge"/>
                                 
                                 <Popup x:Name="SuggestionsPopup">
@@ -897,6 +897,7 @@
             </Style>
 
 
+            
             <Style TargetType="ListViewItemPresenter">
                 <Setter Property="SelectedBackground" Value="Black"></Setter>
                 <Setter Property="SelectedPointerOverBackground" Value="Black"></Setter>
@@ -1424,9 +1425,6 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-
-            
-
 
         </ResourceDictionary>
     </Application.Resources>

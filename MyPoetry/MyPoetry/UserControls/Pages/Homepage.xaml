@@ -21,9 +21,9 @@
         <custom:CustomPage.MainContent>
 
             <Grid>
-                <controls:MasterDetailsView MasterPaneWidth="300" SizeChanged="MasterDetailView_SizeChanged" Margin="0" Padding="0" x:Name="MasterDetailView" HorizontalContentAlignment="Stretch" Loaded="MasterDetailView_Loaded" Background="#FFF9F9F9" BorderThickness="0">
+                <controls:MasterDetailsView SelectionChanged="MasterDetailView_SelectionChanged" MasterPaneWidth="300" Margin="0" Padding="0" x:Name="MasterDetailView" HorizontalContentAlignment="Stretch" Loaded="MasterDetailView_Loaded" Background="#FFF9F9F9" BorderThickness="0">
                     <controls:MasterDetailsView.MasterHeader>
-                        <AutoSuggestBox Margin="-15, 0" Height="40" VerticalContentAlignment="Center" x:Name="SearchBox" PlaceholderText="Ricerca" QueryIcon="Find" TextChanged="SearchBox_TextChanged"></AutoSuggestBox>
+                        <AutoSuggestBox Margin="-10, 0" Height="40" VerticalContentAlignment="Center" x:Name="SearchBox" PlaceholderText="Ricerca" QueryIcon="Find" TextChanged="SearchBox_TextChanged"></AutoSuggestBox>
                     </controls:MasterDetailsView.MasterHeader>
                     
                     <controls:MasterDetailsView.ItemTemplate>
@@ -48,7 +48,7 @@
 
                     <controls:MasterDetailsView.DetailsTemplate>
                         <DataTemplate>
-                            <custom:PoetryViewer></custom:PoetryViewer>
+                            <custom:PoetryViewer BackEvent="PoetryViewer_BackEvent" ForwardEvent="PoetryViewer_ForwardEvent"></custom:PoetryViewer>
                         </DataTemplate>
                     </controls:MasterDetailsView.DetailsTemplate>
 
@@ -71,8 +71,8 @@
                         </DataTemplate>
                     </controls:MasterDetailsView.NoSelectionContentTemplate>
                 </controls:MasterDetailsView>
-                
-                <ProgressRing x:Name="ProgressRingPoetries" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Grid.Row="3" Visibility="Collapsed"/>
+
+                <ProgressRing x:Name="ProgressRingPoetries" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Visibility="Collapsed"/>
             </Grid>
         </custom:CustomPage.MainContent>
 

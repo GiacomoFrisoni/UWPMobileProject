@@ -56,13 +56,24 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
 
                     <Border Margin="10,5" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">
                         <TextBlock Margin="5" FontSize="20" Text="{Binding Title}"/>
                     </Border>
-
+                    
                     <RichEditBox Style="{StaticResource RichEditBoxStyle}" Margin="10, 5"  Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Button x:Name="BtnBack" Grid.Column="0" Margin="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Style="{StaticResource ButtonBlue}" Content="-  Indietro" Click="BtnBack_Click"></Button>
+                        <Button x:Name="BtnForward" Grid.Column="1" Margin="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Style="{StaticResource ButtonBlue}" Content="Avanti   -" Click="BtnForward_Click"></Button>
+                    </Grid>
                 </Grid>
             </SplitView.Content>
 

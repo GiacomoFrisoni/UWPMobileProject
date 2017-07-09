@@ -136,5 +136,11 @@ namespace MyPoetry
             // TODO: Save applicaiton state and stop any background activity
             deferral.Complete();
         }
+
+        private void MasterList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListView list = sender as ListView;
+            list.ScrollIntoView(list.SelectedItem);
+        }
     }
 }
