@@ -196,6 +196,7 @@ namespace MyPoetry.UserControls.Pages
                 }
 
                 MasterDetailView.SelectedItem = selectedPoetry;
+                
             }
         }
 
@@ -234,7 +235,6 @@ namespace MyPoetry.UserControls.Pages
 
         private void MasterDetailView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
     }
 

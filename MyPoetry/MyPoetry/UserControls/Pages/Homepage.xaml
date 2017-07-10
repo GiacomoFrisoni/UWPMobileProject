@@ -21,11 +21,12 @@
         <custom:CustomPage.MainContent>
 
             <Grid>
-                <controls:MasterDetailsView SelectionChanged="MasterDetailView_SelectionChanged" MasterPaneWidth="300" Margin="0" Padding="0" x:Name="MasterDetailView" HorizontalContentAlignment="Stretch" Loaded="MasterDetailView_Loaded" Background="#FFF9F9F9" BorderThickness="0">
+
+                <controls:MasterDetailsView SelectionChanged="MasterDetailView_SelectionChanged" MasterPaneWidth="300" Margin="0" Padding="0" x:Name="MasterDetailView" HorizontalContentAlignment="Stretch" Loaded="MasterDetailView_Loaded" Background="#FFF9F9F9" BorderThickness="0" BorderBrush="LightGray">
                     <controls:MasterDetailsView.MasterHeader>
-                        <AutoSuggestBox Margin="-10, 0" Height="40" VerticalContentAlignment="Center" x:Name="SearchBox" PlaceholderText="Ricerca" QueryIcon="Find" TextChanged="SearchBox_TextChanged"></AutoSuggestBox>
+                        <AutoSuggestBox Margin="-10, 0" Height="48" VerticalContentAlignment="Center" x:Name="SearchBox" PlaceholderText="Ricerca" QueryIcon="Find" TextChanged="SearchBox_TextChanged"></AutoSuggestBox>
                     </controls:MasterDetailsView.MasterHeader>
-                    
+
                     <controls:MasterDetailsView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
@@ -38,7 +39,7 @@
                                         <TextBlock Margin="10, 0, 0, 0" Text="&#xE113;" Foreground="{StaticResource AppColor6}" FontFamily="Segoe UI Symbol" VerticalAlignment="Center" FontSize="11"></TextBlock>
                                         <TextBlock Text="{Binding Rating}" Margin="2, 0" Foreground="{StaticResource AppColor6}" VerticalAlignment="Center" FontSize="11"></TextBlock>
                                     </StackPanel>
-                                    <RichEditBox Padding="0" Margin="-1, 5" Foreground="Gray" Style="{StaticResource RichEditBoxStyle}" MaxHeight="80" utilities:RtfText.RichText="{Binding Body}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent"/>
+                                    <RichEditBox Padding="0" Margin="-1, 5" Style="{StaticResource RichEditBoxStyle}" MaxHeight="80" utilities:RtfText.RichText="{Binding Body}" ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent"/>
                                 </StackPanel>
 
                                 <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Transparent"></Rectangle>
@@ -56,7 +57,7 @@
                         <DataTemplate>
                             <Grid>
                                 <Image Stretch="UniformToFill" Source="Assets/background.png"/>
-                                
+
                                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="50">
                                     <StackPanel.Background>
                                         <SolidColorBrush Color="White" Opacity="0.4"/>
