@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.ApplicationModel.Resources;
+using Windows.Foundation;
 using Windows.Storage;
 using Windows.System;
 using Windows.UI.Popups;
@@ -187,6 +188,34 @@ namespace MyPoetry.UserControls.Pages
         }
         #endregion
 
+
+
+        private void GetLineNumber(RichEditBox myRichEditBox)
+        {
+            string text;
+
+            myRichEditBox.Document.GetText(TextGetOptions.AdjustCrlf, out text);
+
+            // Get the text range for the very last character
+            var range = myRichEditBox.Document.GetRange(text.Length - 1, text.Length);
+
+            Rect rectangle;
+            int hitTest;
+
+            // Get the bounding rectangle for the last character
+            range.GetRect(PointOptions.NoHorizontalScroll, out rectangle, out hitTest);
+
+            //
+            // Rectangle Height gives the Line Pixel Height
+            // Rectangle Top gives the bottom position of the last character
+            var lineNumber = Math.Floor(rectangle.Bottom / rectangle.Height);
+
+            if (LineNumbers.Items.Contains(lineNumber) == false)
+            {
+                LineNumbers.Items.Add(lineNumber);
+            }
+        }
+
         private void RebText_TextChanged(object sender, RoutedEventArgs e)
         {
             // Update statistics
@@ -212,6 +241,16 @@ namespace MyPoetry.UserControls.Pages
             TxbCharsNumber.Text = n_chars.ToString();
             TxbWordsNumber.Text = n_words.ToString();
             TxbLinesNumber.Text = n_lines.ToString();
+
+            GetLineNumber(RebText);
+
+            if (n_lines < LineNumbers.Items.Count)
+            {
+                int toRemove = LineNumbers.Items.Count - n_lines;
+
+                for (int i = 0; i < toRemove; i++)
+                    LineNumbers.Items.RemoveAt(LineNumbers.Items.Count - 1);
+            }
         }
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -330,6 +369,11 @@ namespace MyPoetry.UserControls.Pages
             {
                 messageDialog = new MessageDialog(loader.GetString("Err_MissingData"), loader.GetString("Warning"));
             }
+        }
+
+        private void RebText_TextChanged_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

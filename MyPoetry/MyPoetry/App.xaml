@@ -64,13 +64,6 @@
             <SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="#FF30C2BA"></SolidColorBrush>
             <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="#FF30C2BA"></SolidColorBrush>
             
-            
-
-            <!-- TextBox Color Override 
-            <SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="{StaticResource AppColor1}"></SolidColorBrush>
-            <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="{StaticResource AppColor1}"></SolidColorBrush>
-            <SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush" Color="#FF20B2AA"></SolidColorBrush>
-            <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="#FF20B2AA"></SolidColorBrush>-->
 
             <!-- BLUE BUTTON -->
             <Style x:Key="ButtonBlue" x:Name="ButtonBlue" TargetType="Button">
@@ -295,7 +288,7 @@
                                         <VisualState x:Name="PointerOver">
                                             <Storyboard>
                                                 <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="#11FFFFFF" />
+                                                    <DiscreteObjectKeyFrame KeyTime="0" Value="#22FFFFFF" />
                                                 </ObjectAnimationUsingKeyFrames>
                                                 <PointerUpThemeAnimation Storyboard.TargetName="RootGrid" />
                                             </Storyboard>
@@ -587,6 +580,7 @@
             </Style>
 
 
+            
             <!-- TEXTBOX CENTER ALIGN -->
             <Style x:Name="TextBoxCenterPlaceholder" x:Key="TextBoxCenterPlaceholder" TargetType="TextBox">
                 <Setter Property="MinWidth"
@@ -723,8 +717,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            
-            
+                       
             <!-- RichEditBox No Hover-->
             <Style TargetType="RichEditBox" x:Name="RichEditBoxStyle" x:Key="RichEditBoxStyle">
                 <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}" />
@@ -898,13 +891,8 @@
             </Style>
 
 
-            
-            <Style TargetType="ListViewItemPresenter">
-                <Setter Property="SelectedBackground" Value="Black"></Setter>
-                <Setter Property="SelectedPointerOverBackground" Value="Black"></Setter>
-                <Setter Property="SelectedPressedBackground" Value="Black"></Setter> 
-            </Style>            
-            
+                      
+            <!-- General ListViewItem Style -->
             <Style TargetType="ListViewItem">
                 <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
@@ -914,6 +902,7 @@
                 <Setter Property="Padding" Value="0"></Setter>
             </Style>
 
+            <!-- General ListView Style -->
             <Style TargetType="ListView">
                 <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
@@ -922,7 +911,9 @@
                 <Setter Property="Margin" Value="0"></Setter>
                 <Setter Property="Padding" Value="0"></Setter>
             </Style>
-            
+
+
+            <!-- General ScrollBar STyle -->
             <Style TargetType="ScrollBar">
                 <Setter Property="MinWidth" Value="12" />
                 <Setter Property="MinHeight" Value="12" />
