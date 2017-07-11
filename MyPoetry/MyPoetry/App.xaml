@@ -53,9 +53,9 @@
             
             <!-- ListView Color Override -->
             <SolidColorBrush x:Key="SystemControlHighlightListLowBrush" x:Name="SystemControlHighlightListLowBrush" Color="#11FFFFFF"></SolidColorBrush>
-            <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush" x:Name="SystemControlHighlightListAccentLowBrush" Color="#FFDEDEDE"></SolidColorBrush>
-            <SolidColorBrush x:Key="SystemControlHighlightListAccentMediumBrush" x:Name="SystemControlHighlightListAccentMediumBrush" Color="#FFDEDEDE"></SolidColorBrush>
-            <SolidColorBrush x:Key="SystemControlHighlightListAccentHighBrush" x:Name="SystemControlHighlightListAccentHighBrush" Color="#FFDEDEDE"></SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush" x:Name="SystemControlHighlightListAccentLowBrush" Color="#F0F0F0"></SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListAccentMediumBrush" x:Name="SystemControlHighlightListAccentMediumBrush" Color="#F1F1F1"></SolidColorBrush>
+            <SolidColorBrush x:Key="SystemControlHighlightListAccentHighBrush" x:Name="SystemControlHighlightListAccentHighBrush" Color="#F1F1F1"></SolidColorBrush>
             
             <!-- TextBox Focus Override -->
             <SolidColorBrush x:Key="SystemControlBackgroundChromeWhiteBrush" x:Name="SystemControlBackgroundChromeWhiteBrush" Color="#AAFFFFFF"></SolidColorBrush>
@@ -722,7 +722,7 @@
             <Style TargetType="RichEditBox" x:Name="RichEditBoxStyle" x:Key="RichEditBoxStyle">
                 <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}" />
                 <Setter Property="MinHeight" Value="{ThemeResource TextControlThemeMinHeight}" />
-                <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+                <Setter Property="Foreground" Value="Black" />
                 <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundAltHighBrush}" />
                 <Setter Property="SelectionHighlightColor" Value="{ThemeResource SystemControlHighlightAccentBrush}" />
                 <Setter Property="BorderBrush" Value="{ThemeResource SystemControlForegroundChromeDisabledLowBrush}" />
@@ -796,7 +796,7 @@
                                                     x:DeferLoadStrategy="Lazy"
                                                     Visibility="Collapsed"
                                                     Grid.Row="0"
-                                                    Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
+                                                    Foreground="{TemplateBinding Foreground}"
                                                     Margin="0,0,0,8"
                                                     Grid.ColumnSpan="2"
                                                     Content="{TemplateBinding Header}"
@@ -820,7 +820,7 @@
 
                                 <ContentControl x:Name="PlaceholderTextContentPresenter"
                                                 Grid.Row="1"
-                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                                Foreground="{TemplateBinding Foreground}"
                                                 Margin="{TemplateBinding BorderThickness}"
                                                 Padding="{TemplateBinding Padding}"
                                                 IsTabStop="False"
@@ -860,7 +860,7 @@
                                          ScrollViewer.BringIntoViewOnFocusChange="False"
                                          Canvas.ZIndex="0"
                                          Margin="0"
-                                         Padding="8, 15"
+                                         Padding="15"
                                          DesiredCandidateWindowAlignment="BottomEdge"/>
                                 
                                 <Popup x:Name="SuggestionsPopup">
@@ -897,7 +897,7 @@
                 <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
                 <Setter Property="BorderBrush" Value="{StaticResource AppColor4Click}"></Setter>
-                <Setter Property="BorderThickness" Value="0, 1, 0, 0"></Setter>
+                <Setter Property="BorderThickness" Value="0, 0, 0, 1"></Setter>
                 <Setter Property="Margin" Value="0"></Setter>
                 <Setter Property="Padding" Value="0"></Setter>
             </Style>
@@ -907,7 +907,7 @@
                 <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
                 <Setter Property="BorderBrush" Value="{StaticResource AppColor4Click}"></Setter>
-                <Setter Property="BorderThickness" Value="0, 0, 1, 0"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
                 <Setter Property="Margin" Value="0"></Setter>
                 <Setter Property="Padding" Value="0"></Setter>
             </Style>
@@ -915,8 +915,8 @@
 
             <!-- General ScrollBar STyle -->
             <Style TargetType="ScrollBar">
-                <Setter Property="MinWidth" Value="12" />
-                <Setter Property="MinHeight" Value="12" />
+                <Setter Property="MinWidth" Value="5" />
+                <Setter Property="MinHeight" Value="5" />
                 <Setter Property="Background" Value="Transparent" />
                 <Setter Property="Foreground" Value="Transparent" />
                 <Setter Property="BorderBrush" Value="Transparent" />
@@ -935,6 +935,7 @@
                                             </VisualStateManager.VisualStateGroups>
                                         </Grid>
                                     </ControlTemplate>
+                                    
                                     <ControlTemplate x:Key="HorizontalIncrementTemplate" TargetType="RepeatButton">
                                         <Grid x:Name="Root">
                                             <VisualStateManager.VisualStateGroups>
@@ -972,7 +973,6 @@
                                             <FontIcon x:Name="Arrow" FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE0E3;" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" FontSize="6" MirroredWhenRightToLeft="True" />
                                         </Grid>
                                     </ControlTemplate>
-                                    
                                     <ControlTemplate x:Key="HorizontalDecrementTemplate" TargetType="RepeatButton">
                                         <Grid x:Name="Root">
                                             <VisualStateManager.VisualStateGroups>
@@ -1015,7 +1015,7 @@
                                             <FontIcon x:Name="Arrow" FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE0E2;" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" FontSize="6" MirroredWhenRightToLeft="True"/>
                                         </Grid>
                                     </ControlTemplate>
-                                    
+
                                     <ControlTemplate x:Key="VerticalIncrementTemplate" TargetType="RepeatButton">
                                         <Grid x:Name="Root">
                                             <VisualStateManager.VisualStateGroups>
@@ -1058,7 +1058,6 @@
                                             <FontIcon x:Name="Arrow" FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE0E5;" Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" FontSize="6" />
                                         </Grid>
                                     </ControlTemplate>
-                                    
                                     <ControlTemplate x:Key="VerticalDecrementTemplate" TargetType="RepeatButton">
                                         <Grid x:Name="Root">
                                             <VisualStateManager.VisualStateGroups>
@@ -1103,7 +1102,7 @@
                                     </ControlTemplate>
                                     
                                     <ControlTemplate x:Key="VerticalThumbTemplate" TargetType="Thumb">
-                                        <Rectangle x:Name="ThumbVisual" Fill="{ThemeResource SystemControlForegroundBaseLowBrush}">
+                                        <Rectangle x:Name="ThumbVisual" Fill="{ThemeResource SystemControlForegroundBaseLowBrush}" Width="2">
                                             <VisualStateManager.VisualStateGroups>
                                                 <VisualStateGroup x:Name="CommonStates">
                                                     <VisualState x:Name="Normal">
@@ -1117,6 +1116,9 @@
                                                         <Storyboard>
                                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ThumbVisual" Storyboard.TargetProperty="Fill">
                                                                 <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource AppColor4SelectedHover}" />
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ThumbVisual" Storyboard.TargetProperty="Width">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="5" />
                                                             </ObjectAnimationUsingKeyFrames>
                                                         </Storyboard>
                                                     </VisualState>
@@ -1136,11 +1138,18 @@
                                             </VisualStateManager.VisualStateGroups>
                                         </Rectangle>
                                     </ControlTemplate>
+                                    
                                     <ControlTemplate x:Key="HorizontalThumbTemplate" TargetType="Thumb">
                                         <Rectangle x:Name="ThumbVisual" Fill="{ThemeResource SystemControlForegroundBaseLowBrush}">
                                             <VisualStateManager.VisualStateGroups>
                                                 <VisualStateGroup x:Name="CommonStates">
-                                                    <VisualState x:Name="Normal" />
+                                                    <VisualState x:Name="Normal">
+                                                        <Storyboard>
+                                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ThumbVisual" Storyboard.TargetProperty="Fill">
+                                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource SystemControlHighlightBaseMediumLowBrush}" />
+                                                            </ObjectAnimationUsingKeyFrames>
+                                                        </Storyboard>
+                                                    </VisualState>
                                                     <VisualState x:Name="PointerOver">
                                                         <Storyboard>
                                                             <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ThumbVisual" Storyboard.TargetProperty="Fill">
@@ -1157,8 +1166,23 @@
                                                     </VisualState>
                                                     <VisualState x:Name="Disabled">
                                                         <Storyboard>
-                                                            <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ThumbVisual" />
+                                                            <DoubleAnimation Duration="0" To="0.8" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ThumbVisual" />
                                                         </Storyboard>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                                <VisualStateGroup x:Name="ScrollingIndicatorStates">
+                                                    <VisualState x:Name="TouchIndicator">
+                                                        <!--<Storyboard>
+                                        <FadeInThemeAnimation Storyboard.TargetName="HorizontalPanningRoot"/>
+                                        <FadeInThemeAnimation Storyboard.TargetName="VerticalPanningRoot"/>
+                                    </Storyboard>-->
+                                                    </VisualState>
+                                                    <VisualState x:Name="MouseIndicator"/>
+                                                    <VisualState x:Name="NoIndicator">
+                                                        <!--<Storyboard>
+                                        <FadeOutThemeAnimation BeginTime="0" Storyboard.TargetName="HorizontalPanningRoot"/>
+                                        <FadeOutThemeAnimation BeginTime="0" Storyboard.TargetName="VerticalPanningRoot"/>
+                                    </Storyboard>-->
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
@@ -1270,7 +1294,7 @@
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
                                 
-                                <Grid x:Name="HorizontalRoot" IsHitTestVisible="False" Margin="0, 2">
+                                <Grid x:Name="HorizontalRoot" IsHitTestVisible="False">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="Auto" />
@@ -1282,18 +1306,20 @@
                                     <Rectangle x:Name="HorizontalTrackRect"
                                                Grid.ColumnSpan="5"
                                                Margin="0"
-                                               StrokeThickness="2"
-                                               Fill="{ThemeResource SystemControlPageBackgroundChromeLowBrush}"
-                                               Stroke="{ThemeResource SystemControlForegroundTransparentBrush}" />   
+                                               Height="1"
+                                               StrokeThickness="0.5"
+                                               Fill="{StaticResource AppColor4Click}"
+                                               Stroke="{StaticResource AppColor4Click}" />   
                                     
                                     <RepeatButton x:Name="HorizontalSmallDecrease"
                                                   Grid.Column="0"
-                                                  MinHeight="12"
+                                                  MinHeight="0"
                                                   IsTabStop="False"
                                                   Interval="50"
                                                   Margin="0"
                                                   Template="{StaticResource HorizontalDecrementTemplate}"
-                                                  Width="3"
+                                                  Width="0"
+                                                  Height="0"
                                                   VerticalAlignment="Center" />
                                     
                                     <RepeatButton x:Name="HorizontalLargeDecrease"
@@ -1302,14 +1328,16 @@
                                                   VerticalAlignment="Stretch"
                                                   IsTabStop="False"
                                                   Interval="50"
+                                                  Width="0"
+                                                  Height="0"
                                                   Template="{StaticResource RepeatButtonTemplate}"
-                                                  Width="0" />
+                                                   />
                                     
                                     <Thumb x:Name="HorizontalThumb"
                                            Grid.Column="2"
                                            Background="{ThemeResource SystemControlForegroundChromeHighBrush}"
                                            Template="{StaticResource HorizontalThumbTemplate}"
-                                           Height="12"
+                                           Height="1"
                                            MinWidth="5"
                                            AutomationProperties.AccessibilityView="Raw" />
                                     
@@ -1319,6 +1347,8 @@
                                                   VerticalAlignment="Stretch"
                                                   IsTabStop="False"
                                                   Interval="50"
+                                                  Width="0"
+                                                  Height="0"
                                                   Template="{StaticResource RepeatButtonTemplate}" />
                                     
                                     <RepeatButton x:Name="HorizontalSmallIncrease"
@@ -1327,8 +1357,9 @@
                                                   IsTabStop="False"
                                                   Interval="50"
                                                   Margin="0"
+                                                  Width="0"
+                                                  Height="0"
                                                   Template="{StaticResource HorizontalIncrementTemplate}"
-                                                  Width="3"
                                                    VerticalAlignment="Center" />
                                 </Grid>
                                 
@@ -1385,8 +1416,8 @@
                                                 Grid.Row="2"
                                                 Background="{StaticResource AppColor1}"                                                
                                                 Template="{StaticResource VerticalThumbTemplate}"
-                                                Width="5"
-                                           HorizontalAlignment="Right"
+                                                Width="2"
+                                                HorizontalAlignment="Right"
                                                 MinHeight="12"                                         
                                                 AutomationProperties.AccessibilityView="Raw"/>
 

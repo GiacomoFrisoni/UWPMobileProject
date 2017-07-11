@@ -16,7 +16,7 @@
         <converters:DateFormatConverter x:Name="DateToStringFormatConverter"/>
     </UserControl.Resources>
 
-    <Grid  Background="{StaticResource AppColor4}">
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="48"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -33,17 +33,17 @@
             <rating:Rating Name="RatingControl" Margin="20, 10" Maximum="5" ItemHeight="20" IsInteractive="True" StepFrequency="1" Value="0"></rating:Rating>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal">
-                <Button x:Name="BtnShare" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnShare_Click">
+                <Button x:Name="BtnShare" Height="49" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" Click="BtnShare_Click">
                     <SymbolIcon Symbol="ReShare" Foreground="Black"></SymbolIcon>
                 </Button>
-                <Button x:Name="BtnEdit" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnEdit_Click">
+                <Button x:Name="BtnEdit" Height="49" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" Click="BtnEdit_Click">
                     <SymbolIcon Symbol="Edit" Foreground="Black"></SymbolIcon>
                 </Button>
-                <Button x:Name="BtnDetails" Height="48" Width="50" Style="{StaticResource ButtonMenu}" Click="BtnDetails_Click">
+                <Button x:Name="BtnDetails" Height="49" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" Click="BtnDetails_Click">
                     <SymbolIcon Symbol="OpenPane" Foreground="Black"></SymbolIcon>
                 </Button>
 
-                <Button x:Name="BtnDelete" Style="{StaticResource ButtonRed}" Height="48" Width="50" Click="BtnDelete_Click">
+                <Button x:Name="BtnDelete" Style="{StaticResource ButtonRed}" Height="49" Width="50" Click="BtnDelete_Click">
                     <SymbolIcon Symbol="Delete"></SymbolIcon>
                 </Button>
             </StackPanel>
@@ -59,11 +59,14 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Border Margin="5,0, 5, 5" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">
-                        <TextBlock Margin="5" FontSize="22" Text="{Binding Title}"/>
-                    </Border>
+                    <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" IsHorizontalRailEnabled="True" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled">
+                        <Grid>
+                            <TextBlock Margin="5, 5, 5, 10" FontSize="22" Text="{Binding Title}"/>
+                            <Rectangle Fill="{StaticResource AppColor4Click}" Height="1" VerticalAlignment="Bottom" Margin="0, 0, 0, 5"></Rectangle>
+                        </Grid>
+                    </ScrollViewer>
                     
-                    <RichEditBox Style="{StaticResource RichEditBoxStyle}" Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
+                    <RichEditBox Foreground="Red" Style="{StaticResource RichEditBoxStyle}" Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
 
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>

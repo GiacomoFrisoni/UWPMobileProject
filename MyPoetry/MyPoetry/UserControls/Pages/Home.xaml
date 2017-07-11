@@ -9,9 +9,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
-
+    d:DesignHeight="170"
+    d:DesignWidth="300">
+    <!--
     <UserControl.Resources>
         <converters:DateFormatConverter x:Name="DateToStringFormatConverter"/>
         <DataTemplate x:Key="ListView_SmallTemplate">
@@ -81,7 +81,7 @@
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                         </Style>
                     </ListView.ItemContainerStyle>
-                    <!--
+                    
                     <ListView.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
@@ -97,7 +97,7 @@
                                 </ItemsPanelTemplate>
                             </GroupStyle.Panel>
                         </GroupStyle>
-                    </ListView.GroupStyle>-->
+                    </ListView.GroupStyle>
                 </ListView>
                 <ProgressRing x:Name="ProgressRingPoetries" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Grid.Row="3" Visibility="Collapsed"/>
             </Grid>
@@ -109,4 +109,10 @@
             </StackPanel>
         </custom:CustomPage.TopButtons>
     </custom:CustomPage>
+    
+    -->
+
+    <Grid>
+        
+    </Grid>
 </UserControl>

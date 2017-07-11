@@ -14,6 +14,7 @@ namespace MyPoetry.UserControls.Pages
             this.InitializeComponent();
         }
 
+        /*
         public CustomPage GetPage { get { return MainContent; } }
         
         private async void PoetriesListView_Loaded(object sender, RoutedEventArgs e)
@@ -88,6 +89,6 @@ namespace MyPoetry.UserControls.Pages
             }
 
             ProgressBarVisible(false);
-        }
+        }*/
     }
 }

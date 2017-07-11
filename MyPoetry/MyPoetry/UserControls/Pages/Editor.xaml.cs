@@ -190,31 +190,7 @@ namespace MyPoetry.UserControls.Pages
 
 
 
-        private void GetLineNumber(RichEditBox myRichEditBox)
-        {
-            string text;
 
-            myRichEditBox.Document.GetText(TextGetOptions.AdjustCrlf, out text);
-
-            // Get the text range for the very last character
-            var range = myRichEditBox.Document.GetRange(text.Length - 1, text.Length);
-
-            Rect rectangle;
-            int hitTest;
-
-            // Get the bounding rectangle for the last character
-            range.GetRect(PointOptions.NoHorizontalScroll, out rectangle, out hitTest);
-
-            //
-            // Rectangle Height gives the Line Pixel Height
-            // Rectangle Top gives the bottom position of the last character
-            var lineNumber = Math.Floor(rectangle.Bottom / rectangle.Height);
-
-            if (LineNumbers.Items.Contains(lineNumber) == false)
-            {
-                LineNumbers.Items.Add(lineNumber);
-            }
-        }
 
         private void RebText_TextChanged(object sender, RoutedEventArgs e)
         {
@@ -222,7 +198,7 @@ namespace MyPoetry.UserControls.Pages
             ITextRange text = RebText.Document.GetRange(0, TextConstants.MaxUnitCount);
             string s = text.Text;
 
-            int n_words = 0, n_lines = 0, n_chars = 0;
+            int n_words = 0, n_lines = 0, n_chars = 0, n_justify_lines = 0;
             string[] tmp = s.Replace("\r", " ").Split(' ');
             foreach (string st in tmp)
                 if (!st.Equals(String.Empty))
@@ -231,8 +207,12 @@ namespace MyPoetry.UserControls.Pages
             {
                 tmp = s.Replace("\r", "§").Split('§');
                 foreach (string st in tmp)
+                {
                     if (st != "")
                         n_lines++;
+
+                    n_justify_lines++;
+                }
             }
             else
                 n_lines = 0;
@@ -242,7 +222,19 @@ namespace MyPoetry.UserControls.Pages
             TxbWordsNumber.Text = n_words.ToString();
             TxbLinesNumber.Text = n_lines.ToString();
 
-            GetLineNumber(RebText);
+            
+            if (n_justify_lines > 0)
+            {
+                if (LineNumbers.Items.Count < n_justify_lines)
+                {
+                    for (int i = 1; i <= n_justify_lines + 1; i++)
+                    {
+                        LineNumbers.Items.Add(LineNumbers.Items.Count + i);
+                    }
+                }
+            }
+
+
 
             if (n_lines < LineNumbers.Items.Count)
             {
