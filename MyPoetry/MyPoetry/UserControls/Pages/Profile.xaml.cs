@@ -1,21 +1,13 @@
-﻿using Microsoft.Toolkit.Uwp.UI.Controls;
+﻿using Microsoft.Toolkit.Uwp;
+using Microsoft.Toolkit.Uwp.UI.Controls;
 using MyPoetry.Model;
 using MyPoetry.Utilities;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
@@ -61,39 +53,32 @@ namespace MyPoetry.UserControls.Pages
             //Immagine
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
-            ImgProfile.Source = ib.ImageSource;
-
-
-            //Nome e cognome
-            TxbUser.Text = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
-            TxbName.Text = UserHandler.Instance.GetUser().Name;
-            TxbSurname.Text = UserHandler.Instance.GetUser().Surname;
-
-            //Gender
-            CmbGender.SelectedIndex = UserHandler.Instance.GetUser().Gender == "M" ? 0 : 1;
+            Image.Fill = ib;
 
 
 
-            //OrbitView       
-            OrbitProfile.CenterContent = GenerateOrbitContent(ib);
-            OrbitProfile.ItemsSource = GenerateOrbitCollection();
+            //Nome, mail
+            TxbName.Text = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
+            TxbMail.Text = UserHandler.Instance.GetUser().Email;
 
 
-            //AdaptiveGrid
+            //GridView
             GridView.ItemsSource = null;
             GridView.ItemsSource = GenerateAdvancedInfo();
 
 
 
-            //Mail
-            TxbMail.Text = UserHandler.Instance.GetUser().Email;
-
-            //Data registrazione
-            TxbRegisterDate.Text = UserHandler.Instance.GetUser().RegistrationDate.ToString("dd/MM/yyyy");
-
 
 
             /*
+             *             //Gender
+            CmbGender.SelectedIndex = UserHandler.Instance.GetUser().Gender == "M" ? 0 : 1;
+
+
+
+            //OrbitView       
+            //OrbitProfile.CenterContent = GenerateOrbitContent(ib);
+            //OrbitProfile.ItemsSource = GenerateOrbitCollection();
             //Poesie scritte
             TxbPoetriesNumber.Text = UserHandler.Instance.GetPoetries().Count.ToString();
 
@@ -164,15 +149,17 @@ namespace MyPoetry.UserControls.Pages
         }
 
 
-        private List<InfoViewer> GenerateAdvancedInfo()
+        private List<DataViewer> GenerateAdvancedInfo()
         {
-            List<InfoViewer> info = new List<InfoViewer>();
-            info.Add(new InfoViewer("Poesie fin'ora scritte", Symbol.PreviewLink, UserHandler.Instance.GetPoetries().Count.ToString()));
-            info.Add(new InfoViewer("I caratteri immessi fino ad ora", Symbol.Font, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.CharactersNumber).ToString()));
-            info.Add(new InfoViewer("Le parole nelle tue creazioni", Symbol.Font, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.WordsNumber).ToString()));
-            info.Add(new InfoViewer("Numero versi complessivi", Symbol.ShowResults, UserHandler.Instance.GetPoetries().Sum(poetry => poetry.VersesNumber).ToString()));
-            info.Add(new InfoViewer("La poesia più lunga", Symbol.List, UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CharactersNumber).First().Title));
-            info.Add(new InfoViewer("La poesia più corta", Symbol.Remove, UserHandler.Instance.GetPoetries().OrderBy(poetry => poetry.CharactersNumber).First().Title));
+            List<DataViewer> info = new List<DataViewer>();
+            info.Add(new DataViewer("L'anima d'ispirazione", "Scrivi dal " + UserHandler.Instance.GetUser().RegistrationDate.ToString("dd/MM/yyyy"), Symbol.Calendar, new SolidColorBrush(ColorHelper.ToColor("#1BBC9B"))));
+            info.Add(new DataViewer("Scrittore nato", "Hai scritto " + UserHandler.Instance.GetPoetries().Count.ToString() + " poesie", Symbol.Edit, new SolidColorBrush(ColorHelper.ToColor("#2DCC70"))));
+            info.Add(new DataViewer("Distruttore della tastiera", "Hai immesso " + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.CharactersNumber).ToString() + " caratteri", Symbol.Font, new SolidColorBrush(ColorHelper.ToColor("#3598DB"))));
+            info.Add(new DataViewer("Sagge parole", "Hai utilizzato " + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.WordsNumber).ToString(), Symbol.FontColor, new SolidColorBrush(ColorHelper.ToColor("#9B58B5"))));
+            info.Add(new DataViewer("Io vado a capo", "Il numero dei tuoi versi: " + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.VersesNumber).ToString(), Symbol.ShowResults, new SolidColorBrush(ColorHelper.ToColor("#34495E"))));
+
+            info.Add(new DataViewer("La poesia più corta", UserHandler.Instance.GetPoetries().OrderBy(poetry => poetry.CharactersNumber).First().Title, Symbol.Remove, new SolidColorBrush(ColorHelper.ToColor("#F1C40F"))));
+            info.Add(new DataViewer("La poesia più lunga", UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CharactersNumber).First().Title, Symbol.List, new SolidColorBrush(ColorHelper.ToColor("#E77E23"))));
 
             return info;
         }
@@ -184,10 +171,6 @@ namespace MyPoetry.UserControls.Pages
             ProgressRingProfile.IsActive = visible;
         }
 
-        private void Pivot_Loaded(object sender, RoutedEventArgs e)
-        {
-            LoadData();
-        }
 
         private void BtnDeletePhoto_Click(object sender, RoutedEventArgs e)
         {
@@ -208,6 +191,11 @@ namespace MyPoetry.UserControls.Pages
         {
             var panel = (ItemsWrapGrid)GridView.ItemsPanelRoot;
             panel.ItemWidth = e.NewSize.Width / Math.Truncate(e.NewSize.Width / 320);
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadData();
         }
     }
 }

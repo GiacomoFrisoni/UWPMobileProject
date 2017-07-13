@@ -107,12 +107,10 @@
     <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="Converters\VisibleWhenTrue.cs" />
     <Compile Include="Model\ActivationRequest.cs" />
+    <Compile Include="Model\DataViewer.cs" />
     <Compile Include="Model\ReSendingActivationRequest.cs" />
     <Compile Include="UserControls\CustomPage.xaml.cs">
       <DependentUpon>CustomPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\DataViewer.xaml.cs">
-      <DependentUpon>DataViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Pages\Editor.xaml.cs">
       <DependentUpon>Editor.xaml</DependentUpon>
@@ -289,10 +287,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\CustomPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\DataViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

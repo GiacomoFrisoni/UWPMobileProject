@@ -13,7 +13,58 @@
 
     <custom:CustomPage x:Name="MainContent" Title="Profilo">
         <custom:CustomPage.MainContent>
-            <Grid>
+            <Grid Loaded="Grid_Loaded">
+                <Image Stretch="UniformToFill" Source="Assets/background.png"/>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+
+                    <StackPanel HorizontalAlignment="Stretch" Margin="5" Padding="10">
+                        <Grid>
+                            <Ellipse HorizontalAlignment="Center" Fill="White" Height="174" Width="174"></Ellipse>
+                            <Ellipse HorizontalAlignment="Center" Fill="{StaticResource AppColor1}" x:Name="Image" Height="170" Width="170"></Ellipse>
+                        </Grid>
+
+                        <TextBlock Margin="0, 5, 0, 0" x:Name="TxbName" Style="{StaticResource SubtitleTextBlockStyle}" Text="Marcin Pabich" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock x:Name="TxbMail" Style="{StaticResource BodyTextBlockStyle}" Foreground="Gray" Text="martinoqom@gmail.com" FontSize="12" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+
+                    <GridView Grid.Row="1" Margin="5, 0, 1, 5" x:Name="GridView" SelectionMode="None" SizeChanged="GridView_SizeChanged">
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="GrdMain" Background="{Binding PaneColor}" HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <SymbolIcon x:Name="Symbol" Foreground="White" Symbol="{Binding Icon}"></SymbolIcon>
+
+                                    <Grid Background="White" Padding="10, 5" Grid.Column="1" HorizontalAlignment="Stretch">
+                                        <StackPanel HorizontalAlignment="Stretch">
+                                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding Description}"></TextBlock>
+                                            <TextBlock Foreground="Gray" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="WrapWholeWords" Text="{Binding Value}"></TextBlock>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                            </Style>
+                        </GridView.ItemContainerStyle>
+                    </GridView>
+
+                    <!--
                 <Pivot Loaded="Pivot_Loaded" HorizontalContentAlignment="Center">
                     <PivotItem Header="Grafici">
                         <controls:OrbitView Background="Transparent" x:Name="OrbitProfile" VerticalAlignment="Center" HorizontalAlignment="Center" OrbitsEnabled="False" AnchorsEnabled="True" AnchorThickness="2" AnchorColor="{StaticResource AppColor1}">
@@ -133,9 +184,18 @@
                             <Button x:Name="BtnSave" Style="{StaticResource ButtonBlue}" Content="Salva" Margin="5, 25, 5, 5" HorizontalAlignment="Stretch"></Button>
                         </StackPanel>
                     </PivotItem>
-                </Pivot>
-                <ProgressRing x:Name="ProgressRingProfile" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Grid.Row="3" Visibility="Collapsed"/>
+                </Pivot>-->
+                    <ProgressRing x:Name="ProgressRingProfile" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Grid.Row="3" Visibility="Collapsed"/>
+                </Grid>
             </Grid>
         </custom:CustomPage.MainContent>
+
+        <custom:CustomPage.TopButtons>
+            <StackPanel>
+                <Button x:Name="BtnEdit" Height="48" Width="55" Style="{StaticResource ButtonBlue}">
+                    <SymbolIcon Symbol="Edit"></SymbolIcon>
+                </Button>
+            </StackPanel>
+        </custom:CustomPage.TopButtons>
     </custom:CustomPage>
 </UserControl>

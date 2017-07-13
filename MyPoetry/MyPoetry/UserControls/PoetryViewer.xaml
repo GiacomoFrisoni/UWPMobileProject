@@ -52,30 +52,32 @@
         <SplitView Grid.Row="1" x:Name="SplitView" PanePlacement="Right">
             <SplitView.Content>
 
-                <Grid Padding="10" Background="#FDFDFD">
+                <Grid Background="#FDFDFD">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <ScrollViewer HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" IsHorizontalRailEnabled="True" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled">
+                    <ScrollViewer Margin="10" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" IsHorizontalRailEnabled="True" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled">
                         <Grid>
                             <TextBlock Margin="5, 5, 5, 10" FontSize="22" Text="{Binding Title}"/>
                             <Rectangle Fill="{StaticResource AppColor4Click}" Height="1" VerticalAlignment="Bottom" Margin="0, 0, 0, 5"></Rectangle>
                         </Grid>
                     </ScrollViewer>
                     
-                    <RichEditBox Foreground="Red" Style="{StaticResource RichEditBoxStyle}" Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
+                    <RichEditBox Margin="10, 0" Foreground="Red" Style="{StaticResource RichEditBoxStyle}" Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
 
-                    <Grid Grid.Row="2">
+                    <Grid Grid.Row="2" Margin="0, 10, 0, 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Button x:Name="BtnBack" Grid.Column="0" Margin="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Style="{StaticResource ButtonBlue}" Content="-  Indietro" Click="BtnBack_Click"></Button>
-                        <Button x:Name="BtnForward" Grid.Column="1" Margin="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Style="{StaticResource ButtonBlue}" Content="Avanti   -" Click="BtnForward_Click"></Button>
+                        <Button x:Name="BtnBack" Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource TextBlockButtonStyle}" Grid.Column="0" Margin="5, 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="🡸  Indietro" Click="BtnBack_Click"></Button>
+                        <Rectangle Grid.Column="1" Height="30" VerticalAlignment="Center" Fill="LightGray" Width="1" Stroke="LightGray" StrokeThickness="0.5"></Rectangle>
+                        <Button x:Name="BtnForward" Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource TextBlockButtonStyle}" Grid.Column="2" Margin="5, 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Avanti   🡺" Click="BtnForward_Click"></Button>
                     </Grid>
                 </Grid>
             </SplitView.Content>
