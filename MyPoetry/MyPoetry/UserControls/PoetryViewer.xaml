@@ -68,17 +68,19 @@
                     
                     <RichEditBox Margin="10, 0" Foreground="Red" Style="{StaticResource RichEditBoxStyle}" Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
 
-                    <Grid Grid.Row="2" Margin="0, 10, 0, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+                    <Border Grid.Row="2" Margin="0, 10, 0, 0" BorderBrush="LightGray" BorderThickness="0, 1, 0, 0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
 
-                        <Button x:Name="BtnBack" Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource TextBlockButtonStyle}" Grid.Column="0" Margin="5, 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="🡸  Indietro" Click="BtnBack_Click"></Button>
-                        <Rectangle Grid.Column="1" Height="30" VerticalAlignment="Center" Fill="LightGray" Width="1" Stroke="LightGray" StrokeThickness="0.5"></Rectangle>
-                        <Button x:Name="BtnForward" Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource TextBlockButtonStyle}" Grid.Column="2" Margin="5, 0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Avanti   🡺" Click="BtnForward_Click"></Button>
-                    </Grid>
+                            <Button x:Name="BtnBack" Padding="0" Background="{StaticResource AppColor4}" Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource TextBlockButtonStyle}" Grid.Column="0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="🡸  Indietro" Click="BtnBack_Click"></Button>
+                            <Rectangle Grid.Column="1" Height="48" VerticalAlignment="Center" Fill="White" Width="1" Stroke="LightGray" StrokeThickness="0.5"></Rectangle>
+                            <Button x:Name="BtnForward" Padding="0" Background="{StaticResource AppColor4}"  Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource TextBlockButtonStyle}" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Avanti   🡺" Click="BtnForward_Click"></Button>
+                        </Grid>
+                    </Border>
                 </Grid>
             </SplitView.Content>
 

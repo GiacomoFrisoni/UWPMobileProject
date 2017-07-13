@@ -55,50 +55,13 @@ namespace MyPoetry.UserControls.Pages
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
             Image.Fill = ib;
 
-
-
             //Nome, mail
-            TxbName.Text = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
-            TxbMail.Text = UserHandler.Instance.GetUser().Email;
-
+            TxbUser.Text = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
+            TxbMail.Text = UserHandler.Instance.GetUser().Email;     
 
             //GridView
             GridView.ItemsSource = null;
             GridView.ItemsSource = GenerateAdvancedInfo();
-
-
-
-
-
-            /*
-             *             //Gender
-            CmbGender.SelectedIndex = UserHandler.Instance.GetUser().Gender == "M" ? 0 : 1;
-
-
-
-            //OrbitView       
-            //OrbitProfile.CenterContent = GenerateOrbitContent(ib);
-            //OrbitProfile.ItemsSource = GenerateOrbitCollection();
-            //Poesie scritte
-            TxbPoetriesNumber.Text = UserHandler.Instance.GetPoetries().Count.ToString();
-
-            //Lunghezza complessiva (char)
-            TxbCharsNumber.Text = UserHandler.Instance.GetPoetries().Sum(poetry => poetry.CharactersNumber).ToString();
-
-            //Parole utilizzate
-            TxbWordsNumber.Text = UserHandler.Instance.GetPoetries().Sum(poetry => poetry.WordsNumber).ToString();
-
-            //Numero versi
-            TxbVersesNumber.Text = UserHandler.Instance.GetPoetries().Sum(poetry => poetry.VersesNumber).ToString();
-
-            //Quella più lunga
-            TxbLongest.Text = UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CharactersNumber).First().Title;
-
-            //Quella più corta
-            TxbShortest.Text = UserHandler.Instance.GetPoetries().OrderBy(poetry => poetry.CharactersNumber).First().Title;
-
-            //Giorno di ispirazione
-            TxbInspiration.Text = "Smetti di scrivere...";*/
 
             ProgressBarVisible(false);
         }
@@ -196,6 +159,22 @@ namespace MyPoetry.UserControls.Pages
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             LoadData();
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (GrdProfile.Visibility == Visibility.Visible)
+            {
+                GrdProfile.Visibility = Visibility.Collapsed;
+                StpModify.Visibility = Visibility.Visible;
+                BtnEdit.Content = new SymbolIcon() { Symbol = Symbol.Save };
+            }
+            else
+            {
+                GrdProfile.Visibility = Visibility.Visible;
+                StpModify.Visibility = Visibility.Collapsed;
+                BtnEdit.Content = new SymbolIcon() { Symbol = Symbol.Edit };
+            }
         }
     }
 }
