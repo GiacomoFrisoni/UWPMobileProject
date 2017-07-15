@@ -1,6 +1,12 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp;
+using System;
+using Windows.UI;
+using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Printing;
+using Windows.UI.Xaml.Shapes;
 
 namespace MyPoetry.UserControls
 {
@@ -50,5 +56,39 @@ namespace MyPoetry.UserControls
         {
             ForwardEvent?.Invoke(sender, null);
         }
+
+        async private void BtnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            StackPanel stp = new StackPanel();
+            Grid g = new Grid();
+            TextBlock txb = new TextBlock();
+            Rectangle rect = new Rectangle();
+            RichEditBox rtb = new RichEditBox();
+
+            txb.Text = TxbTitle.Text;
+            txb.FontSize = 22;
+
+            rect.Height = 1;
+            rect.VerticalAlignment = VerticalAlignment.Bottom;
+            rect.Fill = new SolidColorBrush(Colors.LightGray);
+            rect.Margin = new Thickness(0, 5, 0, 0);
+
+            g.Children.Add(txb);
+            g.Children.Add(rect);
+
+            ITextRange text = RtbView.Document.GetRange(0, TextConstants.MaxUnitCount);
+            string s = text.Text;
+
+            rtb.Document.SetText(TextSetOptions.None, s);
+
+            stp.Children.Add(g);
+            stp.Children.Add(rtb);
+
+
+            PrintHelper pHelp = new PrintHelper(stp);
+            await pHelp.ShowPrintUIAsync("Testo della poesia", true);
+        }
+
+
     }
 }

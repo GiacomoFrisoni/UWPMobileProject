@@ -194,28 +194,41 @@ namespace MyPoetry.UserControls.Pages
 
         private void RebText_TextChanged(object sender, RoutedEventArgs e)
         {
+            //Clear line numbers
+            LineNumbers.Items.Clear();
+            int i = 1;
+
             // Update statistics
             ITextRange text = RebText.Document.GetRange(0, TextConstants.MaxUnitCount);
             string s = text.Text;
 
-            int n_words = 0, n_lines = 0, n_chars = 0, n_justify_lines = 0;
+            int n_words = 0, n_lines = 0, n_chars = 0;
             string[] tmp = s.Replace("\r", " ").Split(' ');
             foreach (string st in tmp)
                 if (!st.Equals(String.Empty))
                     n_words++;
+
             if (s != "\r")
             {
                 tmp = s.Replace("\r", "§").Split('§');
                 foreach (string st in tmp)
                 {
                     if (st != "")
+                    {
                         n_lines++;
-
-                    n_justify_lines++;
+                        LineNumbers.Items.Add(i++);
+                    }
+                    else
+                    {
+                        LineNumbers.Items.Add("");
+                    }                      
                 }
             }
             else
+            {
                 n_lines = 0;
+            }
+
             n_chars = s.Replace("\r", "").Length;
 
             TxbCharsNumber.Text = n_chars.ToString();
@@ -223,7 +236,10 @@ namespace MyPoetry.UserControls.Pages
             TxbLinesNumber.Text = n_lines.ToString();
 
             
-            if (n_justify_lines > 0)
+            /*for (int i = 0; i < n_justify_lines; i++)
+                LineNumbers.Items.Add(i + 1);
+            
+            /*if (n_justify_lines > 0)
             {
                 if (LineNumbers.Items.Count < n_justify_lines)
                 {
@@ -232,17 +248,17 @@ namespace MyPoetry.UserControls.Pages
                         LineNumbers.Items.Add(LineNumbers.Items.Count + i);
                     }
                 }
-            }
+            }*/
 
 
 
-            if (n_lines < LineNumbers.Items.Count)
+            /*if (n_lines < LineNumbers.Items.Count)
             {
                 int toRemove = LineNumbers.Items.Count - n_lines;
 
                 for (int i = 0; i < toRemove; i++)
                     LineNumbers.Items.RemoveAt(LineNumbers.Items.Count - 1);
-            }
+            }*/
         }
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)

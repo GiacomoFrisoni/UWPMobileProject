@@ -9,8 +9,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="240">
+    d:DesignHeight="600"
+    d:DesignWidth="700">
     <!--
     <UserControl.Resources>
         <converters:DateFormatConverter x:Name="DateToStringFormatConverter"/>
@@ -112,17 +112,187 @@
     
     -->
 
-    <Grid Background="{StaticResource AppColor4Click}">
-        <StackPanel HorizontalAlignment="Center" Margin="5" Padding="10" Background="White">
-            <Ellipse Grid.Column="0" x:Name="Image" Height="170" Width="170">
-                <Ellipse.Fill>
-                    <ImageBrush x:Name="ImgProfile"></ImageBrush>
-                </Ellipse.Fill>
-            </Ellipse>
+    <!--
+    <Grid x:Name="GrdParent">
+        <SplitView x:Name="SpvContent" DisplayMode="Overlay" PanePlacement="Right">
+            <SplitView.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-            <TextBlock Margin="0, 5, 0, 0" x:Name="TxblName" Style="{StaticResource SubtitleTextBlockStyle}" Text="Marcin Pabich" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock x:Name="TxblMail" Style="{StaticResource BodyTextBlockStyle}" Foreground="Gray" Text="martinoqom@gmail.com" FontSize="10" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock x:Name="TxblRegistrationDate" Style="{StaticResource BodyTextBlockStyle}" Foreground="DarkGray" Text="Registrato il 12/12/2016" FontSize="9" HorizontalAlignment="Center" FontStyle="Italic"></TextBlock>
-        </StackPanel>
-    </Grid>
+                    <Grid Grid.Row="0" Margin="5">
+                        <TextBox x:Name="TxbTitle" FontSize="20" Padding="10" MaxLength="40" BorderBrush="Transparent" BorderThickness="0" Background="#DDFFFFFF" PlaceholderText="Titolo" KeyUp="TxbTitle_KeyUp"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" Margin="0, 0, 0, 1" Background="{StaticResource AppColor4}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                    <ToggleButton x:Name="BtnBold" Height="48" Style="{StaticResource CustomToggleButton}" Click="BtnBold_Click">
+                                        <SymbolIcon Symbol="Bold"></SymbolIcon>
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="BtnItalic" Height="48" Style="{StaticResource CustomToggleButton}" Click="BtnItalic_Click">
+                                        <SymbolIcon Symbol="Italic"></SymbolIcon>
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="BtnUnderline" Height="48" Style="{StaticResource CustomToggleButton}" Click="BtnUnderline_Click">
+                                        <SymbolIcon Symbol="Underline"></SymbolIcon>
+                                    </ToggleButton>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Grid.Column="2">
+                                    <Button x:Name="BtnUndo" Height="48" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="BtnUndo_Click">
+                                        <SymbolIcon Symbol="Undo"></SymbolIcon>
+                                    </Button>
+                                    <Button x:Name="BtnRedo" Height="48" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" BorderThickness="0" Click="BtnRedo_Click">
+                                        <SymbolIcon Symbol="Redo"></SymbolIcon>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Background="#AAFFFFFF">
+                                <ListView Padding="5" Margin="0, 6" Width="42" MaxWidth="42" Grid.Column="0" Name="LineNumbers">
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="HorizontalContentAlignment" Value="Right" />
+                                            <Setter Property="VerticalContentAlignment" Value="Center" />
+                                            <Setter Property="Margin" Value="0,0,0,0" />
+                                            <Setter Property="Padding" Value="0,0,60,0" />
+                                            <Setter Property="MinHeight" Value="0" />
+                                            <Setter Property="MaxWidth" Value="40"></Setter>
+                                            <Setter Property="Width" Value="40"></Setter>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid HorizontalAlignment="Right" MaxWidth="40" Margin="0" Padding="0">
+                                                <TextBlock HorizontalAlignment="Right" Margin="0" Padding="0" FontSize="15" Text="{Binding}" Foreground="Gray"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+
+                                    <ListViewItem>1</ListViewItem>
+                                </ListView>
+                            </Grid>
+
+                            <RichEditBox Grid.Column="1" Style="{StaticResource RichEditBoxStyle}" Padding="10" x:Name="RebText" Background="#AAFFFFFF" BorderBrush="{StaticResource AppColor4}" BorderThickness="1" PlaceholderText="Text" SelectionChanged="RebText_SelectionChanged" TextChanged="RebText_TextChanged"></RichEditBox>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </SplitView.Content>
+
+            <SplitView.Pane>
+                <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 0, 0, 0">
+                    <Pivot>
+                        <PivotItem Header="Cerca Rime">
+                            <Grid Margin="0, 15, 0, 0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <TextBox x:Name="TxbQuery" Margin="5"></TextBox>
+
+                                <ComboBox x:Name="CmbRhymesLength" Grid.Row="1" Margin="5" HorizontalAlignment="Stretch"/>
+
+                                <Button x:Name="BtnSearch" Grid.Row="2" Content="Trova rime" Margin="5" HorizontalAlignment="Right" Padding="20, 5" Style="{StaticResource ButtonBlue}" Click="BtnSearch_Click"/>
+
+                                <ListView Name="LsvResults" Grid.Row="3" Margin="5">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding}" Margin="5, 0"></TextBlock>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+
+                                <ProgressRing x:Name="ProgressRingRhymes" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Grid.Row="3" Visibility="Collapsed"/>
+                            </Grid>
+                        </PivotItem>
+                        <PivotItem Header="Statistiche">
+                            <StackPanel Margin="0, 15, 0, 0">
+                                <StackPanel.ChildrenTransitions>
+                                    <TransitionCollection>
+                                        <ContentThemeTransition></ContentThemeTransition>
+                                    </TransitionCollection>
+                                </StackPanel.ChildrenTransitions>
+
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock>Lunghezza testo</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="AlignLeft" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbCharsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                    <TextBlock>Parole utilizzate</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbWordsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                    <TextBlock>Numero versi</TextBlock>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                        <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                        <TextBlock x:Name="TxbLinesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </PivotItem>
+                    </Pivot>
+                </Border>
+            </SplitView.Pane>
+        </SplitView>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="Large">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SpvContent.DisplayMode"
+                                Value="Inline" />
+                        <Setter Target="SpvContent.IsPaneOpen"
+                                Value="True" />
+                    </VisualState.Setters>
+                </VisualState>
+
+                <VisualState x:Name="Small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SpvContent.DisplayMode"
+                                Value="Overlay" />
+                        <Setter Target="SpvContent.IsPaneOpen"
+                                Value="False" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>-->
 </UserControl>

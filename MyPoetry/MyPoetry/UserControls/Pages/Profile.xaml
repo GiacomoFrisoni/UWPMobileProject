@@ -37,7 +37,7 @@
                             <DataTemplate>
                                 <Grid x:Name="GrdMain" Background="{Binding PaneColor}" HorizontalAlignment="Stretch">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="60"></ColumnDefinition>
+                                        <ColumnDefinition Width="55"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 

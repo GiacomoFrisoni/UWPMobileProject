@@ -33,9 +33,6 @@
             <rating:Rating Name="RatingControl" Margin="20, 10" Maximum="5" ItemHeight="20" IsInteractive="True" StepFrequency="1" Value="0"></rating:Rating>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal">
-                <Button x:Name="BtnShare" Height="49" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" Click="BtnShare_Click">
-                    <SymbolIcon Symbol="ReShare" Foreground="Black"></SymbolIcon>
-                </Button>
                 <Button x:Name="BtnEdit" Height="49" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" Click="BtnEdit_Click">
                     <SymbolIcon Symbol="Edit" Foreground="Black"></SymbolIcon>
                 </Button>
@@ -52,7 +49,7 @@
         <SplitView Grid.Row="1" x:Name="SplitView" PanePlacement="Right">
             <SplitView.Content>
 
-                <Grid Background="#FDFDFD">
+                <Grid x:Name="GrdViewer" Background="#FDFDFD">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition></RowDefinition>
@@ -61,12 +58,12 @@
 
                     <ScrollViewer Margin="10" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" IsHorizontalRailEnabled="True" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled">
                         <Grid>
-                            <TextBlock Margin="5, 5, 5, 10" FontSize="22" Text="{Binding Title}"/>
+                            <TextBlock x:Name="TxbTitle" Margin="5, 5, 5, 10" FontSize="22" Text="{Binding Title}"/>
                             <Rectangle Fill="{StaticResource AppColor4Click}" Height="1" VerticalAlignment="Bottom" Margin="0, 0, 0, 5"></Rectangle>
                         </Grid>
                     </ScrollViewer>
                     
-                    <RichEditBox Margin="10, 0" Foreground="Red" Style="{StaticResource RichEditBoxStyle}" Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
+                    <RichEditBox x:Name="RtbView" Margin="10, 0" Foreground="Red" Style="{StaticResource RichEditBoxStyle}" Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
 
                     <Border Grid.Row="2" Margin="0, 10, 0, 0" BorderBrush="LightGray" BorderThickness="0, 1, 0, 0">
                         <Grid>
@@ -138,7 +135,26 @@
                                 </StackPanel>
                             </ScrollViewer>
                         </PivotItem>
+
+                        <PivotItem Header="Condivisione">
+                            <StackPanel>
+                                <Button Height="50" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" Background="{StaticResource AppColor4Hover}" Margin="5">
+                                    <StackPanel Orientation="Horizontal">
+                                        <SymbolIcon Symbol="ReShare" Foreground="{StaticResource AppColor1}"></SymbolIcon>
+                                        <TextBlock Margin="5, 0, 0, 0" Text="Condividi" Foreground="{StaticResource AppColor1}"></TextBlock>
+                                    </StackPanel>
+                                </Button>
+
+                                <Button Name="BtnPrint" Height="50" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" Background="{StaticResource AppColor4Hover}" Margin="5, 0, 5, 5" Click="BtnPrint_Click">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#xE2F6;" FontSize="18" Margin="0, 3, 0, 0" FontFamily="Segoe MDL2 Assets"  Foreground="{StaticResource AppColor1}"/>
+                                        <TextBlock Margin="5, 0, 0, 0" Text="Stampa" Foreground="{StaticResource AppColor1}"></TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </PivotItem>
                     </Pivot>
+                    
                 </Border>
             </SplitView.Pane>
         </SplitView>
