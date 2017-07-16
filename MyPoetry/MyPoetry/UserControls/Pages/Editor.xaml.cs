@@ -195,7 +195,7 @@ namespace MyPoetry.UserControls.Pages
         private void RebText_TextChanged(object sender, RoutedEventArgs e)
         {
             //Clear line numbers
-            LineNumbers.Items.Clear();
+            List<string> itemSource = new List<string>();
             int i = 1;
 
             // Update statistics
@@ -216,11 +216,11 @@ namespace MyPoetry.UserControls.Pages
                     if (st != "")
                     {
                         n_lines++;
-                        LineNumbers.Items.Add(i++);
+                        itemSource.Add((i++).ToString());
                     }
                     else
                     {
-                        LineNumbers.Items.Add("");
+                        itemSource.Add("");
                     }                      
                 }
             }
@@ -235,6 +235,8 @@ namespace MyPoetry.UserControls.Pages
             TxbWordsNumber.Text = n_words.ToString();
             TxbLinesNumber.Text = n_lines.ToString();
 
+            LineNumbers.ItemsSource = null;
+            LineNumbers.ItemsSource = itemSource;
             
             /*for (int i = 0; i < n_justify_lines; i++)
                 LineNumbers.Items.Add(i + 1);
