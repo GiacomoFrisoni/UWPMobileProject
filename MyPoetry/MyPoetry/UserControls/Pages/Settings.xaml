@@ -11,6 +11,68 @@
     d:DesignWidth="400">
 
     <custom:CustomPage x:Name="MainContent">
-        
+        <custom:CustomPage.MainContent>
+            <Grid Loaded="Grid_Loaded">
+                <StackPanel>
+                    <TextBlock Margin="5" Style="{StaticResource TitleTextBlockStyle}" Text="Here you can customize the app settings"></TextBlock>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}" Text="Sfondo"></TextBlock>
+                        
+                        <ComboBox VerticalAlignment="Stretch" Width="150" Margin="5, 0, 0, 0" x:Name="CmbBackgroundSelector" SelectionChanged="CmbBackgroundSelector_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image VerticalAlignment="Center" Height="15" Width="30" Source="{Binding BackgroundPreview}"></Image>
+                                        <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding BackgroundDescription}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock VerticalAlignment="Center"  Style="{StaticResource SubtitleTextBlockStyle}" Text="Lingua"></TextBlock>
+                        <ComboBox Margin="10, 0, 0, 0" Width="150"  x:Name="CmbLanguageSelector" SelectionChanged="CmbLanguageSelector_SelectionChanged"></ComboBox>
+                    </StackPanel>
+
+                    <TextBlock Margin="5" Style="{StaticResource TitleTextBlockStyle}" Text="Info/Credits"></TextBlock>
+
+                    <GridView Margin="5, 0, 1, 5" x:Name="GridView" SelectionMode="None" SizeChanged="GridView_SizeChanged">
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="GrdMain" Background="{Binding PaneColor}" HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="55"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <SymbolIcon x:Name="Symbol" Foreground="White" Symbol="{Binding Icon}"></SymbolIcon>
+
+                                    <Grid Background="White" Padding="10, 5" Grid.Column="1" HorizontalAlignment="Stretch">
+                                        <StackPanel HorizontalAlignment="Stretch">
+                                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding Description}"></TextBlock>
+                                            <TextBlock Foreground="Gray" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="WrapWholeWords" Text="{Binding Value}"></TextBlock>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                        <GridView.ItemContainerStyle>
+                            <Style TargetType="GridViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                            </Style>
+                        </GridView.ItemContainerStyle>
+                    </GridView>
+                </StackPanel>
+
+
+                
+
+            </Grid>
+        </custom:CustomPage.MainContent>
     </custom:CustomPage>
 </UserControl>

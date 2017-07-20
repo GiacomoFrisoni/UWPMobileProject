@@ -194,10 +194,6 @@ namespace MyPoetry.UserControls.Pages
 
         private void RebText_TextChanged(object sender, RoutedEventArgs e)
         {
-            //Clear line numbers
-            List<string> itemSource = new List<string>();
-            int i = 1;
-
             // Update statistics
             ITextRange text = RebText.Document.GetRange(0, TextConstants.MaxUnitCount);
             string s = text.Text;
@@ -214,14 +210,8 @@ namespace MyPoetry.UserControls.Pages
                 foreach (string st in tmp)
                 {
                     if (st != "")
-                    {
                         n_lines++;
-                        itemSource.Add((i++).ToString());
-                    }
-                    else
-                    {
-                        itemSource.Add("");
-                    }                      
+                    
                 }
             }
             else
@@ -234,33 +224,6 @@ namespace MyPoetry.UserControls.Pages
             TxbCharsNumber.Text = n_chars.ToString();
             TxbWordsNumber.Text = n_words.ToString();
             TxbLinesNumber.Text = n_lines.ToString();
-
-            LineNumbers.ItemsSource = null;
-            LineNumbers.ItemsSource = itemSource;
-            
-            /*for (int i = 0; i < n_justify_lines; i++)
-                LineNumbers.Items.Add(i + 1);
-            
-            /*if (n_justify_lines > 0)
-            {
-                if (LineNumbers.Items.Count < n_justify_lines)
-                {
-                    for (int i = 1; i <= n_justify_lines + 1; i++)
-                    {
-                        LineNumbers.Items.Add(LineNumbers.Items.Count + i);
-                    }
-                }
-            }*/
-
-
-
-            /*if (n_lines < LineNumbers.Items.Count)
-            {
-                int toRemove = LineNumbers.Items.Count - n_lines;
-
-                for (int i = 0; i < toRemove; i++)
-                    LineNumbers.Items.RemoveAt(LineNumbers.Items.Count - 1);
-            }*/
         }
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
@@ -379,11 +342,6 @@ namespace MyPoetry.UserControls.Pages
             {
                 messageDialog = new MessageDialog(loader.GetString("Err_MissingData"), loader.GetString("Warning"));
             }
-        }
-
-        private void RebText_TextChanged_1(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
