@@ -1,6 +1,7 @@
 ﻿using MyPoetry.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// Multithreaded Singleton to store date of the logged User.

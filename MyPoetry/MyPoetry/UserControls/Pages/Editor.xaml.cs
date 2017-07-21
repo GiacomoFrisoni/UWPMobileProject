@@ -318,7 +318,10 @@ namespace MyPoetry.UserControls.Pages
                         hpm.Message = loader.GetString("PoetryAdded");
                     else
                         hpm.Message = loader.GetString("PoetryUpdated");
-                    hpm.SetOkAction(null, loader.GetString("Ok"));
+                    hpm.SetOkAction(() => {
+                        // Navigates to home
+                        MenuHandler.Instance.SetMenuIndex(1);
+                    }, loader.GetString("Ok"));
                     hpm.IsOkButtonEnabled = true;
                 }));
 

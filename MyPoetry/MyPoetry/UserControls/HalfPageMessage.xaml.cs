@@ -147,7 +147,7 @@ namespace MyPoetry.UserControls
         {
             this.Dismiss();
 
-            if (((Button)sender).Name == "btnOk")
+            if (((Button)sender).Name == "BtnOk")
             {
                 this.OkAction?.Invoke();
             }
