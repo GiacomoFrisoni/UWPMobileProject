@@ -55,7 +55,7 @@ namespace MyPoetry.Utilities
 
         public List<Poetry> GetPoetries()
         {
-            return this.poetries;
+            return this.poetries != null ? this.poetries.OrderByDescending(p => p.CreationDate).ToList() : null;
         }
     }
 }

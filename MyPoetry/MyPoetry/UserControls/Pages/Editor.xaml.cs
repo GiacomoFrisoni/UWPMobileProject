@@ -221,6 +221,12 @@ namespace MyPoetry.UserControls.Pages
             TxbLinesNumber.Text = n_lines.ToString();
         }
 
+        private void Clear()
+        {
+            TxbTitle.Text = String.Empty;
+            RebText.Document.SetText(TextSetOptions.FormatRtf, String.Empty);
+        }
+
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             var loader = new ResourceLoader();
@@ -319,6 +325,8 @@ namespace MyPoetry.UserControls.Pages
                     else
                         hpm.Message = loader.GetString("PoetryUpdated");
                     hpm.SetOkAction(() => {
+                        // Reset inputs
+                        Clear();
                         // Navigates to home
                         MenuHandler.Instance.SetMenuIndex(1);
                     }, loader.GetString("Ok"));

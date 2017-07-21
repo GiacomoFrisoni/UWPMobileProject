@@ -16,12 +16,9 @@
         <converters:DateFormatConverter x:Name="DateToStringFormatConverter"/>
     </UserControl.Resources>
 
-
     <custom:CustomPage x:Name="MainContent" Title="Home">
         <custom:CustomPage.MainContent>
-
             <Grid>
-
                 <controls:MasterDetailsView SelectionChanged="MasterDetailView_SelectionChanged" MasterPaneWidth="300" Margin="0" Padding="0" x:Name="MasterDetailView" HorizontalContentAlignment="Stretch" Loaded="MasterDetailView_Loaded" Background="#F9F9F9" BorderThickness="0" BorderBrush="LightGray">
                     <controls:MasterDetailsView.MasterHeader>
                         <Border Margin="-13, 0" BorderBrush="{StaticResource AppColor4Click}" BorderThickness="0, 0, 0, 1">

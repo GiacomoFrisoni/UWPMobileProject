@@ -22,11 +22,9 @@ namespace MyPoetry
             settings = new AppLocalSettings();
             GenerateMenu();
         }
-
-
+        
         CustomPage CurrentPage { get; set; }
         
-
         private async void GenerateMenu()
         {
             // Temp list for binding

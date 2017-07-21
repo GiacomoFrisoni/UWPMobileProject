@@ -30,7 +30,8 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <rating:Rating Name="RatingControl" Margin="20, 10" Maximum="5" ItemHeight="20" IsInteractive="True" StepFrequency="1" Value="0"></rating:Rating>
+                <rating:Rating Name="RatingControl" Margin="20, 10" Maximum="5" ItemHeight="20" IsInteractive="True" StepFrequency="1" Value="{Binding Rating, Mode=TwoWay}" ManipulationCompleted="RatingControl_ValueChanged" Tapped="RatingControl_ValueChanged"></rating:Rating>
+                <ProgressRing x:Name="ProgressRingRating" Margin="20, 10" Height="20" Width="20" Foreground="{StaticResource AppColor1}" Visibility="Collapsed"/>
 
                 <StackPanel Grid.Column="2" Orientation="Horizontal">
                     <Button x:Name="BtnEdit" Height="49" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" Click="BtnEdit_Click">

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Toolkit.Uwp;
 using Microsoft.WindowsAzure.MobileServices;
 using MyPoetry.Model;
+using MyPoetry.Utilities;
 using System;
+using System.Collections.Generic;
 using Windows.ApplicationModel.Resources;
 using Windows.UI;
 using Windows.UI.Popups;
@@ -10,6 +12,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
+using XamlBrewer.Uwp.Controls;
 
 namespace MyPoetry.UserControls
 {
@@ -137,6 +140,26 @@ namespace MyPoetry.UserControls
             
             PrintHelper pHelp = new PrintHelper(stp);
             await pHelp.ShowPrintUIAsync("Testo della poesia", true);
+        }
+
+        private void ProgressBarRatingVisible(bool visible)
+        {
+            ProgressRingRating.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
+            RatingControl.Visibility = visible ? Visibility.Collapsed : Visibility.Visible;
+            ProgressRingRating.IsActive = visible;
+        }
+
+        private async void RatingControl_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            Rating rating = (Rating)sender;
+            Poetry poetry = (Poetry)this.DataContext;
+            poetry.Rating = Convert.ToInt32(rating.Value);
+            ProgressBarRatingVisible(true);
+            // Updates rating
+            await App.MobileService.GetTable<Poetry>().UpdateAsync(poetry);
+            // Refreshes MasterDetail items
+            RefreshEvent?.Invoke(sender, null);
+            ProgressBarRatingVisible(false);
         }
     }
 }
