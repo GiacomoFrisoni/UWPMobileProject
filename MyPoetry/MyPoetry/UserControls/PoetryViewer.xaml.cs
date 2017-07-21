@@ -4,7 +4,11 @@ using MyPoetry.Model;
 using MyPoetry.Utilities;
 using System;
 using System.Collections.Generic;
+using Windows.ApplicationModel;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.ApplicationModel.Resources;
+using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Text;
@@ -24,6 +28,8 @@ namespace MyPoetry.UserControls
 
             RatingControl.FilledImage = new Uri("ms-appx:///Assets/Rating/staron.png");
             RatingControl.EmptyImage = new Uri("ms-appx:///Assets/Rating/staroff.png");
+
+            RegisterForShare();
         }
 
 
@@ -32,9 +38,45 @@ namespace MyPoetry.UserControls
         public event EventHandler RefreshEvent;
 
 
+        private void RegisterForShare()
+        {
+            DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
+            dataTransferManager.DataRequested += new Windows.Foundation.TypedEventHandler<DataTransferManager, DataRequestedEventArgs>(this.SharePoetry);
+        }
+
+        private async void SharePoetry(DataTransferManager sender, DataRequestedEventArgs e)
+        {
+            DataRequest request = e.Request;
+            request.Data.Properties.Title = "Condivisione di Prova";
+            request.Data.Properties.Description = "Rendi pubblica la tua poesia e inviala nel modo in cui preferisci.";
+
+            // Plain text
+            request.Data.SetText("Prova");
+
+            // HTML
+            request.Data.SetHtmlFormat("<b>Prova</b>");
+
+            // Because we are making async calls in the DataRequested event handler,
+            // we need to get the deferral first
+            DataRequestDeferral deferral = request.GetDeferral();
+
+            // Make sure we always call Complete on the deferral
+            try
+            {
+                // Sets the preview image
+                StorageFile thumbnailFile = await Package.Current.InstalledLocation.GetFileAsync("Assets\\SmallTile.scale-200.png");
+                request.Data.Properties.Thumbnail = RandomAccessStreamReference.CreateFromFile(thumbnailFile);
+                StorageFile imageFile = await Package.Current.InstalledLocation.GetFileAsync("Assets\\SplashScreenLogo.png");
+            }
+            finally
+            {
+                deferral.Complete();
+            }
+        }
+
         private void BtnShare_Click(object sender, RoutedEventArgs e)
         {
-
+            DataTransferManager.ShowShareUI();
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)

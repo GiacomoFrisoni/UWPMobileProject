@@ -139,7 +139,7 @@
 
                             <PivotItem Header="Condivisione">
                                 <StackPanel>
-                                    <Button Height="50" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" Background="{StaticResource AppColor4Hover}" Margin="5">
+                                    <Button Name="BtnShare" Height="50" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" Background="{StaticResource AppColor4Hover}" Margin="5" Click="BtnShare_Click">
                                         <StackPanel Orientation="Horizontal">
                                             <SymbolIcon Symbol="ReShare" Foreground="{StaticResource AppColor1}"></SymbolIcon>
                                             <TextBlock Margin="5, 0, 0, 0" Text="Condividi" Foreground="{StaticResource AppColor1}"></TextBlock>
