@@ -6,7 +6,6 @@ using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Animation;
 
 namespace MyPoetry.UserControls.Pages
 {
@@ -75,7 +74,7 @@ namespace MyPoetry.UserControls.Pages
         }
         #endregion
 
-        #region Filters
+        #region Filters and Searching
         private void CmbOrderby_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ProgressBarVisible(true);
@@ -111,7 +110,7 @@ namespace MyPoetry.UserControls.Pages
                 case Criteria.Date:
                     {
                         return UserHandler.Instance.GetPoetries()
-                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
+                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text.ToLower()) || p.Body.ToLower().Contains(text.ToLower())))
                         .OrderBy(poetry => poetry.CreationDate)
                         .ToList();
                     }
@@ -119,7 +118,7 @@ namespace MyPoetry.UserControls.Pages
                 case Criteria.DateDesc:
                     {
                         return UserHandler.Instance.GetPoetries()
-                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
+                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text.ToLower()) || p.Body.ToLower().Contains(text.ToLower())))
                         .OrderByDescending(poetry => poetry.CreationDate)
                         .ToList();
                     }
@@ -127,7 +126,7 @@ namespace MyPoetry.UserControls.Pages
                 case Criteria.Length:
                     {
                         return UserHandler.Instance.GetPoetries()
-                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
+                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text.ToLower()) || p.Body.ToLower().Contains(text.ToLower())))
                         .OrderBy(poetry => poetry.CharactersNumber)
                         .ToList();
                     }
@@ -135,14 +134,14 @@ namespace MyPoetry.UserControls.Pages
                 case Criteria.LengthDesc:
                     {
                         return UserHandler.Instance.GetPoetries()
-                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
+                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text.ToLower()) || p.Body.ToLower().Contains(text.ToLower())))
                         .OrderByDescending(poetry => poetry.CharactersNumber)
                         .ToList();
                     }
                 case Criteria.Rating:
                     {
                         return UserHandler.Instance.GetPoetries()
-                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
+                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text.ToLower()) || p.Body.ToLower().Contains(text.ToLower())))
                         .OrderBy(poetry => poetry.Rating)
                         .ToList();
                     }
@@ -150,7 +149,7 @@ namespace MyPoetry.UserControls.Pages
                 case Criteria.RatingDesc:
                     {
                         return UserHandler.Instance.GetPoetries()
-                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text) || p.Body.ToLower().Contains(text)))
+                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && (p.Title.ToLower().Contains(text.ToLower()) || p.Body.ToLower().Contains(text.ToLower())))
                         .OrderByDescending(poetry => poetry.Rating)
                         .ToList();
                     }
@@ -166,7 +165,7 @@ namespace MyPoetry.UserControls.Pages
             MasterDetailView.ItemsSource = GetPoetriesWithCriteria(GetCriteriaFromOption(CmbOrderby.SelectedIndex), SearchBox.Text);
             ProgressBarVisible(false);
         }
-#endregion
+        #endregion
 
         #region Forward and Back Navigation
         public bool CanGoForward()
