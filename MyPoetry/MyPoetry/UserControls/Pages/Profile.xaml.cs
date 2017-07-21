@@ -1,5 +1,4 @@
 ﻿using Microsoft.Toolkit.Uwp;
-using Microsoft.Toolkit.Uwp.UI.Controls;
 using MyPoetry.Model;
 using MyPoetry.Utilities;
 using System;
@@ -8,9 +7,6 @@ using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Shapes;
-
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace MyPoetry.UserControls.Pages
 {
@@ -22,8 +18,7 @@ namespace MyPoetry.UserControls.Pages
         }
 
         public CustomPage GetPage { get { return MainContent; } }
-
-
+        
         public class InfoViewer
         {
             public string Description { get; set; }
@@ -40,78 +35,20 @@ namespace MyPoetry.UserControls.Pages
 
         private async void LoadData()
         {
-            ProgressBarVisible(true);
-
-            if (UserHandler.Instance.GetPoetries() == null)
-            {
-                List<Poetry> poetries = await App.MobileService.GetTable<Poetry>()
-                    .Where(p => p.UserId == UserHandler.Instance.GetUser().Id)
-                    .ToListAsync();
-                UserHandler.Instance.SetPoetries(poetries);
-            }
-
-            //Immagine
+            // Loads profile image
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
-            Image.Fill = ib;
+            UserImage.Fill = ib;
 
-            //Nome, mail
+            // Shows name and email of the logged user
             TxbUser.Text = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
             TxbMail.Text = UserHandler.Instance.GetUser().Email;     
 
-            //GridView
-            GridView.ItemsSource = null;
-            GridView.ItemsSource = GenerateAdvancedInfo();
-
-            ProgressBarVisible(false);
+            // Generates statistic elements inside the gridview
+            ProfileGridView.ItemsSource = null;
+            ProfileGridView.ItemsSource = GenerateAdvancedInfo();
         }
-
-        private Grid GenerateOrbitContent(ImageBrush ib)
-        {
-            Grid g = new Grid();
-
-            Ellipse e = new Ellipse();
-            e.Height = 150;
-            e.Width = 150;
-            e.VerticalAlignment = VerticalAlignment.Center;
-            e.HorizontalAlignment = HorizontalAlignment.Center;
-            e.Fill = ib;
-
-            g.Children.Add(e);
-
-            return g;
-        }
-
-        private OrbitViewDataItemCollection GenerateOrbitCollection()
-        {
-            List<Poetry> poems = UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CharactersNumber).ToList();
-            OrbitViewDataItemCollection ovdic = new OrbitViewDataItemCollection();
-
-            double maxChar = poems.First().CharactersNumber;
-            double minChar = poems.Last().CharactersNumber;
-
-            //100 : maxChar = x : (actualChar - minChar)
-            // x = 100 * actual / max
-
-            foreach (Poetry po in UserHandler.Instance.GetPoetries())
-            {
-                double chars = po.CharactersNumber;
-                ovdic.Add(new OrbitViewDataItem() { Label = po.Title, Distance = (chars - minChar) / maxChar });
-            }
-
-            /*
-            for (int i = 0; i < poems.Count && i < 10; i++)
-            {
-                if (i % 2 == 0)
-                    ovdic.Add(new OrbitViewDataItem() { Label = poems[i].Title, Distance = 0.1 });
-                else
-                    ovdic.Add(new OrbitViewDataItem() { Label = poems[i].Title, Distance = 0.5 });
-            }*/
-
-            return ovdic;
-        }
-
-
+        
         private List<DataViewer> GenerateAdvancedInfo()
         {
             List<DataViewer> info = new List<DataViewer>();
@@ -152,7 +89,7 @@ namespace MyPoetry.UserControls.Pages
 
         private void GridView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var panel = (ItemsWrapGrid)GridView.ItemsPanelRoot;
+            var panel = (ItemsWrapGrid)ProfileGridView.ItemsPanelRoot;
             panel.ItemWidth = e.NewSize.Width / Math.Truncate(e.NewSize.Width / 320);
         }
 

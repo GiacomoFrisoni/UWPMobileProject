@@ -1,9 +1,4 @@
-﻿using MyPoetry.Model;
-using MyPoetry.Utilities;
-using System.Collections.Generic;
-using System.Linq;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 
 namespace MyPoetry.UserControls.Pages
 {

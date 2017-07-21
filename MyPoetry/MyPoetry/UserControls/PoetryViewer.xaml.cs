@@ -5,7 +5,6 @@ using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Printing;
 using Windows.UI.Xaml.Shapes;
 
 namespace MyPoetry.UserControls
@@ -20,39 +19,37 @@ namespace MyPoetry.UserControls
             RatingControl.EmptyImage = new Uri("ms-appx:///Assets/Rating/staroff.png");
         }
 
+
         public event EventHandler BackEvent;
         public event EventHandler ForwardEvent;
 
 
-        private void BtnShare_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void BtnShare_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void BtnEdit_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-
-        private void BtnDetails_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void BtnDetails_Click(object sender, RoutedEventArgs e)
         {
-            SplitView.IsPaneOpen = !SplitView.IsPaneOpen;
+            PoetrySplitView.IsPaneOpen = !PoetrySplitView.IsPaneOpen;
         }
 
-        private void BtnDelete_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
-
-
-        private void BtnBack_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             BackEvent?.Invoke(sender, null);
         }
 
-        private void BtnForward_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void BtnForward_Click(object sender, RoutedEventArgs e)
         {
             ForwardEvent?.Invoke(sender, null);
         }
@@ -83,12 +80,9 @@ namespace MyPoetry.UserControls
 
             stp.Children.Add(g);
             stp.Children.Add(rtb);
-
-
+            
             PrintHelper pHelp = new PrintHelper(stp);
             await pHelp.ShowPrintUIAsync("Testo della poesia", true);
         }
-
-
     }
 }

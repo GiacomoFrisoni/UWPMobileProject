@@ -5,14 +5,10 @@ using MyPoetry.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
-using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 
 namespace MyPoetry
 {
@@ -23,14 +19,14 @@ namespace MyPoetry
         public MainPage()
         {
             this.InitializeComponent();
-
             settings = new AppLocalSettings();
-
-            GenerateMenu();       
+            GenerateMenu();
         }
+
 
         CustomPage CurrentPage { get; set; }
         
+
         private async void GenerateMenu()
         {
             // Temp list for binding
@@ -44,11 +40,8 @@ namespace MyPoetry
             // Creating menu groups
             var loader = new ResourceLoader();
             menu.Add(new MenuItem() { ItemText = user, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Profile().GetPage });
-
             menu.Add(new MenuItem() { ItemText = loader.GetString("Home"), ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home, ItemPage = new Homepage().GetPage  });
-
             menu.Add(new MenuItem() { ItemText = loader.GetString("NewPoetry"), ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create, ItemPage = new Editor().GetPage });
-
             menu.Add(new MenuItem() { ItemText = loader.GetString("Settings"), ItemIcon = Symbol.Setting, Group = MenuItem.Groups.Settings, ItemPage = new Settings().GetPage });
 
             // Settings groups
@@ -60,8 +53,6 @@ namespace MyPoetry
 
             MenuHandler.Instance.SetMenu(MenuList);
         }
-
-
         
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {

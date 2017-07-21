@@ -2,21 +2,10 @@
 using MyPoetry.Utilities;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// Il modello di elemento Pagina vuota è documentato all'indirizzo https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace MyPoetry.UserControls.Pages
 {
@@ -52,7 +41,6 @@ namespace MyPoetry.UserControls.Pages
                 UserHandler.Instance.SetPoetries(poetries);
 
                 MasterDetailView.ItemsSource = poetries;
-
             }
             else
             {
@@ -63,8 +51,7 @@ namespace MyPoetry.UserControls.Pages
             ProgressBarVisible(false);
         }
         #endregion
-
-
+    
         #region ButtonClick events
         private void BtnShare_Click(object sender, RoutedEventArgs e)
         {
@@ -82,6 +69,7 @@ namespace MyPoetry.UserControls.Pages
         }
         #endregion
 
+        #region Filters
         private void CmbOrderby_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ProgressBarVisible(true);
@@ -90,7 +78,6 @@ namespace MyPoetry.UserControls.Pages
             MasterDetailView.ItemsSource = GetPoetriesWithCriteria(GetCriteriaFromOption(CmbOrderby.SelectedIndex), SearchBox.Text);
             ProgressBarVisible(false);
         }
-
 
         private enum Criteria
         {
@@ -111,9 +98,8 @@ namespace MyPoetry.UserControls.Pages
             }
         }
 
-        private List<Poetry> GetPoetriesWithCriteria (Criteria criteria, string text)
+        private List<Poetry> GetPoetriesWithCriteria(Criteria criteria, string text)
         {
-
             switch(criteria)
             {
                 case Criteria.Date:
@@ -174,8 +160,9 @@ namespace MyPoetry.UserControls.Pages
             MasterDetailView.ItemsSource = GetPoetriesWithCriteria(GetCriteriaFromOption(CmbOrderby.SelectedIndex), SearchBox.Text);
             ProgressBarVisible(false);
         }
+#endregion
 
-
+        #region Forward and Back Navigation
         public void GoForward()
         {
             if (MasterDetailView.Items.Count > 0)
@@ -222,7 +209,6 @@ namespace MyPoetry.UserControls.Pages
             }
         }
 
-
         private void PoetryViewer_BackEvent(object sender, EventArgs e)
         {
             GoBack();
@@ -233,6 +219,12 @@ namespace MyPoetry.UserControls.Pages
             GoForward();
         }
 
+        /*
+         * Utility method used to obtain the ListView contained inside of the MasterDetail
+         * component. By doing so, we are able to make an automatic scroll even in case of
+         * indirect navigation (with back and forward buttons).
+         * See: https://stackoverflow.com/questions/45009500/masterdetailview-uwp-access-the-listview-or-make-it-scroll/45022012#45022012
+         */
         public static T FindChildOfType<T>(DependencyObject root) where T : class
         {
             var queue = new Queue<DependencyObject>();
@@ -259,6 +251,7 @@ namespace MyPoetry.UserControls.Pages
             var v = FindChildOfType<ListView>(MasterDetailView);
             v.ScrollIntoView(MasterDetailView.SelectedItem);
         }
+        #endregion
     }
 
 }

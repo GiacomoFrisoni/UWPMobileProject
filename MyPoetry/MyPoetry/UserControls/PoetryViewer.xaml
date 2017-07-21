@@ -46,7 +46,7 @@
             </StackPanel>
         </Grid>
 
-        <SplitView Grid.Row="1" x:Name="SplitView" PanePlacement="Right">
+        <SplitView Grid.Row="1" x:Name="PoetrySplitView" PanePlacement="Right">
             <SplitView.Content>
 
                 <Grid x:Name="GrdViewer" Background="#FDFDFD">

@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.ApplicationModel.Resources;
-using Windows.Foundation;
 using Windows.Storage;
 using Windows.System;
 using Windows.UI.Popups;
@@ -187,10 +186,6 @@ namespace MyPoetry.UserControls.Pages
             }
         }
         #endregion
-
-
-
-
 
         private void RebText_TextChanged(object sender, RoutedEventArgs e)
         {
