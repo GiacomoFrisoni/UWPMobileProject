@@ -1,6 +1,10 @@
 ﻿using Microsoft.Toolkit.Uwp;
+using Microsoft.WindowsAzure.MobileServices;
+using MyPoetry.Model;
 using System;
+using Windows.ApplicationModel.Resources;
 using Windows.UI;
+using Windows.UI.Popups;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -22,6 +26,7 @@ namespace MyPoetry.UserControls
 
         public event EventHandler BackEvent;
         public event EventHandler ForwardEvent;
+        public event EventHandler RefreshEvent;
 
 
         private void BtnShare_Click(object sender, RoutedEventArgs e)
@@ -39,11 +44,60 @@ namespace MyPoetry.UserControls
             PoetrySplitView.IsPaneOpen = !PoetrySplitView.IsPaneOpen;
         }
 
-        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        private async void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
+            var loader = new ResourceLoader();
 
+            // Create the message dialog
+            MessageDialog messageDialog = new MessageDialog(loader.GetString("DeleteConfirm"), loader.GetString("Confirm"));
+
+            // YES command
+            messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), async (command) =>
+            {
+                Exception exception = null;
+                HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+                try
+                {
+                    // Shows loading message
+                    hpm.ShowMessage(loader.GetString("RemovalInProgress"), loader.GetString("ServerConnection"), true, false, false, null, null);
+
+                    // Deletes poetry
+                    await App.MobileService.GetTable<Poetry>().DeleteAsync((Poetry)this.DataContext);
+                }
+                catch (MobileServiceInvalidOperationException ex)
+                {
+                    exception = ex;
+                }
+                finally
+                {
+                    if (exception != null)
+                    {
+                        hpm.Dismiss();
+                        var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
+                        await msg.ShowAsync();
+                    }
+                    else
+                    {
+                        // Refreshes MasterDetail items
+                        RefreshEvent?.Invoke(sender, null);
+
+                        hpm.Dismiss();
+                    }
+                }
+            }));
+
+            // NO command
+            messageDialog.Commands.Add(new UICommand(loader.GetString("No"), (command) =>
+            {
+            }));
+            
+            // Set the command that will be invoked by default
+            messageDialog.DefaultCommandIndex = 1;
+
+            // Show the message dialog
+            await messageDialog.ShowAsync();
         }
-        
+
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             BackEvent?.Invoke(sender, null);

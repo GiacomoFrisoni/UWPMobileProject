@@ -53,7 +53,7 @@
 
                     <controls:MasterDetailsView.DetailsTemplate>
                         <DataTemplate>
-                            <custom:PoetryViewer BackEvent="PoetryViewer_BackEvent" ForwardEvent="PoetryViewer_ForwardEvent"></custom:PoetryViewer>
+                            <custom:PoetryViewer BackEvent="PoetryViewer_BackEvent" ForwardEvent="PoetryViewer_ForwardEvent" RefreshEvent="PoetryViewer_RefreshEvent"></custom:PoetryViewer>
                         </DataTemplate>
                     </controls:MasterDetailsView.DetailsTemplate>
 

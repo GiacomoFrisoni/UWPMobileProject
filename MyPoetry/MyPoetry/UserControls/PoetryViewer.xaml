@@ -16,147 +16,148 @@
         <converters:DateFormatConverter x:Name="DateToStringFormatConverter"/>
     </UserControl.Resources>
 
-    <Grid Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="48"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+    <Grid x:Name="GrdParent">
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"  Background="{StaticResource AppColor4}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Background="{StaticResource AppColor4}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
+                <rating:Rating Name="RatingControl" Margin="20, 10" Maximum="5" ItemHeight="20" IsInteractive="True" StepFrequency="1" Value="0"></rating:Rating>
 
-            <rating:Rating Name="RatingControl" Margin="20, 10" Maximum="5" ItemHeight="20" IsInteractive="True" StepFrequency="1" Value="0"></rating:Rating>
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button x:Name="BtnEdit" Height="49" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" Click="BtnEdit_Click">
+                        <SymbolIcon Symbol="Edit" Foreground="Black"></SymbolIcon>
+                    </Button>
+                    <Button x:Name="BtnDetails" Height="49" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" Click="BtnDetails_Click">
+                        <SymbolIcon Symbol="OpenPane" Foreground="Black"></SymbolIcon>
+                    </Button>
 
-            <StackPanel Grid.Column="2" Orientation="Horizontal">
-                <Button x:Name="BtnEdit" Height="49" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" Click="BtnEdit_Click">
-                    <SymbolIcon Symbol="Edit" Foreground="Black"></SymbolIcon>
-                </Button>
-                <Button x:Name="BtnDetails" Height="49" Width="50" Style="{StaticResource ButtonWhite}" BorderBrush="Transparent" Click="BtnDetails_Click">
-                    <SymbolIcon Symbol="OpenPane" Foreground="Black"></SymbolIcon>
-                </Button>
+                    <Button x:Name="BtnDelete" Style="{StaticResource ButtonRed}" Height="49" Width="50" Click="BtnDelete_Click">
+                        <SymbolIcon Symbol="Delete"></SymbolIcon>
+                    </Button>
+                </StackPanel>
+            </Grid>
 
-                <Button x:Name="BtnDelete" Style="{StaticResource ButtonRed}" Height="49" Width="50" Click="BtnDelete_Click">
-                    <SymbolIcon Symbol="Delete"></SymbolIcon>
-                </Button>
-            </StackPanel>
-        </Grid>
+            <SplitView Grid.Row="1" x:Name="PoetrySplitView" PanePlacement="Right">
+                <SplitView.Content>
 
-        <SplitView Grid.Row="1" x:Name="PoetrySplitView" PanePlacement="Right">
-            <SplitView.Content>
+                    <Grid x:Name="GrdViewer" Background="#FDFDFD">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-                <Grid x:Name="GrdViewer" Background="#FDFDFD">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <ScrollViewer Margin="10" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" IsHorizontalRailEnabled="True" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled">
-                        <Grid>
-                            <TextBlock x:Name="TxbTitle" Margin="5, 5, 5, 10" FontSize="22" Text="{Binding Title}"/>
-                            <Rectangle Fill="{StaticResource AppColor4Click}" Height="1" VerticalAlignment="Bottom" Margin="0, 0, 0, 5"></Rectangle>
-                        </Grid>
-                    </ScrollViewer>
+                        <ScrollViewer Margin="10" HorizontalScrollMode="Enabled" HorizontalScrollBarVisibility="Visible" IsHorizontalRailEnabled="True" VerticalScrollMode="Disabled" VerticalScrollBarVisibility="Disabled">
+                            <Grid>
+                                <TextBlock x:Name="TxbTitle" Margin="5, 5, 5, 10" FontSize="22" Text="{Binding Title}"/>
+                                <Rectangle Fill="{StaticResource AppColor4Click}" Height="1" VerticalAlignment="Bottom" Margin="0, 0, 0, 5"></Rectangle>
+                            </Grid>
+                        </ScrollViewer>
                     
-                    <RichEditBox x:Name="RtbView" Margin="10, 0" Foreground="Red" Style="{StaticResource RichEditBoxStyle}" Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
+                        <RichEditBox x:Name="RtbView" Margin="10, 0" Foreground="Red" Style="{StaticResource RichEditBoxStyle}" Grid.Row="1" utilities:RtfText.RichText="{Binding Body}" BorderBrush="Transparent" Background="Transparent"/>
 
-                    <Border Grid.Row="2" Margin="0, 10, 0, 0" BorderBrush="LightGray" BorderThickness="0, 1, 0, 0">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
+                        <Border Grid.Row="2" Margin="0, 10, 0, 0" BorderBrush="LightGray" BorderThickness="0, 1, 0, 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
 
-                            <Button x:Name="BtnBack" Padding="0" Background="{StaticResource AppColor4}" Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource TextBlockButtonStyle}" Grid.Column="0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="🡸  Indietro" Click="BtnBack_Click"></Button>
-                            <Rectangle Grid.Column="1" Height="48" VerticalAlignment="Center" Fill="White" Width="1" Stroke="LightGray" StrokeThickness="0.5"></Rectangle>
-                            <Button x:Name="BtnForward" Padding="0" Background="{StaticResource AppColor4}"  Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource TextBlockButtonStyle}" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Avanti   🡺" Click="BtnForward_Click"></Button>
-                        </Grid>
-                    </Border>
-                </Grid>
-            </SplitView.Content>
+                                <Button x:Name="BtnBack" Padding="0" Background="{StaticResource AppColor4}" Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource TextBlockButtonStyle}" Grid.Column="0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="🡸  Indietro" Click="BtnBack_Click"></Button>
+                                <Rectangle Grid.Column="1" Height="48" VerticalAlignment="Center" Fill="White" Width="1" Stroke="LightGray" StrokeThickness="0.5"></Rectangle>
+                                <Button x:Name="BtnForward" Padding="0" Background="{StaticResource AppColor4}"  Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource TextBlockButtonStyle}" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Avanti   🡺" Click="BtnForward_Click"></Button>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </SplitView.Content>
 
-            <SplitView.Pane>
-                <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 1, 1, 0">
-                    <Pivot>
-                        <PivotItem Header="Statistiche">
-                            <ScrollViewer HorizontalContentAlignment="Center" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                <StackPanel Margin="0, 15, 0, 0">
-                                    <StackPanel.ChildrenTransitions>
-                                        <TransitionCollection>
-                                            <ContentThemeTransition></ContentThemeTransition>
-                                        </TransitionCollection>
-                                    </StackPanel.ChildrenTransitions>
+                <SplitView.Pane>
+                    <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 1, 1, 0">
+                        <Pivot>
+                            <PivotItem Header="Statistiche">
+                                <ScrollViewer HorizontalContentAlignment="Center" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                    <StackPanel Margin="0, 15, 0, 0">
+                                        <StackPanel.ChildrenTransitions>
+                                            <TransitionCollection>
+                                                <ContentThemeTransition></ContentThemeTransition>
+                                            </TransitionCollection>
+                                        </StackPanel.ChildrenTransitions>
 
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock>Data creazione</TextBlock>
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                            <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                            <TextBlock Text="{Binding CreationDate, Converter={StaticResource DateToStringFormatConverter}}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock>Data creazione</TextBlock>
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                <TextBlock Text="{Binding CreationDate, Converter={StaticResource DateToStringFormatConverter}}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                            <TextBlock>Ultima revisione</TextBlock>
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                <SymbolIcon Symbol="CalendarWeek" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                <TextBlock Text="{Binding RevisionDate, Converter={StaticResource DateToStringFormatConverter}}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                            <TextBlock>Lunghezza testo</TextBlock>
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                <SymbolIcon Symbol="AlignLeft" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                <TextBlock Text="{Binding CharactersNumber}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                            <TextBlock>Parole utilizzate</TextBlock>
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                <TextBlock Text="{Binding WordsNumber}"  Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
+                                            <TextBlock>Numero versi</TextBlock>
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
+                                                <TextBlock Text="{Binding VersesNumber}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                            </StackPanel>
                                         </StackPanel>
                                     </StackPanel>
+                                </ScrollViewer>
+                            </PivotItem>
 
-                                    <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                        <TextBlock>Ultima revisione</TextBlock>
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                            <SymbolIcon Symbol="CalendarWeek" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                            <TextBlock Text="{Binding RevisionDate, Converter={StaticResource DateToStringFormatConverter}}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                            <PivotItem Header="Condivisione">
+                                <StackPanel>
+                                    <Button Height="50" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" Background="{StaticResource AppColor4Hover}" Margin="5">
+                                        <StackPanel Orientation="Horizontal">
+                                            <SymbolIcon Symbol="ReShare" Foreground="{StaticResource AppColor1}"></SymbolIcon>
+                                            <TextBlock Margin="5, 0, 0, 0" Text="Condividi" Foreground="{StaticResource AppColor1}"></TextBlock>
                                         </StackPanel>
-                                    </StackPanel>
+                                    </Button>
 
-                                    <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                        <TextBlock>Lunghezza testo</TextBlock>
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                            <SymbolIcon Symbol="AlignLeft" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                            <TextBlock Text="{Binding CharactersNumber}" Style="{StaticResource SubtitleTextBlockStyle}"/>
+                                    <Button Name="BtnPrint" Height="50" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" Background="{StaticResource AppColor4Hover}" Margin="5, 0, 5, 5" Click="BtnPrint_Click">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="&#xE2F6;" FontSize="18" Margin="0, 3, 0, 0" FontFamily="Segoe MDL2 Assets"  Foreground="{StaticResource AppColor1}"/>
+                                            <TextBlock Margin="5, 0, 0, 0" Text="Stampa" Foreground="{StaticResource AppColor1}"></TextBlock>
                                         </StackPanel>
-                                    </StackPanel>
-
-                                    <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                        <TextBlock>Parole utilizzate</TextBlock>
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                            <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                            <TextBlock Text="{Binding WordsNumber}"  Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                        </StackPanel>
-                                    </StackPanel>
-
-                                    <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                        <TextBlock>Numero versi</TextBlock>
-                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
-                                            <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
-                                            <TextBlock Text="{Binding VersesNumber}" Style="{StaticResource SubtitleTextBlockStyle}"/>
-                                        </StackPanel>
-                                    </StackPanel>
+                                    </Button>
                                 </StackPanel>
-                            </ScrollViewer>
-                        </PivotItem>
-
-                        <PivotItem Header="Condivisione">
-                            <StackPanel>
-                                <Button Height="50" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" Background="{StaticResource AppColor4Hover}" Margin="5">
-                                    <StackPanel Orientation="Horizontal">
-                                        <SymbolIcon Symbol="ReShare" Foreground="{StaticResource AppColor1}"></SymbolIcon>
-                                        <TextBlock Margin="5, 0, 0, 0" Text="Condividi" Foreground="{StaticResource AppColor1}"></TextBlock>
-                                    </StackPanel>
-                                </Button>
-
-                                <Button Name="BtnPrint" Height="50" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" Background="{StaticResource AppColor4Hover}" Margin="5, 0, 5, 5" Click="BtnPrint_Click">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="&#xE2F6;" FontSize="18" Margin="0, 3, 0, 0" FontFamily="Segoe MDL2 Assets"  Foreground="{StaticResource AppColor1}"/>
-                                        <TextBlock Margin="5, 0, 0, 0" Text="Stampa" Foreground="{StaticResource AppColor1}"></TextBlock>
-                                    </StackPanel>
-                                </Button>
-                            </StackPanel>
-                        </PivotItem>
-                    </Pivot>
+                            </PivotItem>
+                        </Pivot>
                     
-                </Border>
-            </SplitView.Pane>
-        </SplitView>
+                    </Border>
+                </SplitView.Pane>
+            </SplitView>
+        </Grid>
     </Grid>
 </UserControl>

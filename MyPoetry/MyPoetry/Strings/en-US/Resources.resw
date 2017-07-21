@@ -360,4 +360,10 @@
   <data name="RhymesToolInvalidQuery" xml:space="preserve">
     <value>The searched word must be longer than the selected rhyme length.</value>
   </data>
+  <data name="DeleteConfirm" xml:space="preserve">
+    <value>Are you sure you want to delete the poetry?</value>
+  </data>
+  <data name="RemovalInProgress" xml:space="preserve">
+    <value>Removal in progress</value>
+  </data>
 </root>

@@ -28,26 +28,31 @@ namespace MyPoetry.UserControls.Pages
             ProgressRingPoetries.IsActive = visible;
         }
 
-        private async void MasterDetailView_Loaded(object sender, RoutedEventArgs e)
+        private void MasterDetailView_Loaded(object sender, RoutedEventArgs e)
         {
-            ProgressBarVisible(true);
-
+            // Loads poetries from server at the first loading...
             if (UserHandler.Instance.GetPoetries() == null)
             {
-                List<Poetry> poetries = await App.MobileService.GetTable<Poetry>()
-                    .Where(p => p.UserId == UserHandler.Instance.GetUser().Id)
-                    .OrderByDescending(poetry => poetry.CreationDate)
-                    .ToListAsync();
-                UserHandler.Instance.SetPoetries(poetries);
-
-                MasterDetailView.ItemsSource = poetries;
+                RefreshMasterDetailItemsFromServer();
             }
             else
             {
+                // Uses stored data otherwise
                 MasterDetailView.ItemsSource = null;
                 MasterDetailView.ItemsSource = UserHandler.Instance.GetPoetries();
             }
+        }
 
+        private async void RefreshMasterDetailItemsFromServer()
+        {
+            ProgressBarVisible(true);
+            List<Poetry> poetries = await App.MobileService.GetTable<Poetry>()
+                .Where(p => p.UserId == UserHandler.Instance.GetUser().Id)
+                .OrderByDescending(poetry => poetry.CreationDate)
+                .ToListAsync();
+            UserHandler.Instance.SetPoetries(poetries);
+            MasterDetailView.ItemsSource = null;
+            MasterDetailView.ItemsSource = poetries;
             ProgressBarVisible(false);
         }
         #endregion
@@ -163,6 +168,26 @@ namespace MyPoetry.UserControls.Pages
 #endregion
 
         #region Forward and Back Navigation
+        public bool CanGoForward()
+        {
+            if (MasterDetailView.Items.Count > 0)
+            {
+                Poetry lastPoetry = MasterDetailView.Items[MasterDetailView.Items.Count - 1] as Poetry;
+                return MasterDetailView.SelectedItem.Equals(lastPoetry) ? false : true;
+            }
+            return false;
+        }
+
+        public bool CanGoBack()
+        {
+            if (MasterDetailView.Items.Count > 0)
+            {
+                Poetry firstPoetry = MasterDetailView.Items[0] as Poetry;
+                return MasterDetailView.SelectedItem.Equals(firstPoetry) ? false : true;
+            }
+            return false;
+        }
+
         public void GoForward()
         {
             if (MasterDetailView.Items.Count > 0)
@@ -183,7 +208,6 @@ namespace MyPoetry.UserControls.Pages
                 }
 
                 MasterDetailView.SelectedItem = selectedPoetry;
-                
             }
         }
 
@@ -217,6 +241,11 @@ namespace MyPoetry.UserControls.Pages
         private void PoetryViewer_ForwardEvent(object sender, EventArgs e)
         {
             GoForward();
+        }
+
+        private void PoetryViewer_RefreshEvent(object sender, EventArgs e)
+        {
+            RefreshMasterDetailItemsFromServer();
         }
 
         /*

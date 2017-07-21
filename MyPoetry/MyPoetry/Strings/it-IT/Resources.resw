@@ -354,4 +354,10 @@
   <data name="RhymesToolInvalidQuery" xml:space="preserve">
     <value>La parola ricercata deve avere una lunghezza maggiore rispetto a quella della rima selezionata.</value>
   </data>
+  <data name="DeleteConfirm" xml:space="preserve">
+    <value>Sei sicuro di voler eliminare la poesia?</value>
+  </data>
+  <data name="RemovalInProgress" xml:space="preserve">
+    <value>Cancellazione in corso</value>
+  </data>
 </root>
