@@ -106,7 +106,7 @@
                         </Flyout>
                     </Button.Flyout>
                 </Button>
-                <Button Style="{StaticResource ButtonMenu}" Width="50" Height="48">
+                <Button Name="BtnNewPoetry" Style="{StaticResource ButtonMenu}" Width="50" Height="48" Click="BtnNewPoetry_Click">
                     <SymbolIcon Symbol="Add"></SymbolIcon>
                 </Button>
             </StackPanel>

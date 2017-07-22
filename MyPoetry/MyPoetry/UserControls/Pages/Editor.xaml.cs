@@ -18,7 +18,7 @@ namespace MyPoetry.UserControls.Pages
     {
         public CustomPage GetPage { get { return MainContent; } }
 
-        // Tools variable
+        // Tools variables
         private const string words_db_path = @"Assets\data\words.txt";
         private Dictionary<String, int> rhymesOptions = new Dictionary<string, int>
         {
@@ -41,6 +41,20 @@ namespace MyPoetry.UserControls.Pages
             foreach (KeyValuePair<String, int> option in rhymesOptions)
                 CmbRhymesLength.Items.Add(option.Key);
             CmbRhymesLength.SelectedIndex = 0;
+        }
+
+        private void GrdParent_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Cleans data
+            Clear();
+
+            // Checks for data to be preloaded
+            var poetryData = UserHandler.Instance.GetPoetryToEdit();
+            if (poetryData != null)
+            {
+                TxbTitle.Text = poetryData.Title;
+                RebText.Document.SetText(TextSetOptions.FormatRtf, poetryData.Body);
+            }
         }
 
         #region CharacterFormat
@@ -187,6 +201,7 @@ namespace MyPoetry.UserControls.Pages
         }
         #endregion
 
+        #region TextChanged
         private void RebText_TextChanged(object sender, RoutedEventArgs e)
         {
             // Update statistics
@@ -219,14 +234,33 @@ namespace MyPoetry.UserControls.Pages
             TxbCharsNumber.Text = n_chars.ToString();
             TxbWordsNumber.Text = n_words.ToString();
             TxbLinesNumber.Text = n_lines.ToString();
+
+            CheckEditing();
         }
 
+        private void TxbTitle_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CheckEditing();
+        }
+
+        private void CheckEditing()
+        {
+            if (TxbTitle.Text.Length > 0 || RebText.Document.GetRange(0, TextConstants.MaxUnitCount).Text.Replace("\r", "").Length > 0)
+                UserHandler.Instance.SetPoetryInEditing(true);
+            else
+                UserHandler.Instance.SetPoetryInEditing(false);
+        }
+        #endregion
+
+        #region Cleaning
         private void Clear()
         {
             TxbTitle.Text = String.Empty;
             RebText.Document.SetText(TextSetOptions.FormatRtf, String.Empty);
         }
+        #endregion
 
+        #region Saving
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             var loader = new ResourceLoader();
@@ -349,5 +383,6 @@ namespace MyPoetry.UserControls.Pages
                 messageDialog = new MessageDialog(loader.GetString("Err_MissingData"), loader.GetString("Warning"));
             }
         }
+        #endregion
     }
 }

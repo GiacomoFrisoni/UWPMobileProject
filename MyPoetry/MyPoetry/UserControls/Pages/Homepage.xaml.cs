@@ -266,6 +266,11 @@ namespace MyPoetry.UserControls.Pages
             RefreshMasterDetailItemsFromServer();
         }
         #endregion
+
+        private void BtnNewPoetry_Click(object sender, RoutedEventArgs e)
+        {
+            MenuHandler.Instance.SetMenuIndex(2);
+        }
     }
 
 }

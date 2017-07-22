@@ -98,7 +98,8 @@ namespace MyPoetry.UserControls
         #region Edit
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            UserHandler.Instance.SetPoetryToEdit((Poetry)DataContext);
+            MenuHandler.Instance.SetMenuIndex(2);
         }
         #endregion
 

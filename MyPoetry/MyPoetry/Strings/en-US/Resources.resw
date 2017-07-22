@@ -372,4 +372,7 @@
   <data name="SharingFooter" xml:space="preserve">
     <value>Created with MyPoetry</value>
   </data>
+  <data name="ExitFromEditorConfirm" xml:space="preserve">
+    <value>Are you sure you want to leave the editor? By doing so, you will lose the unsaved data.</value>
+  </data>
 </root>

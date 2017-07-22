@@ -14,6 +14,8 @@ namespace MyPoetry.Utilities
         private static object syncRoot = new Object();
         private User user;
         private List<Poetry> poetries = null;
+        private bool poetryInEditing = false;
+        private Poetry poetryToEdit = null;
 
         private UserHandler() { }
 
@@ -56,6 +58,26 @@ namespace MyPoetry.Utilities
         public List<Poetry> GetPoetries()
         {
             return this.poetries != null ? this.poetries.OrderByDescending(p => p.CreationDate).ToList() : null;
+        }
+
+        public void SetPoetryInEditing(bool value)
+        {
+            this.poetryInEditing = value;
+        }
+
+        public bool IsPoetryInEditing()
+        {
+            return this.poetryInEditing;
+        }
+
+        public void SetPoetryToEdit(Poetry poetry)
+        {
+            this.poetryToEdit = poetry;
+        }
+
+        public Poetry GetPoetryToEdit()
+        {
+            return this.poetryToEdit;
         }
     }
 }

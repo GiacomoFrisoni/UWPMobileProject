@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.ApplicationModel.Resources;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -15,6 +16,7 @@ namespace MyPoetry
     public sealed partial class MainPage : Page
     {
         private AppLocalSettings settings;
+        private int menuSelectedIndex;
 
         public MainPage()
         {
@@ -48,6 +50,7 @@ namespace MyPoetry
 
             // Selecting Home
             MenuList.SelectedIndex = 1;
+            menuSelectedIndex = 1;
 
             MenuHandler.Instance.SetMenu(MenuList);
         }
@@ -57,13 +60,46 @@ namespace MyPoetry
             NavigationPane.IsPaneOpen = !NavigationPane.IsPaneOpen;
         }
 
-        private void MenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void MenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (MenuList.SelectedItem.GetType().Equals(typeof(MenuItem)))
             {
-                CurrentPage = ((MenuItem)MenuList.SelectedItem).ItemPage;
-                this.Bindings.Update();
-                NavigationPane.IsPaneOpen = false;
+                var oldIndex = menuSelectedIndex;
+                menuSelectedIndex = MenuList.SelectedIndex;
+                if (oldIndex == 2 && UserHandler.Instance.IsPoetryInEditing())
+                {
+                    var loader = new ResourceLoader();
+
+                    // Create the message dialog
+                    MessageDialog messageDialog = new MessageDialog(loader.GetString("ExitFromEditorConfirm"), loader.GetString("Confirm"));
+
+                    // YES command
+                    messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), (command) =>
+                    {
+                        UserHandler.Instance.SetPoetryInEditing(false);
+                        CurrentPage = ((MenuItem)MenuList.SelectedItem).ItemPage;
+                        this.Bindings.Update();
+                        NavigationPane.IsPaneOpen = false;
+                    }));
+
+                    // NO command
+                    messageDialog.Commands.Add(new UICommand(loader.GetString("No"), (command) =>
+                    {
+                        MenuList.SelectedIndex = oldIndex;
+                    }));
+
+                    // Set the command that will be invoked by default
+                    messageDialog.DefaultCommandIndex = 1;
+
+                    // Show the message dialog
+                    await messageDialog.ShowAsync();
+                }
+                else
+                {
+                    CurrentPage = ((MenuItem)MenuList.SelectedItem).ItemPage;
+                    this.Bindings.Update();
+                    NavigationPane.IsPaneOpen = false;
+                }
             }
         }
 

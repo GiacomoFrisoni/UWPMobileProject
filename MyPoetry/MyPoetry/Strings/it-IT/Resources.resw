@@ -280,7 +280,7 @@
     <value>Mi sto collegando al server... Attendi mentre carico i tuoi dati</value>
   </data>
   <data name="Share" xml:space="preserve">
-    <value>Invia</value>
+    <value>Condividi</value>
   </data>
   <data name="StartNow.Content" xml:space="preserve">
     <value>Inizia ora</value>
@@ -365,5 +365,8 @@
   </data>
   <data name="SharingFooter" xml:space="preserve">
     <value>Creato con MyPoetry</value>
+  </data>
+  <data name="ExitFromEditorConfirm" xml:space="preserve">
+    <value>Sei sicuro di voler uscire dall'editor? Così facendo perderai i dati non salvati.</value>
   </data>
 </root>
