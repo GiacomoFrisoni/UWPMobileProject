@@ -3,6 +3,7 @@ using MyPoetry.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -148,6 +149,26 @@ namespace MyPoetry.UserControls.Pages
             MasterDetailView.ItemsSource = GetPoetriesWithCriteria(GetCriteriaFromOption(CmbOrderby.SelectedIndex), SearchBox.Text);
             ProgressBarVisible(false);
         }
+
+        /*
+         * Reset enabling is the actual solution for the softkeyboard closing on Windows 10 Mobile.
+         * Link: https://stackoverflow.com/questions/18322559/how-to-programmatically-hide-the-keyboard
+         */
+        private void SearchBox_KeyUp(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+            {
+                SearchBox.IsEnabled = false;
+                SearchBox.IsEnabled = true;
+            }
+        }
+        #endregion
+        
+        #region NewPoetry Shortcut
+        private void BtnNewPoetry_Click(object sender, RoutedEventArgs e)
+        {
+            MenuHandler.Instance.SetMenuIndex(2);
+        }
         #endregion
 
         #region Forward and Back Navigation
@@ -266,11 +287,6 @@ namespace MyPoetry.UserControls.Pages
             RefreshMasterDetailItemsFromServer();
         }
         #endregion
-
-        private void BtnNewPoetry_Click(object sender, RoutedEventArgs e)
-        {
-            MenuHandler.Instance.SetMenuIndex(2);
-        }
     }
 
 }

@@ -77,6 +77,8 @@ namespace MyPoetry
                     messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), (command) =>
                     {
                         UserHandler.Instance.SetPoetryInEditing(false);
+                        if (UserHandler.Instance.GetPoetryToEdit() != null)
+                            UserHandler.Instance.SetPoetryToEdit(null);
                         CurrentPage = ((MenuItem)MenuList.SelectedItem).ItemPage;
                         this.Bindings.Update();
                         NavigationPane.IsPaneOpen = false;
