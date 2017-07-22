@@ -360,4 +360,10 @@
   <data name="RemovalInProgress" xml:space="preserve">
     <value>Cancellazione in corso</value>
   </data>
+  <data name="SharingDescription" xml:space="preserve">
+    <value>Rendi pubblica la tua poesia e inviala nel modo in cui preferisci.</value>
+  </data>
+  <data name="SharingFooter" xml:space="preserve">
+    <value>Created with MyPoetry</value>
+  </data>
 </root>

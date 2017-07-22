@@ -3,7 +3,6 @@ using Microsoft.WindowsAzure.MobileServices;
 using MyPoetry.Model;
 using MyPoetry.Utilities;
 using System;
-using System.Collections.Generic;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.ApplicationModel.Resources;
@@ -38,6 +37,7 @@ namespace MyPoetry.UserControls
         public event EventHandler RefreshEvent;
 
 
+        #region Share
         private void RegisterForShare()
         {
             DataTransferManager dataTransferManager = DataTransferManager.GetForCurrentView();
@@ -46,15 +46,31 @@ namespace MyPoetry.UserControls
 
         private async void SharePoetry(DataTransferManager sender, DataRequestedEventArgs e)
         {
-            DataRequest request = e.Request;
-            request.Data.Properties.Title = "Condivisione di Prova";
-            request.Data.Properties.Description = "Rendi pubblica la tua poesia e inviala nel modo in cui preferisci.";
+            var loader = new ResourceLoader();
 
+            // Title and description
+            DataRequest request = e.Request;
+            request.Data.Properties.Title = ((Poetry)DataContext).Title;
+            request.Data.Properties.Description = loader.GetString("SharingDescription");
+
+            // RTF
+            string rtfText = ((Poetry)DataContext).Body;
+            request.Data.SetRtf(rtfText);
+            
+            // Prepare data for conversion
+            RichEditBox reb = new RichEditBox();
+            reb.Document.SetText(TextSetOptions.FormatRtf, rtfText);
+            ITextRange poetryText = reb.Document.GetRange(0, TextConstants.MaxUnitCount);
+            
             // Plain text
-            request.Data.SetText("Prova");
+            string plainText = poetryText.Text + "\r" + UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname +
+                "\r" + loader.GetString("SharingFooter");
+            request.Data.SetText(plainText);
 
             // HTML
-            request.Data.SetHtmlFormat("<b>Prova</b>");
+            string htmlFormat = HtmlFormatHelper.CreateHtmlFormat(poetryText.Text.Replace("\r", "<br>"));
+            request.Data.SetHtmlFormat(htmlFormat);
+
 
             // Because we are making async calls in the DataRequested event handler,
             // we need to get the deferral first
@@ -66,7 +82,6 @@ namespace MyPoetry.UserControls
                 // Sets the preview image
                 StorageFile thumbnailFile = await Package.Current.InstalledLocation.GetFileAsync("Assets\\SmallTile.scale-200.png");
                 request.Data.Properties.Thumbnail = RandomAccessStreamReference.CreateFromFile(thumbnailFile);
-                StorageFile imageFile = await Package.Current.InstalledLocation.GetFileAsync("Assets\\SplashScreenLogo.png");
             }
             finally
             {
@@ -78,17 +93,23 @@ namespace MyPoetry.UserControls
         {
             DataTransferManager.ShowShareUI();
         }
+        #endregion
 
+        #region Edit
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
 
         }
+        #endregion
 
+        #region Details
         private void BtnDetails_Click(object sender, RoutedEventArgs e)
         {
             PoetrySplitView.IsPaneOpen = !PoetrySplitView.IsPaneOpen;
         }
+        #endregion
 
+        #region Delete
         private async void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
             var loader = new ResourceLoader();
@@ -142,7 +163,9 @@ namespace MyPoetry.UserControls
             // Show the message dialog
             await messageDialog.ShowAsync();
         }
+        #endregion
 
+        #region Back and Forward Navigation
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             BackEvent?.Invoke(sender, null);
@@ -152,7 +175,9 @@ namespace MyPoetry.UserControls
         {
             ForwardEvent?.Invoke(sender, null);
         }
+        #endregion
 
+        #region Print
         async private void BtnPrint_Click(object sender, RoutedEventArgs e)
         {
             StackPanel stp = new StackPanel();
@@ -183,7 +208,9 @@ namespace MyPoetry.UserControls
             PrintHelper pHelp = new PrintHelper(stp);
             await pHelp.ShowPrintUIAsync("Testo della poesia", true);
         }
+        #endregion
 
+        #region Rating
         private void ProgressBarRatingVisible(bool visible)
         {
             ProgressRingRating.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
@@ -203,5 +230,6 @@ namespace MyPoetry.UserControls
             RefreshEvent?.Invoke(sender, null);
             ProgressBarRatingVisible(false);
         }
+        #endregion
     }
 }

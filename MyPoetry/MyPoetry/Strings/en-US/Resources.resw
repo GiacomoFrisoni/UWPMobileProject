@@ -366,4 +366,10 @@
   <data name="RemovalInProgress" xml:space="preserve">
     <value>Removal in progress</value>
   </data>
+  <data name="SharingDescription" xml:space="preserve">
+    <value>Make your poetry public and send it in the way you like it.</value>
+  </data>
+  <data name="SharingFooter" xml:space="preserve">
+    <value>Created with MyPoetry</value>
+  </data>
 </root>

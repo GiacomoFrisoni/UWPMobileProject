@@ -56,23 +56,6 @@ namespace MyPoetry.UserControls.Pages
             ProgressBarVisible(false);
         }
         #endregion
-    
-        #region ButtonClick events
-        private void BtnShare_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnEdit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnDetails_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-        #endregion
 
         #region Filters and Searching
         private void CmbOrderby_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -243,11 +226,6 @@ namespace MyPoetry.UserControls.Pages
             GoForward();
         }
 
-        private void PoetryViewer_RefreshEvent(object sender, EventArgs e)
-        {
-            RefreshMasterDetailItemsFromServer();
-        }
-
         /*
          * Utility method used to obtain the ListView contained inside of the MasterDetail
          * component. By doing so, we are able to make an automatic scroll even in case of
@@ -279,6 +257,13 @@ namespace MyPoetry.UserControls.Pages
         {
             var v = FindChildOfType<ListView>(MasterDetailView);
             v.ScrollIntoView(MasterDetailView.SelectedItem);
+        }
+        #endregion
+
+        #region Refresh event
+        private void PoetryViewer_RefreshEvent(object sender, EventArgs e)
+        {
+            RefreshMasterDetailItemsFromServer();
         }
         #endregion
     }
