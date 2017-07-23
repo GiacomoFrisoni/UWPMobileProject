@@ -3,6 +3,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using MyPoetry.Model;
 using MyPoetry.Utilities;
 using System;
+using System.Linq;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.ApplicationModel.Resources;
@@ -14,6 +15,7 @@ using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Shapes;
 using XamlBrewer.Uwp.Controls;
 
@@ -29,8 +31,34 @@ namespace MyPoetry.UserControls
             RatingControl.EmptyImage = new Uri("ms-appx:///Assets/Rating/staroff.png");
 
             RegisterForShare();
+
+            // Sets animations
+            backStoryboard = (Storyboard)this.Resources["BackAnimation"];
+            backStoryboard.Completed += (s, ev) =>
+            {
+                backStoryboard.Stop();
+                BackEvent?.Invoke(s, null);
+                fadeInStoryboard.Begin();
+            };
+            forwardStoryboard = (Storyboard)this.Resources["ForwardAnimation"];
+            forwardStoryboard.Completed += (s, ev) =>
+            {
+                forwardStoryboard.Stop();
+                ForwardEvent?.Invoke(s, null);
+                fadeInStoryboard.Begin();
+            };
+            fadeInStoryboard = (Storyboard)this.Resources["InAnimation"];
         }
 
+        private void PoetryViewer_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
+        {
+            CheckNavigationEnabling();
+        }
+
+        
+        Storyboard backStoryboard;
+        Storyboard forwardStoryboard;
+        Storyboard fadeInStoryboard;
 
         public event EventHandler BackEvent;
         public event EventHandler ForwardEvent;
@@ -169,12 +197,24 @@ namespace MyPoetry.UserControls
         #region Back and Forward Navigation
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            BackEvent?.Invoke(sender, null);
+            if (backStoryboard.GetCurrentState() != ClockState.Active)
+                backStoryboard.Begin();
         }
+        
 
         private void BtnForward_Click(object sender, RoutedEventArgs e)
         {
-            ForwardEvent?.Invoke(sender, null);
+            if (forwardStoryboard.GetCurrentState() != ClockState.Active)
+                forwardStoryboard.Begin();
+        }
+
+        private void CheckNavigationEnabling()
+        {
+            if (DataContext != null)
+            {
+                BtnBack.IsEnabled = UserHandler.Instance.GetPoetries().First().Equals((Poetry)DataContext) ? false : true;
+                BtnForward.IsEnabled = UserHandler.Instance.GetPoetries().Last().Equals((Poetry)DataContext) ? false : true;
+            }
         }
         #endregion
 
