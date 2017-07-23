@@ -26,7 +26,7 @@
                         <custom:UserViewer x:Name="UsrViewer" HorizontalAlignment="Center" Title="Sample" Details="Sample"></custom:UserViewer>
                     </StackPanel>
 
-                    <controls:AdaptiveGridView Grid.Row="1" Margin="5, 0, 1, 5" x:Name="ProfileGridView" ItemHeight="70" DesiredWidth="350" SelectionMode="None">
+                    <controls:AdaptiveGridView Grid.Row="1" Margin="5, 0, 1, 5" x:Name="ProfileGridView" ItemHeight="60" DesiredWidth="400" SelectionMode="None">
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate>
                                 <Grid x:Name="GrdMain" Background="{Binding PaneColor}" HorizontalAlignment="Stretch">
