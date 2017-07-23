@@ -65,14 +65,12 @@ namespace MyPoetry.UserControls.Pages
 
         }
 
-        private List<DataViewer> GenerateCreditsInfo()
+        private List<object> GenerateCreditsInfo()
         {
-            List<DataViewer> info = new List<DataViewer>();
-            info.Add(new DataViewer("Sviluppatre", "Giacomo Frisoni", Symbol.Contact, new SolidColorBrush(ColorHelper.ToColor("#1BBC9B"))));
-            info.Add(new DataViewer("Sviluppatre", "Marcin Pabich", Symbol.Contact, new SolidColorBrush(ColorHelper.ToColor("#2DCC70"))));
+            List<object> info = new List<object>();
 
-            info.Add(new DataViewer("Prima pubblicazione", "31/07/2017", Symbol.Calendar, new SolidColorBrush(ColorHelper.ToColor("#F1C40F"))));
-            info.Add(new DataViewer("Contatti", "mypoetrysupport@gmail.com", Symbol.Mail, new SolidColorBrush(ColorHelper.ToColor("#3598DB"))));
+            info.Add(new { Title = "Giacomo Frisoni", Details = "Developer" });
+            info.Add(new { Title = "Marcin Pabich", Details = "Developer" });
 
             return info;
         }

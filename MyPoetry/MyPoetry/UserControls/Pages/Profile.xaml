@@ -15,6 +15,7 @@
             <Grid Loaded="Grid_Loaded">
                 <Image Stretch="UniformToFill" Source="Assets/background.png"/>
 
+                
                 <Grid x:Name="GrdProfile">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -22,16 +23,10 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel HorizontalAlignment="Stretch" Background="#88FFFFFF" Margin="5" Padding="15">
-                        <Grid>
-                            <Ellipse HorizontalAlignment="Center" Fill="White" Height="174" Width="174"></Ellipse>
-                            <Ellipse HorizontalAlignment="Center" Fill="{StaticResource AppColor1}" x:Name="UserImage" Height="170" Width="170"></Ellipse>
-                        </Grid>
-
-                        <TextBlock Margin="0, 5, 0, 0" x:Name="TxbUser" Style="{StaticResource SubtitleTextBlockStyle}" Text="Name" HorizontalAlignment="Center"></TextBlock>
-                        <TextBlock x:Name="TxbMail" Style="{StaticResource BodyTextBlockStyle}" Foreground="Gray" Text="mail" FontSize="12" HorizontalAlignment="Center"></TextBlock>
+                        <custom:UserViewer x:Name="UsrViewer" HorizontalAlignment="Center" Title="Sample" Details="Sample"></custom:UserViewer>
                     </StackPanel>
 
-                    <controls:AdaptiveGridView Grid.Row="1" Margin="5, 0, 1, 5" x:Name="ProfileGridView" ItemHeight="85" DesiredWidth="350" SelectionMode="None">
+                    <controls:AdaptiveGridView Grid.Row="1" Margin="5, 0, 1, 5" x:Name="ProfileGridView" ItemHeight="70" DesiredWidth="350" SelectionMode="None">
                         <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate>
                                 <Grid x:Name="GrdMain" Background="{Binding PaneColor}" HorizontalAlignment="Stretch">

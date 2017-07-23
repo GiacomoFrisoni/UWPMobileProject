@@ -14,12 +14,11 @@
         <custom:CustomPage.MainContent>
             <Grid Loaded="Grid_Loaded">
                 <StackPanel>
-                    <TextBlock Margin="5" Style="{StaticResource TitleTextBlockStyle}" Text="Here you can customize the app settings"></TextBlock>
-                    
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock VerticalAlignment="Center" Style="{StaticResource SubtitleTextBlockStyle}" Text="Sfondo"></TextBlock>
-                        
-                        <ComboBox VerticalAlignment="Stretch" Width="150" Margin="5, 0, 0, 0" x:Name="CmbBackgroundSelector" SelectionChanged="CmbBackgroundSelector_SelectionChanged">
+                    <StackPanel HorizontalAlignment="Stretch" Background="#88FFFFFF" Margin="5" Padding="15">
+                        <TextBlock Text="Application Settings" Style="{StaticResource TitleTextBlockStyle}" Margin="0, 0, 0, 15"></TextBlock>
+
+                        <TextBlock Text="Background" Margin="0, 0, 0, 2"></TextBlock>
+                        <ComboBox VerticalAlignment="Stretch" Margin="0, 0, 0, 15" Width="200" x:Name="CmbBackgroundSelector" SelectionChanged="CmbBackgroundSelector_SelectionChanged">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
@@ -29,42 +28,23 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
+
+                        <TextBlock Text="Language" Margin="0, 0, 0, 2"></TextBlock>
+                        <ComboBox Width="200"  x:Name="CmbLanguageSelector" SelectionChanged="CmbLanguageSelector_SelectionChanged"></ComboBox>
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="5">
-                        <TextBlock VerticalAlignment="Center"  Style="{StaticResource SubtitleTextBlockStyle}" Text="Lingua"></TextBlock>
-                        <ComboBox Margin="10, 0, 0, 0" Width="150"  x:Name="CmbLanguageSelector" SelectionChanged="CmbLanguageSelector_SelectionChanged"></ComboBox>
-                    </StackPanel>
 
-                    <TextBlock Margin="5" Style="{StaticResource TitleTextBlockStyle}" Text="Info/Credits"></TextBlock>
+                    <TextBlock Margin="5" Style="{StaticResource TitleTextBlockStyle}" Text="Credits" Typography.Capitals="AllSmallCaps" HorizontalAlignment="Center"></TextBlock>
 
-                    
-                    <controls:AdaptiveGridView Grid.Row="1" Margin="5, 0, 1, 5" x:Name="SettingsGridView" ItemHeight="85" DesiredWidth="350" SelectionMode="None">
-                        <controls:AdaptiveGridView.ItemTemplate>
+                    <GridView x:Name="SettingsGridView" HorizontalContentAlignment="Center" HorizontalAlignment="Center" SelectionMode="None">
+                        <GridView.ItemTemplate>
                             <DataTemplate>
-                                <Grid x:Name="GrdMain" Background="{Binding PaneColor}" HorizontalAlignment="Stretch">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="55"></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-
-                                    <SymbolIcon x:Name="Symbol" Foreground="White" Symbol="{Binding Icon}"></SymbolIcon>
-
-                                    <Grid Background="White" Padding="10, 5" Grid.Column="1" HorizontalAlignment="Stretch">
-                                        <StackPanel HorizontalAlignment="Stretch">
-                                            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding Description}"></TextBlock>
-                                            <TextBlock Foreground="Gray" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="WrapWholeWords" Text="{Binding Value}"></TextBlock>
-                                        </StackPanel>
-                                    </Grid>
-                                </Grid>
+                                <custom:UserViewer Margin="10"></custom:UserViewer>
                             </DataTemplate>
-                        </controls:AdaptiveGridView.ItemTemplate>
-                    </controls:AdaptiveGridView>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                    
                 </StackPanel>
-
-
-                
-
             </Grid>
         </custom:CustomPage.MainContent>
     </custom:CustomPage>

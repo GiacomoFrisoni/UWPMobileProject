@@ -38,11 +38,9 @@ namespace MyPoetry.UserControls.Pages
             // Loads profile image
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
-            UserImage.Fill = ib;
-
-            // Shows name and email of the logged user
-            TxbUser.Text = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
-            TxbMail.Text = UserHandler.Instance.GetUser().Email;     
+            UsrViewer.ImageSource = ib;
+            UsrViewer.Title = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
+            UsrViewer.Details = UserHandler.Instance.GetUser().Email;    
 
             // Generates statistic elements inside the gridview
             ProfileGridView.ItemsSource = null;
