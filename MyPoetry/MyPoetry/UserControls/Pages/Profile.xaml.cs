@@ -87,12 +87,6 @@ namespace MyPoetry.UserControls.Pages
 
         }
 
-        private void GridView_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            var panel = (ItemsWrapGrid)ProfileGridView.ItemsPanelRoot;
-            panel.ItemWidth = e.NewSize.Width / Math.Truncate(e.NewSize.Width / 320);
-        }
-
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             LoadData();

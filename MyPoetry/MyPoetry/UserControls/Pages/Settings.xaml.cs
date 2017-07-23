@@ -60,8 +60,8 @@ namespace MyPoetry.UserControls.Pages
             CmbBackgroundSelector.SelectedIndex = 0;
 
             //Gridview credits
-            GridView.ItemsSource = null;
-            GridView.ItemsSource = GenerateCreditsInfo();
+            SettingsGridView.ItemsSource = null;
+            SettingsGridView.ItemsSource = GenerateCreditsInfo();
 
         }
 
@@ -88,19 +88,6 @@ namespace MyPoetry.UserControls.Pages
         private void CmbLanguageSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-        }
-
-        private void GridView_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            var panel = (ItemsWrapGrid)GridView.ItemsPanelRoot;
-
-            if (panel.Children.Count > 0)
-            {
-                if (Math.Truncate(e.NewSize.Width / 320) <= panel.Children.Count)
-                    panel.ItemWidth = e.NewSize.Width / Math.Truncate(e.NewSize.Width / 320);
-                else
-                    panel.ItemWidth = e.NewSize.Width / panel.Children.Count;
-            }
         }
 
     }

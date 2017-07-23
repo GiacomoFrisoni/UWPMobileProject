@@ -6,7 +6,6 @@
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:wrapPanel="using:Microsoft.Toolkit.Uwp.UI.Controls.WrapPanel"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
@@ -32,8 +31,8 @@
                         <TextBlock x:Name="TxbMail" Style="{StaticResource BodyTextBlockStyle}" Foreground="Gray" Text="mail" FontSize="12" HorizontalAlignment="Center"></TextBlock>
                     </StackPanel>
 
-                    <GridView Grid.Row="1" Margin="5, 0, 1, 5" x:Name="ProfileGridView" SelectionMode="None" SizeChanged="GridView_SizeChanged">
-                        <GridView.ItemTemplate>
+                    <controls:AdaptiveGridView Grid.Row="1" Margin="5, 0, 1, 5" x:Name="ProfileGridView" ItemHeight="85" DesiredWidth="350" SelectionMode="None">
+                        <controls:AdaptiveGridView.ItemTemplate>
                             <DataTemplate>
                                 <Grid x:Name="GrdMain" Background="{Binding PaneColor}" HorizontalAlignment="Stretch">
                                     <Grid.ColumnDefinitions>
@@ -51,16 +50,8 @@
                                     </Grid>
                                 </Grid>
                             </DataTemplate>
-                        </GridView.ItemTemplate>
-                        <GridView.ItemContainerStyle>
-                            <Style TargetType="GridViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-                                <Setter Property="VerticalAlignment" Value="Stretch"/>
-                            </Style>
-                        </GridView.ItemContainerStyle>
-                    </GridView>
+                        </controls:AdaptiveGridView.ItemTemplate>
+                    </controls:AdaptiveGridView>
                 </Grid>
                 
                 
