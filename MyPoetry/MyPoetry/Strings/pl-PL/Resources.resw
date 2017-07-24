@@ -154,7 +154,7 @@
     <value>Email</value>
   </data>
   <data name="EmailSent" xml:space="preserve">
-    <value>Email inviata</value>
+    <value>Email wysłany</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Błąd</value>
@@ -163,28 +163,28 @@
     <value>Podany kod nie jest właściwy</value>
   </data>
   <data name="Err_InvalidEmail" xml:space="preserve">
-    <value>Please supply a valid email address</value>
+    <value>Podaj właściwy adres email.</value>
   </data>
   <data name="Err_InvalidGender" xml:space="preserve">
-    <value>Invalid gender (1 char required)</value>
+    <value>Nieprawidłowa płeć</value>
   </data>
   <data name="Err_InvalidPw" xml:space="preserve">
-    <value>Invalid password (at least 8 chars required)</value>
+    <value>Nieprawidłowe hasło (minimum 8 znaków(</value>
   </data>
   <data name="Err_InvalidPws" xml:space="preserve">
-    <value>Confirmed password is not equals to the first one</value>
+    <value>Wpisane hasło nie pasuje do poprzedniego</value>
   </data>
   <data name="Err_InvalidUsername" xml:space="preserve">
-    <value>That username already exists</value>
+    <value>Ten użytkownik już istnieje</value>
   </data>
   <data name="Err_InvalidUsernamePw" xml:space="preserve">
-    <value>Invalid username or password</value>
+    <value>Nieprawidłowa nazwa użytkownika lub hasło</value>
   </data>
   <data name="Err_MissingData" xml:space="preserve">
-    <value>Missing Data</value>
+    <value>Brak danych</value>
   </data>
   <data name="Err_NotAssociatedEmail" xml:space="preserve">
-    <value>The email address provided is not associated to any account</value>
+    <value>Podany adres nie jest zarejestrowany na żadnym koncie</value>
   </data>
   <data name="Female.Content" xml:space="preserve">
     <value>Kobieta</value>
@@ -214,7 +214,7 @@
     <value>Zaloguj</value>
   </data>
   <data name="LoginInProgress" xml:space="preserve">
-    <value>Login in corso</value>
+    <value>Trwa logowanie</value>
   </data>
   <data name="LoginText.Text" xml:space="preserve">
     <value>Login</value>
@@ -226,7 +226,7 @@
     <value>Imię</value>
   </data>
   <data name="NamePH.PlaceholderText" xml:space="preserve">
-    <value>Imię</value>
+    <value>Nowa poezja</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
@@ -298,75 +298,225 @@
     <value>Twórz</value>
   </data>
   <data name="Err_WrongCode" xml:space="preserve">
-    <value>The specified activation code is not correct</value>
+    <value>Kod jest nieprawidłowy</value>
   </data>
   <data name="CodeGenerationInProgress" xml:space="preserve">
-    <value>Code generation</value>
+    <value>Generacja kodu</value>
   </data>
   <data name="Wait" xml:space="preserve">
-    <value>Wait a few moments</value>
+    <value>Poczekaj chwilę</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Konfermacja</value>
   </data>
   <data name="NewPoetryConfirm" xml:space="preserve">
-    <value>Sei sicuro di voler aggiungere la poesia al taccuino?</value>
+    <value>Czy jesteś pewien zapisać tą poezje_</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>No</value>
+    <value>Nie</value>
   </data>
   <data name="PoetryAdded" xml:space="preserve">
-    <value>The poetry has been added to your notebook.</value>
+    <value>Poezja została pomyślnie dodana</value>
   </data>
   <data name="PoetryUpdated" xml:space="preserve">
-    <value>The poetry has been updated. Check your notebook.</value>
+    <value>Poezja została pomyślnie zaktualizowana</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Salva</value>
+    <value>Zapisz</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Aggiorna</value>
+    <value>Odśwież</value>
   </data>
   <data name="UpdatePoetryConfirm" xml:space="preserve">
-    <value>Esiste già una poesia con questo nome. Desideri salvare le modifiche apportate?</value>
+    <value>Istnieje już poezja z tą nazwą. Chesz ją zastąpić?</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Tak</value>
   </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
   <data name="MyPoetries" xml:space="preserve">
-    <value>My poetries</value>
+    <value>Moje poezje</value>
   </data>
   <data name="NewPoetry" xml:space="preserve">
-    <value>New poetry</value>
+    <value>Nowa poezja</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Ustawienia</value>
   </data>
   <data name="Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>Uwaga!</value>
   </data>
   <data name="RhymesToolEmptyQuery" xml:space="preserve">
-    <value>Digita una parola di cui intendi individuare delle rime.</value>
+    <value>Wpisz słowo by wyszukać rymów</value>
   </data>
   <data name="RhymesToolInvalidQuery" xml:space="preserve">
-    <value>La parola ricercata deve avere una lunghezza maggiore rispetto a quella della rima selezionata.</value>
+    <value>Wyszukiwane słowo musi mieć większą długośź niz wybrane kryterium.</value>
   </data>
   <data name="DeleteConfirm" xml:space="preserve">
-    <value>Sei sicuro di voler eliminare la poesia?</value>
+    <value>Jesteś pewny by usunąć tą poezję?</value>
   </data>
   <data name="RemovalInProgress" xml:space="preserve">
-    <value>Cancellazione in corso</value>
+    <value>Usuwanie w toku</value>
   </data>
   <data name="SharingDescription" xml:space="preserve">
-    <value>Rendi pubblica la tua poesia e inviala nel modo in cui preferisci.</value>
+    <value>Opublikój swoją kreację i udostępnij ją jak chcesz</value>
   </data>
   <data name="SharingFooter" xml:space="preserve">
-    <value>Created with MyPoetry</value>
+    <value>Napisane w aplikacji MyPoetry</value>
   </data>
   <data name="ExitFromEditorConfirm" xml:space="preserve">
-    <value>Sei sicuro di voler uscire dall'editor? Così facendo perderai i dati non salvati.</value>
+    <value>Jesteś pewny opóścić edytor? Niezapisane dane zostaną utracone</value>
+  </data>
+  <data name="CreditsPageTitle.Title" xml:space="preserve">
+    <value>Informacje</value>
+  </data>
+  <data name="EditorBtnSearch.Content" xml:space="preserve">
+    <value>Znajdź rymy</value>
+  </data>
+  <data name="EditorCharsNumber.Text" xml:space="preserve">
+    <value>Długość tekstu</value>
+  </data>
+  <data name="EditorFindRhymes.Header" xml:space="preserve">
+    <value>Znajdź rymy</value>
+  </data>
+  <data name="EditorLineNumbers.Text" xml:space="preserve">
+    <value>Ilość linii</value>
+  </data>
+  <data name="EditorPageTitle.Title" xml:space="preserve">
+    <value>Edytor</value>
+  </data>
+  <data name="EditorReb.PlaceholderText" xml:space="preserve">
+    <value>Tekst</value>
+  </data>
+  <data name="EditorRhymesFour" xml:space="preserve">
+    <value>Rymuj czteroma literami</value>
+  </data>
+  <data name="EditorRhymesThree" xml:space="preserve">
+    <value>Rymuj trzema literami</value>
+  </data>
+  <data name="EditorRhymesTwo" xml:space="preserve">
+    <value>Rymuj dwoma literami</value>
+  </data>
+  <data name="EditorTextQuery.PlaceholderText" xml:space="preserve">
+    <value>Słowo do rymowania</value>
+  </data>
+  <data name="EditorTitle.PlaceholderText" xml:space="preserve">
+    <value>Tytuł</value>
+  </data>
+  <data name="EditorWordsNumber.Text" xml:space="preserve">
+    <value>Ilość słów</value>
+  </data>
+  <data name="HomeNoSelection.Text" xml:space="preserve">
+    <value>Żadna poezja nie jest zaznaczona</value>
+  </data>
+  <data name="HomeOrderDateDown.Content" xml:space="preserve">
+    <value>Data utworzenia ↓</value>
+  </data>
+  <data name="HomeOrderDateUp.Content" xml:space="preserve">
+    <value>Data utworzenia ↑</value>
+  </data>
+  <data name="HomeOrderLengthDown.Content" xml:space="preserve">
+    <value>Długość ↓</value>
+  </data>
+  <data name="HomeOrderLengthUp.Content" xml:space="preserve">
+    <value>Długość ↑</value>
+  </data>
+  <data name="HomeOrderVoteDown.Content" xml:space="preserve">
+    <value>Ocena ↓</value>
+  </data>
+  <data name="HomeOrderVoteUp.Content" xml:space="preserve">
+    <value>Ocena ↑</value>
+  </data>
+  <data name="HomeSearchBox.PlaceholderText" xml:space="preserve">
+    <value>Szukaj</value>
+  </data>
+  <data name="PoetryViewBack.Content" xml:space="preserve">
+    <value>🡸   Do tyłu</value>
+  </data>
+  <data name="PoetryViewCreationDate.Text" xml:space="preserve">
+    <value>Data kreacji</value>
+  </data>
+  <data name="PoetryViewForward.Content" xml:space="preserve">
+    <value>Do przodu   🡺</value>
+  </data>
+  <data name="PoetryViewPrint.Text" xml:space="preserve">
+    <value>Wydrukuj</value>
+  </data>
+  <data name="PoetryViewRevisionDate.Text" xml:space="preserve">
+    <value>Ostatnia rewizja</value>
+  </data>
+  <data name="PoetryViewShare.Header" xml:space="preserve">
+    <value>Udostępnianie</value>
+  </data>
+  <data name="PoetryViewShareText.Text" xml:space="preserve">
+    <value>Udostępnij</value>
+  </data>
+  <data name="PoetryViewStatistics.Header" xml:space="preserve">
+    <value>Statystyki</value>
+  </data>
+  <data name="ProfileBornWriter" xml:space="preserve">
+    <value>Urodzony pisarz</value>
+  </data>
+  <data name="ProfileCharacters" xml:space="preserve">
+    <value> znaków</value>
+  </data>
+  <data name="ProfileInspiration" xml:space="preserve">
+    <value>Dusza inspiracji</value>
+  </data>
+  <data name="ProfileKeyboardDestroyer" xml:space="preserve">
+    <value>Niszczyciel klawiatury</value>
+  </data>
+  <data name="ProfileLineNumbers" xml:space="preserve">
+    <value>Numer lini: </value>
+  </data>
+  <data name="ProfileLongest" xml:space="preserve">
+    <value>Najdłuższa kreacja</value>
+  </data>
+  <data name="ProfilePageTitle.Title" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="ProfilePoetries" xml:space="preserve">
+    <value> poezji</value>
+  </data>
+  <data name="ProfileShortest" xml:space="preserve">
+    <value>Najkrutsza kreacja</value>
+  </data>
+  <data name="ProfileWiseWords" xml:space="preserve">
+    <value>Mądre słowa</value>
+  </data>
+  <data name="ProfileWords" xml:space="preserve">
+    <value> słów</value>
+  </data>
+  <data name="ProfileWrappingMaster" xml:space="preserve">
+    <value>Mistrz akapitu</value>
+  </data>
+  <data name="ProfileWriteFrom" xml:space="preserve">
+    <value>Piszesz od </value>
+  </data>
+  <data name="ProfileYouType" xml:space="preserve">
+    <value>Wpisałeś </value>
+  </data>
+  <data name="ProfileYouUsed" xml:space="preserve">
+    <value>Użyłeś </value>
+  </data>
+  <data name="ProfileYouWrite" xml:space="preserve">
+    <value>Napisałeś </value>
+  </data>
+  <data name="SettingsBackground.Text" xml:space="preserve">
+    <value>Wybierz tapetę</value>
+  </data>
+  <data name="SettingsGroup1Title.Text" xml:space="preserve">
+    <value>Tu możesz zmodyfikować ustawienia aplikacji</value>
+  </data>
+  <data name="SettingsLanguage.Text" xml:space="preserve">
+    <value>Wybierz język</value>
+  </data>
+  <data name="SettingsTitle.Title" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="HomeOrderby.Text" xml:space="preserve">
+    <value>Sortuj...</value>
   </data>
 </root>

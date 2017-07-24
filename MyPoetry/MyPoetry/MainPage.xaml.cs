@@ -43,7 +43,7 @@ namespace MyPoetry
             menu.Add(new MenuItem() { ItemText = loader.GetString("Home"), ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home, ItemPage = new Homepage().GetPage  });
             menu.Add(new MenuItem() { ItemText = loader.GetString("NewPoetry"), ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create, ItemPage = new Editor().GetPage });
             menu.Add(new MenuItem() { ItemText = loader.GetString("Settings"), ItemIcon = Symbol.Setting, Group = MenuItem.Groups.Settings, ItemPage = new Settings().GetPage });
-            menu.Add(new MenuItem() { ItemText = loader.GetString("Settings"), ItemIcon = Symbol.Emoji2, Group = MenuItem.Groups.Settings, ItemPage = new Credits().GetPage });
+            menu.Add(new MenuItem() { ItemText = loader.GetString("Credits"), ItemIcon = Symbol.Emoji2, Group = MenuItem.Groups.Settings, ItemPage = new Credits().GetPage });
 
             // Settings groups
             var groups = from c in menu group c by c.Group;

@@ -10,13 +10,11 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <custom:CustomPage x:Name="MainContent">
+    <custom:CustomPage x:Name="MainContent" x:Uid="CreditsPageTitle">
         <custom:CustomPage.MainContent>
             <Grid Loaded="Grid_Loaded">
                 <ScrollViewer>
                     <StackPanel ScrollViewer.VerticalScrollMode="Disabled">
-                        <TextBlock Margin="5" Style="{StaticResource TitleTextBlockStyle}" Text="Credits" Typography.Capitals="AllSmallCaps" HorizontalAlignment="Center"></TextBlock>
-
                         <GridView x:Name="CreditsGridView" HorizontalContentAlignment="Center" HorizontalAlignment="Center" SelectionMode="None">
                             <GridView.ItemTemplate>
                                 <DataTemplate>

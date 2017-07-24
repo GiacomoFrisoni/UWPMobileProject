@@ -10,7 +10,7 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <custom:CustomPage x:Name="MainContent" Title="Profilo">
+    <custom:CustomPage x:Name="MainContent" x:Uid="ProfilePageTitle">
         <custom:CustomPage.MainContent>
             <Grid Loaded="Grid_Loaded" SizeChanged="Grid_SizeChanged">
                 <Image Stretch="UniformToFill" Source="Assets/background.png"/>

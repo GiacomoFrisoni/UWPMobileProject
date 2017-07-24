@@ -3,6 +3,7 @@ using MyPoetry.Model;
 using MyPoetry.Utilities;
 using System.Collections.Generic;
 using System.Linq;
+using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -34,15 +35,17 @@ namespace MyPoetry.UserControls.Pages
         
         private List<DataViewer> GenerateAdvancedInfo()
         {
-            List<DataViewer> info = new List<DataViewer>();
-            info.Add(new DataViewer("L'anima d'ispirazione", "Scrivi dal " + UserHandler.Instance.GetUser().RegistrationDate.ToString("dd/MM/yyyy"), Symbol.Calendar, new SolidColorBrush(ColorHelper.ToColor("#1BBC9B"))));
-            info.Add(new DataViewer("Scrittore nato", "Hai scritto " + UserHandler.Instance.GetPoetries().Count.ToString() + " poesie", Symbol.Edit, new SolidColorBrush(ColorHelper.ToColor("#2DCC70"))));
-            info.Add(new DataViewer("Distruttore della tastiera", "Hai immesso " + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.CharactersNumber).ToString() + " caratteri", Symbol.Font, new SolidColorBrush(ColorHelper.ToColor("#3598DB"))));
-            info.Add(new DataViewer("Sagge parole", "Hai utilizzato " + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.WordsNumber).ToString(), Symbol.FontColor, new SolidColorBrush(ColorHelper.ToColor("#9B58B5"))));
-            info.Add(new DataViewer("Io vado a capo", "Il numero dei tuoi versi: " + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.VersesNumber).ToString(), Symbol.ShowResults, new SolidColorBrush(ColorHelper.ToColor("#34495E"))));
+            var loader = new ResourceLoader();
 
-            info.Add(new DataViewer("La poesia più corta", UserHandler.Instance.GetPoetries().OrderBy(poetry => poetry.CharactersNumber).First().Title, Symbol.Remove, new SolidColorBrush(ColorHelper.ToColor("#F1C40F"))));
-            info.Add(new DataViewer("La poesia più lunga", UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CharactersNumber).First().Title, Symbol.List, new SolidColorBrush(ColorHelper.ToColor("#E77E23"))));
+            List<DataViewer> info = new List<DataViewer>();
+            info.Add(new DataViewer(loader.GetString("ProfileInspiration"),       loader.GetString("ProfileWriteFrom") + UserHandler.Instance.GetUser().RegistrationDate.ToString("dd/MM/yyyy"), Symbol.Calendar, new SolidColorBrush(ColorHelper.ToColor("#1BBC9B"))));
+            info.Add(new DataViewer(loader.GetString("ProfileBornWriter"),        loader.GetString("ProfileYouWrite") + UserHandler.Instance.GetPoetries().Count.ToString() + loader.GetString("ProfilePoetries"), Symbol.Edit, new SolidColorBrush(ColorHelper.ToColor("#2DCC70"))));
+            info.Add(new DataViewer(loader.GetString("ProfileKeyboardDestroyer"), loader.GetString("ProfileYouType") + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.CharactersNumber).ToString() + loader.GetString("ProfileCharacters"), Symbol.Font, new SolidColorBrush(ColorHelper.ToColor("#3598DB"))));
+            info.Add(new DataViewer(loader.GetString("ProfileWiseWords"),         loader.GetString("ProfileYouUsed") + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.WordsNumber).ToString() + loader.GetString("ProfileWords"), Symbol.FontColor, new SolidColorBrush(ColorHelper.ToColor("#9B58B5"))));
+            info.Add(new DataViewer(loader.GetString("ProfileWrappingMaster"),    loader.GetString("ProfileLineNumbers") + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.VersesNumber).ToString(), Symbol.ShowResults, new SolidColorBrush(ColorHelper.ToColor("#34495E"))));
+
+            info.Add(new DataViewer(loader.GetString("ProfileLongest"), UserHandler.Instance.GetPoetries().OrderBy(poetry => poetry.CharactersNumber).First().Title, Symbol.Remove, new SolidColorBrush(ColorHelper.ToColor("#F1C40F"))));
+            info.Add(new DataViewer(loader.GetString("ProfileShortest"), UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CharactersNumber).First().Title, Symbol.List, new SolidColorBrush(ColorHelper.ToColor("#E77E23"))));
 
             return info;
         }

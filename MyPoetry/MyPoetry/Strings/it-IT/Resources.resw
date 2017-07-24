@@ -369,4 +369,157 @@
   <data name="ExitFromEditorConfirm" xml:space="preserve">
     <value>Sei sicuro di voler uscire dall'editor? Così facendo perderai i dati non salvati.</value>
   </data>
+  <data name="Credits" xml:space="preserve">
+    <value>Informazioni</value>
+  </data>
+  <data name="CreditsPageTitle.Title" xml:space="preserve">
+    <value>Informazioni</value>
+  </data>
+  <data name="EditorBtnSearch.Content" xml:space="preserve">
+    <value>Trova Rime</value>
+  </data>
+  <data name="EditorCharsNumber.Text" xml:space="preserve">
+    <value>Lunghezza testo</value>
+  </data>
+  <data name="EditorFindRhymes.Header" xml:space="preserve">
+    <value>Cerca Rime</value>
+  </data>
+  <data name="EditorLineNumbers.Text" xml:space="preserve">
+    <value>Numero versi</value>
+  </data>
+  <data name="EditorPageTitle.Title" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="EditorReb.PlaceholderText" xml:space="preserve">
+    <value>Testo</value>
+  </data>
+  <data name="EditorRhymesFour" xml:space="preserve">
+    <value>Rima per quattro lettere</value>
+  </data>
+  <data name="EditorRhymesThree" xml:space="preserve">
+    <value>Rima per tre lettere</value>
+  </data>
+  <data name="EditorRhymesTwo" xml:space="preserve">
+    <value>Rima per due lettere</value>
+  </data>
+  <data name="EditorTextQuery.PlaceholderText" xml:space="preserve">
+    <value>Parola da rimare</value>
+  </data>
+  <data name="EditorTitle.PlaceholderText" xml:space="preserve">
+    <value>Titolo</value>
+  </data>
+  <data name="EditorWordsNumber.Text" xml:space="preserve">
+    <value>Parole utilizzate</value>
+  </data>
+  <data name="HomeNoSelection.Text" xml:space="preserve">
+    <value>Nessuna poesia selezionata</value>
+  </data>
+  <data name="HomeOrderDateDown.Content" xml:space="preserve">
+    <value>Data creazione ↓</value>
+  </data>
+  <data name="HomeOrderDateUp.Content" xml:space="preserve">
+    <value>Data creazione ↑</value>
+  </data>
+  <data name="HomeOrderLengthDown.Content" xml:space="preserve">
+    <value>Lunghezza ↓</value>
+  </data>
+  <data name="HomeOrderLengthUp.Content" xml:space="preserve">
+    <value>Lunghezza ↑</value>
+  </data>
+  <data name="HomeOrderVoteDown.Content" xml:space="preserve">
+    <value>Valutazione ↓</value>
+  </data>
+  <data name="HomeOrderVoteUp.Content" xml:space="preserve">
+    <value>Valutazione ↑</value>
+  </data>
+  <data name="HomeSearchBox.PlaceholderText" xml:space="preserve">
+    <value>Ricerca</value>
+  </data>
+  <data name="PoetryViewBack.Content" xml:space="preserve">
+    <value>🡸   Indietro</value>
+  </data>
+  <data name="PoetryViewCreationDate.Text" xml:space="preserve">
+    <value>Data creazione</value>
+  </data>
+  <data name="PoetryViewForward.Content" xml:space="preserve">
+    <value>Avanti   🡺</value>
+  </data>
+  <data name="PoetryViewPrint.Text" xml:space="preserve">
+    <value>Stampa</value>
+  </data>
+  <data name="PoetryViewRevisionDate.Text" xml:space="preserve">
+    <value>Ultima revisione</value>
+  </data>
+  <data name="PoetryViewShare.Header" xml:space="preserve">
+    <value>Condivisione</value>
+  </data>
+  <data name="PoetryViewShareText.Text" xml:space="preserve">
+    <value>Condividi</value>
+  </data>
+  <data name="PoetryViewStatistics.Header" xml:space="preserve">
+    <value>Statistiche</value>
+  </data>
+  <data name="ProfileBornWriter" xml:space="preserve">
+    <value>Scrittore nato</value>
+  </data>
+  <data name="ProfileCharacters" xml:space="preserve">
+    <value> caratteri</value>
+  </data>
+  <data name="ProfileInspiration" xml:space="preserve">
+    <value>L'anima d'ispirazione</value>
+  </data>
+  <data name="ProfileKeyboardDestroyer" xml:space="preserve">
+    <value>Distruttore della tastiera</value>
+  </data>
+  <data name="ProfileLineNumbers" xml:space="preserve">
+    <value>Il numero dei tuoi versi: </value>
+  </data>
+  <data name="ProfileLongest" xml:space="preserve">
+    <value>Poesia più lunga</value>
+  </data>
+  <data name="ProfilePageTitle.Title" xml:space="preserve">
+    <value>Profilo</value>
+  </data>
+  <data name="ProfilePoetries" xml:space="preserve">
+    <value> poesie</value>
+  </data>
+  <data name="ProfileShortest" xml:space="preserve">
+    <value>Poesia più porta</value>
+  </data>
+  <data name="ProfileWiseWords" xml:space="preserve">
+    <value>Sagge parole</value>
+  </data>
+  <data name="ProfileWords" xml:space="preserve">
+    <value> parole</value>
+  </data>
+  <data name="ProfileWrappingMaster" xml:space="preserve">
+    <value>Io vado a capo</value>
+  </data>
+  <data name="ProfileWriteFrom" xml:space="preserve">
+    <value>Scrivi dal </value>
+  </data>
+  <data name="ProfileYouType" xml:space="preserve">
+    <value>Hai immesso </value>
+  </data>
+  <data name="ProfileYouUsed" xml:space="preserve">
+    <value>Hai utilizzato </value>
+  </data>
+  <data name="ProfileYouWrite" xml:space="preserve">
+    <value>Hai scritto </value>
+  </data>
+  <data name="SettingsBackground.Text" xml:space="preserve">
+    <value>Seleziona sfondo</value>
+  </data>
+  <data name="SettingsGroup1Title.Text" xml:space="preserve">
+    <value>Qui puoi modificare le impostazioni dell'applicazione</value>
+  </data>
+  <data name="SettingsLanguage.Text" xml:space="preserve">
+    <value>Seleziona lingua</value>
+  </data>
+  <data name="SettingsPageTitle.Title" xml:space="preserve">
+    <value>Impostazioni</value>
+  </data>
+  <data name="HomeOrderby.Text" xml:space="preserve">
+    <value>Ordina per...</value>
+  </data>
 </root>

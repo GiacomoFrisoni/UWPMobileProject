@@ -10,14 +10,14 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <custom:CustomPage x:Name="MainContent">
+    <custom:CustomPage x:Name="MainContent" x:Uid="SettingsPageTitle">
         <custom:CustomPage.MainContent>
             <Grid Loaded="Grid_Loaded">
                 <StackPanel>
                     <StackPanel HorizontalAlignment="Stretch" Background="#88FFFFFF" Margin="5" Padding="15">
-                        <TextBlock Text="Application Settings" Style="{StaticResource TitleTextBlockStyle}" Margin="0, 0, 0, 15"></TextBlock>
+                        <TextBlock x:Uid="SettingsGroup1Title" Style="{StaticResource TitleTextBlockStyle}" Margin="0, 0, 0, 15"></TextBlock>
 
-                        <TextBlock Text="Background" Margin="0, 0, 0, 2"></TextBlock>
+                        <TextBlock x:Uid="SettingsBackground" Margin="0, 0, 0, 2"></TextBlock>
                         <ComboBox VerticalAlignment="Stretch" Margin="0, 0, 0, 15" Width="200" x:Name="CmbBackgroundSelector" SelectionChanged="CmbBackgroundSelector_SelectionChanged">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
@@ -29,7 +29,7 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-                        <TextBlock Text="Language" Margin="0, 0, 0, 2"></TextBlock>
+                        <TextBlock x:Uid="SettingsLanguage" Margin="0, 0, 0, 2"></TextBlock>
                         <ComboBox Width="200"  x:Name="CmbLanguageSelector" SelectionChanged="CmbLanguageSelector_SelectionChanged"></ComboBox>
                     </StackPanel>
 

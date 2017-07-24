@@ -59,7 +59,7 @@
                     <SplitView.Pane>
                         <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 0, 0, 0">
                             <Pivot>
-                                <PivotItem Header="Statistiche">
+                                <PivotItem x:Uid="PoetdetStatistics">
                                     <ScrollViewer HorizontalContentAlignment="Center" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
                                         <StackPanel Margin="0, 15, 0, 0">
                                             <StackPanel.ChildrenTransitions>
@@ -69,7 +69,7 @@
                                             </StackPanel.ChildrenTransitions>
 
                                             <StackPanel Orientation="Vertical">
-                                                <TextBlock>Data creazione</TextBlock>
+                                                <TextBlock x:Uid="PoetdetCreationDate"></TextBlock>
                                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                     <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                     <TextBlock x:Name="TxbStartDate" Style="{StaticResource SubtitleTextBlockStyle}"/>
@@ -77,7 +77,7 @@
                                             </StackPanel>
 
                                             <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                                <TextBlock>Ultima revisione</TextBlock>
+                                                <TextBlock x:Uid="PoetdetLastRevision"></TextBlock>
                                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                     <SymbolIcon Symbol="CalendarWeek" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                     <TextBlock x:Name="TxbLastRevision" Style="{StaticResource SubtitleTextBlockStyle}"/>
@@ -85,7 +85,7 @@
                                             </StackPanel>
 
                                             <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                                <TextBlock>Lunghezza testo</TextBlock>
+                                                <TextBlock x:Uid="EditorCharsNumber"></TextBlock>
                                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                     <SymbolIcon Symbol="AlignLeft" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                     <TextBlock x:Name="TxbCharsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
@@ -93,7 +93,7 @@
                                             </StackPanel>
 
                                             <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                                <TextBlock>Parole utilizzate</TextBlock>
+                                                <TextBlock x:Uid="EditorWordsNumber"></TextBlock>
                                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                     <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                     <TextBlock x:Name="TxbWordsNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>
@@ -101,7 +101,7 @@
                                             </StackPanel>
 
                                             <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                                <TextBlock>Numero versi</TextBlock>
+                                                <TextBlock x:Uid="EditorLineNumbers"></TextBlock>
                                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                     <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                     <TextBlock x:Name="TxbLinesNumber" Style="{StaticResource SubtitleTextBlockStyle}"/>

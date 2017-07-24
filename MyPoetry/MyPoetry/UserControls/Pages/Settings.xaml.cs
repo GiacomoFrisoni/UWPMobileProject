@@ -47,9 +47,9 @@ namespace MyPoetry.UserControls.Pages
             CmbBackgroundSelector.Items.Clear();
 
             //Automatizzare la ricerca delle lingue
-            CmbLanguageSelector.Items.Add("Italiano");
-            CmbLanguageSelector.Items.Add("English");
-            CmbLanguageSelector.Items.Add("Polski");
+            CmbLanguageSelector.Items.Add("Italiano [ITA]");
+            CmbLanguageSelector.Items.Add("English [ENG]");
+            CmbLanguageSelector.Items.Add("Polski [POL]");
             CmbLanguageSelector.SelectedIndex = 0;
 
             //Background selector

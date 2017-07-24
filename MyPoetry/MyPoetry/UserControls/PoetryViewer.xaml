@@ -425,9 +425,9 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
-                                <Button x:Name="BtnBack" Padding="0" Background="{StaticResource AppColor4}" Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource ButtonArrow}" Grid.Column="0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="🡸  Indietro" Click="BtnBack_Click"></Button>
+                                <Button x:Uid="PoetryViewBack" x:Name="BtnBack" Padding="0" Background="{StaticResource AppColor4}" Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource ButtonArrow}" Grid.Column="0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="BtnBack_Click"></Button>
                                 <Rectangle Grid.Column="1" Height="48" VerticalAlignment="Center" Fill="White" Width="1" Stroke="LightGray" StrokeThickness="0.5"></Rectangle>
-                                <Button x:Name="BtnForward" Padding="0" Background="{StaticResource AppColor4}"  Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource ButtonArrow}" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Content="Avanti   🡺" Click="BtnForward_Click"></Button>
+                                <Button x:Uid="PoetryViewForward" x:Name="BtnForward" Padding="0" Background="{StaticResource AppColor4}"  Height="48" Foreground="{StaticResource AppColor1}" Style="{StaticResource ButtonArrow}" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Click="BtnForward_Click"></Button>
                             </Grid>
                         </Border>
                     </Grid>
@@ -436,7 +436,7 @@
                 <SplitView.Pane>
                     <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 1, 1, 0">
                         <Pivot>
-                            <PivotItem Header="Statistiche">
+                            <PivotItem x:Uid="PoetryViewStatistics">
                                 <ScrollViewer HorizontalContentAlignment="Center" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
                                     <StackPanel Margin="0, 15, 0, 0">
                                         <StackPanel.ChildrenTransitions>
@@ -446,7 +446,7 @@
                                         </StackPanel.ChildrenTransitions>
 
                                         <StackPanel Orientation="Vertical">
-                                            <TextBlock>Data creazione</TextBlock>
+                                            <TextBlock x:Uid="PoetryViewCreationDate"></TextBlock>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                 <SymbolIcon Symbol="Calendar" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                 <TextBlock Text="{Binding CreationDate, Converter={StaticResource DateToStringFormatConverter}}" Style="{StaticResource SubtitleTextBlockStyle}"/>
@@ -454,7 +454,7 @@
                                         </StackPanel>
 
                                         <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                            <TextBlock>Ultima revisione</TextBlock>
+                                            <TextBlock x:Uid="PoetryViewRevisionDate"></TextBlock>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                 <SymbolIcon Symbol="CalendarWeek" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                 <TextBlock Text="{Binding RevisionDate, Converter={StaticResource DateToStringFormatConverter}}" Style="{StaticResource SubtitleTextBlockStyle}"/>
@@ -462,7 +462,7 @@
                                         </StackPanel>
 
                                         <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                            <TextBlock>Lunghezza testo</TextBlock>
+                                            <TextBlock x:Uid="EditorCharsNumber"></TextBlock>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                 <SymbolIcon Symbol="AlignLeft" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                 <TextBlock Text="{Binding CharactersNumber}" Style="{StaticResource SubtitleTextBlockStyle}"/>
@@ -470,7 +470,7 @@
                                         </StackPanel>
 
                                         <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                            <TextBlock>Parole utilizzate</TextBlock>
+                                            <TextBlock x:Uid="EditorWordsNumber"></TextBlock>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                 <SymbolIcon Symbol="Font" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                 <TextBlock Text="{Binding WordsNumber}"  Style="{StaticResource SubtitleTextBlockStyle}"/>
@@ -478,7 +478,7 @@
                                         </StackPanel>
 
                                         <StackPanel Orientation="Vertical" Margin="0, 25, 0, 0">
-                                            <TextBlock>Numero versi</TextBlock>
+                                            <TextBlock x:Uid="EditorLineNumbers"></TextBlock>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                                                 <SymbolIcon Symbol="ShowResults" Margin="5, 5, 10, 5" VerticalAlignment="Top"></SymbolIcon>
                                                 <TextBlock Text="{Binding VersesNumber}" Style="{StaticResource SubtitleTextBlockStyle}"/>
@@ -488,19 +488,19 @@
                                 </ScrollViewer>
                             </PivotItem>
 
-                            <PivotItem Header="Condivisione">
+                            <PivotItem x:Uid="PoetryViewShare">
                                 <StackPanel>
                                     <Button Name="BtnShare" Height="50" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" Background="{StaticResource AppColor4Hover}" Margin="5" Click="BtnShare_Click">
                                         <StackPanel Orientation="Horizontal">
                                             <SymbolIcon Symbol="ReShare" Foreground="{StaticResource AppColor1}"></SymbolIcon>
-                                            <TextBlock Margin="5, 0, 0, 0" Text="Condividi" Foreground="{StaticResource AppColor1}"></TextBlock>
+                                            <TextBlock x:Uid="PoetryViewShareText" Margin="5, 0, 0, 0" Foreground="{StaticResource AppColor1}"></TextBlock>
                                         </StackPanel>
                                     </Button>
 
                                     <Button Name="BtnPrint" Height="50" HorizontalAlignment="Stretch" Style="{StaticResource TextBlockButtonStyle}" Background="{StaticResource AppColor4Hover}" Margin="5, 0, 5, 5" Click="BtnPrint_Click">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="&#xE2F6;" FontSize="18" Margin="0, 3, 0, 0" FontFamily="Segoe MDL2 Assets"  Foreground="{StaticResource AppColor1}"/>
-                                            <TextBlock Margin="5, 0, 0, 0" Text="Stampa" Foreground="{StaticResource AppColor1}"></TextBlock>
+                                            <TextBlock x:Uid="PoetryViewPrint" Margin="5, 0, 0, 0" Foreground="{StaticResource AppColor1}"></TextBlock>
                                         </StackPanel>
                                     </Button>
                                 </StackPanel>

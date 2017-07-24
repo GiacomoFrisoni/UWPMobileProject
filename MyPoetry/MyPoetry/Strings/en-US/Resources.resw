@@ -375,4 +375,154 @@
   <data name="ExitFromEditorConfirm" xml:space="preserve">
     <value>Are you sure you want to leave the editor? By doing so, you will lose the unsaved data.</value>
   </data>
+  <data name="CreditsPageTitle.Title" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="EditorBtnSearch.Content" xml:space="preserve">
+    <value>Find rhymes</value>
+  </data>
+  <data name="EditorCharsNumber.Text" xml:space="preserve">
+    <value>Text length</value>
+  </data>
+  <data name="EditorFindRhymes.Header" xml:space="preserve">
+    <value>Find rhymes</value>
+  </data>
+  <data name="EditorLineNumbers.Text" xml:space="preserve">
+    <value>Lines number</value>
+  </data>
+  <data name="EditorPageTitle.Title" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="EditorReb.PlaceholderText" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="EditorRhymesFour" xml:space="preserve">
+    <value>Rhyme for four letters</value>
+  </data>
+  <data name="EditorRhymesThree" xml:space="preserve">
+    <value>Rhyme for three letters</value>
+  </data>
+  <data name="EditorRhymesTwo" xml:space="preserve">
+    <value>Rhyme for two letters</value>
+  </data>
+  <data name="EditorTextQuery.PlaceholderText" xml:space="preserve">
+    <value>Word to find rhyme for</value>
+  </data>
+  <data name="EditorTitle.PlaceholderText" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="EditorWordsNumber.Text" xml:space="preserve">
+    <value>Words number</value>
+  </data>
+  <data name="HomeNoSelection.Text" xml:space="preserve">
+    <value>No poetry selected</value>
+  </data>
+  <data name="HomeOrderDateDown.Content" xml:space="preserve">
+    <value>Creation date ↓</value>
+  </data>
+  <data name="HomeOrderDateUp.Content" xml:space="preserve">
+    <value>Creation date ↑</value>
+  </data>
+  <data name="HomeOrderLengthDown.Content" xml:space="preserve">
+    <value>Length ↓</value>
+  </data>
+  <data name="HomeOrderLengthUp.Content" xml:space="preserve">
+    <value>Length ↑</value>
+  </data>
+  <data name="HomeOrderVoteDown.Content" xml:space="preserve">
+    <value>Vote ↓</value>
+  </data>
+  <data name="HomeOrderVoteUp.Content" xml:space="preserve">
+    <value>Vote ↑</value>
+  </data>
+  <data name="HomeSearchBox.PlaceholderText" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="PoetryViewBack.Content" xml:space="preserve">
+    <value>🡸   Back</value>
+  </data>
+  <data name="PoetryViewCreationDate.Text" xml:space="preserve">
+    <value>Creation date</value>
+  </data>
+  <data name="PoetryViewForward.Content" xml:space="preserve">
+    <value>Forward   🡺</value>
+  </data>
+  <data name="PoetryViewPrint.Text" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="PoetryViewRevisionDate.Text" xml:space="preserve">
+    <value>Last revision</value>
+  </data>
+  <data name="PoetryViewShare.Header" xml:space="preserve">
+    <value>Sharing</value>
+  </data>
+  <data name="PoetryViewShareText.Text" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="PoetryViewStatistics.Header" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="ProfileBornWriter" xml:space="preserve">
+    <value>Born writer</value>
+  </data>
+  <data name="ProfileCharacters" xml:space="preserve">
+    <value> characters</value>
+  </data>
+  <data name="ProfileInspiration" xml:space="preserve">
+    <value>Soul of insipration</value>
+  </data>
+  <data name="ProfileKeyboardDestroyer" xml:space="preserve">
+    <value>Keyboard destroyer</value>
+  </data>
+  <data name="ProfileLineNumbers" xml:space="preserve">
+    <value>Lines number: </value>
+  </data>
+  <data name="ProfileLongest" xml:space="preserve">
+    <value>The longhest one</value>
+  </data>
+  <data name="ProfilePageTitle.Title" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="ProfilePoetries" xml:space="preserve">
+    <value> poetries</value>
+  </data>
+  <data name="ProfileShortest" xml:space="preserve">
+    <value>The shortest one</value>
+  </data>
+  <data name="ProfileWiseWords" xml:space="preserve">
+    <value>Wise words</value>
+  </data>
+  <data name="ProfileWords" xml:space="preserve">
+    <value> words</value>
+  </data>
+  <data name="ProfileWrappingMaster" xml:space="preserve">
+    <value>Wrapping master</value>
+  </data>
+  <data name="ProfileWriteFrom" xml:space="preserve">
+    <value>You write from </value>
+  </data>
+  <data name="ProfileYouType" xml:space="preserve">
+    <value>You typed  </value>
+  </data>
+  <data name="ProfileYouUsed" xml:space="preserve">
+    <value>You used  </value>
+  </data>
+  <data name="ProfileYouWrite" xml:space="preserve">
+    <value>You wrote </value>
+  </data>
+  <data name="SettingsBackground.Text" xml:space="preserve">
+    <value>Select background</value>
+  </data>
+  <data name="SettingsGroup1Title.Text" xml:space="preserve">
+    <value>Here you can change app's settings</value>
+  </data>
+  <data name="SettingsLanguage.Text" xml:space="preserve">
+    <value>Select language</value>
+  </data>
+  <data name="SettingsPageTitle.Title" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="HomeOrderby.Text" xml:space="preserve">
+    <value>Order by...</value>
+  </data>
 </root>

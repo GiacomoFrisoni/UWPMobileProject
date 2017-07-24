@@ -20,11 +20,12 @@ namespace MyPoetry.UserControls.Pages
 
         // Tools variables
         private const string words_db_path = @"Assets\data\words.txt";
+        static private ResourceLoader loader = new ResourceLoader();
         private Dictionary<String, int> rhymesOptions = new Dictionary<string, int>
         {
-            { "Rima per due lettere", 2 },
-            { "Rima per tre lettere", 3 },
-            { "Rima per quattro lettere", 4 }
+            { loader.GetString("EditorRhymesTwo"), 2 },
+            { loader.GetString("EditorRhymesThree"), 3 },
+            { loader.GetString("EditorRhymesFour"), 4 }
         };
         private List<String> foundedRhymes = new List<string>();
 
