@@ -42,5 +42,24 @@ namespace MyPoetry.UserControls
             get { return UserImage.Fill; }
             set { UserImage.Fill = value; }
         }
+
+        public void SetSize(int size)
+        {
+            UserBorder.Width = size;
+            UserBorder.Height = size;
+
+            UserImage.Width = size - 4;
+            UserImage.Height = size - 4;
+        }
+
+        public void SetSmaller()
+        {
+            SetSize(100);
+        }
+
+        public void SetBigger()
+        {
+            SetSize(170);
+        }
     }
 }

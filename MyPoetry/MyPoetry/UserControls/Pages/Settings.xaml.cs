@@ -58,21 +58,6 @@ namespace MyPoetry.UserControls.Pages
             CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/background2.jpg"), "Dark"));
             CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/background3.jpg"), "Blue"));
             CmbBackgroundSelector.SelectedIndex = 0;
-
-            //Gridview credits
-            SettingsGridView.ItemsSource = null;
-            SettingsGridView.ItemsSource = GenerateCreditsInfo();
-
-        }
-
-        private List<object> GenerateCreditsInfo()
-        {
-            List<object> info = new List<object>();
-
-            info.Add(new { Title = "Giacomo Frisoni", Details = "Developer" });
-            info.Add(new { Title = "Marcin Pabich", Details = "Developer" });
-
-            return info;
         }
 
 

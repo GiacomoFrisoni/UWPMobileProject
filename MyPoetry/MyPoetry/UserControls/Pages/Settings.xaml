@@ -33,17 +33,6 @@
                         <ComboBox Width="200"  x:Name="CmbLanguageSelector" SelectionChanged="CmbLanguageSelector_SelectionChanged"></ComboBox>
                     </StackPanel>
 
-
-                    <TextBlock Margin="5" Style="{StaticResource TitleTextBlockStyle}" Text="Credits" Typography.Capitals="AllSmallCaps" HorizontalAlignment="Center"></TextBlock>
-
-                    <GridView x:Name="SettingsGridView" HorizontalContentAlignment="Center" HorizontalAlignment="Center" SelectionMode="None">
-                        <GridView.ItemTemplate>
-                            <DataTemplate>
-                                <custom:UserViewer Margin="10"></custom:UserViewer>
-                            </DataTemplate>
-                        </GridView.ItemTemplate>
-                    </GridView>
-                    
                 </StackPanel>
             </Grid>
         </custom:CustomPage.MainContent>

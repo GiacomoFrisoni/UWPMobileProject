@@ -11,8 +11,8 @@
 
     <StackPanel>
         <Grid>
-            <Ellipse HorizontalAlignment="Center" Fill="White" Height="174" Width="174"></Ellipse>
-            <Ellipse HorizontalAlignment="Center" x:Name="UserImage" Height="170" Width="170"></Ellipse>
+            <Ellipse HorizontalAlignment="Center" x:Name="UserBorder" Fill="White" Height="170" Width="170"></Ellipse>
+            <Ellipse HorizontalAlignment="Center" x:Name="UserImage" Height="170" Width="166"></Ellipse>
         </Grid>
 
         <TextBlock Margin="0, 5, 0, 0" Style="{StaticResource SubtitleTextBlockStyle}" x:Name="TxblTitle" Text="{Binding Path=Title}" HorizontalAlignment="Center"></TextBlock>

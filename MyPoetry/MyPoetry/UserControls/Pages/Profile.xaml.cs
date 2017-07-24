@@ -1,7 +1,6 @@
 ﻿using Microsoft.Toolkit.Uwp;
 using MyPoetry.Model;
 using MyPoetry.Utilities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.UI.Xaml;
@@ -18,21 +17,7 @@ namespace MyPoetry.UserControls.Pages
         }
 
         public CustomPage GetPage { get { return MainContent; } }
-        
-        public class InfoViewer
-        {
-            public string Description { get; set; }
-            public Symbol Icon { get; set; }
-            public string Value { get; set; }
-
-            public InfoViewer(string title, Symbol icon, string value)
-            {
-                Description = title;
-                Icon = icon;
-                Value = value;
-            }
-        }
-
+      
         private async void LoadData()
         {
             // Loads profile image
@@ -92,17 +77,29 @@ namespace MyPoetry.UserControls.Pages
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (GrdProfile.Visibility == Visibility.Visible)
+            if (ScrProfile.Visibility == Visibility.Visible)
             {
-                GrdProfile.Visibility = Visibility.Collapsed;
+                ScrProfile.Visibility = Visibility.Collapsed;
                 StpModify.Visibility = Visibility.Visible;
                 BtnEdit.Content = new SymbolIcon() { Symbol = Symbol.Save };
             }
             else
             {
-                GrdProfile.Visibility = Visibility.Visible;
+                ScrProfile.Visibility = Visibility.Visible;
                 StpModify.Visibility = Visibility.Collapsed;
                 BtnEdit.Content = new SymbolIcon() { Symbol = Symbol.Edit };
+            }
+        }
+
+        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {     
+            if (e.NewSize.Width < 520)
+            {
+                UsrViewer.SetSmaller();
+            }
+            else
+            {
+                UsrViewer.SetBigger();
             }
         }
     }
