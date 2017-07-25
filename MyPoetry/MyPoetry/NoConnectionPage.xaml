@@ -7,7 +7,33 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Nessuna connessione a Internet" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid Name="GrdParent">
+        <Image Stretch="UniformToFill" Source="Assets/background.png"/>
+        <Grid VerticalAlignment="Center" Margin="0, -20, 0, 0">
+            <Grid.Background>
+                <SolidColorBrush Color="White" Opacity="0.4"/>
+            </Grid.Background>
+            <StackPanel Padding="20, 30" MaxWidth="400">
+                <StackPanel.ChildrenTransitions>
+                    <TransitionCollection>
+                        <ContentThemeTransition></ContentThemeTransition>
+                    </TransitionCollection>
+                </StackPanel.ChildrenTransitions>
+
+                <TextBlock Text="&#xE904;" FontSize="40" Foreground="{StaticResource AppColor1}" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Center" />
+                <TextBlock x:Uid="NoConnectionTitle" Text="Nessuna connessione" HorizontalAlignment="Center" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+                <TextBlock x:Uid="NoConnectionInfo" Text="Oops! Non è stato possibile effettuare una connessione con il server. Prova a verificare la tua connessione internet." TextWrapping="WrapWholeWords" TextAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+
+                <Grid>
+                    <Button x:Uid="NoConnectionButton" Name="BtnReconnect" Margin="0, 20, 0, 0" Content="Riconnetti al server" Style="{StaticResource ButtonBlue}" HorizontalAlignment="Center" Padding="30, 10" Click="BtnReconnect_Click"></Button>
+                    <ProgressRing Name="PrgRing" Margin="0, 20, 0, 0" Width="30" Height="30" Foreground="White" IsActive="True" Visibility="Collapsed"></ProgressRing>
+                </Grid>
+
+                <TextBlock x:Uid="NoConnectionError" x:Name="TxbError" Text="Impossibile connettersi al server" Foreground="Gray" HorizontalAlignment="Center" FontStyle="Italic" FontSize="12" Margin="5" TextAlignment="Center" Visibility="Collapsed"></TextBlock>
+
+
+
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

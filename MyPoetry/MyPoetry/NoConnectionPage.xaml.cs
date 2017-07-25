@@ -26,5 +26,28 @@ namespace MyPoetry
         {
             this.InitializeComponent();
         }
+
+
+        private void BtnReconnect_Click(object sender, RoutedEventArgs e)
+        {
+            BtnReconnect.Visibility = Visibility.Collapsed;
+            PrgRing.Visibility = Visibility.Visible;
+
+            if (CheckInternet())
+            {
+
+            }
+            else
+            {
+                BtnReconnect.Visibility = Visibility.Visible;
+                PrgRing.Visibility = Visibility.Collapsed;
+                TxbError.Visibility = Visibility.Visible;
+            }
+        }
+
+        private bool CheckInternet()
+        {
+            return true;
+        }
     }
 }

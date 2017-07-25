@@ -522,16 +522,16 @@
   <data name="HomeOrderby.Text" xml:space="preserve">
     <value>Ordina per...</value>
   </data>
-  <data name="LostConnectionButton.Content" xml:space="preserve">
+  <data name="NoConnectionButton.Content" xml:space="preserve">
     <value>Riconnetti al server</value>
   </data>
-  <data name="LostConnectionError.Text" xml:space="preserve">
+  <data name="NoConnectionError.Text" xml:space="preserve">
     <value>Impossibile connettersi al server</value>
   </data>
-  <data name="LostConnectionInfo.Text" xml:space="preserve">
+  <data name="NoConnectionInfo.Text" xml:space="preserve">
     <value>Oops! Non è stato possibile effettuare una connessione con il server. Prova a verificare la tua connessione internet.</value>
   </data>
-  <data name="LostConnectionTitle.Text" xml:space="preserve">
+  <data name="NoConnectionTitle.Text" xml:space="preserve">
     <value>Nessuna connessione</value>
   </data>
 </root>

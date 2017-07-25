@@ -106,9 +106,6 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="Converters\VisibleWhenTrue.cs" />
-    <Compile Include="LostConnectionPage.xaml.cs">
-      <DependentUpon>LostConnectionPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\ActivationRequest.cs" />
     <Compile Include="Model\DataViewer.cs" />
     <Compile Include="Model\ReSendingActivationRequest.cs" />
@@ -291,10 +288,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoginPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="LostConnectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

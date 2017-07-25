@@ -525,16 +525,16 @@
   <data name="HomeOrderby.Text" xml:space="preserve">
     <value>Order by...</value>
   </data>
-  <data name="LostConnectionButton.Content" xml:space="preserve">
+  <data name="NoConnectionButton.Content" xml:space="preserve">
     <value>Reconnect to server</value>
   </data>
-  <data name="LostConnectionError.Text" xml:space="preserve">
+  <data name="NoConnectionError.Text" xml:space="preserve">
     <value>Impossible to connect to server</value>
   </data>
-  <data name="LostConnectionInfo.Text" xml:space="preserve">
+  <data name="NoConnectionInfo.Text" xml:space="preserve">
     <value>Oops! We can't connect to the server. Check your internet status</value>
   </data>
-  <data name="LostConnectionTitle.Text" xml:space="preserve">
+  <data name="NoConnectionTitle.Text" xml:space="preserve">
     <value>No connection</value>
   </data>
 </root>

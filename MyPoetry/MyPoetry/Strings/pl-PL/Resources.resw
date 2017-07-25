@@ -519,16 +519,16 @@
   <data name="HomeOrderby.Text" xml:space="preserve">
     <value>Sortuj...</value>
   </data>
-  <data name="LostConnectionButton.Content" xml:space="preserve">
+  <data name="NoConnectionButton.Content" xml:space="preserve">
     <value>Połącz z serwerem</value>
   </data>
-  <data name="LostConnectionError.Text" xml:space="preserve">
+  <data name="NoConnectionError.Text" xml:space="preserve">
     <value>Połączenie z serwerm nieudane</value>
   </data>
-  <data name="LostConnectionInfo.Text" xml:space="preserve">
+  <data name="NoConnectionInfo.Text" xml:space="preserve">
     <value>Ups! Nie mogę połączyć się z serwerem. Sprawdź twoje połączenie z internetem.</value>
   </data>
-  <data name="LostConnectionTitle.Text" xml:space="preserve">
+  <data name="NoConnectionTitle.Text" xml:space="preserve">
     <value>Brak połączenia</value>
   </data>
 </root>
