@@ -264,124 +264,131 @@ namespace MyPoetry.UserControls.Pages
         #region Saving
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            var loader = new ResourceLoader();
-            
-            // Create the message dialog
-            MessageDialog messageDialog;
-
-            // Checks input
-            if (TxbTitle.Text != string.Empty &&
-                RebText.Document.GetRange(0, TextConstants.MaxUnitCount).Text != "\n")
+            if (Connection.HasInternetAccess)
             {
-                // Checks if a poetry with the same title already exists for the current user
-                List<Poetry> poetries = await App.MobileService.GetTable<Poetry>()
-                    .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && p.Title.Trim() == TxbTitle.Text.Trim())
-                    .ToListAsync();
+                var loader = new ResourceLoader();
 
-                Poetry poetry = null;
+                // Create the message dialog
+                MessageDialog messageDialog;
 
-                // Sets content and title for the message dialog
-                if (poetries.Count == 0)
-                    messageDialog = new MessageDialog(loader.GetString("NewPoetryConfirm"), loader.GetString("Save") + " \"" + TxbTitle.Text + "\"");
-                else
-                    messageDialog = new MessageDialog(loader.GetString("UpdatePoetryConfirm"), loader.GetString("Update") + " \"" + TxbTitle.Text + "\"");
-
-                // YES command
-                messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), async (command) =>
+                // Checks input
+                if (TxbTitle.Text != string.Empty &&
+                    RebText.Document.GetRange(0, TextConstants.MaxUnitCount).Text != "\n")
                 {
-                    if (poetries.Count == 0)
-                    {
-                        // Creates a new poetry
-                        poetry = new Poetry();
-                        // Sets id
-                        poetry.Id = Guid.NewGuid().ToString();
-                        // Sets user id
-                        poetry.UserId = UserHandler.Instance.GetUser().Id;
-                        // Set creation date
-                        poetry.CreationDate = DateTime.Now;
-                        // Sets poetry rating
-                        poetry.Rating = 0;
-                        // Sets bookmark
-                        poetry.BookmarkYN = false;
-                    }
-                    else
-                    {
-                        // Update existing poetry
-                        poetry = poetries.First();
-                    }
-
-                    // Set revision date
-                    poetry.RevisionDate = DateTime.Now;
-
-                    // Sets title
-                    poetry.Title = TxbTitle.Text;
-
-                    // Sets text
-                    ITextRange text = RebText.Document.GetRange(0, TextConstants.MaxUnitCount);
-                    string rtfText = text.Text;
-                    text.GetText(TextGetOptions.FormatRtf, out rtfText);
-                    poetry.Body = rtfText;
-
-                    // Sets characters number
-                    poetry.CharactersNumber = text.Text.Replace("\r", "").Length;
-
-                    // Sets words number
-                    int wordsNumber = 0;
-                    string[] tmp = text.Text.Replace("\r", " ").Split(' ');
-                    foreach (string s in tmp)
-                        if (s != string.Empty)
-                            wordsNumber++;
-                    poetry.WordsNumber = wordsNumber;
-
-                    // Sets verses number
-                    poetry.VersesNumber = text.Text.Split('\r', '\n').Length - 1;
-                    
-                    // Shows loading message
-                    HalfPageMessage hpm = new HalfPageMessage(GrdParent);
-                    hpm.ShowMessage(loader.GetString("SavingPoetry"), loader.GetString("SavingPoetryMessage"), true, false, false, null, null);
-
-                    // Updates cloud db
-                    if (poetries.Count == 0)
-                        await App.MobileService.GetTable<Poetry>().InsertAsync(poetry);
-                    else
-                        await App.MobileService.GetTable<Poetry>().UpdateAsync(poetry);
-
-                    // Updates local poetries
-                    List<Poetry> new_poetries = await App.MobileService.GetTable<Poetry>()
-                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id)
+                    // Checks if a poetry with the same title already exists for the current user
+                    List<Poetry> poetries = await App.MobileService.GetTable<Poetry>()
+                        .Where(p => p.UserId == UserHandler.Instance.GetUser().Id && p.Title.Trim() == TxbTitle.Text.Trim())
                         .ToListAsync();
-                    UserHandler.Instance.SetPoetries(new_poetries);
 
-                    // Shows confirm message
-                    hpm.IsProgressRingEnabled = false;
-                    hpm.Title = loader.GetString("Confirm");
+                    Poetry poetry = null;
+
+                    // Sets content and title for the message dialog
                     if (poetries.Count == 0)
-                        hpm.Message = loader.GetString("PoetryAdded");
+                        messageDialog = new MessageDialog(loader.GetString("NewPoetryConfirm"), loader.GetString("Save") + " \"" + TxbTitle.Text + "\"");
                     else
-                        hpm.Message = loader.GetString("PoetryUpdated");
-                    hpm.SetOkAction(() => {
-                        // Reset inputs
-                        Clear();
-                        // Navigates to home
-                        MenuHandler.Instance.SetMenuIndex(1);
-                    }, loader.GetString("Ok"));
-                    hpm.IsOkButtonEnabled = true;
-                }));
+                        messageDialog = new MessageDialog(loader.GetString("UpdatePoetryConfirm"), loader.GetString("Update") + " \"" + TxbTitle.Text + "\"");
 
-                // NO command
-                messageDialog.Commands.Add(new UICommand(loader.GetString("No"), (command) =>
+                    // YES command
+                    messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), async (command) =>
+                    {
+                        if (poetries.Count == 0)
+                        {
+                            // Creates a new poetry
+                            poetry = new Poetry();
+                            // Sets id
+                            poetry.Id = Guid.NewGuid().ToString();
+                            // Sets user id
+                            poetry.UserId = UserHandler.Instance.GetUser().Id;
+                            // Set creation date
+                            poetry.CreationDate = DateTime.Now;
+                            // Sets poetry rating
+                            poetry.Rating = 0;
+                            // Sets bookmark
+                            poetry.BookmarkYN = false;
+                        }
+                        else
+                        {
+                            // Update existing poetry
+                            poetry = poetries.First();
+                        }
+
+                        // Set revision date
+                        poetry.RevisionDate = DateTime.Now;
+
+                        // Sets title
+                        poetry.Title = TxbTitle.Text;
+
+                        // Sets text
+                        ITextRange text = RebText.Document.GetRange(0, TextConstants.MaxUnitCount);
+                        string rtfText = text.Text;
+                        text.GetText(TextGetOptions.FormatRtf, out rtfText);
+                        poetry.Body = rtfText;
+
+                        // Sets characters number
+                        poetry.CharactersNumber = text.Text.Replace("\r", "").Length;
+
+                        // Sets words number
+                        int wordsNumber = 0;
+                        string[] tmp = text.Text.Replace("\r", " ").Split(' ');
+                        foreach (string s in tmp)
+                            if (s != string.Empty)
+                                wordsNumber++;
+                        poetry.WordsNumber = wordsNumber;
+
+                        // Sets verses number
+                        poetry.VersesNumber = text.Text.Split('\r', '\n').Length - 1;
+
+                        // Shows loading message
+                        HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+                        hpm.ShowMessage(loader.GetString("SavingPoetry"), loader.GetString("SavingPoetryMessage"), true, false, false, null, null);
+
+                        // Updates cloud db
+                        if (poetries.Count == 0)
+                            await App.MobileService.GetTable<Poetry>().InsertAsync(poetry);
+                        else
+                            await App.MobileService.GetTable<Poetry>().UpdateAsync(poetry);
+
+                        // Updates local poetries
+                        List<Poetry> new_poetries = await App.MobileService.GetTable<Poetry>()
+                            .Where(p => p.UserId == UserHandler.Instance.GetUser().Id)
+                            .ToListAsync();
+                        UserHandler.Instance.SetPoetries(new_poetries);
+
+                        // Shows confirm message
+                        hpm.IsProgressRingEnabled = false;
+                        hpm.Title = loader.GetString("Confirm");
+                        if (poetries.Count == 0)
+                            hpm.Message = loader.GetString("PoetryAdded");
+                        else
+                            hpm.Message = loader.GetString("PoetryUpdated");
+                        hpm.SetOkAction(() => {
+                            // Reset inputs
+                            Clear();
+                            // Navigates to home
+                            MenuHandler.Instance.SetMenuIndex(1);
+                        }, loader.GetString("Ok"));
+                        hpm.IsOkButtonEnabled = true;
+                    }));
+
+                    // NO command
+                    messageDialog.Commands.Add(new UICommand(loader.GetString("No"), (command) =>
+                    {
+                    }));
+
+                    // Set the command that will be invoked by default
+                    messageDialog.DefaultCommandIndex = 1;
+
+                    // Show the message dialog
+                    await messageDialog.ShowAsync();
+                }
+                else
                 {
-                }));
-
-                // Set the command that will be invoked by default
-                messageDialog.DefaultCommandIndex = 1;
-
-                // Show the message dialog
-                await messageDialog.ShowAsync();
+                    messageDialog = new MessageDialog(loader.GetString("Err_MissingData"), loader.GetString("Warning"));
+                }
             }
             else
             {
-                messageDialog = new MessageDialog(loader.GetString("Err_MissingData"), loader.GetString("Warning"));
+                ((Frame)Window.Current.Content).Navigate(typeof(NoConnectionPage));
             }
         }
         #endregion

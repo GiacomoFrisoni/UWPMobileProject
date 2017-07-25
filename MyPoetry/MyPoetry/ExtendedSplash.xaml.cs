@@ -30,7 +30,7 @@ namespace MyPoetry
         // Variables for thread management
         private ThreadPoolTimer timer;
         private Task checkLoginTask;
-        private bool autoLogin = false;
+        private bool isInternetConnected = false, autoLogin = false;
 
         public ExtendedSplash(SplashScreen splashScreen, bool loadState)
         {
@@ -99,16 +99,20 @@ namespace MyPoetry
         /// </summary>
         private void CheckAutoLogin()
         {
-            AppLocalSettings settings = new AppLocalSettings();
-            if (settings.GetUserLoggedId() != string.Empty)
+            isInternetConnected = Connection.HasInternetAccess;
+            if (isInternetConnected)
             {
-                autoLogin = true;
-                Task task = Task.Run(async () =>
+                AppLocalSettings settings = new AppLocalSettings();
+                if (settings.GetUserLoggedId() != string.Empty)
                 {
-                    List<User> users = await App.MobileService.GetTable<User>().Where(user => user.Id == settings.GetUserLoggedId()).ToListAsync();
-                    UserHandler.Instance.SetUser(users.First());
-                });
-                task.Wait();
+                    autoLogin = true;
+                    Task task = Task.Run(async () =>
+                    {
+                        List<User> users = await App.MobileService.GetTable<User>().Where(user => user.Id == settings.GetUserLoggedId()).ToListAsync();
+                        UserHandler.Instance.SetUser(users.First());
+                    });
+                    task.Wait();
+                }
             }
         }
 
@@ -117,19 +121,26 @@ namespace MyPoetry
             var rootFrame = new Frame();
             
             // Check auto login
-            if (autoLogin)
+            if (isInternetConnected)
             {
-                if (!UserHandler.Instance.GetUser().IsActivated)
-                    rootFrame.Navigate(typeof(ActivationPage));
+                if (autoLogin)
+                {
+                    if (!UserHandler.Instance.GetUser().IsActivated)
+                        rootFrame.Navigate(typeof(ActivationPage));
+                    else
+                        rootFrame.Navigate(typeof(MainPage));
+                }
                 else
-                    rootFrame.Navigate(typeof(MainPage));
+                {
+                    // Navigate to mainpage
+                    rootFrame.Navigate(typeof(LoginPage));
+                }
             }
             else
             {
-                // Navigate to mainpage
-                rootFrame.Navigate(typeof(LoginPage));
+                rootFrame.Navigate(typeof(NoConnectionPage));
             }
-
+            
             // Place the frame in the current Window
             Window.Current.Content = rootFrame;
             Window.Current.Activate();

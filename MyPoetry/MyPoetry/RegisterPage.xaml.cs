@@ -13,6 +13,7 @@ using Windows.Storage.Pickers;
 using Windows.UI.Xaml.Media;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Input;
+using MyPoetry.Utilities;
 
 namespace MyPoetry
 {
@@ -34,16 +35,23 @@ namespace MyPoetry
 
         private async void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
-            await RegisterUser(
-                TxbEmail.Text,
-                PbPassword.Password,
-                PbPasswordConfirm.Password,
-                TxbName.Text,
-                TxbSurname.Text,
-                CmbGender.SelectedIndex >= 0 ? (CmbGender.SelectedIndex == 0 ? MALE : FEMALE) : String.Empty,
-                bytesPhoto,
-                DateTime.Now
-            );
+            if (Connection.HasInternetAccess)
+            {
+                await RegisterUser(
+                    TxbEmail.Text,
+                    PbPassword.Password,
+                    PbPasswordConfirm.Password,
+                    TxbName.Text,
+                    TxbSurname.Text,
+                    CmbGender.SelectedIndex >= 0 ? (CmbGender.SelectedIndex == 0 ? MALE : FEMALE) : String.Empty,
+                    bytesPhoto,
+                    DateTime.Now
+                );
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(NoConnectionPage));
+            }
         }
 
         private async Task RegisterUser(string email, string password, string passwordConfirm, string name,

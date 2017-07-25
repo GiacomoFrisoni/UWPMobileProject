@@ -149,35 +149,42 @@ namespace MyPoetry.UserControls
             // YES command
             messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), async (command) =>
             {
-                Exception exception = null;
-                HalfPageMessage hpm = new HalfPageMessage(GrdParent);
-                try
+                if (Connection.HasInternetAccess)
                 {
-                    // Shows loading message
-                    hpm.ShowMessage(loader.GetString("RemovalInProgress"), loader.GetString("ServerConnection"), true, false, false, null, null);
-
-                    // Deletes poetry
-                    await App.MobileService.GetTable<Poetry>().DeleteAsync((Poetry)this.DataContext);
-                }
-                catch (MobileServiceInvalidOperationException ex)
-                {
-                    exception = ex;
-                }
-                finally
-                {
-                    if (exception != null)
+                    Exception exception = null;
+                    HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+                    try
                     {
-                        hpm.Dismiss();
-                        var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
-                        await msg.ShowAsync();
-                    }
-                    else
-                    {
-                        // Refreshes MasterDetail items
-                        RefreshEvent?.Invoke(sender, null);
+                        // Shows loading message
+                        hpm.ShowMessage(loader.GetString("RemovalInProgress"), loader.GetString("ServerConnection"), true, false, false, null, null);
 
-                        hpm.Dismiss();
+                        // Deletes poetry
+                        await App.MobileService.GetTable<Poetry>().DeleteAsync((Poetry)this.DataContext);
                     }
+                    catch (MobileServiceInvalidOperationException ex)
+                    {
+                        exception = ex;
+                    }
+                    finally
+                    {
+                        if (exception != null)
+                        {
+                            hpm.Dismiss();
+                            var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
+                            await msg.ShowAsync();
+                        }
+                        else
+                        {
+                            // Refreshes MasterDetail items
+                            RefreshEvent?.Invoke(sender, null);
+
+                            hpm.Dismiss();
+                        }
+                    }
+                }
+                else
+                {
+                    ((Frame)Window.Current.Content).Navigate(typeof(NoConnectionPage));
                 }
             }));
 
@@ -261,15 +268,22 @@ namespace MyPoetry.UserControls
 
         private async void RatingControl_ValueChanged(object sender, RoutedEventArgs e)
         {
-            Rating rating = (Rating)sender;
-            Poetry poetry = (Poetry)this.DataContext;
-            poetry.Rating = Convert.ToInt32(rating.Value);
-            ProgressBarRatingVisible(true);
-            // Updates rating
-            await App.MobileService.GetTable<Poetry>().UpdateAsync(poetry);
-            // Refreshes MasterDetail items
-            RefreshEvent?.Invoke(sender, null);
-            ProgressBarRatingVisible(false);
+            if (Connection.HasInternetAccess)
+            {
+                Rating rating = (Rating)sender;
+                Poetry poetry = (Poetry)this.DataContext;
+                poetry.Rating = Convert.ToInt32(rating.Value);
+                ProgressBarRatingVisible(true);
+                // Updates rating
+                await App.MobileService.GetTable<Poetry>().UpdateAsync(poetry);
+                // Refreshes MasterDetail items
+                RefreshEvent?.Invoke(sender, null);
+                ProgressBarRatingVisible(false);
+            }
+            else
+            {
+                ((Frame)Window.Current.Content).Navigate(typeof(NoConnectionPage));
+            }
         }
         #endregion
     }

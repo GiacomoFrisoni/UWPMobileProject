@@ -30,51 +30,58 @@ namespace MyPoetry
 
         private async void BtnLogin_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            Exception exception = null;
-            HalfPageMessage hpm = new HalfPageMessage(GrdParent);
-            try
+            if (Connection.HasInternetAccess)
             {
-                // Shows loading message
-                var loader = new ResourceLoader();
-                hpm.ShowMessage(loader.GetString("LoginInProgress"), loader.GetString("ServerConnection"), true, false, false, null, null);
-
-                // Sign-in and set the returned user on the context,
-                // then load data from the mobile service.
-                await AuthenticateAsync(TxbEmail.Text, PbPassword.Password);
-            }
-            catch (MobileServiceInvalidOperationException ex)
-            {
-                exception = ex;
-            }
-            finally
-            {
-                if (exception != null)
+                Exception exception = null;
+                HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+                try
                 {
-                    hpm.Dismiss();
-                    var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
-                    await msg.ShowAsync();
-                    PbPassword.Password = String.Empty;
+                    // Shows loading message
+                    var loader = new ResourceLoader();
+                    hpm.ShowMessage(loader.GetString("LoginInProgress"), loader.GetString("ServerConnection"), true, false, false, null, null);
+
+                    // Sign-in and set the returned user on the context,
+                    // then load data from the mobile service.
+                    await AuthenticateAsync(TxbEmail.Text, PbPassword.Password);
                 }
-                else
+                catch (MobileServiceInvalidOperationException ex)
                 {
-                    // Gets and saves the logged user
-                    List<User> res = await App.MobileService.GetTable<User>().Where(user => user.Email == TxbEmail.Text).ToListAsync();
-                    UserHandler.Instance.SetUser(res.First());
-
-                    // Handles keeped login
-                    if (CbStayLogged.IsChecked.HasValue && CbStayLogged.IsChecked.Value)
-                        settings.SetUserLoggedId(UserHandler.Instance.GetUser().Id);
-
-                    // Updates number of accesses
-                    UserHandler.Instance.GetUser().AccessesNumber++;
-                    await App.MobileService.GetTable<User>().UpdateAsync(UserHandler.Instance.GetUser());
-                    hpm.Dismiss();
-
-                    if (!UserHandler.Instance.GetUser().IsActivated)
-                        this.Frame.Navigate(typeof(ActivationPage));
+                    exception = ex;
+                }
+                finally
+                {
+                    if (exception != null)
+                    {
+                        hpm.Dismiss();
+                        var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
+                        await msg.ShowAsync();
+                        PbPassword.Password = String.Empty;
+                    }
                     else
-                        this.Frame.Navigate(typeof(MainPage));
+                    {
+                        // Gets and saves the logged user
+                        List<User> res = await App.MobileService.GetTable<User>().Where(user => user.Email == TxbEmail.Text).ToListAsync();
+                        UserHandler.Instance.SetUser(res.First());
+
+                        // Handles keeped login
+                        if (CbStayLogged.IsChecked.HasValue && CbStayLogged.IsChecked.Value)
+                            settings.SetUserLoggedId(UserHandler.Instance.GetUser().Id);
+
+                        // Updates number of accesses
+                        UserHandler.Instance.GetUser().AccessesNumber++;
+                        await App.MobileService.GetTable<User>().UpdateAsync(UserHandler.Instance.GetUser());
+                        hpm.Dismiss();
+
+                        if (!UserHandler.Instance.GetUser().IsActivated)
+                            this.Frame.Navigate(typeof(ActivationPage));
+                        else
+                            this.Frame.Navigate(typeof(MainPage));
+                    }
                 }
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(NoConnectionPage));
             }
         }
 

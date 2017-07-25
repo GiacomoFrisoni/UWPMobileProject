@@ -19,62 +19,76 @@ namespace MyPoetry
 
         private async void BtnConfirm_Click(object sender, RoutedEventArgs e)
         {
-            Exception exception = null;
-            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            HalfPageMessage hpm = new HalfPageMessage(GrdParent);
-            try
+            if (Connection.HasInternetAccess)
             {
-                hpm.ShowMessage(loader.GetString("Checking"), loader.GetString("CheckingText"), true, false, false, null, null);
-                await ActivateAsync(UserHandler.Instance.GetUser().Email, TxbCode.Text);
-            }
-            catch (MobileServiceInvalidOperationException ex)
-            {
-                exception = ex;
-            }
-            finally
-            {
-                hpm.Dismiss();
-                if (exception != null)
+                Exception exception = null;
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+                try
                 {
-                    var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
-                    await msg.ShowAsync();
+                    hpm.ShowMessage(loader.GetString("Checking"), loader.GetString("CheckingText"), true, false, false, null, null);
+                    await ActivateAsync(UserHandler.Instance.GetUser().Email, TxbCode.Text);
                 }
-                else
+                catch (MobileServiceInvalidOperationException ex)
                 {
-                    this.Frame.Navigate(typeof(WelcomePage));
+                    exception = ex;
                 }
+                finally
+                {
+                    hpm.Dismiss();
+                    if (exception != null)
+                    {
+                        var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
+                        await msg.ShowAsync();
+                    }
+                    else
+                    {
+                        this.Frame.Navigate(typeof(WelcomePage));
+                    }
+                }
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(NoConnectionPage));
             }
         }
 
         private async void BtnCodeNotReceived_Click(object sender, RoutedEventArgs e)
         {
-            Exception exception = null;
-            var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
-            HalfPageMessage hpm = new HalfPageMessage(GrdParent);
-            try
+            if (Connection.HasInternetAccess)
             {
-                hpm.ShowMessage(loader.GetString("CodeGenerationInProgress"), loader.GetString("Wait"), true, false, false, null, null);
-                await ReSendingActivationAsync(UserHandler.Instance.GetUser().Email);
-
-                // Shows confirm message
-                hpm.IsProgressRingEnabled = false;
-                hpm.Title = loader.GetString("EmailSent");
-                hpm.Message = loader.GetString("CodeRequestMessage");
-                hpm.SetOkAction(null, loader.GetString("Ok"));
-                hpm.IsOkButtonEnabled = true;
-            }
-            catch (MobileServiceInvalidOperationException ex)
-            {
-                exception = ex;
-            }
-            finally
-            {
-                if (exception != null)
+                Exception exception = null;
+                var loader = new Windows.ApplicationModel.Resources.ResourceLoader();
+                HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+                try
                 {
-                    hpm.Dismiss();
-                    var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
-                    await msg.ShowAsync();
+                    hpm.ShowMessage(loader.GetString("CodeGenerationInProgress"), loader.GetString("Wait"), true, false, false, null, null);
+                    await ReSendingActivationAsync(UserHandler.Instance.GetUser().Email);
+
+                    // Shows confirm message
+                    hpm.IsProgressRingEnabled = false;
+                    hpm.Title = loader.GetString("EmailSent");
+                    hpm.Message = loader.GetString("CodeRequestMessage");
+                    hpm.SetOkAction(null, loader.GetString("Ok"));
+                    hpm.IsOkButtonEnabled = true;
                 }
+                catch (MobileServiceInvalidOperationException ex)
+                {
+                    exception = ex;
+                }
+                finally
+                {
+                    if (exception != null)
+                    {
+                        hpm.Dismiss();
+                        var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
+                        await msg.ShowAsync();
+                    }
+                }
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(NoConnectionPage));
             }
         }
 

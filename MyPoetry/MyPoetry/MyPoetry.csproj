@@ -109,6 +109,9 @@
     <Compile Include="Model\ActivationRequest.cs" />
     <Compile Include="Model\DataViewer.cs" />
     <Compile Include="Model\ReSendingActivationRequest.cs" />
+    <Compile Include="NoConnectionPage.xaml.cs">
+      <DependentUpon>NoConnectionPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\CustomPage.xaml.cs">
       <DependentUpon>CustomPage.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,7 @@
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\Connection.cs" />
     <Compile Include="Utilities\MenuHandler.cs" />
     <Compile Include="Utilities\ImageHelper.cs" />
     <Compile Include="Utilities\RtfText.cs" />
@@ -290,6 +294,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NoConnectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegisterPage.xaml">
       <SubType>Designer</SubType>

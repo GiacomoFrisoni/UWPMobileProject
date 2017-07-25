@@ -46,15 +46,22 @@ namespace MyPoetry.UserControls.Pages
 
         private async void RefreshMasterDetailItemsFromServer()
         {
-            ProgressBarVisible(true);
-            List<Poetry> poetries = await App.MobileService.GetTable<Poetry>()
-                .Where(p => p.UserId == UserHandler.Instance.GetUser().Id)
-                .OrderByDescending(poetry => poetry.CreationDate)
-                .ToListAsync();
-            UserHandler.Instance.SetPoetries(poetries);
-            MasterDetailView.ItemsSource = null;
-            MasterDetailView.ItemsSource = poetries;
-            ProgressBarVisible(false);
+            if (Connection.HasInternetAccess)
+            {
+                ProgressBarVisible(true);
+                List<Poetry> poetries = await App.MobileService.GetTable<Poetry>()
+                    .Where(p => p.UserId == UserHandler.Instance.GetUser().Id)
+                    .OrderByDescending(poetry => poetry.CreationDate)
+                    .ToListAsync();
+                UserHandler.Instance.SetPoetries(poetries);
+                MasterDetailView.ItemsSource = null;
+                MasterDetailView.ItemsSource = poetries;
+                ProgressBarVisible(false);
+            }
+            else
+            {
+                ((Frame)Window.Current.Content).Navigate(typeof(NoConnectionPage));
+            }
         }
         #endregion
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
+using MyPoetry.Utilities;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -18,6 +19,8 @@ namespace MyPoetry
             "http://mypoetrymobileservice.azurewebsites.net"
         );
 
+        public static Connection Connection;
+
         public static SplashScreen splashScreen;
 
         /// <summary>
@@ -28,6 +31,7 @@ namespace MyPoetry
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            Connection = new Connection();
 
             /* MODIFICA LINGUA DIRETTA
             var culture = new CultureInfo("it-IT");
