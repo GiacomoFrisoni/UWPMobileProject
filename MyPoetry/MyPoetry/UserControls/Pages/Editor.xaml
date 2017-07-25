@@ -24,7 +24,7 @@
 
         <custom:CustomPage.MainContent>
             <Grid x:Name="GrdParent" Loaded="GrdParent_Loaded">
-                <SplitView x:Name="SpvContent" DisplayMode="Overlay" PanePlacement="Right">
+                <SplitView x:Name="SpvContent" DisplayMode="Overlay" PanePlacement="Right" PaneClosed="SpvContent_PaneClosed">
                     <SplitView.Content>
                         <Grid>
                             <Grid.RowDefinitions>

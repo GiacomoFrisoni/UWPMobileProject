@@ -126,10 +126,12 @@ namespace MyPoetry.UserControls.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SpvContent.IsPaneOpen = !SpvContent.IsPaneOpen;
+            BtnMenu.Content = SpvContent.IsPaneOpen ? new SymbolIcon() { Symbol = Symbol.ClosePane } : new SymbolIcon() { Symbol = Symbol.OpenPane };
+        }
 
-            BtnMenu.Content = SpvContent.IsPaneOpen ?
-                new SymbolIcon() { Symbol = Symbol.ClosePane }:
-                new SymbolIcon() { Symbol = Symbol.OpenPane };
+        private void SpvContent_PaneClosed(SplitView sender, object args)
+        {
+            BtnMenu.Content = new SymbolIcon() { Symbol = Symbol.OpenPane };
         }
 
         private async void SearchRhymes(string query, int rhymeLength)
@@ -392,5 +394,7 @@ namespace MyPoetry.UserControls.Pages
             }
         }
         #endregion
+
+        
     }
 }

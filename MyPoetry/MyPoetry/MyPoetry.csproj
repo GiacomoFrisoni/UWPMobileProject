@@ -121,14 +121,8 @@
     <Compile Include="UserControls\Pages\Editor.xaml.cs">
       <DependentUpon>Editor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Pages\Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\Pages\Homepage.xaml.cs">
       <DependentUpon>Homepage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Pages\PoetryDetail.xaml.cs">
-      <DependentUpon>PoetryDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Pages\Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
@@ -331,15 +325,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\Pages\Home.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\Pages\Homepage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\Pages\PoetryDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
