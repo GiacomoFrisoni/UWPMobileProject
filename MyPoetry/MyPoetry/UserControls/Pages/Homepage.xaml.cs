@@ -39,8 +39,7 @@ namespace MyPoetry.UserControls.Pages
             else
             {
                 // Uses stored data otherwise
-                MasterDetailView.ItemsSource = null;
-                MasterDetailView.ItemsSource = UserHandler.Instance.GetPoetries();
+                SetsOrderedSource();
             }
         }
 
@@ -54,8 +53,7 @@ namespace MyPoetry.UserControls.Pages
                     .OrderByDescending(poetry => poetry.CreationDate)
                     .ToListAsync();
                 UserHandler.Instance.SetPoetries(poetries);
-                MasterDetailView.ItemsSource = null;
-                MasterDetailView.ItemsSource = poetries;
+                SetsOrderedSource();
                 ProgressBarVisible(false);
             }
             else
@@ -70,9 +68,14 @@ namespace MyPoetry.UserControls.Pages
         {
             ProgressBarVisible(true);
             FlyOrderby.Hide();
+            SetsOrderedSource();
+            ProgressBarVisible(false);
+        }
+
+        private void SetsOrderedSource()
+        {
             MasterDetailView.ItemsSource = null;
             MasterDetailView.ItemsSource = GetPoetriesWithCriteria(GetCriteriaFromOption(CmbOrderby.SelectedIndex), SearchBox.Text);
-            ProgressBarVisible(false);
         }
 
         private enum Criteria
@@ -90,7 +93,7 @@ namespace MyPoetry.UserControls.Pages
                 case 3: return Criteria.Length;
                 case 4: return Criteria.RatingDesc;
                 case 5: return Criteria.Rating;
-                default: return Criteria.Date;
+                default: return Criteria.DateDesc;
             }
         }
 
