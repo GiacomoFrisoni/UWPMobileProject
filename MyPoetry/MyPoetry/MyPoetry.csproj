@@ -199,18 +199,12 @@
     <None Include="MyPoetry_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\background.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\background1.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\background2.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\background3.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Assets\Backgrounds\background.png" />
+    <Content Include="Assets\Backgrounds\background1.jpg" />
+    <Content Include="Assets\Backgrounds\background2.jpg" />
+    <Content Include="Assets\Backgrounds\background3.jpg" />
+    <Content Include="Assets\Credits\giacomo_frisoni.jpg" />
+    <Content Include="Assets\Credits\marcin_pabich.jpg" />
     <Content Include="Assets\Data\words.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

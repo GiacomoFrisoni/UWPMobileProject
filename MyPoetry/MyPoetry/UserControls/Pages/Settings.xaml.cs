@@ -52,10 +52,10 @@ namespace MyPoetry.UserControls.Pages
                 UserHandler.Instance.GetUser().LanguagePref : CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
 
             // Background selector
-            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/background.png"), "Default"));
-            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/background1.jpg"), "Azure"));
-            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/background2.jpg"), "Dark"));
-            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/background3.jpg"), "Blue"));
+            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/Backgrounds/background.png"), "Default"));
+            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/Backgrounds/background1.jpg"), "Azure"));
+            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/Backgrounds/background2.jpg"), "Dark"));
+            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/Backgrounds/background3.jpg"), "Blue"));
             CmbBackgroundSelector.SelectedIndex = 0;
         }
 

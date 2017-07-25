@@ -12,10 +12,19 @@
     <StackPanel>
         <Grid>
             <Ellipse HorizontalAlignment="Center" x:Name="UserBorder" Fill="White" Height="170" Width="170"></Ellipse>
-            <Ellipse HorizontalAlignment="Center" x:Name="UserImage" Height="170" Width="166"></Ellipse>
+            <Ellipse HorizontalAlignment="Center" x:Name="UserImage" Height="170" Width="166">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="{Binding Path=Photo}" Stretch="UniformToFill"/>
+                </Ellipse.Fill>
+            </Ellipse>
         </Grid>
 
         <TextBlock Margin="0, 5, 0, 0" Style="{StaticResource SubtitleTextBlockStyle}" x:Name="TxblTitle" Text="{Binding Path=Title}" HorizontalAlignment="Center"></TextBlock>
-        <TextBlock Style="{StaticResource BodyTextBlockStyle}" Foreground="Gray" x:Name="TxblDetails"  Text="{Binding Path=Details}" FontSize="12" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Style="{StaticResource BodyTextBlockStyle}" Foreground="Gray" x:Name="TxblDetails" Text="{Binding Path=Details}" FontSize="12" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Style="{StaticResource BodyTextBlockStyle}" Foreground="Gray" x:Name="TxblEmail" FontSize="10" HorizontalAlignment="Center">
+            <Hyperlink NavigateUri="{Binding Path=EmailLink}">
+                <Run Text="{Binding Path=Email}"></Run>
+            </Hyperlink>
+        </TextBlock>
     </StackPanel>
 </UserControl>
