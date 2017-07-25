@@ -534,4 +534,10 @@
   <data name="NoConnectionTitle.Text" xml:space="preserve">
     <value>Nessuna connessione</value>
   </data>
+  <data name="SavingPoetry" xml:space="preserve">
+    <value>Salvataggio</value>
+  </data>
+  <data name="SavingPoetryMessage" xml:space="preserve">
+    <value>Stiamo salvando la tua poesia. Attendi...</value>
+  </data>
 </root>

@@ -53,6 +53,7 @@ namespace MyPoetry
             MenuList.SelectedIndex = 1;
             menuSelectedIndex = 1;
 
+            // Sets menu inside singleton
             MenuHandler.Instance.SetMenu(MenuList);
         }
         

@@ -42,6 +42,14 @@ namespace MyPoetry.Utilities
             if (menu != null && index >= 0 && index < this.menu.Items.Count)
                 this.menu.SelectedIndex = index;
         }
+
+        public int? GetMenuIndex()
+        {
+            if (menu == null)
+                return null;
+            else
+                return this.menu.SelectedIndex;
+        }
     }
 }
 

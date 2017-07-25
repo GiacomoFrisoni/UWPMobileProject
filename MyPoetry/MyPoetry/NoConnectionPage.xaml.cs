@@ -4,16 +4,12 @@ using Windows.UI.Xaml.Controls;
 
 namespace MyPoetry
 {
-    /// <summary>
-    /// Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame.
-    /// </summary>
     public sealed partial class NoConnectionPage : Page
     {
         public NoConnectionPage()
         {
             this.InitializeComponent();
         }
-
 
         private void BtnReconnect_Click(object sender, RoutedEventArgs e)
         {
@@ -22,6 +18,16 @@ namespace MyPoetry
 
             if (Connection.HasInternetAccess)
             {
+                // Check for the source page
+                int? menuIndex = MenuHandler.Instance.GetMenuIndex();
+                if (menuIndex == null)
+                {
+                    this.Frame.Navigate(typeof(LoginPage));
+                }
+                else
+                {
+                    this.Frame.Navigate(typeof(MainPage));
+                }
             }
             else
             {

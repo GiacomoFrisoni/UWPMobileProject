@@ -534,4 +534,10 @@
   <data name="UpdatingLangPref" xml:space="preserve">
     <value>Aggiornamento della preferenza di lingua per l'applicazione</value>
   </data>
+  <data name="SavingPoetry" xml:space="preserve">
+    <value>Saving</value>
+  </data>
+  <data name="SavingPoetryMessage" xml:space="preserve">
+    <value>We're saving your new poetry. Please wait...</value>
+  </data>
 </root>

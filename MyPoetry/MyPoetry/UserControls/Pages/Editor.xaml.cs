@@ -260,6 +260,7 @@ namespace MyPoetry.UserControls.Pages
         {
             TxbTitle.Text = String.Empty;
             RebText.Document.SetText(TextSetOptions.FormatRtf, String.Empty);
+            UserHandler.Instance.SetPoetryInEditing(false);
         }
         #endregion
 
@@ -394,7 +395,6 @@ namespace MyPoetry.UserControls.Pages
             }
         }
         #endregion
-
         
     }
 }
