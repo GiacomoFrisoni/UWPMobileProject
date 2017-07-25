@@ -4,6 +4,7 @@ using MyPoetry.Model;
 using MyPoetry.Utilities;
 using System;
 using System.Linq;
+using System.Xml.Serialization;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.ApplicationModel.Resources;
@@ -14,6 +15,7 @@ using Windows.UI.Popups;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Shapes;
@@ -226,35 +228,10 @@ namespace MyPoetry.UserControls
         #endregion
 
         #region Print
-        async private void BtnPrint_Click(object sender, RoutedEventArgs e)
+        private void BtnPrint_Click(object sender, RoutedEventArgs e)
         {
-            StackPanel stp = new StackPanel();
-            Grid g = new Grid();
-            TextBlock txb = new TextBlock();
-            Rectangle rect = new Rectangle();
-            RichEditBox rtb = new RichEditBox();
-
-            txb.Text = TxbTitle.Text;
-            txb.FontSize = 22;
-
-            rect.Height = 1;
-            rect.VerticalAlignment = VerticalAlignment.Bottom;
-            rect.Fill = new SolidColorBrush(Colors.LightGray);
-            rect.Margin = new Thickness(0, 5, 0, 0);
-
-            g.Children.Add(txb);
-            g.Children.Add(rect);
-
-            ITextRange text = RtbView.Document.GetRange(0, TextConstants.MaxUnitCount);
-            string s = text.Text;
-
-            rtb.Document.SetText(TextSetOptions.None, s);
-
-            stp.Children.Add(g);
-            stp.Children.Add(rtb);
-            
-            PrintHelper pHelp = new PrintHelper(stp);
-            await pHelp.ShowPrintUIAsync("Testo della poesia", true);
+            PrintingHelper pHelp = new PrintingHelper(GrdViewer);
+            pHelp.Print();
         }
         #endregion
 

@@ -179,6 +179,7 @@
     <Compile Include="Utilities\Connection.cs" />
     <Compile Include="Utilities\MenuHandler.cs" />
     <Compile Include="Utilities\ImageHelper.cs" />
+    <Compile Include="Utilities\PrintingHelper.cs" />
     <Compile Include="Utilities\RtfText.cs" />
     <Compile Include="Utilities\ServerErrorInfo.cs" />
     <Compile Include="UserControls\HalfPageMessage.xaml.cs">
