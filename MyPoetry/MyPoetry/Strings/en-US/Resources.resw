@@ -537,4 +537,7 @@
   <data name="NoConnectionTitle.Text" xml:space="preserve">
     <value>No connection</value>
   </data>
+  <data name="UpdatingLangPref" xml:space="preserve">
+    <value>Aggiornamento della preferenza di lingua per l'applicazione</value>
+  </data>
 </root>

@@ -1,33 +1,27 @@
-﻿using Microsoft.Toolkit.Uwp;
+﻿using Microsoft.WindowsAzure.MobileServices;
 using MyPoetry.Model;
 using MyPoetry.Utilities;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using System.Globalization;
+using Windows.ApplicationModel.Resources;
+using Windows.Globalization;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
-
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace MyPoetry.UserControls.Pages
 {
     public sealed partial class Settings : UserControl
     {
-        public Settings()
+        private readonly Dictionary<string, string> languages = new Dictionary<string, string>()
         {
-            this.InitializeComponent();
-        }
-
+            { "Italiano [ITA]", "it" },
+            { "English [ENG]", "en" },
+            { "Polski [POL]", "pl" }
+        };
 
         public class BackgroundSelector
         {
@@ -41,25 +35,29 @@ namespace MyPoetry.UserControls.Pages
             }
         }
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        public Settings()
         {
+            this.InitializeComponent();
+
             CmbLanguageSelector.Items.Clear();
             CmbBackgroundSelector.Items.Clear();
 
-            //Automatizzare la ricerca delle lingue
-            CmbLanguageSelector.Items.Add("Italiano [ITA]");
-            CmbLanguageSelector.Items.Add("English [ENG]");
-            CmbLanguageSelector.Items.Add("Polski [POL]");
-            CmbLanguageSelector.SelectedIndex = 0;
+            // Loads languages
+            CmbLanguageSelector.ItemsSource = languages;
+            CmbLanguageSelector.DisplayMemberPath = "Key";
+            CmbLanguageSelector.SelectedValuePath = "Value";
 
-            //Background selector
+            // Handles selected language
+            CmbLanguageSelector.SelectedValue = UserHandler.Instance.GetUser().LanguagePref != null ?
+                UserHandler.Instance.GetUser().LanguagePref : CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+
+            // Background selector
             CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/background.png"), "Default"));
             CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/background1.jpg"), "Azure"));
             CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/background2.jpg"), "Dark"));
             CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/background3.jpg"), "Blue"));
             CmbBackgroundSelector.SelectedIndex = 0;
         }
-
 
         public CustomPage GetPage { get { return MainContent; } }
 
@@ -68,9 +66,44 @@ namespace MyPoetry.UserControls.Pages
 
         }
 
-        private void CmbLanguageSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void CmbLanguageSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Gets ISO 2-digits code
+            string langCode = (string)CmbLanguageSelector.SelectedValue;
+            // Sets application language
+            ApplicationLanguages.PrimaryLanguageOverride = langCode;
 
+            if (UserHandler.Instance.GetUser().LanguagePref != langCode)
+            {
+                if (Connection.HasInternetAccess)
+                {
+                    Exception exception = null;
+                    HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+                    try
+                    {
+                        // Shows loading message
+                        var loader = new ResourceLoader();
+                        hpm.ShowMessage(loader.GetString("UpdatingLangPref"), loader.GetString("ServerConnection"), true, false, false, null, null);
+
+                        // Updates user preference on server
+                        UserHandler.Instance.GetUser().LanguagePref = langCode;
+                        await App.MobileService.GetTable<User>().UpdateAsync(UserHandler.Instance.GetUser());
+                    }
+                    catch (MobileServiceInvalidOperationException ex)
+                    {
+                        exception = ex;
+                    }
+                    finally
+                    {
+                        hpm.Dismiss();
+                        if (exception != null)
+                        {
+                            var msg = new MessageDialog(ServerErrorInfo.Instance.GetInfo(exception.Message));
+                            await msg.ShowAsync();
+                        }
+                    }
+                }
+            }
         }
 
     }

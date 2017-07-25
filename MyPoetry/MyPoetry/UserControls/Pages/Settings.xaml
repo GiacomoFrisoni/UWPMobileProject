@@ -12,7 +12,7 @@
 
     <custom:CustomPage x:Name="MainContent" x:Uid="SettingsPageTitle">
         <custom:CustomPage.MainContent>
-            <Grid Loaded="Grid_Loaded">
+            <Grid Name="GrdParent">
                 <StackPanel>
                     <StackPanel HorizontalAlignment="Stretch" Background="#88FFFFFF" Margin="5" Padding="15">
                         <TextBlock x:Uid="SettingsGroup1Title" Style="{StaticResource TitleTextBlockStyle}" Margin="0, 0, 0, 15"></TextBlock>

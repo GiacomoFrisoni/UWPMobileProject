@@ -31,8 +31,6 @@
 
                 <TextBlock x:Uid="NoConnectionError" x:Name="TxbError" Text="Impossibile connettersi al server" Foreground="Gray" HorizontalAlignment="Center" FontStyle="Italic" FontSize="12" Margin="5" TextAlignment="Center" Visibility="Collapsed"></TextBlock>
 
-
-
             </StackPanel>
         </Grid>
     </Grid>

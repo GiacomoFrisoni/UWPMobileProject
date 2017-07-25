@@ -74,7 +74,7 @@ namespace MyPoetryMobileService.Models
         [StringLength(50)]
         public string BackgroundPref { get; set; }
 
-        [StringLength(50)]
+        [StringLength(2)]
         public string LanguagePref { get; set; }
     }
 }

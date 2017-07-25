@@ -16,5 +16,7 @@ namespace MyPoetry.Model
         public int AccessesNumber { get; set; }
         public int UseTime { get; set; }
         public bool IsActivated { get; set; }
+        public string BackgroundPref { get; set; }
+        public string LanguagePref { get; set; }
     }
 }
