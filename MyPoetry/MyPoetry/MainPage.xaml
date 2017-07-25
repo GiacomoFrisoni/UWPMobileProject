@@ -38,9 +38,8 @@
 
                 <ContentPresenter Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Content="{x:Bind CurrentPage.TopButtons}"></ContentPresenter>
             </Grid>
-            
-        </Grid>
 
+        </Grid>
         <SplitView Grid.Row="1" x:Name="NavigationPane" OpenPaneLength="260">
             <SplitView.Pane>
                 <RelativePanel x:Name="MenuContainer" Background="{StaticResource AppColor5}">
