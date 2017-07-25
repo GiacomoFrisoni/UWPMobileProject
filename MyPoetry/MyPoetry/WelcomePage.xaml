@@ -18,7 +18,7 @@
     </Page.DataContext>
     
     <Grid x:Name="grid" DataContext="{Binding WelcomePageViewModel, Mode=OneWay}">
-        <Image Stretch="UniformToFill" Source="Assets/background.png"/>
+        <Image Stretch="UniformToFill" Source="Assets/Backgrounds/background.png"/>
         <FlipView x:Name="FlipView" ItemsSource="{Binding WelcomePages}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <FlipView.ItemsPanel>
                 <ItemsPanelTemplate>

@@ -9,7 +9,7 @@
     mc:Ignorable="d" d:DesignHeight="500">
 
     <Grid Name="GrdParent">
-        <Image Stretch="UniformToFill" Source="Assets/background.png"/>
+        <Image Stretch="UniformToFill" Source="Assets/Backgrounds/background.png"/>
         <Grid VerticalAlignment="Center" Margin="0, -20, 0, 0">
             <Grid.Background>
                 <SolidColorBrush Color="White" Opacity="0.4"/>

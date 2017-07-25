@@ -30,7 +30,8 @@
                         </ComboBox>
 
                         <TextBlock x:Uid="SettingsLanguage" Margin="0, 0, 0, 2"></TextBlock>
-                        <ComboBox Width="200"  x:Name="CmbLanguageSelector" SelectionChanged="CmbLanguageSelector_SelectionChanged"></ComboBox>
+                        <ComboBox Width="200"  x:Name="CmbLanguageSelector" SelectionChanged="CmbLanguageSelector_SelectionChanged" Margin="0, 0, 0, 2"></ComboBox>
+                        <TextBlock x:Uid="SettingsLanguageInfo" Foreground="{StaticResource AppRedColor}" FontSize="11" Text="Ciaone"></TextBlock>
                     </StackPanel>
 
                 </StackPanel>

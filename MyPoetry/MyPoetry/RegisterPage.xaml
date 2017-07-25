@@ -8,7 +8,7 @@
     mc:Ignorable="d" d:DesignHeight="1000">
 
     <Grid Name="GrdParent">
-        <Image Stretch="UniformToFill" Source="Assets/background.png"/>
+        <Image Stretch="UniformToFill" Source="Assets/Backgrounds/background.png"/>
 
         <ScrollViewer HorizontalContentAlignment="Center" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <StackPanel Padding="20" VerticalAlignment="Center">

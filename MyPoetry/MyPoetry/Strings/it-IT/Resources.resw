@@ -540,4 +540,10 @@
   <data name="SavingPoetryMessage" xml:space="preserve">
     <value>Stiamo salvando la tua poesia. Attendi...</value>
   </data>
+  <data name="SettingsLanguageInfo.Text" xml:space="preserve">
+    <value>La lingua verrà aggiornata al prossimo riavvio dell'app</value>
+  </data>
+  <data name="UpdatingLangPref" xml:space="preserve">
+    <value>Aggiorno...</value>
+  </data>
 </root>

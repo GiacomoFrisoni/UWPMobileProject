@@ -158,7 +158,7 @@
 
             <SplitView.Content>
                 <Grid Name="GrdParent">
-                    <Image Stretch="UniformToFill" Source="Assets/background.png"/>
+                    <Image Stretch="UniformToFill" Source="Assets/Backgrounds/background.png"/>
                     <ContentPresenter Content="{x:Bind CurrentPage.MainContent}"></ContentPresenter>
                 </Grid>
             </SplitView.Content>

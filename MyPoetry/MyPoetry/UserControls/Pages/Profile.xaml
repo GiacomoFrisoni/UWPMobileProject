@@ -13,7 +13,7 @@
     <custom:CustomPage x:Name="MainContent" x:Uid="ProfilePageTitle">
         <custom:CustomPage.MainContent>
             <Grid Loaded="Grid_Loaded" SizeChanged="Grid_SizeChanged">
-                <Image Stretch="UniformToFill" Source="Assets/background.png"/>
+                <Image Stretch="UniformToFill" Source="Assets/Backgrounds/background.png"/>
 
                 <ScrollViewer x:Name="ScrProfile">
                     <StackPanel>
@@ -24,15 +24,20 @@
                         <controls:AdaptiveGridView Grid.Row="1" Margin="5, 0, 1, 5" x:Name="ProfileGridView" ItemHeight="60" DesiredWidth="400" SelectionMode="None" ScrollViewer.VerticalScrollMode="Disabled" ScrollViewer.HorizontalScrollMode="Disabled">
                             <controls:AdaptiveGridView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid x:Name="GrdMain" Background="{Binding PaneColor}" HorizontalAlignment="Stretch">
+                                    <Grid x:Name="GrdMain" HorizontalAlignment="Stretch">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="55"></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
 
-                                        <SymbolIcon x:Name="Symbol" Foreground="White" Symbol="{Binding Icon}"></SymbolIcon>
+                                        <Grid Background="{Binding PaneColor}">
+                                            <SymbolIcon x:Name="Symbol" Foreground="White" Symbol="{Binding Icon}"></SymbolIcon>
+                                        </Grid>
 
-                                        <Grid Background="White" Padding="10, 5" Grid.Column="1" HorizontalAlignment="Stretch">
+                                        <Grid Padding="10, 5" Grid.Column="1" HorizontalAlignment="Stretch">
+                                            <Grid.Background>
+                                                <SolidColorBrush Color="White" Opacity="0.8"></SolidColorBrush>
+                                            </Grid.Background>
                                             <StackPanel HorizontalAlignment="Stretch">
                                                 <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding Description}"></TextBlock>
                                                 <TextBlock Foreground="Gray" Style="{StaticResource BodyTextBlockStyle}" TextWrapping="WrapWholeWords" Text="{Binding Value}"></TextBlock>

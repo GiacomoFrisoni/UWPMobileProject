@@ -56,7 +56,7 @@
                     <controls:MasterDetailsView.NoSelectionContentTemplate>
                         <DataTemplate>
                             <Grid>
-                                <Image Stretch="UniformToFill" Source="Assets/background.png"/>
+                                <Image Stretch="UniformToFill" Source="Assets/Backgrounds/background.png"/>
 
                                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="50">
                                     <StackPanel.Background>

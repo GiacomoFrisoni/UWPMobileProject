@@ -532,12 +532,15 @@
     <value>Brak połączenia</value>
   </data>
   <data name="UpdatingLangPref" xml:space="preserve">
-    <value>Aggiornamento della preferenza di lingua per l'applicazione</value>
+    <value>Ładuję...</value>
   </data>
   <data name="SavingPoetry" xml:space="preserve">
     <value>Saving</value>
   </data>
   <data name="SavingPoetryMessage" xml:space="preserve">
     <value>We're saving your new poetry. Please wait...</value>
+  </data>
+  <data name="SettingsLanguageInfo.Text" xml:space="preserve">
+    <value>Zmiany zostaną zaaplikowane przy następnym uruchomieniu aplikacji.</value>
   </data>
 </root>

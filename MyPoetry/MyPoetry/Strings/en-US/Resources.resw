@@ -538,6 +538,9 @@
     <value>No connection</value>
   </data>
   <data name="UpdatingLangPref" xml:space="preserve">
-    <value>Aggiornamento della preferenza di lingua per l'applicazione</value>
+    <value>Updating...</value>
+  </data>
+  <data name="SettingsLanguageInfo.Text" xml:space="preserve">
+    <value>Language will be updated at the next app launch.</value>
   </data>
 </root>
