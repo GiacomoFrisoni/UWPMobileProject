@@ -30,6 +30,11 @@ namespace MyPoetry.Utilities
             get { return titleBody == DisplayContent.TitleAndBody; }
         }
 
+        /// <summary>
+        /// A variable that determines the body fontsize
+        /// </summary>
+        internal int bodyFontSize;
+
         public CustomOptionsPrintHelper(UserControl uc) : base(uc) { }
 
         /// <summary>
@@ -55,13 +60,23 @@ namespace MyPoetry.Utilities
                 displayedOptions.Add(StandardPrintTaskOptions.Copies);
                 displayedOptions.Add(StandardPrintTaskOptions.Orientation);
 
-                // Create a new list option
+                // Create a list option for contents
                 PrintCustomItemListOptionDetails pageFormat = printDetailedOptions.CreateItemListOption("PageContent", loader.GetString("Contents"));
                 pageFormat.AddItem("TitleBody", loader.GetString("TitleBody"));
                 pageFormat.AddItem("BodyOnly", loader.GetString("BodyOnly"));
 
-                // Add the custom option to the option list
+                // Create a list option for body fontsize
+                PrintCustomItemListOptionDetails bodyFontSize = printDetailedOptions.CreateItemListOption("BodyFontSize", loader.GetString("BodyFontSize"));
+                bodyFontSize.AddItem("8", "8");
+                bodyFontSize.AddItem("10", "10");
+                bodyFontSize.AddItem("12", "12");
+                bodyFontSize.AddItem("14", "14");
+                bodyFontSize.AddItem("16", "16");
+                bodyFontSize.AddItem("18", "18");
+
+                // Add the custom options to the option list
                 displayedOptions.Add("PageContent");
+                displayedOptions.Add("BodyFontSize");
 
                 printDetailedOptions.OptionChanged += printDetailedOptions_OptionChanged;
 
@@ -92,7 +107,7 @@ namespace MyPoetry.Utilities
                 return;
             }
 
-            if (optionId == "PageContent")
+            if (optionId == "PageContent" || optionId == "BodyFontSize")
             {
                 await scenarioUc.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
@@ -111,10 +126,13 @@ namespace MyPoetry.Utilities
             {
                 // Get a refference to page objects
                 RichTextBlock title = (RichTextBlock)firstPage.FindName("Title");
+                RichTextBlock body = (RichTextBlock)firstPage.FindName("Body");
 
                 // Hide(collapse) and move elements in different grid cells depending by the viewable content(only body, title and body)
-
                 title.Visibility = ShowTitle ? Visibility.Visible : Visibility.Collapsed;
+
+                // Updates body fontsize
+                body.FontSize = bodyFontSize;
             }
 
             //Continue with the rest of the base printing layout processing (paper size, printable page size)
@@ -129,6 +147,9 @@ namespace MyPoetry.Utilities
 
             // Set the title & body display flag
             titleBody = (DisplayContent)(Convert.ToInt32(pageContent.Contains("title")) + Convert.ToInt32(pageContent.Contains("body")));
+
+            // Get BodyFontSize property
+            bodyFontSize = Convert.ToInt32(printDetailedOptions.Options["BodyFontSize"].Value as string);
 
             base.CreatePrintPreviewPages(sender, e);
         }

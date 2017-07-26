@@ -1,4 +1,5 @@
 ﻿using MyPoetry.Model;
+using Windows.ApplicationModel.Resources;
 using Windows.UI.Text;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Documents;
@@ -10,12 +11,19 @@ namespace MyPoetry
     /// </summary>
     public sealed partial class PageToPrint : Page
     {
+        /// <summary>
+        /// Variable for localized string resources
+        /// </summary>
+        ResourceLoader loader = new ResourceLoader();
+
         public PageToPrint(Poetry poetry)
         {
             this.InitializeComponent();
             
+            // Clears paragraphs
             Title.Blocks.Clear();
             Body.Blocks.Clear();
+            FooterDescription.Blocks.Clear();
 
             // Sets title
             Paragraph paragraphTitle = new Paragraph();
@@ -37,6 +45,13 @@ namespace MyPoetry
                 paragraph.Inlines.Add(run);
                 Body.Blocks.Add(paragraph);
             }
+
+            // Sets localized footer
+            Paragraph paragraphFooter = new Paragraph();
+            Run runFooter = new Run();
+            runFooter.Text = loader.GetString("PrintFooter");
+            paragraphFooter.Inlines.Add(runFooter);
+            FooterDescription.Blocks.Add(paragraphFooter);
         }
     }
 }

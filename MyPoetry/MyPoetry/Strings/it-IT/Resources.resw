@@ -564,4 +564,10 @@
   <data name="TitleBody" xml:space="preserve">
     <value>Titolo e testo</value>
   </data>
+  <data name="BodyFontSize" xml:space="preserve">
+    <value>Dimensione del testo</value>
+  </data>
+  <data name="PrintFooter" xml:space="preserve">
+    <value>Stampato con MyPoetry</value>
+  </data>
 </root>

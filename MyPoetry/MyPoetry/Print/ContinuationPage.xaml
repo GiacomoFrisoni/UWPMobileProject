@@ -21,7 +21,7 @@
         <Border x:Name="Footer" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Visibility="Visible">
                 <Image Source="ms-appx:///Assets/logo_print.png" Stretch="UniformToFill" Height="25" Width="25" Margin="5,5,10,5"/>
-                <RichTextBlock Foreground="Black" FontSize="14" TextAlignment="Left" FontFamily="Segoe UI" VerticalAlignment="Center">
+                <RichTextBlock x:Name="FooterDescription" Foreground="Black" FontSize="14" TextAlignment="Left" FontFamily="Segoe UI" VerticalAlignment="Center">
                     <Paragraph>Printed with MyPoetry</Paragraph>
                 </RichTextBlock>
             </StackPanel>

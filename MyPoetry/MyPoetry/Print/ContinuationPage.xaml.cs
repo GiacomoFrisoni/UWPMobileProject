@@ -1,4 +1,6 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.ApplicationModel.Resources;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Documents;
 
 namespace MyPoetry
 {
@@ -10,6 +12,11 @@ namespace MyPoetry
     public sealed partial class ContinuationPage : Page
     {
         /// <summary>
+        /// Variable for localized string resources
+        /// </summary>
+        ResourceLoader loader = new ResourceLoader();
+
+        /// <summary>
         /// Creates a continuation page and links text-flow to a text flow container
         /// </summary>
         /// <param name="textLinkContainer">Text link container which will flow text into this page</param>
@@ -17,6 +24,14 @@ namespace MyPoetry
         {
             InitializeComponent();
             textLinkContainer.OverflowContentTarget = ContinuationPageLinkedContainer;
+
+            // Sets localized footer
+            FooterDescription.Blocks.Clear();
+            Paragraph paragraphFooter = new Paragraph();
+            Run runFooter = new Run();
+            runFooter.Text = loader.GetString("PrintFooter");
+            paragraphFooter.Inlines.Add(runFooter);
+            FooterDescription.Blocks.Add(paragraphFooter);
         }
     }
 }
