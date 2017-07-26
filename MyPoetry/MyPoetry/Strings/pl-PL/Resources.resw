@@ -513,7 +513,7 @@
   <data name="SettingsLanguage.Text" xml:space="preserve">
     <value>Wybierz język</value>
   </data>
-  <data name="SettingsTitle.Title" xml:space="preserve">
+  <data name="SettingsPageTitle.Title" xml:space="preserve">
     <value>Ustawienia</value>
   </data>
   <data name="HomeOrderby.Text" xml:space="preserve">
@@ -535,48 +535,51 @@
     <value>Ładuję...</value>
   </data>
   <data name="SavingPoetry" xml:space="preserve">
-    <value>Saving</value>
+    <value>Zapisywanie</value>
   </data>
   <data name="SavingPoetryMessage" xml:space="preserve">
-    <value>We're saving your new poetry. Please wait...</value>
+    <value>Zapisuję poezjię. Proszę czekać...</value>
   </data>
   <data name="SettingsLanguageInfo.Text" xml:space="preserve">
     <value>Zmiany zostaną zaaplikowane przy następnym uruchomieniu aplikacji.</value>
   </data>
   <data name="BodyOnly" xml:space="preserve">
-    <value>Body only</value>
+    <value>Tylko tekst</value>
   </data>
   <data name="Contents" xml:space="preserve">
-    <value>Contents</value>
+    <value>Format</value>
   </data>
   <data name="ErrorPrinting" xml:space="preserve">
-    <value>Error printing</value>
+    <value>Błąd drukowania</value>
   </data>
   <data name="FailedPrint" xml:space="preserve">
-    <value>Failed to print</value>
+    <value>Drukowanie nie powiodło się</value>
   </data>
   <data name="PoetryPrinting" xml:space="preserve">
-    <value>Poetry printing</value>
+    <value>Drukowanie poezji</value>
   </data>
   <data name="TitleBody" xml:space="preserve">
     <value>Title and body</value>
   </data>
   <data name="BodyFontSize" xml:space="preserve">
-    <value>Body Font Size</value>
+    <value>Rozmiar czcionki</value>
   </data>
   <data name="PrintFooter" xml:space="preserve">
-    <value>Printed with MyPoetry</value>
+    <value>Wydrukowany w MyPoetry</value>
   </data>
   <data name="UpdateUserConfirm" xml:space="preserve">
     <value>Do you want to save changes to your data?</value>
   </data>
   <data name="UpdatingUser" xml:space="preserve">
-    <value>Updating user data</value>
+    <value>Aktualizacja danych</value>
   </data>
   <data name="UpdatingUserMessage" xml:space="preserve">
-    <value>We're updtaing your data. Please wait...</value>
+    <value>Aktualizuję twoje dane. Proszę czekać...</value>
   </data>
   <data name="UserUpdated" xml:space="preserve">
-    <value>Your data has been updated.</value>
+    <value>Twoje dane zostały zaktualizowane.</value>
+  </data>
+  <data name="Credits" xml:space="preserve">
+    <value>Informacje</value>
   </data>
 </root>

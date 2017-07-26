@@ -579,4 +579,7 @@
   <data name="UserUpdated" xml:space="preserve">
     <value>Your data has been updated.</value>
   </data>
+  <data name="Credits" xml:space="preserve">
+    <value>Credits</value>
+  </data>
 </root>

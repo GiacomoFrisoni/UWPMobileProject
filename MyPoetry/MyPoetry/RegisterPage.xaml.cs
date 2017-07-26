@@ -24,9 +24,7 @@ namespace MyPoetry
     {
         public const string MALE = "M";
         public const string FEMALE = "F";
-
-        private byte[] bytesPhoto = null;
-        
+      
 
         public RegisterPage()
         {
