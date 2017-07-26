@@ -139,6 +139,9 @@
     <Compile Include="UserControls\PoetryViewer.xaml.cs">
       <DependentUpon>PoetryViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\RegistrationControl.xaml.cs">
+      <DependentUpon>RegistrationControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserViewer.xaml.cs">
       <DependentUpon>UserViewer.xaml</DependentUpon>
     </Compile>
@@ -350,6 +353,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\PoetryViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\RegistrationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

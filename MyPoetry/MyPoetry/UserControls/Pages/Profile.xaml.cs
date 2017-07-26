@@ -1,12 +1,12 @@
-﻿using Microsoft.Toolkit.Uwp;
-using MyPoetry.Model;
-using MyPoetry.Utilities;
-using System.Collections.Generic;
-using System.Linq;
-using Windows.ApplicationModel.Resources;
+﻿using MyPoetry.Model;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using MyPoetry.Utilities;
+using System.Collections.Generic;
+using Windows.ApplicationModel.Resources;
+using Microsoft.Toolkit.Uwp;
+using System.Linq;
 
 namespace MyPoetry.UserControls.Pages
 {
@@ -18,6 +18,8 @@ namespace MyPoetry.UserControls.Pages
         }
 
         public CustomPage GetPage { get { return MainContent; } }
+
+        RegistrationControl rc;
       
         private async void LoadData()
         {
@@ -31,6 +33,13 @@ namespace MyPoetry.UserControls.Pages
             // Generates statistic elements inside the gridview
             ProfileGridView.ItemsSource = null;
             ProfileGridView.ItemsSource = GenerateAdvancedInfo();
+
+
+            //Now loads the editor part
+            rc = new RegistrationControl(UserHandler.Instance.GetUser());
+            rc.EnableToModify("Salva", SaveUser);
+
+            StpModify.Child = rc;
         }
         
         private List<DataViewer> GenerateAdvancedInfo()
@@ -50,28 +59,23 @@ namespace MyPoetry.UserControls.Pages
             return info;
         }
 
+        private void SaveUser()
+        {
+            if (rc != null)
+            {
+                HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+                hpm.ShowMessage("Saving", "Your data is updating now", true, false, true, null, null);
+            }
+        }
+
+
 
         private void ProgressBarVisible(bool visible)
         {
             ProgressRingProfile.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
             ProgressRingProfile.IsActive = visible;
         }
-
-
-        private void BtnDeletePhoto_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnFile_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnPhoto_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
@@ -84,7 +88,7 @@ namespace MyPoetry.UserControls.Pages
             {
                 ScrProfile.Visibility = Visibility.Collapsed;
                 StpModify.Visibility = Visibility.Visible;
-                BtnEdit.Content = new SymbolIcon() { Symbol = Symbol.Save };
+                BtnEdit.Content = new SymbolIcon() { Symbol = Symbol.Contact };
             }
             else
             {

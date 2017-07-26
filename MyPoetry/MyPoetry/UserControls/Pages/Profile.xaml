@@ -12,7 +12,7 @@
 
     <custom:CustomPage x:Name="MainContent" x:Uid="ProfilePageTitle">
         <custom:CustomPage.MainContent>
-            <Grid Loaded="Grid_Loaded" SizeChanged="Grid_SizeChanged">
+            <Grid x:Name="GrdParent" Loaded="Grid_Loaded" SizeChanged="Grid_SizeChanged">
                 <Image Stretch="UniformToFill" Source="Assets/Backgrounds/background.png"/>
 
                 <ScrollViewer x:Name="ScrProfile">
@@ -51,67 +51,7 @@
                 </ScrollViewer>
 
 
-                <StackPanel x:Name="StpModify" Visibility="Collapsed" MaxWidth="400">
-                    <Grid Margin="0, 10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <Border Width="130" Height="130" BorderBrush="{StaticResource AppColor3}" Background="LightGray" BorderThickness="1">
-                            <Grid>
-                                <Viewbox MaxHeight="70" MaxWidth="70">
-                                    <SymbolIcon Name="SblDefault" Symbol="Contact" Foreground="White"></SymbolIcon>
-                                </Viewbox>
-                                <Image Name="ImgProfile" Stretch="UniformToFill"></Image>
-                            </Grid>
-                        </Border>
-
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                            </Grid.RowDefinitions>
-
-                            <Button Name="BtnPhoto" Style="{StaticResource ButtonBlue}" Grid.Row="0" Padding="10, 5" Margin="10, 1, 0, 5" HorizontalAlignment="Stretch" Click="BtnPhoto_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <SymbolIcon Symbol="Camera"></SymbolIcon>
-                                    <TextBlock x:Uid="Photo" Margin="10, 0, 0, 0">Camera</TextBlock>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Name="BtnFile" Style="{StaticResource ButtonBlue}" Grid.Row="1" Padding="10, 5" Margin="10, 0, 0, 0" HorizontalAlignment="Stretch" Click="BtnFile_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <SymbolIcon Symbol="OpenFile"></SymbolIcon>
-                                    <TextBlock x:Uid="File" Margin="10, 0, 0, 0">Choose file</TextBlock>
-                                </StackPanel>
-                            </Button>
-
-                            <Button x:Name="BtnDeletePhoto" Style="{StaticResource ButtonRed}" Grid.Row="3" HorizontalAlignment="Stretch" Padding="10, 5" Margin="10, 5, 0, 1" Click="BtnDeletePhoto_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <SymbolIcon Symbol="Delete"></SymbolIcon>
-                                    <TextBlock x:Uid="Delete" Margin="10, 0, 0, 0">Delete</TextBlock>
-                                </StackPanel>
-                            </Button>
-                        </Grid>
-                    </Grid>
-
-                    <TextBlock x:Uid="Name" Text="Name"></TextBlock>
-                    <TextBox x:Name="TxbName" x:Uid="NamePH" Margin="0, 5" PlaceholderText="Name"></TextBox>
-
-                    <TextBlock x:Uid="Surname" Text="Surname"></TextBlock>
-                    <TextBox x:Name="TxbSurname" x:Uid="SurnamePH" Margin="0, 5"  PlaceholderText="Surname"></TextBox>
-
-                    <TextBlock x:Uid="Gender" Text="Gender"></TextBlock>
-                    <ComboBox x:Name="CmbGender" x:Uid="GenderPH" PlaceholderText="Select your gender" Margin="0, 5" HorizontalAlignment="Stretch">
-                        <ComboBoxItem x:Uid="Male">Male</ComboBoxItem>
-                        <ComboBoxItem x:Uid="Female">Female</ComboBoxItem>
-                    </ComboBox>
-
-                    <Button x:Name="BtnSave" Style="{StaticResource ButtonBlue}" Content="Salva" Margin="5, 25, 5, 5" HorizontalAlignment="Stretch"></Button>
-                </StackPanel>
+                <Border x:Name="StpModify" Visibility="Collapsed" Margin="5"></Border>
                 
                 <ProgressRing x:Name="ProgressRingProfile" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Grid.Row="3" Visibility="Collapsed"/>
             </Grid>
