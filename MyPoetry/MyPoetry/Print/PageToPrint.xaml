@@ -25,6 +25,7 @@
                 <Run>Titolo</Run>
             </Paragraph>
         </RichTextBlock>
+        
         <RichTextBlock Foreground="Black" x:Name="Body" FontSize="18" Grid.Row="1" OverflowContentTarget="{Binding ElementName=FirstLinkedContainer}"
             IsTextSelectionEnabled="True" TextAlignment="Left" FontFamily="Segoe UI" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Paragraph>
@@ -35,14 +36,26 @@
                 <Run>Verso 3</Run>
             </Paragraph>
         </RichTextBlock>
+        
         <RichTextBlockOverflow x:Name="FirstLinkedContainer" OverflowContentTarget="{Binding ElementName=ContinuationPageLinkedContainer}" Grid.Row="2"/>
         <RichTextBlockOverflow x:Name="ContinuationPageLinkedContainer" Grid.Row="3"/>
 
-        <StackPanel x:Name="Footer" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Top" Visibility="Collapsed">
+
+        <Border x:Name="Footer" Grid.Row="4" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" Visibility="Visible">
+                <Image Source="ms-appx:///Assets/logo_print.png" Stretch="UniformToFill" Height="25" Width="25" Margin="5,5,10,5"/>
+                <RichTextBlock Foreground="Black" FontSize="14" TextAlignment="Left" FontFamily="Segoe UI" VerticalAlignment="Center">
+                    <Paragraph>Printed with MyPoetry</Paragraph>
+                </RichTextBlock>
+            </StackPanel>
+        </Border>
+        
+        <!--
+        <StackPanel Background="Blue" x:Name="Footer" Orientation="Horizontal" Grid.Row="4" Visibility="Visible">
             <Image Source="ms-appx:///Assets/logo_print.png" Stretch="UniformToFill" Height="30" Width="30" Margin="5,5,10,5"/>
             <RichTextBlock Foreground="Black" FontSize="16" TextAlignment="Left" FontFamily="Segoe UI" VerticalAlignment="Center">
                 <Paragraph>Printed with MyPoetry</Paragraph>
             </RichTextBlock>
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </Page>

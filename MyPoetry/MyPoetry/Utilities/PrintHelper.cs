@@ -273,9 +273,11 @@ namespace MyPoetry.Utilities
             {
                 // If this is the first page add the specific scenario content
                 page = firstPage;
+
                 //Hide footer since we don't know yet if it will be displayed (this might not be the last page) - wait for layout
-                StackPanel footer = (StackPanel)page.FindName("Footer");
-                footer.Visibility = Visibility.Collapsed;
+                //Border footer = (Border)page.FindName("Footer");
+                //footer.Visibility = Visibility.Collapsed;
+                //Grid.SetRow(footer, 4);
             }
             else
             {
@@ -310,8 +312,8 @@ namespace MyPoetry.Utilities
             // Check if this is the last page
             if (!textLink.HasOverflowContent && textLink.Visibility == Visibility.Visible)
             {
-                StackPanel footer = (StackPanel)page.FindName("Footer");
-                footer.Visibility = Visibility.Visible;
+                //Border footer = (Border)page.FindName("Footer");
+                //footer.Visibility = Visibility.Visible;
             }
 
             // Add the page to the page preview collection
