@@ -1,12 +1,15 @@
 ﻿using MyPoetry.Model;
+using MyPoetry.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Windows.ApplicationModel.Resources;
+using Windows.System;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using MyPoetry.Utilities;
-using System.Collections.Generic;
-using Windows.ApplicationModel.Resources;
 using Microsoft.Toolkit.Uwp;
-using System.Linq;
+using Windows.UI.Xaml.Media;
 
 namespace MyPoetry.UserControls.Pages
 {
@@ -65,26 +68,46 @@ namespace MyPoetry.UserControls.Pages
         {
             if (rc != null)
             {
-                User user = UserHandler.Instance.GetUser();
-                user.Name = rc.GetName;
-                user.Surname = rc.GetSurname;
-                user.Photo = rc.GetPhoto;
-                user.Gender = rc.GetGender;
+                var loader = new ResourceLoader();
 
-                HalfPageMessage hpm = new HalfPageMessage(GrdParent);
-                hpm.ShowMessage("Saving", "Your data is updating now", true, false, true, null, null);
-                
-                await App.MobileService.GetTable<User>().UpdateAsync(user);
+                // Create the message dialog
+                MessageDialog messageDialog = new MessageDialog(loader.GetString("UpdateUserConfirm"), loader.GetString("Update"));
 
-                // Shows confirm message
-                hpm.IsProgressRingEnabled = false;
-                hpm.Title = "Confirm";
-                hpm.Message = "UserUpdated";
-                hpm.SetOkAction(() => {
-                    // Navigates to home
-                    MenuHandler.Instance.SetMenuIndex(0);
-                }, "OK");
-                hpm.IsOkButtonEnabled = true;
+                // YES command
+                messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), async (command) =>
+                {
+                    // Updates user data
+                    UserHandler.Instance.GetUser().Name = rc.GetName;
+                    UserHandler.Instance.GetUser().Surname = rc.GetSurname;
+                    UserHandler.Instance.GetUser().Photo = rc.GetPhoto;
+                    UserHandler.Instance.GetUser().Gender = rc.GetGender;
+
+                    HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+                    hpm.ShowMessage(loader.GetString("UpdatingUser"), loader.GetString("UpdatingUserMessage"), true, false, true, null, null);
+
+                    await App.MobileService.GetTable<Model.User>().UpdateAsync(UserHandler.Instance.GetUser());
+
+                    // Shows confirm message
+                    hpm.IsProgressRingEnabled = false;
+                    hpm.Title = "Confirm";
+                    hpm.Message = "UserUpdated";
+                    hpm.SetOkAction(() => {
+                        // Navigates to home
+                        MenuHandler.Instance.SetMenuIndex(0);
+                    }, "OK");
+                    hpm.IsOkButtonEnabled = true;
+                }));
+
+                // NO command
+                messageDialog.Commands.Add(new UICommand(loader.GetString("No"), (command) =>
+                {
+                }));
+
+                // Set the command that will be invoked by default
+                messageDialog.DefaultCommandIndex = 1;
+
+                // Show the message dialog
+                await messageDialog.ShowAsync();
             }
         }
 

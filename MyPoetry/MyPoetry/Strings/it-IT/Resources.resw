@@ -570,4 +570,16 @@
   <data name="PrintFooter" xml:space="preserve">
     <value>Stampato con MyPoetry</value>
   </data>
+  <data name="UpdateUserConfirm" xml:space="preserve">
+    <value>Sei sicuro di voler aggiornare i tuoi dati?</value>
+  </data>
+  <data name="UpdatingUser" xml:space="preserve">
+    <value>Aggiornamento dei dati</value>
+  </data>
+  <data name="UpdatingUserMessage" xml:space="preserve">
+    <value>Stiamo aggiornando i tuoi dati. Attendi...</value>
+  </data>
+  <data name="UserUpdated" xml:space="preserve">
+    <value>I tuoi dati sono stati aggiornati.</value>
+  </data>
 </root>
