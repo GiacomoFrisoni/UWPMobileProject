@@ -543,4 +543,22 @@
   <data name="SettingsLanguageInfo.Text" xml:space="preserve">
     <value>Zmiany zostaną zaaplikowane przy następnym uruchomieniu aplikacji.</value>
   </data>
+  <data name="BodyOnly" xml:space="preserve">
+    <value>Body only</value>
+  </data>
+  <data name="Contents" xml:space="preserve">
+    <value>Contents</value>
+  </data>
+  <data name="ErrorPrinting" xml:space="preserve">
+    <value>Error printing</value>
+  </data>
+  <data name="FailedPrint" xml:space="preserve">
+    <value>Failed to print</value>
+  </data>
+  <data name="PoetryPrinting" xml:space="preserve">
+    <value>Poetry printing</value>
+  </data>
+  <data name="TitleBody" xml:space="preserve">
+    <value>Title and body</value>
+  </data>
 </root>

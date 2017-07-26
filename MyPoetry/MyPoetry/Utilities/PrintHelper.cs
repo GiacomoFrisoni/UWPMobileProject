@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using Windows.Graphics.Printing;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -52,9 +53,14 @@ namespace MyPoetry.Utilities
         protected FrameworkElement firstPage;
 
         /// <summary>
-        ///  A reference back to the scenario page used to access XAML elements on the scenario page
+        /// A reference back to the scenario user control used to access XAML elements
         /// </summary>
         protected UserControl scenarioUc;
+
+        /// <summary>
+        /// Variable for localized string resources
+        /// </summary>
+        ResourceLoader loader = new ResourceLoader();
 
         /// <summary>
         ///  A hidden canvas used to hold pages we wish to print
@@ -70,7 +76,7 @@ namespace MyPoetry.Utilities
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="scenarioPage">The scenario page constructing us</param>
+        /// <param name="scenarioUc">The scenario user control constructing us</param>
         public PrintHelper(UserControl scenarioUc)
         {
             this.scenarioUc = scenarioUc;
@@ -122,22 +128,20 @@ namespace MyPoetry.Utilities
             }
             catch (Exception e)
             {
-                var msg = new MessageDialog("Error printing: " + e.Message + ", hr=" + e.HResult);
+                var msg = new MessageDialog(loader.GetString("ErrorPrinting") + "\n" + e.Message + ", hr=" + e.HResult);
                 await msg.ShowAsync();
             }
         }
 
         /// <summary>
         /// Method that will generate print content for the scenario
-        /// For scenarios 1-4: it will create the first page from which content will flow
-        /// Scenario 5 uses a different approach
         /// </summary>
         /// <param name="page">The page to print</param>
-        public virtual void PreparePrintContent(UserControl userControl)
+        public virtual void PreparePrintContent(Page page)
         {
             if (firstPage == null)
             {
-                firstPage = userControl;
+                firstPage = page;
             }
 
             // Add the (newly created) page to the print canvas which is part of the visual tree and force it to go
@@ -155,7 +159,7 @@ namespace MyPoetry.Utilities
         protected virtual void PrintTaskRequested(PrintManager sender, PrintTaskRequestedEventArgs e)
         {
             PrintTask printTask = null;
-            printTask = e.Request.CreatePrintTask("Stampa della poesia", sourceRequested =>
+            printTask = e.Request.CreatePrintTask(loader.GetString("PoetryPrinting"), sourceRequested =>
             {
                 // Print Task event handler is invoked when the print job is completed.
                 printTask.Completed += async (s, args) =>
@@ -165,7 +169,7 @@ namespace MyPoetry.Utilities
                     {
                         await scenarioUc.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
                         {
-                            var msg = new MessageDialog("Failed to print.");
+                            var msg = new MessageDialog(loader.GetString("FailedPrint"));
                             await msg.ShowAsync();
                         });
                     }

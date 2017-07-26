@@ -546,4 +546,22 @@
   <data name="UpdatingLangPref" xml:space="preserve">
     <value>Aggiorno...</value>
   </data>
+  <data name="BodyOnly" xml:space="preserve">
+    <value>Solo testo</value>
+  </data>
+  <data name="Contents" xml:space="preserve">
+    <value>Contenuti</value>
+  </data>
+  <data name="ErrorPrinting" xml:space="preserve">
+    <value>Errore durante la stampa</value>
+  </data>
+  <data name="FailedPrint" xml:space="preserve">
+    <value>Stampa fallita</value>
+  </data>
+  <data name="PoetryPrinting" xml:space="preserve">
+    <value>Stampa della poesia</value>
+  </data>
+  <data name="TitleBody" xml:space="preserve">
+    <value>Titolo e testo</value>
+  </data>
 </root>

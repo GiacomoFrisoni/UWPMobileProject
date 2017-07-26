@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Windows.ApplicationModel.Resources;
 using Windows.Graphics.Printing;
 using Windows.Graphics.Printing.OptionDetails;
 using Windows.UI.Popups;
@@ -11,6 +12,11 @@ namespace MyPoetry.Utilities
 {
     class CustomOptionsPrintHelper : PrintHelper
     {
+        /// <summary>
+        /// Variable for localized string resources
+        /// </summary>
+        ResourceLoader loader = new ResourceLoader();
+
         /// <summary>
         /// A flag that determines if title and body are to be shown
         /// </summary>
@@ -37,7 +43,7 @@ namespace MyPoetry.Utilities
         protected override void PrintTaskRequested(PrintManager sender, PrintTaskRequestedEventArgs e)
         {
             PrintTask printTask = null;
-            printTask = e.Request.CreatePrintTask("Stampa della poesia", sourceRequestedArgs =>
+            printTask = e.Request.CreatePrintTask(loader.GetString("PoetryPrinting"), sourceRequestedArgs =>
             {
                 PrintTaskOptionDetails printDetailedOptions = PrintTaskOptionDetails.GetFromPrintTaskOptions(printTask.Options);
                 IList<string> displayedOptions = printDetailedOptions.DisplayedOptions;
@@ -50,9 +56,9 @@ namespace MyPoetry.Utilities
                 displayedOptions.Add(StandardPrintTaskOptions.Orientation);
 
                 // Create a new list option
-                PrintCustomItemListOptionDetails pageFormat = printDetailedOptions.CreateItemListOption("PageContent", "Contents");
-                pageFormat.AddItem("TitleBody", "Title and body");
-                pageFormat.AddItem("BodyOnly", "Body only");
+                PrintCustomItemListOptionDetails pageFormat = printDetailedOptions.CreateItemListOption("PageContent", loader.GetString("Contents"));
+                pageFormat.AddItem("TitleBody", loader.GetString("TitleBody"));
+                pageFormat.AddItem("BodyOnly", loader.GetString("BodyOnly"));
 
                 // Add the custom option to the option list
                 displayedOptions.Add("PageContent");
@@ -67,7 +73,7 @@ namespace MyPoetry.Utilities
                     {
                         await scenarioUc.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
                         {
-                            var msg = new MessageDialog("Failed to print.");
+                            var msg = new MessageDialog(loader.GetString("FailedPrint"));
                             await msg.ShowAsync();
                         });
                     }
