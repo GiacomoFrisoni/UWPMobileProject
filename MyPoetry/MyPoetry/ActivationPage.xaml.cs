@@ -3,6 +3,8 @@ using MyPoetry.Model;
 using MyPoetry.UserControls;
 using MyPoetry.Utilities;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -43,6 +45,10 @@ namespace MyPoetry
                     }
                     else
                     {
+                        // Refresh user in cache
+                        List<User> users = await App.MobileService.GetTable<User>().Where(user => user.Id == UserHandler.Instance.GetUser().Id).ToListAsync();
+                        UserHandler.Instance.SetUser(users.First());
+
                         this.Frame.Navigate(typeof(WelcomePage));
                     }
                 }

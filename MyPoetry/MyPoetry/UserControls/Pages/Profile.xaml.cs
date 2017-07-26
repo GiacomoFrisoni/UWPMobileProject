@@ -68,46 +68,57 @@ namespace MyPoetry.UserControls.Pages
         {
             if (rc != null)
             {
-                var loader = new ResourceLoader();
-
-                // Create the message dialog
-                MessageDialog messageDialog = new MessageDialog(loader.GetString("UpdateUserConfirm"), loader.GetString("Update"));
-
-                // YES command
-                messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), async (command) =>
+                if (Connection.HasInternetAccess)
                 {
-                    // Updates user data
-                    UserHandler.Instance.GetUser().Name = rc.GetName;
-                    UserHandler.Instance.GetUser().Surname = rc.GetSurname;
-                    UserHandler.Instance.GetUser().Photo = rc.GetPhoto;
-                    UserHandler.Instance.GetUser().Gender = rc.GetGender;
+                    var loader = new ResourceLoader();
 
-                    HalfPageMessage hpm = new HalfPageMessage(GrdParent);
-                    hpm.ShowMessage(loader.GetString("UpdatingUser"), loader.GetString("UpdatingUserMessage"), true, false, true, null, null);
+                    // Create the message dialog
+                    MessageDialog messageDialog = new MessageDialog(loader.GetString("UpdateUserConfirm"), loader.GetString("Update"));
 
-                    await App.MobileService.GetTable<Model.User>().UpdateAsync(UserHandler.Instance.GetUser());
+                    // YES command
+                    messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), async (command) =>
+                    {
+                        // Updates user data
+                        UserHandler.Instance.GetUser().Name = rc.GetName;
+                        UserHandler.Instance.GetUser().Surname = rc.GetSurname;
+                        UserHandler.Instance.GetUser().Photo = rc.GetPhoto;
+                        UserHandler.Instance.GetUser().Gender = rc.GetGender;
 
-                    // Shows confirm message
-                    hpm.IsProgressRingEnabled = false;
-                    hpm.Title = loader.GetString("Confirm");
-                    hpm.Message = loader.GetString("UserUpdated");
-                    hpm.SetOkAction(() => {
-                        // Navigates to home
-                        MenuHandler.Instance.SetMenuIndex(0);
-                    }, "OK");
-                    hpm.IsOkButtonEnabled = true;
-                }));
+                        HalfPageMessage hpm = new HalfPageMessage(GrdParent);
+                        hpm.ShowMessage(loader.GetString("UpdatingUser"), loader.GetString("UpdatingUserMessage"), true, false, false, null, null);
 
-                // NO command
-                messageDialog.Commands.Add(new UICommand(loader.GetString("No"), (command) =>
+                        await App.MobileService.GetTable<Model.User>().UpdateAsync(UserHandler.Instance.GetUser());
+
+                        // Refresh user in cache
+                        List<Model.User> users = await App.MobileService.GetTable<Model.User>().Where(user => user.Id == UserHandler.Instance.GetUser().Id).ToListAsync();
+                        UserHandler.Instance.SetUser(users.First());
+
+                        // Shows confirm message
+                        hpm.IsProgressRingEnabled = false;
+                        hpm.Title = loader.GetString("Confirm");
+                        hpm.Message = loader.GetString("UserUpdated");
+                        hpm.SetOkAction(() => {
+                            ScrProfile.Visibility = Visibility.Visible;
+                            StpModify.Visibility = Visibility.Collapsed;
+                        }, "OK");
+                        hpm.IsOkButtonEnabled = true;
+                    }));
+
+                    // NO command
+                    messageDialog.Commands.Add(new UICommand(loader.GetString("No"), (command) =>
+                    {
+                    }));
+
+                    // Set the command that will be invoked by default
+                    messageDialog.DefaultCommandIndex = 1;
+
+                    // Show the message dialog
+                    await messageDialog.ShowAsync();
+                }
+                else
                 {
-                }));
-
-                // Set the command that will be invoked by default
-                messageDialog.DefaultCommandIndex = 1;
-
-                // Show the message dialog
-                await messageDialog.ShowAsync();
+                    ((Frame)Window.Current.Content).Navigate(typeof(NoConnectionPage));
+                }
             }
         }
 
