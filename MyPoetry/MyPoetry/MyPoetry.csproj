@@ -211,9 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Backgrounds\background.png" />
-    <Content Include="Assets\Backgrounds\background1.jpg" />
     <Content Include="Assets\Backgrounds\background2.jpg" />
-    <Content Include="Assets\Backgrounds\background3.jpg" />
     <Content Include="Assets\Credits\giacomo_frisoni.jpg" />
     <Content Include="Assets\Credits\marcin_pabich.jpg" />
     <Content Include="Assets\Data\words.txt">

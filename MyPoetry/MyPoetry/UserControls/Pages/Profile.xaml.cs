@@ -51,7 +51,7 @@ namespace MyPoetry.UserControls.Pages
             var loader = new ResourceLoader();
 
             List<DataViewer> info = new List<DataViewer>();
-            info.Add(new DataViewer(loader.GetString("ProfileInspiration"),       loader.GetString("ProfileWriteFrom") + UserHandler.Instance.GetUser().RegistrationDate.ToString("dd/MM/yyyy"), Symbol.Calendar, new SolidColorBrush(ColorHelper.ToColor("#1BBC9B"))));
+            info.Add(new DataViewer(loader.GetString("ProfileStart"),       loader.GetString("ProfileWriteFrom") + UserHandler.Instance.GetUser().RegistrationDate.ToString("dd/MM/yyyy"), Symbol.Calendar, new SolidColorBrush(ColorHelper.ToColor("#1BBC9B"))));
             info.Add(new DataViewer(loader.GetString("ProfileBornWriter"),        loader.GetString("ProfileYouWrite") + UserHandler.Instance.GetPoetries().Count.ToString() + loader.GetString("ProfilePoetries"), Symbol.Edit, new SolidColorBrush(ColorHelper.ToColor("#2DCC70"))));
             info.Add(new DataViewer(loader.GetString("ProfileKeyboardDestroyer"), loader.GetString("ProfileYouType") + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.CharactersNumber).ToString() + loader.GetString("ProfileCharacters"), Symbol.Font, new SolidColorBrush(ColorHelper.ToColor("#3598DB"))));
             info.Add(new DataViewer(loader.GetString("ProfileWiseWords"),         loader.GetString("ProfileYouUsed") + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.WordsNumber).ToString() + loader.GetString("ProfileWords"), Symbol.FontColor, new SolidColorBrush(ColorHelper.ToColor("#9B58B5"))));

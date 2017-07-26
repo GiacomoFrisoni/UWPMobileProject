@@ -468,8 +468,8 @@
   <data name="ProfileCharacters" xml:space="preserve">
     <value> characters</value>
   </data>
-  <data name="ProfileInspiration" xml:space="preserve">
-    <value>Soul of insipration</value>
+  <data name="ProfileStart" xml:space="preserve">
+    <value>The beginning</value>
   </data>
   <data name="ProfileKeyboardDestroyer" xml:space="preserve">
     <value>Keyboard destroyer</value>

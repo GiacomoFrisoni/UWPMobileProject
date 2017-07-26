@@ -462,9 +462,6 @@
   <data name="ProfileCharacters" xml:space="preserve">
     <value> znaków</value>
   </data>
-  <data name="ProfileInspiration" xml:space="preserve">
-    <value>Dusza inspiracji</value>
-  </data>
   <data name="ProfileKeyboardDestroyer" xml:space="preserve">
     <value>Niszczyciel klawiatury</value>
   </data>
@@ -584,5 +581,8 @@
   </data>
   <data name="ProfileUpdateTitle" xml:space="preserve">
     <value>Aktualizuj dane</value>
+  </data>
+  <data name="ProfileStart" xml:space="preserve">
+    <value>The beginning</value>
   </data>
 </root>
