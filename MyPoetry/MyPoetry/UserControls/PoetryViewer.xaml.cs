@@ -1,30 +1,27 @@
-﻿using Microsoft.Toolkit.Uwp;
-using Microsoft.WindowsAzure.MobileServices;
+﻿using Microsoft.WindowsAzure.MobileServices;
 using MyPoetry.Model;
 using MyPoetry.Utilities;
 using System;
 using System.Linq;
-using System.Xml.Serialization;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.ApplicationModel.Resources;
+using Windows.Graphics.Printing;
 using Windows.Storage;
 using Windows.Storage.Streams;
-using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Documents;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Shapes;
 using XamlBrewer.Uwp.Controls;
 
 namespace MyPoetry.UserControls
 {
     public sealed partial class PoetryViewer : UserControl
     {
+        PrintHelper printHelper;
+
         public PoetryViewer()
         {
             this.InitializeComponent();
@@ -51,13 +48,35 @@ namespace MyPoetry.UserControls
             };
             fadeInStoryboard = (Storyboard)this.Resources["InAnimation"];
         }
-
+        
         private void PoetryViewer_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
             CheckNavigationEnabling();
+
+            if (DataContext != null)
+            {
+                if (printHelper != null)
+                {
+                    printHelper.UnregisterForPrinting();
+                }
+
+                //-----------------------------
+
+                if (!PrintManager.IsSupported())
+                {
+                    // Remove the print button
+                    BtnPrint.IsEnabled = false;
+                }
+
+                // Initalize common helper class and register for printing
+                printHelper = new CustomOptionsPrintHelper(this);
+                printHelper.RegisterForPrinting();
+
+                // Initialize print content for this scenario
+                printHelper.PreparePrintContent(new PageToPrint((Poetry)DataContext));
+            }
         }
 
-        
         Storyboard backStoryboard;
         Storyboard forwardStoryboard;
         Storyboard fadeInStoryboard;
@@ -228,10 +247,39 @@ namespace MyPoetry.UserControls
         #endregion
 
         #region Print
-        private void BtnPrint_Click(object sender, RoutedEventArgs e)
+        private async void BtnPrint_Click(object sender, RoutedEventArgs e)
         {
-            PrintingHelper pHelp = new PrintingHelper(GrdViewer);
-            pHelp.Print();
+            if (Windows.Graphics.Printing.PrintManager.IsSupported())
+            {
+                try
+                {
+                    // Show print UI
+                    await Windows.Graphics.Printing.PrintManager.ShowPrintUIAsync();
+
+                }
+                catch
+                {
+                    // Printing cannot proceed at this time
+                    ContentDialog noPrintingDialog = new ContentDialog()
+                    {
+                        Title = "Printing error",
+                        Content = "\nSorry, printing can' t proceed at this time.",
+                        PrimaryButtonText = "OK"
+                    };
+                    await noPrintingDialog.ShowAsync();
+                }
+            }
+            else
+            {
+                // Printing is not supported on this device
+                ContentDialog noPrintingDialog = new ContentDialog()
+                {
+                    Title = "Printing not supported",
+                    Content = "\nSorry, printing is not supported on this device.",
+                    PrimaryButtonText = "OK"
+                };
+                await noPrintingDialog.ShowAsync();
+            }
         }
         #endregion
 
@@ -263,5 +311,6 @@ namespace MyPoetry.UserControls
             }
         }
         #endregion
+        
     }
 }

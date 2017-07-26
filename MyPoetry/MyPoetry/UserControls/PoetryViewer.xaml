@@ -360,6 +360,8 @@
                 <RowDefinition Height="48"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
+            
+            <Canvas x:Name="PrintCanvas" Opacity="0"/>
 
             <Grid Grid.Row="0" Background="{StaticResource AppColor4}">
                 <Grid.ColumnDefinitions>

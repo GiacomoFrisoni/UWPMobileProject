@@ -104,6 +104,9 @@
     </Compile>
     <Compile Include="Common\BindableBase.cs" />
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Print\ContinuationPage.xaml.cs">
+      <DependentUpon>ContinuationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="Converters\VisibleWhenTrue.cs" />
     <Compile Include="Model\ActivationRequest.cs" />
@@ -111,6 +114,9 @@
     <Compile Include="Model\ReSendingActivationRequest.cs" />
     <Compile Include="NoConnectionPage.xaml.cs">
       <DependentUpon>NoConnectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Print\PageToPrint.xaml.cs">
+      <DependentUpon>PageToPrint.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\CustomPage.xaml.cs">
       <DependentUpon>CustomPage.xaml</DependentUpon>
@@ -177,9 +183,11 @@
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Connection.cs" />
+    <Compile Include="Utilities\CustomOptionsPrintHelper.cs" />
+    <Compile Include="Utilities\DisplayContent.cs" />
     <Compile Include="Utilities\MenuHandler.cs" />
     <Compile Include="Utilities\ImageHelper.cs" />
-    <Compile Include="Utilities\PrintingHelper.cs" />
+    <Compile Include="Utilities\PrintHelper.cs" />
     <Compile Include="Utilities\RtfText.cs" />
     <Compile Include="Utilities\ServerErrorInfo.cs" />
     <Compile Include="UserControls\HalfPageMessage.xaml.cs">
@@ -213,6 +221,7 @@
     <Content Include="Assets\LargeTile.scale-150.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\logo_print.png" />
     <Content Include="Assets\Rating\starnull.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -268,6 +277,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Print\ContinuationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExtendedSplash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -285,6 +298,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="NoConnectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Print\PageToPrint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
