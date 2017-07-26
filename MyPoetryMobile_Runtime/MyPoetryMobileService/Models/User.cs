@@ -71,9 +71,6 @@ namespace MyPoetryMobileService.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Poetry> Poetry { get; set; }
 
-        [StringLength(50)]
-        public string BackgroundPref { get; set; }
-
         [StringLength(2)]
         public string LanguagePref { get; set; }
     }

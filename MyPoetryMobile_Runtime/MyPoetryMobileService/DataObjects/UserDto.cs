@@ -18,7 +18,6 @@ namespace MyPoetryMobileService.DataObjects
         public int UseTime { get; set; }
         public bool IsActivated { get; set; }
         public string ActivationCode { get; set; }
-        public string BackgroundPref { get; set; }
         public string LanguagePref { get; set; }
     }
 }
