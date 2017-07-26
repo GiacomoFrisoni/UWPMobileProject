@@ -42,7 +42,6 @@ namespace MyPoetry.UserControls.Menu
             {
                 return Image.Fill;
             }
-
             set
             {
                 Image.Fill = value;
@@ -50,8 +49,7 @@ namespace MyPoetry.UserControls.Menu
             }
                 
         }
-
-
+        
         public Style ItemStyle 
         {
             get

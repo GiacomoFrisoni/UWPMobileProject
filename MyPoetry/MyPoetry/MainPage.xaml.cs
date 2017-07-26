@@ -35,6 +35,7 @@ namespace MyPoetry
             // Retriving user data
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
+            ib.Stretch = Stretch.UniformToFill;
             string user = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
 
             // Creating menu groups

@@ -29,6 +29,7 @@ namespace MyPoetry.UserControls.Pages
             // Loads profile image
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
+            ib.Stretch = Stretch.UniformToFill;
             UsrViewer.ImageSource = ib;
             UsrViewer.Title = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
             UsrViewer.Details = UserHandler.Instance.GetUser().Email;    
