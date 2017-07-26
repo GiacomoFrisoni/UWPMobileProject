@@ -36,11 +36,11 @@ namespace MyPoetry
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
             ib.Stretch = Stretch.UniformToFill;
-            string user = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
+            string username = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
 
             // Creating menu groups
             var loader = new ResourceLoader();
-            menu.Add(new MenuItem() { ItemText = user, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Profile().GetPage });
+            menu.Add(new MenuItem() { ItemText = username, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Profile().GetPage });
             menu.Add(new MenuItem() { ItemText = loader.GetString("Home"), ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home, ItemPage = new Homepage().GetPage  });
             menu.Add(new MenuItem() { ItemText = loader.GetString("NewPoetry"), ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create, ItemPage = new Editor().GetPage });
             menu.Add(new MenuItem() { ItemText = loader.GetString("Settings"), ItemIcon = Symbol.Setting, Group = MenuItem.Groups.Settings, ItemPage = new Settings().GetPage });

@@ -32,6 +32,11 @@ namespace MyPoetry.Utilities
             }
         }
 
+        public ListView GetMenu()
+        {
+            return this.menu;
+        }
+
         public void SetMenu(ListView menu)
         {
             this.menu = menu;

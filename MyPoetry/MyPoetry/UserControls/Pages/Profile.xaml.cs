@@ -10,6 +10,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.Toolkit.Uwp;
 using Windows.UI.Xaml.Media;
+using MyPoetry.UserControls.Menu;
 
 namespace MyPoetry.UserControls.Pages
 {
@@ -93,6 +94,13 @@ namespace MyPoetry.UserControls.Pages
                         // Refresh user in cache
                         List<Model.User> users = await App.MobileService.GetTable<Model.User>().Where(user => user.Id == UserHandler.Instance.GetUser().Id).ToListAsync();
                         UserHandler.Instance.SetUser(users.First());
+
+                        /*
+                        string username = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
+                        var list = MenuHandler.Instance.GetMenu();
+                        ((MenuItem)list.Items[0]).ItemText = username;
+                        //list.Items[0] = new MenuItem() { ItemText = username, ItemImage = null, Group = MenuItem.Groups.User, ItemPage = new Profile().GetPage };
+                        */
 
                         // Shows confirm message
                         hpm.IsProgressRingEnabled = false;
