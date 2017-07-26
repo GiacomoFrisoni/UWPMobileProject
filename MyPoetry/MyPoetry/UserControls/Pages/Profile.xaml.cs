@@ -89,8 +89,8 @@ namespace MyPoetry.UserControls.Pages
 
                     // Shows confirm message
                     hpm.IsProgressRingEnabled = false;
-                    hpm.Title = "Confirm";
-                    hpm.Message = "UserUpdated";
+                    hpm.Title = loader.GetString("Confirm");
+                    hpm.Message = loader.GetString("UserUpdated");
                     hpm.SetOkAction(() => {
                         // Navigates to home
                         MenuHandler.Instance.SetMenuIndex(0);
