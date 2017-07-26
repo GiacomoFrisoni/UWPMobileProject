@@ -17,18 +17,6 @@
                     <StackPanel HorizontalAlignment="Stretch" Background="#88FFFFFF" Margin="5" Padding="15">
                         <TextBlock x:Uid="SettingsGroup1Title" Style="{StaticResource TitleTextBlockStyle}" Margin="0, 0, 0, 15"></TextBlock>
 
-                        <TextBlock x:Uid="SettingsBackground" Margin="0, 0, 0, 2"></TextBlock>
-                        <ComboBox VerticalAlignment="Stretch" Margin="0, 0, 0, 15" Width="200" x:Name="CmbBackgroundSelector" SelectionChanged="CmbBackgroundSelector_SelectionChanged">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image VerticalAlignment="Center" Height="15" Width="30" Source="{Binding BackgroundPreview}"></Image>
-                                        <TextBlock Margin="10, 0, 0, 0" VerticalAlignment="Center" Text="{Binding BackgroundDescription}"></TextBlock>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-
                         <TextBlock x:Uid="SettingsLanguage" Margin="0, 0, 0, 2"></TextBlock>
                         <ComboBox Width="200"  x:Name="CmbLanguageSelector" SelectionChanged="CmbLanguageSelector_SelectionChanged" Margin="0, 0, 0, 2"></ComboBox>
                         <TextBlock x:Uid="SettingsLanguageInfo" Foreground="{StaticResource AppRedColor}" FontSize="11" Text="Ciaone"></TextBlock>

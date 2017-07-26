@@ -7,10 +7,7 @@ using System.Globalization;
 using Windows.ApplicationModel.Resources;
 using Windows.Globalization;
 using Windows.UI.Popups;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 
 namespace MyPoetry.UserControls.Pages
 {
@@ -23,24 +20,12 @@ namespace MyPoetry.UserControls.Pages
             { "Polski [POL]", "pl" }
         };
 
-        public class BackgroundSelector
-        {
-            public ImageSource BackgroundPreview { get; set; }
-            public string BackgroundDescription { get; set; }
-
-            public BackgroundSelector(Uri uri, string description)
-            {
-                BackgroundDescription = description;
-                BackgroundPreview = new BitmapImage(uri);
-            }
-        }
-
         public Settings()
         {
             this.InitializeComponent();
 
+            // Clears combobox
             CmbLanguageSelector.Items.Clear();
-            CmbBackgroundSelector.Items.Clear();
 
             // Loads languages
             CmbLanguageSelector.ItemsSource = languages;
@@ -50,21 +35,9 @@ namespace MyPoetry.UserControls.Pages
             // Handles selected language
             CmbLanguageSelector.SelectedValue = UserHandler.Instance.GetUser().LanguagePref != null ?
                 UserHandler.Instance.GetUser().LanguagePref : CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-
-            // Background selector
-            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/Backgrounds/background.png"), "Default"));
-            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/Backgrounds/background1.jpg"), "Azure"));
-            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/Backgrounds/background2.jpg"), "Dark"));
-            CmbBackgroundSelector.Items.Add(new BackgroundSelector(new Uri("ms-appx:///Assets/Backgrounds/background3.jpg"), "Blue"));
-            CmbBackgroundSelector.SelectedIndex = 0;
         }
 
         public CustomPage GetPage { get { return MainContent; } }
-
-        private void CmbBackgroundSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private async void CmbLanguageSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
