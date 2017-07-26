@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Input;
 using MyPoetry.Utilities;
+using Windows.ApplicationModel.Resources;
 
 namespace MyPoetry
 {
@@ -33,7 +34,8 @@ namespace MyPoetry
 
         private void GrdParent_Loaded(object sender, RoutedEventArgs e)
         {
-            RgcRegistration.EnableToRegister("Registrati", "Torna alla home", Register, GoBack);
+            var loader = new ResourceLoader();
+            RgcRegistration.EnableToRegister(loader.GetString("RegisterPlainText"), loader.GetString("RegisterNow"), Register, GoBack);
         }
 
         private async void Register()

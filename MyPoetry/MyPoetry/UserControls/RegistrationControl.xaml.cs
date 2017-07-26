@@ -2,6 +2,7 @@
 using MyPoetry.Utilities;
 using System;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
 using Windows.Media.Capture;
 using Windows.Storage;
 using Windows.Storage.Pickers;
@@ -159,13 +160,14 @@ namespace MyPoetry.UserControls
         /// <param name="secondaryAction">Action to perform when second button is clicked</param>
         public void EnableToRegister(string primaryString, string secondaryString, Action primaryAction, Action secondaryAction)
         {
+            var loader = new ResourceLoader();
             IsMailEnabled = true;
             IsSecondaryButtonEnabled = true;
             PrimaryButtonText = primaryString;
             SecondaryButtonText = secondaryString;
             PrimaryAction = primaryAction;
             SecondaryAction = secondaryAction;
-            Title = "Register";
+            Title = loader.GetString("RegisterPlainText");
         }
 
         /// <summary>
@@ -175,12 +177,13 @@ namespace MyPoetry.UserControls
         /// <param name="primaryAction">Action to perform when first buton is clicked</param>
         public void EnableToModify(string primaryString, Action primaryAction)
         {
+            var loader = new ResourceLoader();
             IsMailEnabled = false;
             IsPasswordEnabled = false;
             IsSecondaryButtonEnabled = false;
             PrimaryButtonText = primaryString;
             PrimaryAction = primaryAction;
-            Title = "Modify";
+            Title = loader.GetString("ProfileUpdateTitle");
         }
         
         private void BtnPrimary_Click(object sender, RoutedEventArgs e)

@@ -258,7 +258,7 @@
   <data name="RegisterMessage" xml:space="preserve">
     <value>We're currently registering your account. Please wait.</value>
   </data>
-  <data name="RegisterNow.Content" xml:space="preserve">
+  <data name="RegisterNow" xml:space="preserve">
     <value>Register now</value>
   </data>
   <data name="RegisterPlainText" xml:space="preserve">
@@ -581,5 +581,8 @@
   </data>
   <data name="Credits" xml:space="preserve">
     <value>Credits</value>
+  </data>
+  <data name="ProfileUpdateTitle" xml:space="preserve">
+    <value>Update data</value>
   </data>
 </root>
