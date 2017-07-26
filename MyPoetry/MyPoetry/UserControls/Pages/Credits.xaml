@@ -14,7 +14,7 @@
         <custom:CustomPage.MainContent>
             <Grid Loaded="Grid_Loaded">
                 <ScrollViewer>
-                    <StackPanel ScrollViewer.VerticalScrollMode="Disabled">
+                    <StackPanel ScrollViewer.VerticalScrollMode="Disabled" VerticalAlignment="Center">
                         <GridView x:Name="CreditsGridView" HorizontalContentAlignment="Center" HorizontalAlignment="Center" SelectionMode="None">
                             <GridView.ItemTemplate>
                                 <DataTemplate>
