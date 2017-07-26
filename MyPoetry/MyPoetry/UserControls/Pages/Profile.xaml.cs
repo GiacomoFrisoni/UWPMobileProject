@@ -33,8 +33,7 @@ namespace MyPoetry.UserControls.Pages
             // Generates statistic elements inside the gridview
             ProfileGridView.ItemsSource = null;
             ProfileGridView.ItemsSource = GenerateAdvancedInfo();
-
-
+            
             //Now loads the editor part
             rc = new RegistrationControl(UserHandler.Instance.GetUser());
             rc.EnableToModify("Salva", SaveUser);
@@ -52,23 +51,38 @@ namespace MyPoetry.UserControls.Pages
             info.Add(new DataViewer(loader.GetString("ProfileKeyboardDestroyer"), loader.GetString("ProfileYouType") + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.CharactersNumber).ToString() + loader.GetString("ProfileCharacters"), Symbol.Font, new SolidColorBrush(ColorHelper.ToColor("#3598DB"))));
             info.Add(new DataViewer(loader.GetString("ProfileWiseWords"),         loader.GetString("ProfileYouUsed") + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.WordsNumber).ToString() + loader.GetString("ProfileWords"), Symbol.FontColor, new SolidColorBrush(ColorHelper.ToColor("#9B58B5"))));
             info.Add(new DataViewer(loader.GetString("ProfileWrappingMaster"),    loader.GetString("ProfileLineNumbers") + UserHandler.Instance.GetPoetries().Sum(poetry => poetry.VersesNumber).ToString(), Symbol.ShowResults, new SolidColorBrush(ColorHelper.ToColor("#34495E"))));
-
             info.Add(new DataViewer(loader.GetString("ProfileLongest"), UserHandler.Instance.GetPoetries().OrderBy(poetry => poetry.CharactersNumber).First().Title, Symbol.Remove, new SolidColorBrush(ColorHelper.ToColor("#F1C40F"))));
             info.Add(new DataViewer(loader.GetString("ProfileShortest"), UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CharactersNumber).First().Title, Symbol.List, new SolidColorBrush(ColorHelper.ToColor("#E77E23"))));
 
             return info;
         }
 
-        private void SaveUser()
+        private async void SaveUser()
         {
             if (rc != null)
             {
+                User user = UserHandler.Instance.GetUser();
+                user.Name = rc.GetName;
+                user.Surname = rc.GetSurname;
+                user.Photo = rc.GetPhoto;
+                user.Gender = rc.GetGender;
+
                 HalfPageMessage hpm = new HalfPageMessage(GrdParent);
                 hpm.ShowMessage("Saving", "Your data is updating now", true, false, true, null, null);
+                
+                await App.MobileService.GetTable<User>().UpdateAsync(user);
+
+                // Shows confirm message
+                hpm.IsProgressRingEnabled = false;
+                hpm.Title = "Confirm";
+                hpm.Message = "UserUpdated";
+                hpm.SetOkAction(() => {
+                    // Navigates to home
+                    MenuHandler.Instance.SetMenuIndex(0);
+                }, "OK");
+                hpm.IsOkButtonEnabled = true;
             }
         }
-
-
 
         private void ProgressBarVisible(bool visible)
         {
@@ -76,7 +90,6 @@ namespace MyPoetry.UserControls.Pages
             ProgressRingProfile.IsActive = visible;
         }
         
-
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             LoadData();

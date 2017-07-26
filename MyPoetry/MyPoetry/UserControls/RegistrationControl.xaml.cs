@@ -1,27 +1,16 @@
 ﻿using MyPoetry.Model;
 using MyPoetry.Utilities;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Media.Capture;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
-
-// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace MyPoetry.UserControls
 {
@@ -36,8 +25,7 @@ namespace MyPoetry.UserControls
         private const string FEMALE = "F";
 
         private byte[] bytesPhoto = null;
-
-
+        
 
         public RegistrationControl()
         {
@@ -51,7 +39,7 @@ namespace MyPoetry.UserControls
             TxbName.Text = user.Name;
             TxbSurname.Text = user.Surname;
             TxbEmail.Text = user.Email;
-            CmbGender.SelectedItem = user.Gender == MALE ? 0 : 1;
+            CmbGender.SelectedIndex = user.Gender == MALE ? 0 : 1;
             SetImage();
         }
 
@@ -68,8 +56,7 @@ namespace MyPoetry.UserControls
         public string GetPasswordRepeat { get { return PbPasswordConfirm.Password; } }
         public byte[] GetPhoto { get { return bytesPhoto; } }
         public string GetGender { get { return CmbGender.SelectedItem as string; } }
-
-
+        
 
         /// <summary>
         /// Get or set the visibility of MAIL input
@@ -88,6 +75,31 @@ namespace MyPoetry.UserControls
                 {
                     TxbEmail.Visibility = Visibility.Collapsed;
                     TxbEmailText.Visibility = Visibility.Collapsed;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get or set the visibility of PASSWORD inputs
+        /// </summary>
+        public bool IsPasswordEnabled
+        {
+            get { return PbPassword.Visibility == Visibility.Collapsed ? false : true; }
+            set
+            {
+                if (value)
+                {
+                    PbPassword.Visibility = Visibility.Visible;
+                    PbPasswordConfirm.Visibility = Visibility.Visible;
+                    TxbPassowrdText.Visibility = Visibility.Visible;
+                    TxbRepeatPasswordText.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    PbPassword.Visibility = Visibility.Collapsed;
+                    PbPasswordConfirm.Visibility = Visibility.Collapsed;
+                    TxbPassowrdText.Visibility = Visibility.Collapsed;
+                    TxbRepeatPasswordText.Visibility = Visibility.Collapsed;
                 }
             }
         }
@@ -164,14 +176,13 @@ namespace MyPoetry.UserControls
         public void EnableToModify(string primaryString, Action primaryAction)
         {
             IsMailEnabled = false;
+            IsPasswordEnabled = false;
             IsSecondaryButtonEnabled = false;
             PrimaryButtonText = primaryString;
             PrimaryAction = primaryAction;
             Title = "Modify";
         }
-
-
-
+        
         private void BtnPrimary_Click(object sender, RoutedEventArgs e)
         {
             this.PrimaryAction?.Invoke();
@@ -181,8 +192,7 @@ namespace MyPoetry.UserControls
         {
             this.SecondaryAction?.Invoke();
         }
-
-
+        
         private async void BtnPhoto_Click(object sender, RoutedEventArgs e)
         {
             CameraCaptureUI captureUI = new CameraCaptureUI();
@@ -235,7 +245,6 @@ namespace MyPoetry.UserControls
             }
         }
 
-
         private async Task<ImageSource> GetImageSourceFromFile(StorageFile file)
         {
             var stream = await file.OpenAsync(FileAccessMode.Read);
@@ -244,8 +253,7 @@ namespace MyPoetry.UserControls
             SblDefault.Visibility = Visibility.Collapsed;
             return image;
         }
-
-
+        
         /// <summary>
         /// Converts StorageFile to ByteArray
         /// </summary>

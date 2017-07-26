@@ -89,10 +89,10 @@
                     <TextBlock x:Name="TxbEmailText" x:Uid="Email" Text="Your mail adress"></TextBlock>
                     <TextBox x:Name="TxbEmail" Margin="0, 5" x:Uid="EmailPH" InputScope="EmailNameOrAddress" PlaceholderText="Email"></TextBox>
 
-                    <TextBlock x:Uid="Password" Text="Enter password"></TextBlock>
+                    <TextBlock x:Name="TxbPassowrdText" x:Uid="Password" Text="Enter password"></TextBlock>
                     <PasswordBox x:Name="PbPassword" Margin="0, 5" x:Uid="PasswordPH" PlaceholderText="Password" PasswordRevealMode="Hidden"></PasswordBox>
 
-                    <TextBlock x:Uid="RepeatPassword" Text="Repeat password"></TextBlock>
+                    <TextBlock x:Name="TxbRepeatPasswordText" x:Uid="RepeatPassword" Text="Repeat password"></TextBlock>
                     <PasswordBox x:Name="PbPasswordConfirm" Margin="0, 5" x:Uid="PasswordPH" PlaceholderText="Password" PasswordRevealMode="Hidden"></PasswordBox>
 
                     <Button x:Name="BtnPrimary" Style="{StaticResource ButtonBlue}" Content="Register me now" Margin="5, 25, 5, 5" HorizontalAlignment="Stretch" Click="BtnPrimary_Click"></Button>
