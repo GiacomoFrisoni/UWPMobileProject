@@ -36,7 +36,7 @@
 
                                         <Grid Padding="10, 5" Grid.Column="1" HorizontalAlignment="Stretch">
                                             <Grid.Background>
-                                                <SolidColorBrush Color="White" Opacity="0.8"></SolidColorBrush>
+                                                <SolidColorBrush Color="White" Opacity="0.85"></SolidColorBrush>
                                             </Grid.Background>
                                             <StackPanel HorizontalAlignment="Stretch">
                                                 <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="{Binding Description}"></TextBlock>
