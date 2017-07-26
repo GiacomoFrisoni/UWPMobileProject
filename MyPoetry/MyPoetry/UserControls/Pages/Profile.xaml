@@ -58,6 +58,16 @@
                                 DependentValuePath="NumPoetries"
                                 IsSelectionEnabled="True"/>
                         </Charting:Chart>
+                        <Charting:Chart
+                            x:Name="LineChart"
+                            HorizontalAlignment="Center"
+                            Width="600">
+                            <Charting:LineSeries
+                                Margin="0"
+                                IndependentValuePath="Month"
+                                DependentValuePath="NumPoetries"
+                                IsSelectionEnabled="True"/>
+                        </Charting:Chart>
                     </StackPanel>
                 </ScrollViewer>
 
