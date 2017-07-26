@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:custom="using:MyPoetry.UserControls"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:Charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -47,9 +48,18 @@
                                 </DataTemplate>
                             </controls:AdaptiveGridView.ItemTemplate>
                         </controls:AdaptiveGridView>
+                        <Charting:Chart
+                            x:Name="PieChart"
+                            HorizontalAlignment="Center"
+                            Width="400">
+                            <Charting:PieSeries
+                                Margin="0"
+                                IndependentValuePath="Day"
+                                DependentValuePath="NumPoetries"
+                                IsSelectionEnabled="True"/>
+                        </Charting:Chart>
                     </StackPanel>
                 </ScrollViewer>
-
 
                 <Border x:Name="StpModify" Visibility="Collapsed" Margin="5"></Border>
                 

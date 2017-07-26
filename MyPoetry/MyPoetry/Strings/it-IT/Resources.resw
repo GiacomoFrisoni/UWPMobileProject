@@ -585,4 +585,25 @@
   <data name="ProfileStart" xml:space="preserve">
     <value>L'inizio</value>
   </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Venerdì</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Lunedì</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Sabato</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Domenica</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Giovedì</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Martedì</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Mercoledì</value>
+  </data>
 </root>

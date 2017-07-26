@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.ApplicationModel.Resources;
-using Windows.System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Microsoft.Toolkit.Uwp;
 using Windows.UI.Xaml.Media;
 using MyPoetry.UserControls.Menu;
+using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 
 namespace MyPoetry.UserControls.Pages
 {
@@ -23,8 +23,19 @@ namespace MyPoetry.UserControls.Pages
 
         public CustomPage GetPage { get { return MainContent; } }
 
+        public class DayStatistic
+        {
+            public string Day { get; set; }
+            public int NumPoetries { get; set; }
+        }
+
         RegistrationControl rc;
-      
+
+        /// <summary>
+        /// Variable for localized string resources
+        /// </summary>
+        ResourceLoader loader = new ResourceLoader();
+
         private async void LoadData()
         {
             // Loads profile image
@@ -38,8 +49,11 @@ namespace MyPoetry.UserControls.Pages
             // Generates statistic elements inside the gridview
             ProfileGridView.ItemsSource = null;
             ProfileGridView.ItemsSource = GenerateAdvancedInfo();
-            
-            //Now loads the editor part
+
+            // Loads pie chart
+            LoadChartContents();
+
+            // Loads the editor part
             rc = new RegistrationControl(UserHandler.Instance.GetUser());
             rc.EnableToModify("Salva", SaveUser);
 
@@ -66,14 +80,32 @@ namespace MyPoetry.UserControls.Pages
             return info;
         }
 
+        private void LoadChartContents()
+        {
+            List<DayStatistic> dayStatistics = new List<DayStatistic>();
+            Dictionary<DayOfWeek, int> occurrences = new Dictionary<DayOfWeek, int>
+            {
+                { DayOfWeek.Monday, 0 },
+                { DayOfWeek.Tuesday, 0 },
+                { DayOfWeek.Wednesday, 0 },
+                { DayOfWeek.Thursday, 0 },
+                { DayOfWeek.Friday, 0 },
+                { DayOfWeek.Saturday, 0 },
+                { DayOfWeek.Sunday, 0 },
+            };
+            foreach (Poetry p in UserHandler.Instance.GetPoetries())
+                occurrences[p.CreationDate.DayOfWeek]++;
+            foreach (KeyValuePair<DayOfWeek, int> occ in occurrences)
+                dayStatistics.Add(new DayStatistic() { Day = loader.GetString(occ.Key.ToString()), NumPoetries = occ.Value });
+            (PieChart.Series[0] as PieSeries).ItemsSource = dayStatistics;
+        }
+
         private async void SaveUser()
         {
             if (rc != null)
             {
                 if (Connection.HasInternetAccess)
                 {
-                    var loader = new ResourceLoader();
-
                     // Create the message dialog
                     MessageDialog messageDialog = new MessageDialog(loader.GetString("UpdateUserConfirm"), loader.GetString("Update"));
 
