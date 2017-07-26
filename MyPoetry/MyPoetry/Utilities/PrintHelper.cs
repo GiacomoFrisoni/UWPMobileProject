@@ -232,8 +232,12 @@ namespace MyPoetry.Utilities
         /// <param name="e">Arguments containing the preview requested page</param>
         protected virtual void GetPrintPreviewPage(object sender, GetPreviewPageEventArgs e)
         {
-            PrintDocument printDoc = (PrintDocument)sender;
-            printDoc.SetPreviewPage(e.PageNumber, printPreviewPages[e.PageNumber - 1]);
+            try
+            {
+                PrintDocument printDoc = (PrintDocument)sender;
+                printDoc.SetPreviewPage(e.PageNumber, printPreviewPages[e.PageNumber - 1]);
+            }
+            catch { }
         }
 
         /// <summary>

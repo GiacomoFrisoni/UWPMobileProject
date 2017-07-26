@@ -55,7 +55,7 @@ namespace MyPoetry.UserControls
         public string GetPassword { get { return PbPassword.Password; } }
         public string GetPasswordRepeat { get { return PbPasswordConfirm.Password; } }
         public byte[] GetPhoto { get { return bytesPhoto; } }
-        public string GetGender { get { return CmbGender.SelectedItem as string; } }
+        public string GetGender { get { return CmbGender.SelectedIndex == 0 ? MALE : FEMALE; } }
         
 
         /// <summary>
