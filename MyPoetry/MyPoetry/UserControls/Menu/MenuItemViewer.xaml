@@ -18,8 +18,7 @@
             </Grid.ColumnDefinitions>
 
             <SymbolIcon Grid.Column="0" x:Name="Icon" Foreground="White" Width="48" Height="48" Symbol="{Binding Path=ItemIcon}"></SymbolIcon>
-            <Ellipse Grid.Column="0" x:Name="Image" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="9">
-            </Ellipse>
+            <Ellipse Grid.Column="0" x:Name="Image" Stretch="UniformToFill" Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="9"></Ellipse>
 
             <TextBlock Grid.Column="1" x:Name="Text" Foreground="White" Margin="4, 0, 16, 0" Text="{Binding Path=ItemText}" VerticalAlignment="Center"/>
         </Grid>

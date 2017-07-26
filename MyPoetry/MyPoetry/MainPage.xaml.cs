@@ -29,33 +29,22 @@ namespace MyPoetry
         
         private async void GenerateMenu()
         {
-            // Temp list for binding
-            List<MenuItem> menu = new List<MenuItem>();
-
             // Retriving user data
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
             ib.Stretch = Stretch.UniformToFill;
             string username = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
 
-            // Creating menu groups
-            var loader = new ResourceLoader();
-            menu.Add(new MenuItem() { ItemText = username, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Profile().GetPage });
-            menu.Add(new MenuItem() { ItemText = loader.GetString("Home"), ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home, ItemPage = new Homepage().GetPage  });
-            menu.Add(new MenuItem() { ItemText = loader.GetString("NewPoetry"), ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create, ItemPage = new Editor().GetPage });
-            menu.Add(new MenuItem() { ItemText = loader.GetString("Settings"), ItemIcon = Symbol.Setting, Group = MenuItem.Groups.Settings, ItemPage = new Settings().GetPage });
-            menu.Add(new MenuItem() { ItemText = loader.GetString("Credits"), ItemIcon = Symbol.Emoji2, Group = MenuItem.Groups.Settings, ItemPage = new Credits().GetPage });
+            // Settings reference to menu
+            MenuHandler.Instance.SetMenu(MenuList);
+            MenuHandler.Instance.SetCollectionViewSource(this.cvs);
 
-            // Settings groups
-            var groups = from c in menu group c by c.Group;
-            this.cvs.Source = groups;
+            //Creating menu with updated profile
+            MenuHandler.Instance.CreateMenu(new MenuItem() { ItemText = username, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Profile().GetPage });
 
-            // Selecting Home
+            // Selecting Home as default screen
             MenuList.SelectedIndex = 1;
             menuSelectedIndex = 1;
-
-            // Sets menu inside singleton
-            MenuHandler.Instance.SetMenu(MenuList);
         }
         
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -65,45 +54,48 @@ namespace MyPoetry
 
         private async void MenuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (MenuList.SelectedItem.GetType().Equals(typeof(MenuItem)))
+            if (MenuList.SelectedItem != null)
             {
-                var oldIndex = menuSelectedIndex;
-                menuSelectedIndex = MenuList.SelectedIndex;
-                if (oldIndex == 2 && UserHandler.Instance.IsPoetryInEditing())
+                if (MenuList.SelectedItem.GetType().Equals(typeof(MenuItem)))
                 {
-                    var loader = new ResourceLoader();
-
-                    // Create the message dialog
-                    MessageDialog messageDialog = new MessageDialog(loader.GetString("ExitFromEditorConfirm"), loader.GetString("Confirm"));
-
-                    // YES command
-                    messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), (command) =>
+                    var oldIndex = menuSelectedIndex;
+                    menuSelectedIndex = MenuList.SelectedIndex;
+                    if (oldIndex == 2 && UserHandler.Instance.IsPoetryInEditing())
                     {
-                        UserHandler.Instance.SetPoetryInEditing(false);
-                        if (UserHandler.Instance.GetPoetryToEdit() != null)
-                            UserHandler.Instance.SetPoetryToEdit(null);
+                        var loader = new ResourceLoader();
+
+                        // Create the message dialog
+                        MessageDialog messageDialog = new MessageDialog(loader.GetString("ExitFromEditorConfirm"), loader.GetString("Confirm"));
+
+                        // YES command
+                        messageDialog.Commands.Add(new UICommand(loader.GetString("Yes"), (command) =>
+                        {
+                            UserHandler.Instance.SetPoetryInEditing(false);
+                            if (UserHandler.Instance.GetPoetryToEdit() != null)
+                                UserHandler.Instance.SetPoetryToEdit(null);
+                            CurrentPage = ((MenuItem)MenuList.SelectedItem).ItemPage;
+                            this.Bindings.Update();
+                            NavigationPane.IsPaneOpen = false;
+                        }));
+
+                        // NO command
+                        messageDialog.Commands.Add(new UICommand(loader.GetString("No"), (command) =>
+                        {
+                            MenuList.SelectedIndex = oldIndex;
+                        }));
+
+                        // Set the command that will be invoked by default
+                        messageDialog.DefaultCommandIndex = 1;
+
+                        // Show the message dialog
+                        await messageDialog.ShowAsync();
+                    }
+                    else
+                    {
                         CurrentPage = ((MenuItem)MenuList.SelectedItem).ItemPage;
                         this.Bindings.Update();
                         NavigationPane.IsPaneOpen = false;
-                    }));
-
-                    // NO command
-                    messageDialog.Commands.Add(new UICommand(loader.GetString("No"), (command) =>
-                    {
-                        MenuList.SelectedIndex = oldIndex;
-                    }));
-
-                    // Set the command that will be invoked by default
-                    messageDialog.DefaultCommandIndex = 1;
-
-                    // Show the message dialog
-                    await messageDialog.ShowAsync();
-                }
-                else
-                {
-                    CurrentPage = ((MenuItem)MenuList.SelectedItem).ItemPage;
-                    this.Bindings.Update();
-                    NavigationPane.IsPaneOpen = false;
+                    }
                 }
             }
         }

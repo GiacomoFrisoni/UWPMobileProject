@@ -95,12 +95,9 @@ namespace MyPoetry.UserControls.Pages
                         List<Model.User> users = await App.MobileService.GetTable<Model.User>().Where(user => user.Id == UserHandler.Instance.GetUser().Id).ToListAsync();
                         UserHandler.Instance.SetUser(users.First());
 
-                        /*
-                        string username = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
-                        var list = MenuHandler.Instance.GetMenu();
-                        ((MenuItem)list.Items[0]).ItemText = username;
-                        //list.Items[0] = new MenuItem() { ItemText = username, ItemImage = null, Group = MenuItem.Groups.User, ItemPage = new Profile().GetPage };
-                        */
+                        UpdateMenuUser();
+                        // Reload data inside profile page
+                        LoadData();
 
                         // Shows confirm message
                         hpm.IsProgressRingEnabled = false;
@@ -168,6 +165,16 @@ namespace MyPoetry.UserControls.Pages
             {
                 UsrViewer.SetBigger();
             }
+        }
+
+        private async void UpdateMenuUser()
+        {
+            ImageBrush ib = new ImageBrush();
+            ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
+            ib.Stretch = Stretch.UniformToFill;
+            string username = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
+
+            MenuHandler.Instance.CreateMenu(new MenuItem() { ItemText = username, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Profile().GetPage });
         }
     }
 }

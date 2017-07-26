@@ -44,6 +44,7 @@ namespace MyPoetry.UserControls.Menu
             }
             set
             {
+                Image.Stretch = Stretch.UniformToFill;
                 Image.Fill = value;
                 Icon.Visibility = Visibility.Collapsed;
             }

@@ -1,5 +1,11 @@
-﻿using System;
+﻿using MyPoetry.UserControls.Menu;
+using MyPoetry.UserControls.Pages;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 
 namespace MyPoetry.Utilities
 {
@@ -8,6 +14,7 @@ namespace MyPoetry.Utilities
         private static volatile MenuHandler instance;
         private static object syncRoot = new Object();
         private ListView menu;
+        private CollectionViewSource source;
 
         private MenuHandler() { }
 
@@ -42,6 +49,11 @@ namespace MyPoetry.Utilities
             this.menu = menu;
         }
 
+        public void SetCollectionViewSource(CollectionViewSource source)
+        {
+            this.source = source;
+        }
+
         public void SetMenuIndex(int index)
         {
             if (menu != null && index >= 0 && index < this.menu.Items.Count)
@@ -54,6 +66,23 @@ namespace MyPoetry.Utilities
                 return null;
             else
                 return this.menu.SelectedIndex;
+        }
+
+        public void CreateMenu(MenuItem user)
+        {
+            // Temp list for binding
+            List<MenuItem> menu = new List<MenuItem>();
+
+            var loader = new ResourceLoader();
+            menu.Add(user);
+            menu.Add(new MenuItem() { ItemText = loader.GetString("Home"), ItemIcon = Symbol.Home, Group = MenuItem.Groups.Home, ItemPage = new Homepage().GetPage });
+            menu.Add(new MenuItem() { ItemText = loader.GetString("NewPoetry"), ItemIcon = Symbol.Add, Group = MenuItem.Groups.Create, ItemPage = new Editor().GetPage });
+            menu.Add(new MenuItem() { ItemText = loader.GetString("Settings"), ItemIcon = Symbol.Setting, Group = MenuItem.Groups.Settings, ItemPage = new Settings().GetPage });
+            menu.Add(new MenuItem() { ItemText = loader.GetString("Credits"), ItemIcon = Symbol.Emoji2, Group = MenuItem.Groups.Settings, ItemPage = new Credits().GetPage });
+
+            var groups = from c in menu group c by c.Group;
+            this.source.Source = null;
+            this.source.Source = groups;
         }
     }
 }

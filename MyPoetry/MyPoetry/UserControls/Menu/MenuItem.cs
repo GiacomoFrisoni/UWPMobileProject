@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Media;
 
 namespace MyPoetry.UserControls.Menu
 {
-    class MenuItem
+    public class MenuItem
     {
         public enum Groups
         {
