@@ -217,6 +217,20 @@ namespace MyPoetry.UserControls.Pages
             {
                 UsrViewer.SetBigger();
             }
+
+            
+            if (e.NewSize.Width > 1100)
+            {
+                Grid.SetRow(MonthChart, 0);
+                Grid.SetColumn(MonthChart, 1);
+                MonthChart.Margin = new Thickness(40, 0, 0, 0);
+            }
+            else
+            {
+                Grid.SetRow(MonthChart, 1);
+                Grid.SetColumn(MonthChart, 0);
+                MonthChart.Margin = new Thickness(0, 0, 0, 0);
+            }
         }
 
         private async void UpdateMenuUser()
@@ -227,6 +241,11 @@ namespace MyPoetry.UserControls.Pages
             string username = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
 
             MenuHandler.Instance.CreateMenu(new MenuItem() { ItemText = username, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Profile().GetPage });
+        }
+
+        private void MonthChart_PointerMoved(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
+        {
+            MonthChart.ChangeView(e.GetCurrentPoint(MonthChart).RawPosition.Y - e.GetCurrentPoint(MonthChart).Position.Y, 0, 1);
         }
     }
 }

@@ -17,12 +17,18 @@
                 <Image Stretch="UniformToFill" Source="Assets/Backgrounds/background.png"/>
 
                 <ScrollViewer x:Name="ScrProfile">
-                    <StackPanel>
-                        <StackPanel HorizontalAlignment="Stretch" Background="#88FFFFFF" Margin="5" Padding="15">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Background="#88FFFFFF" Margin="5" Padding="15">
                             <custom:UserViewer x:Name="UsrViewer" HorizontalAlignment="Center" Title="Sample" Details="Sample"></custom:UserViewer>
                         </StackPanel>
 
-                        <controls:AdaptiveGridView Grid.Row="1" Margin="5, 0, 1, 5" x:Name="ProfileGridView" ItemHeight="60" DesiredWidth="400" SelectionMode="None" ScrollViewer.VerticalScrollMode="Disabled" ScrollViewer.HorizontalScrollMode="Disabled">
+                        <controls:AdaptiveGridView Grid.Row="1" Margin="5, 0, 1, 0" x:Name="ProfileGridView" ItemHeight="60" DesiredWidth="400" SelectionMode="None" ScrollViewer.VerticalScrollMode="Disabled" ScrollViewer.HorizontalScrollMode="Disabled">
                             <controls:AdaptiveGridView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid x:Name="GrdMain" HorizontalAlignment="Stretch">
@@ -48,31 +54,46 @@
                                 </DataTemplate>
                             </controls:AdaptiveGridView.ItemTemplate>
                         </controls:AdaptiveGridView>
-                        <Charting:Chart
-                            x:Name="PieChart"
-                            HorizontalAlignment="Center"
-                            Width="400">
-                            <Charting:PieSeries
-                                Margin="0"
-                                IndependentValuePath="Day"
-                                DependentValuePath="NumPoetries"
-                                IsSelectionEnabled="True"/>
-                        </Charting:Chart>
-                        <Charting:Chart
-                            x:Name="LineChart"
-                            HorizontalAlignment="Center"
-                            Width="600">
-                            <Charting:LineSeries
-                                Margin="0"
-                                IndependentValuePath="Month"
-                                DependentValuePath="NumPoetries"
-                                IsSelectionEnabled="True"/>
-                        </Charting:Chart>
-                    </StackPanel>
+
+                        <Grid Grid.Row="2" HorizontalAlignment="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Viewbox Margin="5" MaxHeight="300">
+                                <Charting:Chart
+                                            x:Name="PieChart"
+                                            HorizontalAlignment="Center">
+                                    <Charting:PieSeries
+                                                Margin="0"
+                                                IndependentValuePath="Day"
+                                                DependentValuePath="NumPoetries"
+                                                IsSelectionEnabled="True"/>
+                                </Charting:Chart>
+                            </Viewbox>
+
+                            <ScrollViewer x:Name="MonthChart" Grid.Row="1" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled" PointerMoved="MonthChart_PointerMoved">
+                                <Grid MinWidth="600" MinHeight="300">
+                                    <Charting:Chart x:Name="LineChart" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                                        <Charting:LineSeries
+                                                IndependentValuePath="Month"
+                                                DependentValuePath="NumPoetries"
+                                                IsSelectionEnabled="True"/>
+                                    </Charting:Chart>
+                                </Grid>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
                 </ScrollViewer>
 
                 <Border x:Name="StpModify" Visibility="Collapsed" Margin="5"></Border>
-                
+
                 <ProgressRing x:Name="ProgressRingProfile" Height="100" Width="100" Foreground="{StaticResource AppColor1}" Grid.Row="3" Visibility="Collapsed"/>
             </Grid>
         </custom:CustomPage.MainContent>
