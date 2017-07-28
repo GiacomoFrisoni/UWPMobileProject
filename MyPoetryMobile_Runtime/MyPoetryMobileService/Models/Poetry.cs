@@ -16,7 +16,7 @@ namespace MyPoetryMobileService.Models
         public string Title { get; set; }
 
         [Required]
-        [StringLength(1000)]
+        [StringLength(4000)]
         public string Body { get; set; }
 
         [Column(TypeName = "date")]
