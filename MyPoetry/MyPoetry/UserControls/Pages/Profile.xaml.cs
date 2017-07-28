@@ -95,8 +95,8 @@ namespace MyPoetry.UserControls.Pages
 
             if (UserHandler.Instance.GetPoetries().Count > 0)
             {
-                info.Add(new DataViewer(loader.GetString("ProfileLongest"), UserHandler.Instance.GetPoetries().OrderBy(poetry => poetry.CharactersNumber).First().Title, Symbol.Remove, new SolidColorBrush(ColorHelper.ToColor("#F1C40F"))));
-                info.Add(new DataViewer(loader.GetString("ProfileShortest"), UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CharactersNumber).First().Title, Symbol.List, new SolidColorBrush(ColorHelper.ToColor("#E77E23"))));
+                info.Add(new DataViewer(loader.GetString("ProfileLongest"), UserHandler.Instance.GetPoetries().OrderByDescending(poetry => poetry.CharactersNumber).First().Title, Symbol.Remove, new SolidColorBrush(ColorHelper.ToColor("#F1C40F"))));
+                info.Add(new DataViewer(loader.GetString("ProfileShortest"), UserHandler.Instance.GetPoetries().OrderBy(poetry => poetry.CharactersNumber).First().Title, Symbol.List, new SolidColorBrush(ColorHelper.ToColor("#E77E23"))));
             }
 
             return info;
