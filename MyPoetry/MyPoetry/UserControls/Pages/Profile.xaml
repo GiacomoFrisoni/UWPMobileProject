@@ -15,8 +15,8 @@
         <custom:CustomPage.MainContent>
             <Grid x:Name="GrdParent" Loaded="Grid_Loaded" SizeChanged="Grid_SizeChanged">
                 <Image Stretch="UniformToFill" Source="Assets/Backgrounds/background.png"/>
-
-                <ScrollViewer x:Name="ScrProfile">
+                
+                <ScrollViewer x:Name="ScrProfile" Visibility="Collapsed">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>

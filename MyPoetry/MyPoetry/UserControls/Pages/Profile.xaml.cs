@@ -35,9 +35,17 @@ namespace MyPoetry.UserControls.Pages
         /// Variable for localized string resources
         /// </summary>
         ResourceLoader loader = new ResourceLoader();
+        
+        private void ProgressBarVisible(bool visible)
+        {
+            ProgressRingProfile.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
+            ProgressRingProfile.IsActive = visible;
+        }
 
         private async void LoadData()
         {
+            ProgressBarVisible(true);
+
             // Loads profile image
             ImageBrush ib = new ImageBrush();
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
@@ -66,6 +74,9 @@ namespace MyPoetry.UserControls.Pages
             rc.EnableToModify("Salva", SaveUser);
 
             StpModify.Child = rc;
+            
+            ProgressBarVisible(false);
+            ScrProfile.Visibility = Visibility.Visible;
         }
         
         private List<DataViewer> GenerateAdvancedInfo()
@@ -167,12 +178,6 @@ namespace MyPoetry.UserControls.Pages
                     ((Frame)Window.Current.Content).Navigate(typeof(NoConnectionPage));
                 }
             }
-        }
-
-        private void ProgressBarVisible(bool visible)
-        {
-            ProgressRingProfile.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
-            ProgressRingProfile.IsActive = visible;
         }
         
         private void Grid_Loaded(object sender, RoutedEventArgs e)
