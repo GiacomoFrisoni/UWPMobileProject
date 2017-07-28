@@ -104,7 +104,6 @@ namespace MyPoetry.UserControls
 
             // RTF
             string rtfText = ((Poetry)DataContext).Body;
-            request.Data.SetRtf(rtfText);
             
             // Prepare data for conversion
             RichEditBox reb = new RichEditBox();

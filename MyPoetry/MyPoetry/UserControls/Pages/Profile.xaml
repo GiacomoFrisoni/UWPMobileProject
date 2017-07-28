@@ -20,11 +20,11 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
                             <RowDefinition></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
                         </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Background="#88FFFFFF" Margin="5" Padding="15">
+                        <StackPanel x:Name="SpUsrViewer" Grid.Row="0" HorizontalAlignment="Stretch" Background="#88FFFFFF" Margin="5" Padding="15">
                             <custom:UserViewer x:Name="UsrViewer" HorizontalAlignment="Center" Title="Sample" Details="Sample"></custom:UserViewer>
                         </StackPanel>
 
@@ -55,11 +55,9 @@
                             </controls:AdaptiveGridView.ItemTemplate>
                         </controls:AdaptiveGridView>
 
-                        <Grid Grid.Row="2" VerticalAlignment="Top">
+                        <Grid Grid.Row="2" HorizontalAlignment="Center">
                             <Viewbox x:Name="VbPieChart"
-                                     HorizontalAlignment="Center"
-                                     MaxHeight="320"
-                                     Margin="30, 0"
+                                     Margin="5" MaxHeight="300"
                                      Visibility="Collapsed">
                                 <Charting:Chart
                                             x:Name="PieChart"

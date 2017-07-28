@@ -49,7 +49,7 @@ namespace MyPoetry.UserControls.Pages
 
             // Loads profile image
             ImageBrush ib = new ImageBrush();
-            UsrViewer.Visibility = Visibility.Collapsed;
+            SpUsrViewer.Visibility = Visibility.Collapsed;
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
             ib.Stretch = Stretch.UniformToFill;
             UsrViewer.ImageSource = ib;
@@ -78,7 +78,7 @@ namespace MyPoetry.UserControls.Pages
             StpModify.Child = rc;
 
             ProgressBarVisible(false);
-            UsrViewer.Visibility = Visibility.Visible;
+            SpUsrViewer.Visibility = Visibility.Visible;
             ScrProfile.Visibility = Visibility.Visible;
         }
         
