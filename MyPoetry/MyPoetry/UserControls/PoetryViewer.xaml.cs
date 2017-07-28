@@ -240,8 +240,16 @@ namespace MyPoetry.UserControls
         {
             if (DataContext != null)
             {
-                BtnBack.IsEnabled = UserHandler.Instance.GetPoetries().First().Equals((Poetry)DataContext) ? false : true;
-                BtnForward.IsEnabled = UserHandler.Instance.GetPoetries().Last().Equals((Poetry)DataContext) ? false : true;
+                if (UserHandler.Instance.GetPoetries().Count > 0)
+                {
+                    BtnBack.IsEnabled = UserHandler.Instance.GetPoetries().First().Equals((Poetry)DataContext) ? false : true;
+                    BtnForward.IsEnabled = UserHandler.Instance.GetPoetries().Last().Equals((Poetry)DataContext) ? false : true;
+                }
+                else
+                {
+                    BtnBack.IsEnabled = false;
+                    BtnForward.IsEnabled = false;
+                }
             }
         }
         #endregion
