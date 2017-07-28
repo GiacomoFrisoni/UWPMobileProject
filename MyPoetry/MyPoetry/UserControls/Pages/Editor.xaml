@@ -82,7 +82,7 @@
 
                     <SplitView.Pane>
                         <Border BorderBrush="{StaticResource AppColor4Click}" BorderThickness="1, 0, 0, 0">
-                            <Pivot>
+                            <Pivot x:Name="PvtEdit">
                                 <PivotItem x:Uid="EditorFindRhymes">
                                     <Grid Margin="0, 15, 0, 0">
                                         <Grid.RowDefinitions>

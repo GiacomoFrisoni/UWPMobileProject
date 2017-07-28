@@ -2,6 +2,7 @@
 using MyPoetry.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Windows.ApplicationModel.Resources;
 using Windows.Storage;
@@ -37,7 +38,13 @@ namespace MyPoetry.UserControls.Pages
         {
             this.InitializeComponent();
 
-            LoadRhymesOptions();
+            if (CultureInfo.CurrentCulture.Equals(new CultureInfo("it"))) {
+                LoadRhymesOptions();
+            }
+            else
+            {
+                PvtEdit.Items.RemoveAt(0);
+            }
         }
 
         private void LoadRhymesOptions()
