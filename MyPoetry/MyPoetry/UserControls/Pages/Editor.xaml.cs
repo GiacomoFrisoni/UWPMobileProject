@@ -345,6 +345,11 @@ namespace MyPoetry.UserControls.Pages
                         HalfPageMessage hpm = new HalfPageMessage(GrdParent);
                         hpm.ShowMessage(loader.GetString("SavingPoetry"), loader.GetString("SavingPoetryMessage"), true, false, false, null, null);
 
+                        /*hpm.Title = loader.GetString("Error");
+                        hpm.Message = loader.GetString("EditorOutOfRangeMessage");
+                        hpm.IsOkButtonEnabled = true;
+                        hpm.IsProgressRingEnabled = false;*/
+
                         // Updates cloud db
                         if (poetries.Count == 0)
                             await App.MobileService.GetTable<Poetry>().InsertAsync(poetry);

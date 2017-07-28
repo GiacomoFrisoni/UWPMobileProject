@@ -13,7 +13,7 @@
         <Image Stretch="UniformToFill" Source="Assets/Backgrounds/background.png"/>
 
         <ScrollViewer HorizontalContentAlignment="Center" ScrollViewer.IsVerticalRailEnabled="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
-            <StackPanel Padding="20" VerticalAlignment="Center">
+            <StackPanel Padding="15" VerticalAlignment="Center">
                 <StackPanel.Background>
                     <SolidColorBrush Color="White" Opacity="0.4"/>
                 </StackPanel.Background>

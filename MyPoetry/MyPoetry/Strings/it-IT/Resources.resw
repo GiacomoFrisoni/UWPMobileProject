@@ -609,4 +609,7 @@
   <data name="PieChart.Title" xml:space="preserve">
     <value>Giorni di ispirazione</value>
   </data>
+  <data name="EditorOutOfRangeMessage" xml:space="preserve">
+    <value>Impossibile salvare la poesia. Il numero dei caratteri massimo è stato superato. </value>
+  </data>
 </root>
