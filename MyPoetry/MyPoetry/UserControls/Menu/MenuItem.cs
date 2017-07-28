@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 namespace MyPoetry.UserControls.Menu
 {
+    /// <summary>
+    /// This class represents an item inside the hamburger menu.
+    /// </summary>
     public class MenuItem
     {
         public enum Groups

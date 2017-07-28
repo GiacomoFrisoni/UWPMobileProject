@@ -6,6 +6,9 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace MyPoetry.Utilities
 {
+    /// <summary>
+    /// This utility class provides a method for converting from bytes to bitmap image.
+    /// </summary>
     class ImageHelper
     {
         static public async Task<BitmapImage> ImageFromBytes(Byte[] bytes)

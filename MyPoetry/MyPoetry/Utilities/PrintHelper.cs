@@ -10,6 +10,9 @@ using Windows.UI.Xaml.Printing;
 
 namespace MyPoetry.Utilities
 {
+    /// <summary>
+    /// This utility class handles basic methods for printing.
+    /// </summary>
     public class PrintHelper
     {
         #region Application Content Size Constants given in percents (normalized)

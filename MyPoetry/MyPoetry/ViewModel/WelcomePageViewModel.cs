@@ -8,6 +8,9 @@ using Windows.ApplicationModel.Resources;
 
 namespace MyPoetry.ViewModel
 {
+    /// <summary>
+    /// This class handles the view model for the welcome page logic.
+    /// </summary>
     class WelcomePageViewModel : BindableBase
     {
         private ObservableCollection<WelcomeItem> _WelcomePages = new ObservableCollection<WelcomeItem>();

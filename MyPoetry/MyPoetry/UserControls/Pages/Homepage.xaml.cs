@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Media;
 namespace MyPoetry.UserControls.Pages
 {
     /// <summary>
-    /// Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame.
+    /// This class handles Credits page.
     /// </summary>
     public sealed partial class Homepage : Page
     {

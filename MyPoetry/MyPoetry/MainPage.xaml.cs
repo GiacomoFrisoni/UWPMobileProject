@@ -3,8 +3,6 @@ using MyPoetry.UserControls.Menu;
 using MyPoetry.UserControls.Pages;
 using MyPoetry.Utilities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Windows.ApplicationModel.Resources;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -13,6 +11,9 @@ using Windows.UI.Xaml.Media;
 
 namespace MyPoetry
 {
+    /// <summary>
+    /// This class handles the main navigation structure of the application.
+    /// </summary>
     public sealed partial class MainPage : Page
     {
         private AppLocalSettings settings;

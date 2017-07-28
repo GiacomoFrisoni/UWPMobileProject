@@ -4,6 +4,10 @@ using Windows.UI.Xaml.Controls;
 
 namespace MyPoetry.UserControls
 {
+    /// <summary>
+    /// This class handles an half page message that can be showed inside
+    /// a grid control.
+    /// </summary>
     public sealed partial class HalfPageMessage : UserControl
     {
         /// <summary>

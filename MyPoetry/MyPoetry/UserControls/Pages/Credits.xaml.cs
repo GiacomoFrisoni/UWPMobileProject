@@ -5,6 +5,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace MyPoetry.UserControls.Pages
 {
+    /// <summary>
+    /// This class handles Credits page.
+    /// </summary>
     public sealed partial class Credits : UserControl
     {
         public Credits()

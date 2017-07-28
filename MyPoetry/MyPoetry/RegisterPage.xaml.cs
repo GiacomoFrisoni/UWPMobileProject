@@ -5,21 +5,14 @@ using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.Media.Capture;
-using Windows.Storage;
-using Windows.UI.Xaml.Media.Imaging;
 using MyPoetry.UserControls;
-using Windows.Storage.Pickers;
-using Windows.UI.Xaml.Media;
-using Windows.Storage.Streams;
-using Windows.UI.Xaml.Input;
 using MyPoetry.Utilities;
 using Windows.ApplicationModel.Resources;
 
 namespace MyPoetry
 {
     /// <summary>
-    /// Registration page.
+    /// This class handles the Registration page.
     /// </summary>
     public sealed partial class RegisterPage : Page
     {

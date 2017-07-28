@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace MyPoetry.UserControls
 {
+    /// <summary>
+    /// This class handles a control used for user registration.
+    /// </summary>
     public sealed partial class RegistrationControl : UserControl
     {
         /// <summary>

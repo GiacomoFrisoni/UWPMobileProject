@@ -14,6 +14,9 @@ using Windows.UI.Xaml.Input;
 
 namespace MyPoetry.UserControls.Pages
 {
+    /// <summary>
+    /// This class handles Editor page.
+    /// </summary>
     public sealed partial class Editor : UserControl
     {
         private const int MAXCHAR = 4000;

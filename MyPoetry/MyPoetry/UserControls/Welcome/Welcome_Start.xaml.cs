@@ -4,6 +4,9 @@ using Windows.UI.Xaml.Media.Animation;
 
 namespace MyPoetry.UserControls
 {
+    /// <summary>
+    /// This class handles the last welcome control.
+    /// </summary>
     public sealed partial class Welcome_Start : UserControl, IWelcomeControl
     {
         public Welcome_Start()

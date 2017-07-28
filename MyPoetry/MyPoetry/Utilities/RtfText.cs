@@ -1,11 +1,12 @@
-﻿using Windows.UI;
-using Windows.UI.Text;
+﻿using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media;
 
 namespace MyPoetry.Utilities
 {
+    /// <summary>
+    /// This class handles rtf text inside poetries previews in home.
+    /// </summary>
     public class RtfText
     {
         public static string GetRichText(DependencyObject obj)

@@ -2,6 +2,10 @@
 
 namespace MyPoetry.Utilities
 {
+    /// <summary>
+    /// This enum represents the two options for the custom setting
+    /// inside printing menu, dedicated to the structure of the page.
+    /// </summary>
     [Flags]
     internal enum DisplayContent : int
     {

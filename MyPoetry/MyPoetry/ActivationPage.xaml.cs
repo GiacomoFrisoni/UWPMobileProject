@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace MyPoetry
 {
+    /// <summary>
+    /// This class handles the activation page.
+    /// </summary>
     public sealed partial class ActivationPage : Page
     {
         public ActivationPage()

@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Documents;
 namespace MyPoetry
 {
     /// <summary>
-    /// Pagina vuota che può essere usata autonomamente oppure per l'esplorazione all'interno di un frame.
+    /// First page for poetry printing.
     /// </summary>
     public sealed partial class PageToPrint : Page
     {

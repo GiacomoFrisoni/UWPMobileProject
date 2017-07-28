@@ -3,6 +3,9 @@ using Windows.UI.Xaml.Data;
 
 namespace MyPoetry.Converters
 {
+    /// <summary>
+    /// Class for converting a date into a string.
+    /// </summary>
     public class DateFormatConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)

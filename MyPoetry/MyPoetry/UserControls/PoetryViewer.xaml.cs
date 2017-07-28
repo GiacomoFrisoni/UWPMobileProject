@@ -18,6 +18,9 @@ using XamlBrewer.Uwp.Controls;
 
 namespace MyPoetry.UserControls
 {
+    /// <summary>
+    /// This class handles the graphic appearance of a poetry.
+    /// </summary>
     public sealed partial class PoetryViewer : UserControl
     {
         PrintHelper printHelper;

@@ -14,6 +14,9 @@ using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 
 namespace MyPoetry.UserControls.Pages
 {
+    /// <summary>
+    /// This class handles Profile page.
+    /// </summary>
     public sealed partial class Profile : UserControl
     {
         public Profile()

@@ -4,6 +4,9 @@ using Windows.UI.Xaml.Media;
 
 namespace MyPoetry.UserControls.Menu
 {
+    /// <summary>
+    /// This class handles the graphic appearance of a menu item
+    /// </summary>
     public sealed partial class MenuItemViewer : UserControl
     {
         public MenuItemViewer()

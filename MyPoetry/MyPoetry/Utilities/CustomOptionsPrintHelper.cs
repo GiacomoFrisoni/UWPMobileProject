@@ -10,6 +10,9 @@ using Windows.UI.Xaml.Printing;
 
 namespace MyPoetry.Utilities
 {
+    /// <summary>
+    /// This utility class handles methods for printing with custom options.
+    /// </summary>
     class CustomOptionsPrintHelper : PrintHelper
     {
         /// <summary>

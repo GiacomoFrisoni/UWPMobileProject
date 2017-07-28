@@ -14,6 +14,9 @@ using Windows.UI.Xaml.Navigation;
 
 namespace MyPoetry
 {
+    /// <summary>
+    /// This class handles the Login page.
+    /// </summary>
     public sealed partial class LoginPage : Page
     {
         private AppLocalSettings settings;

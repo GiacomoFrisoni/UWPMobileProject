@@ -2,6 +2,9 @@
 
 namespace MyPoetry.Utilities
 {
+    /// <summary>
+    /// This utility class handles Internet connection.
+    /// </summary>
     public class Connection
     {
         public static bool HasInternetAccess { get; private set; }

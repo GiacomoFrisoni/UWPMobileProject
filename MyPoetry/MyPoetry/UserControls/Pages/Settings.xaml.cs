@@ -11,6 +11,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace MyPoetry.UserControls.Pages
 {
+    /// <summary>
+    /// This class handles Settings page.
+    /// </summary>
     public sealed partial class Settings : UserControl
     {
         private readonly Dictionary<string, string> languages = new Dictionary<string, string>()

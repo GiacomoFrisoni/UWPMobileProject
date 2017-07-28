@@ -2,6 +2,10 @@
 
 namespace MyPoetry.UserControls
 {
+    /// <summary>
+    /// This class models a custom page with a title, a main content and
+    /// a section with top buttons.
+    /// </summary>
     public sealed partial class CustomPage : UserControl
     {
         public CustomPage()

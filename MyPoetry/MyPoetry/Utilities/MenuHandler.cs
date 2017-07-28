@@ -9,6 +9,9 @@ using Windows.UI.Xaml.Data;
 
 namespace MyPoetry.Utilities
 {
+    /// <summary>
+    /// This class uses Singleton pattern to handle hamburger menu inside main page.
+    /// </summary>
     public sealed class MenuHandler
     {
         private static volatile MenuHandler instance;

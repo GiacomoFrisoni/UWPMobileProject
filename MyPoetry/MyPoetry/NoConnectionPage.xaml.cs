@@ -4,6 +4,9 @@ using Windows.UI.Xaml.Controls;
 
 namespace MyPoetry
 {
+    /// <summary>
+    /// This class handles the page displayed when there is not Internet connection.
+    /// </summary>
     public sealed partial class NoConnectionPage : Page
     {
         public NoConnectionPage()
