@@ -44,15 +44,17 @@ namespace MyPoetry.UserControls.Pages
 
         private async void LoadData()
         {
+            ScrProfile.Visibility = Visibility.Collapsed;
             ProgressBarVisible(true);
 
             // Loads profile image
             ImageBrush ib = new ImageBrush();
+            UsrViewer.Visibility = Visibility.Collapsed;
             ib.ImageSource = await ImageHelper.ImageFromBytes(UserHandler.Instance.GetUser().Photo);
             ib.Stretch = Stretch.UniformToFill;
             UsrViewer.ImageSource = ib;
             UsrViewer.Title = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
-            UsrViewer.Details = UserHandler.Instance.GetUser().Email;    
+            UsrViewer.Details = UserHandler.Instance.GetUser().Email;
 
             // Generates statistic elements inside the gridview
             ProfileGridView.ItemsSource = null;
@@ -74,8 +76,9 @@ namespace MyPoetry.UserControls.Pages
             rc.EnableToModify("Salva", SaveUser);
 
             StpModify.Child = rc;
-            
+
             ProgressBarVisible(false);
+            UsrViewer.Visibility = Visibility.Visible;
             ScrProfile.Visibility = Visibility.Visible;
         }
         
