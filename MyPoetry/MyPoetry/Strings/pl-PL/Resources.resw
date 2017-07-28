@@ -586,28 +586,28 @@
     <value>Początek</value>
   </data>
   <data name="Friday" xml:space="preserve">
-    <value>Friday</value>
+    <value>Piątek</value>
   </data>
   <data name="Monday" xml:space="preserve">
-    <value>Monday</value>
+    <value>Poniedziałek</value>
   </data>
   <data name="Saturday" xml:space="preserve">
-    <value>Saturday</value>
+    <value>Sobota</value>
   </data>
   <data name="Sunday" xml:space="preserve">
-    <value>Sunday</value>
+    <value>Niedziela</value>
   </data>
   <data name="Thursday" xml:space="preserve">
-    <value>Thursday</value>
+    <value>Czwartek</value>
   </data>
   <data name="Tuesday" xml:space="preserve">
-    <value>Tuesday</value>
+    <value>Wtorek</value>
   </data>
   <data name="Wednesday" xml:space="preserve">
-    <value>Wednesday</value>
+    <value>Środa</value>
   </data>
   <data name="PieChart.Title" xml:space="preserve">
-    <value>Inspiration days</value>
+    <value>Dni inspiracji</value>
   </data>
   <data name="EditorOutOfRangeMessage" xml:space="preserve">
     <value>Nie można zapisać poezji. Limit symboli został przekroczony (ok. 2730 symboli).  </value>
