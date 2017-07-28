@@ -348,6 +348,7 @@ namespace MyPoetry.UserControls.Pages
 
                         if (rtfText.Count() > MAXCHAR)
                         {
+                            int v = rtfText.Count();
                             hpm.Title = loader.GetString("Error");
                             hpm.Message = loader.GetString("EditorOutOfRangeMessage");
                             hpm.IsOkButtonEnabled = true;

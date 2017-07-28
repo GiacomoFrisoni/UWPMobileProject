@@ -943,7 +943,7 @@
                                          ScrollViewer.BringIntoViewOnFocusChange="False"
                                          Canvas.ZIndex="0"
                                          Margin="0"
-                                         Padding="15"
+                                         Padding="15, 13"
                                          DesiredCandidateWindowAlignment="BottomEdge"/>
                                 
                                 <Popup x:Name="SuggestionsPopup">
