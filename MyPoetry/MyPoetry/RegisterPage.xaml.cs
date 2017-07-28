@@ -28,7 +28,7 @@ namespace MyPoetry
         private void GrdParent_Loaded(object sender, RoutedEventArgs e)
         {
             var loader = new ResourceLoader();
-            RgcRegistration.EnableToRegister(loader.GetString("RegisterPlainText"), loader.GetString("RegisterNow"), Register, GoBack);
+            RgcRegistration.EnableToRegister(loader.GetString("RegisterNow"), loader.GetString("AlreadyHaveAccount"), Register, GoBack);
         }
 
         private async void Register()
