@@ -56,19 +56,12 @@
                         </controls:AdaptiveGridView>
 
                         <Grid Grid.Row="2" HorizontalAlignment="Center">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                            </Grid.RowDefinitions>
-
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-
-                            <Viewbox Margin="5" MaxHeight="300">
+                            <Viewbox x:Name="VbPieChart"
+                                     Margin="5" MaxHeight="300"
+                                     Visibility="Collapsed">
                                 <Charting:Chart
                                             x:Name="PieChart"
+                                            x:Uid="PieChart"
                                             HorizontalAlignment="Center">
                                     <Charting:PieSeries
                                                 Margin="0"

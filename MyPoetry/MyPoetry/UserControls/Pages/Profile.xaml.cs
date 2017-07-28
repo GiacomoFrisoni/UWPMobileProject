@@ -50,8 +50,16 @@ namespace MyPoetry.UserControls.Pages
             ProfileGridView.ItemsSource = null;
             ProfileGridView.ItemsSource = GenerateAdvancedInfo();
 
-            // Loads pie chart and bar chart
-            LoadChartContent();
+            // Loads pie chart
+            if (UserHandler.Instance.GetPoetries().Count > 0)
+            {
+                LoadChartContent();
+                VbPieChart.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                VbPieChart.Visibility = Visibility.Collapsed;
+            }
 
             // Loads the editor part
             rc = new RegistrationControl(UserHandler.Instance.GetUser());
