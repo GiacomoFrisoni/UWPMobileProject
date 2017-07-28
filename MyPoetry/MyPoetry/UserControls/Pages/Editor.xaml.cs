@@ -16,6 +16,7 @@ namespace MyPoetry.UserControls.Pages
 {
     public sealed partial class Editor : UserControl
     {
+        private const int MAXCHAR = 4000;
         public CustomPage GetPage { get { return MainContent; } }
 
         // Tools variables
@@ -345,37 +346,43 @@ namespace MyPoetry.UserControls.Pages
                         HalfPageMessage hpm = new HalfPageMessage(GrdParent);
                         hpm.ShowMessage(loader.GetString("SavingPoetry"), loader.GetString("SavingPoetryMessage"), true, false, false, null, null);
 
-                        /*hpm.Title = loader.GetString("Error");
-                        hpm.Message = loader.GetString("EditorOutOfRangeMessage");
-                        hpm.IsOkButtonEnabled = true;
-                        hpm.IsProgressRingEnabled = false;*/
-
-                        // Updates cloud db
-                        if (poetries.Count == 0)
-                            await App.MobileService.GetTable<Poetry>().InsertAsync(poetry);
+                        if (rtfText.Count() > MAXCHAR)
+                        {
+                            hpm.Title = loader.GetString("Error");
+                            hpm.Message = loader.GetString("EditorOutOfRangeMessage");
+                            hpm.IsOkButtonEnabled = true;
+                            hpm.IsProgressRingEnabled = false;
+                        }
                         else
-                            await App.MobileService.GetTable<Poetry>().UpdateAsync(poetry);
+                        {
+                            // Updates cloud db
+                            if (poetries.Count == 0)
+                                await App.MobileService.GetTable<Poetry>().InsertAsync(poetry);
+                            else
+                                await App.MobileService.GetTable<Poetry>().UpdateAsync(poetry);
 
-                        // Updates local poetries
-                        List<Poetry> new_poetries = await App.MobileService.GetTable<Poetry>()
-                            .Where(p => p.UserId == UserHandler.Instance.GetUser().Id)
-                            .ToListAsync();
-                        UserHandler.Instance.SetPoetries(new_poetries);
+                            // Updates local poetries
+                            List<Poetry> new_poetries = await App.MobileService.GetTable<Poetry>()
+                                .Where(p => p.UserId == UserHandler.Instance.GetUser().Id)
+                                .ToListAsync();
+                            UserHandler.Instance.SetPoetries(new_poetries);
 
-                        // Shows confirm message
-                        hpm.IsProgressRingEnabled = false;
-                        hpm.Title = loader.GetString("Confirm");
-                        if (poetries.Count == 0)
-                            hpm.Message = loader.GetString("PoetryAdded");
-                        else
-                            hpm.Message = loader.GetString("PoetryUpdated");
-                        hpm.SetOkAction(() => {
-                            // Reset inputs
-                            Clear();
-                            // Navigates to home
-                            MenuHandler.Instance.SetMenuIndex(1);
-                        }, loader.GetString("Ok"));
-                        hpm.IsOkButtonEnabled = true;
+                            // Shows confirm message
+                            hpm.IsProgressRingEnabled = false;
+                            hpm.Title = loader.GetString("Confirm");
+                            if (poetries.Count == 0)
+                                hpm.Message = loader.GetString("PoetryAdded");
+                            else
+                                hpm.Message = loader.GetString("PoetryUpdated");
+                            hpm.SetOkAction(() =>
+                            {
+                                // Reset inputs
+                                Clear();
+                                // Navigates to home
+                                MenuHandler.Instance.SetMenuIndex(1);
+                            }, loader.GetString("Ok"));
+                            hpm.IsOkButtonEnabled = true;
+                        }
                     }));
 
                     // NO command
