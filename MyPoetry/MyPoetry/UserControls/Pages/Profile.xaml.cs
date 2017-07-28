@@ -183,6 +183,10 @@ namespace MyPoetry.UserControls.Pages
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             LoadData();
+
+            ScrProfile.Visibility = Visibility.Visible;
+            StpModify.Visibility = Visibility.Collapsed;
+            BtnEdit.Content = new SymbolIcon() { Symbol = Symbol.Edit };
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
