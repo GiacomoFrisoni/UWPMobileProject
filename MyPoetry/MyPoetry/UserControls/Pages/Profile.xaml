@@ -20,8 +20,8 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition></RowDefinition>
                             <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Background="#88FFFFFF" Margin="5" Padding="15">
@@ -55,9 +55,11 @@
                             </controls:AdaptiveGridView.ItemTemplate>
                         </controls:AdaptiveGridView>
 
-                        <Grid Grid.Row="2" HorizontalAlignment="Center">
+                        <Grid Grid.Row="2" VerticalAlignment="Top">
                             <Viewbox x:Name="VbPieChart"
-                                     Margin="5" MaxHeight="300"
+                                     HorizontalAlignment="Center"
+                                     MaxHeight="320"
+                                     Margin="30, 0"
                                      Visibility="Collapsed">
                                 <Charting:Chart
                                             x:Name="PieChart"
