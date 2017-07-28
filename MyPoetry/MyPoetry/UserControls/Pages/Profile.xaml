@@ -77,17 +77,6 @@
                                                 IsSelectionEnabled="True"/>
                                 </Charting:Chart>
                             </Viewbox>
-
-                            <ScrollViewer x:Name="MonthChart" Grid.Row="1" HorizontalScrollBarVisibility="Visible" HorizontalScrollMode="Enabled" PointerMoved="MonthChart_PointerMoved">
-                                <Grid MinWidth="600" MinHeight="300">
-                                    <Charting:Chart x:Name="LineChart" ScrollViewer.HorizontalScrollMode="Enabled" ScrollViewer.HorizontalScrollBarVisibility="Visible">
-                                        <Charting:LineSeries
-                                                IndependentValuePath="Month"
-                                                DependentValuePath="NumPoetries"
-                                                IsSelectionEnabled="True"/>
-                                    </Charting:Chart>
-                                </Grid>
-                            </ScrollViewer>
                         </Grid>
                     </Grid>
                 </ScrollViewer>

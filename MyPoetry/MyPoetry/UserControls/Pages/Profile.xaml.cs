@@ -11,7 +11,6 @@ using Microsoft.Toolkit.Uwp;
 using Windows.UI.Xaml.Media;
 using MyPoetry.UserControls.Menu;
 using WinRTXamlToolkit.Controls.DataVisualization.Charting;
-using System.Globalization;
 
 namespace MyPoetry.UserControls.Pages
 {
@@ -29,14 +28,6 @@ namespace MyPoetry.UserControls.Pages
             public string Day { get; set; }
             public int NumPoetries { get; set; }
         }
-
-        public class MonthStatistic
-        {
-            public string Month { get; set; }
-            public int NumPoetries { get; set; }
-        }
-
-        private const int NumberOfMonth = 12;
 
         RegistrationControl rc;
 
@@ -60,7 +51,7 @@ namespace MyPoetry.UserControls.Pages
             ProfileGridView.ItemsSource = GenerateAdvancedInfo();
 
             // Loads pie chart and bar chart
-            LoadChartsContents();
+            LoadChartContent();
 
             // Loads the editor part
             rc = new RegistrationControl(UserHandler.Instance.GetUser());
@@ -89,7 +80,7 @@ namespace MyPoetry.UserControls.Pages
             return info;
         }
 
-        private void LoadChartsContents()
+        private void LoadChartContent()
         {
             // Pie chart
             List<DayStatistic> dayStatistics = new List<DayStatistic>();
@@ -108,16 +99,6 @@ namespace MyPoetry.UserControls.Pages
             foreach (KeyValuePair<DayOfWeek, int> occ in occurrences)
                 dayStatistics.Add(new DayStatistic() { Day = loader.GetString(occ.Key.ToString()), NumPoetries = occ.Value });
             (PieChart.Series[0] as PieSeries).ItemsSource = dayStatistics;
-
-            // Line chart
-            MonthStatistic[] monthStatistics = new MonthStatistic[NumberOfMonth];
-            int[] monthOccurrences = new int[NumberOfMonth];
-            foreach (Poetry p in UserHandler.Instance.GetPoetries())
-                monthOccurrences[p.CreationDate.Month-1]++;
-            for (int i = 0; i < NumberOfMonth; i++)
-                monthStatistics[i] = new MonthStatistic() { Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i+1), NumPoetries = monthOccurrences[i] };
-            (LineChart.Series[0] as LineSeries).ItemsSource = monthStatistics;
-            (LineChart.Series[0] as LineSeries).Title = loader.GetString("Activity");
         }
 
         private async void SaveUser()
@@ -217,20 +198,6 @@ namespace MyPoetry.UserControls.Pages
             {
                 UsrViewer.SetBigger();
             }
-
-            
-            if (e.NewSize.Width > 1100)
-            {
-                Grid.SetRow(MonthChart, 0);
-                Grid.SetColumn(MonthChart, 1);
-                MonthChart.Margin = new Thickness(40, 0, 0, 0);
-            }
-            else
-            {
-                Grid.SetRow(MonthChart, 1);
-                Grid.SetColumn(MonthChart, 0);
-                MonthChart.Margin = new Thickness(0, 0, 0, 0);
-            }
         }
 
         private async void UpdateMenuUser()
@@ -241,11 +208,6 @@ namespace MyPoetry.UserControls.Pages
             string username = UserHandler.Instance.GetUser().Name + " " + UserHandler.Instance.GetUser().Surname;
 
             MenuHandler.Instance.CreateMenu(new MenuItem() { ItemText = username, ItemImage = ib.ImageSource, Group = MenuItem.Groups.User, ItemPage = new Profile().GetPage });
-        }
-
-        private void MonthChart_PointerMoved(object sender, Windows.UI.Xaml.Input.PointerRoutedEventArgs e)
-        {
-            MonthChart.ChangeView(e.GetCurrentPoint(MonthChart).RawPosition.Y - e.GetCurrentPoint(MonthChart).Position.Y, 0, 1);
         }
     }
 }

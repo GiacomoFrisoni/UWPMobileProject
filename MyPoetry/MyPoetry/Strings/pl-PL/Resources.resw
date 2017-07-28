@@ -585,9 +585,6 @@
   <data name="ProfileStart" xml:space="preserve">
     <value>Początek</value>
   </data>
-  <data name="Activity" xml:space="preserve">
-    <value>Activity</value>
-  </data>
   <data name="Friday" xml:space="preserve">
     <value>Friday</value>
   </data>
