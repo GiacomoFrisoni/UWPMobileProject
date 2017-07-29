@@ -52,109 +52,6 @@ namespace MyPoetry
             }
         }
 
-        /*
-        private async void BtnRegister_Click(object sender, RoutedEventArgs e)
-        {
-            if (Connection.HasInternetAccess)
-            {
-                await RegisterUser(
-                    TxbEmail.Text,
-                    PbPassword.Password,
-                    PbPasswordConfirm.Password,
-                    TxbName.Text,
-                    TxbSurname.Text,
-                    CmbGender.SelectedIndex >= 0 ? (CmbGender.SelectedIndex == 0 ? MALE : FEMALE) : String.Empty,
-                    bytesPhoto,
-                    DateTime.Now
-                );
-            }
-            else
-            {
-                this.Frame.Navigate(typeof(NoConnectionPage));
-            }
-
-            private void BtnBackToLogin_Click(object sender, RoutedEventArgs e)
-        {
-            GoBack();
-        }
-        
-        private async void BtnPhoto_Click(object sender, RoutedEventArgs e)
-        {
-            CameraCaptureUI captureUI = new CameraCaptureUI();
-            captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
-
-            StorageFile photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
-
-            if (photo == null)
-            {
-                // User cancelled photo capture
-                return;
-            }
-            
-            bytesPhoto = await AsByteArray(photo);
-            ImgProfile.Source = await GetImageSourceFromFile(photo);
-
-            await photo.DeleteAsync();
-        }
-
-        private void BtnDeletePhoto_Click(object sender, RoutedEventArgs e)
-        {
-            bytesPhoto = null;
-            ImgProfile.Source = null;
-            SblDefault.Visibility = Visibility.Visible;
-        }
-
-        private async void BtnFile_Click(object sender, RoutedEventArgs e)
-        {
-            var picker = new FileOpenPicker();
-            picker.ViewMode = PickerViewMode.Thumbnail;
-            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-            picker.FileTypeFilter.Add(".jpg");
-            picker.FileTypeFilter.Add(".jpeg");
-            picker.FileTypeFilter.Add(".png");
-
-            StorageFile file = await picker.PickSingleFileAsync();
-            if (file != null)
-            {
-                bytesPhoto = await AsByteArray(file);
-                ImgProfile.Source = await GetImageSourceFromFile(file);
-            }
-        }
-
-        private async Task<ImageSource> GetImageSourceFromFile(StorageFile file)
-        {
-            var stream = await file.OpenAsync(FileAccessMode.Read);
-            var image = new BitmapImage();
-            image.SetSource(stream);
-            SblDefault.Visibility = Visibility.Collapsed;
-            return image;
-        }
-
-        /// <summary>
-        /// Converts StorageFile to ByteArray
-        /// </summary>
-        /// <param name="file">Storage file</param>
-        /// <returns>Byte array</returns>
-        public static async Task<byte[]> AsByteArray(StorageFile file)
-        {
-            IRandomAccessStream fileStream = await file.OpenAsync(FileAccessMode.Read);
-            var reader = new DataReader(fileStream.GetInputStreamAt(0));
-            await reader.LoadAsync((uint)fileStream.Size);
-            byte[] pixels = new byte[fileStream.Size];
-            reader.ReadBytes(pixels);
-            return pixels;
-        }
-
-        private void StackPanel_KeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            if (e.Key == Windows.System.VirtualKey.Enter)
-            {
-                FocusManager.TryMoveFocus(FocusNavigationDirection.Next);
-                e.Handled = true;
-            }
-        }
-        }*/
-
         private async Task RegisterUser(string email, string password, string passwordConfirm, string name,
             string surname, string gender, byte[] photo, DateTime registrationDate)
         {
@@ -209,10 +106,6 @@ namespace MyPoetry
             if (rootFrame != null && rootFrame.CanGoBack)
                 rootFrame.GoBack();
         }
-
-
-        
-
 
     }
 }
